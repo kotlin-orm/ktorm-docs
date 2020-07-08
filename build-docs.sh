@@ -24,14 +24,14 @@ srcDirs=(
 )
 
 srcLinks=(
-    "ktorm-core/src/main/kotlin=https://github.com/vincentlauvlwj/Ktorm/blob/master/ktorm-core/src/main/kotlin#L"
-    "ktorm-global/src/main/kotlin=https://github.com/vincentlauvlwj/Ktorm/blob/master/ktorm-global/src/main/kotlin#L"
-    "ktorm-jackson/src/main/kotlin=https://github.com/vincentlauvlwj/Ktorm/blob/master/ktorm-jackson/src/main/kotlin#L"
-    "ktorm-support-mysql/src/main/kotlin=https://github.com/vincentlauvlwj/Ktorm/blob/master/ktorm-support-mysql/src/main/kotlin#L"
-    "ktorm-support-oracle/src/main/kotlin=https://github.com/vincentlauvlwj/Ktorm/blob/master/ktorm-support-oracle/src/main/kotlin#L"
-    "ktorm-support-postgresql/src/main/kotlin=https://github.com/vincentlauvlwj/Ktorm/blob/master/ktorm-support-postgresql/src/main/kotlin#L"
-    "ktorm-support-sqlite/src/main/kotlin=https://github.com/vincentlauvlwj/Ktorm/blob/master/ktorm-support-sqlite/src/main/kotlin#L"
-    "ktorm-support-sqlserver/src/main/kotlin=https://github.com/vincentlauvlwj/Ktorm/blob/master/ktorm-support-sqlserver/src/main/kotlin#L"
+    "ktorm-core/src/main/kotlin=https://github.com/kotlin-orm/ktorm/blob/master/ktorm-core/src/main/kotlin#L"
+    "ktorm-global/src/main/kotlin=https://github.com/kotlin-orm/ktorm/blob/master/ktorm-global/src/main/kotlin#L"
+    "ktorm-jackson/src/main/kotlin=https://github.com/kotlin-orm/ktorm/blob/master/ktorm-jackson/src/main/kotlin#L"
+    "ktorm-support-mysql/src/main/kotlin=https://github.com/kotlin-orm/ktorm/blob/master/ktorm-support-mysql/src/main/kotlin#L"
+    "ktorm-support-oracle/src/main/kotlin=https://github.com/kotlin-orm/ktorm/blob/master/ktorm-support-oracle/src/main/kotlin#L"
+    "ktorm-support-postgresql/src/main/kotlin=https://github.com/kotlin-orm/ktorm/blob/master/ktorm-support-postgresql/src/main/kotlin#L"
+    "ktorm-support-sqlite/src/main/kotlin=https://github.com/kotlin-orm/ktorm/blob/master/ktorm-support-sqlite/src/main/kotlin#L"
+    "ktorm-support-sqlserver/src/main/kotlin=https://github.com/kotlin-orm/ktorm/blob/master/ktorm-support-sqlserver/src/main/kotlin#L"
 )
 
 links=(

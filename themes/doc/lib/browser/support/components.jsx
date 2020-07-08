@@ -43,14 +43,14 @@ module.exports.SupportFooter = function ({page, data, url_for}) {
     return (
       <div className="doc-support-footer">
         {renderLinks()}
-        对文档内容有疑问？请在侧边栏尝试搜索或者在 GitHub <a href="https://github.com/vincentlauvlwj/Ktorm/issues/new">提出 issue</a>
+        对文档内容有疑问？请在侧边栏尝试搜索或者在 GitHub <a href="https://github.com/kotlin-orm/ktorm/issues/new">提出 issue</a>
       </div>
     );
   } else {
     return (
       <div className="doc-support-footer">
         {renderLinks()}
-        Any questions about the document? Try searching again on the left menu or <a href="https://github.com/vincentlauvlwj/Ktorm/issues/new">Raise an issue on Github</a>
+        Any questions about the document? Try searching again on the left menu or <a href="https://github.com/kotlin-orm/ktorm/issues/new">Raise an issue on Github</a>
       </div>
     );
   }

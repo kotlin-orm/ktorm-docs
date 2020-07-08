@@ -49,7 +49,7 @@ class KtormConfiguration {
 
 是的，最多就只有这么点代码，Ktorm 集成 Spring 简直不能再简单，这只要求你的容器有一个 `DataSource` 的 bean。然而，这个 `DataSource` 怎么创建呢？这已经不是 Ktorm 的职责，相信每个使用 Spring 的读者都能够自己完成，我们这里不再赘述。
 
-> 如果你需要一个将 Ktorm 与 Spring Boot 集成的简单的 demo 项目，可以参考这里：[vincentlauvlwj/ktorm-example-spring-boot](https://github.com/vincentlauvlwj/ktorm-example-spring-boot)
+> 如果你需要一个将 Ktorm 与 Spring Boot 集成的简单的 demo 项目，可以参考这里：[kotlin-orm/ktorm-example-spring-boot](https://github.com/kotlin-orm/ktorm-example-spring-boot)
 
 ## 事务代理
 

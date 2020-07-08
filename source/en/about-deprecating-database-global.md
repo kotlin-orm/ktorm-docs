@@ -41,8 +41,8 @@ h2 {
 
 Here, we use the `db { }` syntax to switch between databases, but now it seems that this is not a good design for the following reasons: 
 
-- `db { }` is implemented using `ThreadLocal`. Switching databases in this way is too implicit, which may lead to some misunderstandings and unexpected bugs, for example [#65](https://github.com/vincentlauvlwj/Ktorm/issues/65) and [#27](https://github.com/vincentlauvlwj/Ktorm/issues/27).
-- Using global variables is a bad design pattern. Code written in this way will be coupled with some global states, which is difficult to be tested and extended. Related discussions are [#47](https://github.com/vincentlauvlwj/Ktorm/issues/47) and [#41](https://github.com/vincentlauvlwj/Ktorm/issues/41).
+- `db { }` is implemented using `ThreadLocal`. Switching databases in this way is too implicit, which may lead to some misunderstandings and unexpected bugs, for example [#65](https://github.com/kotlin-orm/ktorm/issues/65) and [#27](https://github.com/kotlin-orm/ktorm/issues/27).
+- Using global variables is a bad design pattern. Code written in this way will be coupled with some global states, which is difficult to be tested and extended. Related discussions are [#47](https://github.com/kotlin-orm/ktorm/issues/47) and [#41](https://github.com/kotlin-orm/ktorm/issues/41).
 
 ## Changes
 

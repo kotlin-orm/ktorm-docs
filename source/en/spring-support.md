@@ -51,7 +51,7 @@ class KtormConfiguration {
 
 Yes, that's all. Ktorm's Spring support is easy, the only thing required is a `DataSource` bean in your container. But how can we create the `DataSource` bean? That is not Ktorm's duty anymore, we believe every Spring user can do this by him/her self. 
 
-> If you need a simple example project integrating Ktorm with Spring Boot, click here: [vincentlauvlwj/ktorm-example-spring-boot](https://github.com/vincentlauvlwj/ktorm-example-spring-boot)
+> If you need a simple example project integrating Ktorm with Spring Boot, click here: [kotlin-orm/ktorm-example-spring-boot](https://github.com/kotlin-orm/ktorm-example-spring-boot)
 
 ## Transaction Delegation
 

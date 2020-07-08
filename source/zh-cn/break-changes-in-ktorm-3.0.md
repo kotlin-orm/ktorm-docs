@@ -112,7 +112,7 @@ query
     .forEach { println(it.name) }
 ```
 
-但是这也给我们带来了许多问题，因为 `Iterable` 的许多扩展函数的名称与 `Query` 的函数类似，甚至还可能存在名称冲突，这会让用户产生许多误解，比如 [#124](https://github.com/vincentlauvlwj/Ktorm/issues/124)、[#125](https://github.com/vincentlauvlwj/Ktorm/issues/125)。
+但是这也给我们带来了许多问题，因为 `Iterable` 的许多扩展函数的名称与 `Query` 的函数类似，甚至还可能存在名称冲突，这会让用户产生许多误解，比如 [#124](https://github.com/kotlin-orm/ktorm/issues/124)、[#125](https://github.com/kotlin-orm/ktorm/issues/125)。
 
 因此，我们决定在 Ktorm 3.0 中，`Query` 类不再实现 `Iterable` 接口，为了确保原来的 DSL 代码不变，我们还提供了与 `Iterable` 相同的扩展函数。升级之后你会发现，尽管可能会产生一些编译错误，但是你的代码几乎是不用改的，唯一需要的可能是增加一行 `import` 语句，把原来对 `Iterable.map` 函数的调用，改成 `Query.map`：
 

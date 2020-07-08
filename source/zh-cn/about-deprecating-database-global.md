@@ -41,8 +41,8 @@ h2 {
 
 在这里，我们使用 `db { }` 的语法实现了多数据源的切换，但是现在看来，这并不是一个很好的设计，理由如下：
 
-- `db { }` 使用 `ThreadLocal` 实现，这种切换数据源的方式过于隐蔽，可能会导致一些误解，产生一些意料之外的 bug，比如 [#65](https://github.com/vincentlauvlwj/Ktorm/issues/65), [#27](https://github.com/vincentlauvlwj/Ktorm/issues/27)
-- 使用全局变量是糟糕的设计模式，这样写出来的代码会与全局的状态耦合，不方便进行单元测试，也不方便以后的扩展，相关的讨论有 [#47](https://github.com/vincentlauvlwj/Ktorm/issues/47), [#41](https://github.com/vincentlauvlwj/Ktorm/issues/41)
+- `db { }` 使用 `ThreadLocal` 实现，这种切换数据源的方式过于隐蔽，可能会导致一些误解，产生一些意料之外的 bug，比如 [#65](https://github.com/kotlin-orm/ktorm/issues/65), [#27](https://github.com/kotlin-orm/ktorm/issues/27)
+- 使用全局变量是糟糕的设计模式，这样写出来的代码会与全局的状态耦合，不方便进行单元测试，也不方便以后的扩展，相关的讨论有 [#47](https://github.com/kotlin-orm/ktorm/issues/47), [#41](https://github.com/kotlin-orm/ktorm/issues/41)
 
 ## 修改点
 

@@ -115,4 +115,4 @@ main:
 
   - text: 在 GitHub 提出 issue
     type: support-link
-    path: https://github.com/vincentlauvlwj/Ktorm/issues/new
+    path: https://github.com/kotlin-orm/ktorm/issues/new

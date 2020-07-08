@@ -113,7 +113,7 @@ query
     .forEach { println(it.name) }
 ```
 
-But this also brings us a lot of problems, because the names of many extension functions of `Iterable` are similar to the functions of `Query`, and there may even be name conflicts, which will cause many misunderstandings for users, such as [#124]( https://github.com/vincentlauvlwj/Ktorm/issues/124), [#125](https://github.com/vincentlauvlwj/Ktorm/issues/125).
+But this also brings us a lot of problems, because the names of many extension functions of `Iterable` are similar to the functions of `Query`, and there may even be name conflicts, which will cause many misunderstandings for users, such as [#124](https://github.com/kotlin-orm/ktorm/issues/124), [#125](https://github.com/kotlin-orm/ktorm/issues/125).
 
 Therefore, we decided that in Ktorm 3.0, `Query` no longer implements the `Iterable` interface anymore. And to keep our DSL code unchanged, we also provide some extension functions that are equivalent to those of `Iterable`'s. After the upgrade, you will find that although some compilation errors may occur, your code is almost not needed to change. The only thing you may need is to add a line of `import` statement to change the original calls to the `Iterable.map` function to `Query.map`: 
 
