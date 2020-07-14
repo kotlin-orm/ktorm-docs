@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 function join_by {
     local d=$1
@@ -8,9 +9,9 @@ function join_by {
     printf "%s" "${@/#/$d}"
 }
 
-./gradlew printClasspath
+rm -rf ./source/api-docs
 
-rm -rf ./docs/source/api-docs
+cd ../ktorm && ./gradlew printClasspath
 
 srcDirs=(
     "./ktorm-core/src/main/kotlin"
@@ -44,18 +45,18 @@ links=(
 )
 
 java \
-    -jar ./docs/tools/dokka-fatjar-with-hexo-format-0.9.18-SNAPSHOT.jar \
+    -jar ../ktorm-docs/tools/dokka-fatjar-with-hexo-format-0.9.18-SNAPSHOT.jar \
     -src $(join_by ":" ${srcDirs[@]}) \
     -format hexo \
     -classpath $(cat build/ktorm.classpath) \
     -jdkVersion 8 \
     -include ./packages.md \
-    -output ./docs/source/ \
+    -output ../ktorm-docs/source/ \
     -module api-docs \
     -srcLink $(join_by "^^" ${srcLinks[@]}) \
     -links $(join_by "^^" ${links[@]})
 
-cd ./docs/
+cd ../ktorm-docs/
 
 cd themes/doc && npx webpack -p && cd ../..
 
