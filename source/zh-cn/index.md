@@ -10,6 +10,8 @@ layout: home
 
 Ktorm 是直接基于纯 JDBC 编写的高效简洁的轻量级 Kotlin ORM 框架，它提供了强类型而且灵活的 SQL DSL 和方便的序列 API，以减少我们操作数据库的重复劳动。当然，所有的 SQL 都是自动生成的。Ktorm 基于 Apache 2.0 协议开放源代码，源码托管在 GitHub，如果对你有帮助的话，请留下你的 star：[kotlin-orm/ktorm](https://github.com/kotlin-orm/ktorm)[![GitHub Stars](https://img.shields.io/github/stars/kotlin-orm/ktorm.svg?style=social)](https://github.com/kotlin-orm/ktorm/stargazers)
 
+*【广告】阿里巴巴深圳 Lazada 团队招 Java 工程师/技术专家，可以写 Kotlin 哦，有兴趣者可把简历发我邮箱 [vincent.liu@alibaba-inc.com](mailto:vincent.liu@alibaba-inc.com)*
+
 ## 特性
 
 - 没有配置文件、没有 xml、没有注解、甚至没有任何第三方依赖、轻量级、简洁易用
