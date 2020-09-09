@@ -26,8 +26,8 @@ class DummyException : Exception()
 try {
     database.useTransaction {
         database.insert(Departments) {
-            it.name to "administration"
-            it.location to "Hong Kong"
+            set(it.name, "administration")
+            set(it.location, "Hong Kong")
         }
 
         assert(database.sequenceOf(Departments).count() == 3)

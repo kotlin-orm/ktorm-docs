@@ -93,13 +93,13 @@ Besides of transaction management, Spring JDBC also provides a feature of except
 ```kotlin
 try {
     database.insert(Departments) { 
-        it.id to 1
-        it.name to "tech"
-        it.location to "Guangzhou"
+        set(it.id, 1)
+        set(it.name, "tech")
+        set(it.location, "Guangzhou")
     }
 } catch (e: DuplicateKeyException) {
     database.update(Departments) { 
-        it.location to "Guangzhou"
+        set(it.location, "Guangzhou")
         where { 
             it.id eq 1
         }
