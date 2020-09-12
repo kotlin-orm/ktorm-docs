@@ -20,12 +20,12 @@ fun <T : BaseTable<*>> Database.insert(table: T, block: AssignmentsBuilder.(T) -
 
 ```kotlin
 database.insert(Employees) {
-    it.name to "jerry"
-    it.job to "trainee"
-    it.managerId to 1
-    it.hireDate to LocalDate.now()
-    it.salary to 50
-    it.departmentId to 1
+    set(it.name, "jerry")
+    set(it.job, "trainee")
+    set(it.managerId, 1)
+    set(it.hireDate, LocalDate.now())
+    set(it.salary, 50)
+    set(it.departmentId, 1)
 }
 ```
 
@@ -35,45 +35,20 @@ database.insert(Employees) {
 insert into t_employee (name, job, manager_id, hire_date, salary, department_id) values (?, ?, ?, ?, ?, ?) 
 ````
 
-从上面的例子可以看出，在闭包函数中，我们可以使用 `it.name to "jerry"` 为 name 字段赋值为 jerry，这是如何实现的呢？
+从上面的例子可以看出，在闭包函数中，我们可以使用 `set(it.name, "jerry")` 为 name 字段赋值为 jerry，这是如何实现的呢？
 
-这是因为闭包函数的类型是 `AssignmentsBuilder.(T) -> Unit`，它接受一个 `T` 作为参数，而 `T` 正是第一个参数所指定的表对象，因此我们可以在闭包中使用 `it` 获取表对象，进而获取到它的字段。我们还发现，这个闭包函数同时也是 `AsssignmentsBuilder` 类的扩展函数，因此，在闭包的范围内，`this` 引用指向的是一个 `AssignmentsBuilder` 对象，因此我们可以调用到它的 `to` 函数。没错，**这里的 `to` 是 `AssignmentsBuilder` 里面的成员函数，而不是 Kotlin 标准库中创建 `Pair` 的 `to` 函数。**
-
-下面是 `AssignmentsBuilder` 类的源码，可以看到，`to` 函数没有任何返回值，它的作用仅仅是把当前列和它的值保存到一个 `MutableList` 中，以便在插入数据时使用。
-
-```kotlin
-@KtormDsl
-open class AssignmentsBuilder(
-    private val assignments: MutableList<ColumnAssignmentExpression<*>>
-) {
-    infix fun <C : Any> Column<C>.to(expr: ColumnDeclaring<C>) {
-        assignments += ColumnAssignmentExpression(asExpression(), expr.asExpression())
-    }
-
-    infix fun <C : Any> Column<C>.to(argument: C?) {
-        this to wrapArgument(argument)
-    }
-    
-    @JvmName("toAny")
-    infix fun Column<*>.to(argument: Any?) {
-        checkAssignableFrom(argument)
-        this to argument
-    }
-}
-```
-
-> 由于 `AssignmentsBuilder` 里面的 `to` 函数并没有返回值，因此你不太可能会将它和 `kotlin.to` 函数搞混。如果你确实希望在闭包中使用 `kotlin.to` 函数，却发现被编译器解析为 `AssignmentsBuilder.to`，这时会产生一个编译错误，我们推荐你重构一下自己的代码，将 `kotlin.to` 函数的调用移到闭包外面。
+这是因为闭包函数的类型是 `AssignmentsBuilder.(T) -> Unit`，它接受一个 `T` 作为参数，而 `T` 正是第一个参数所指定的表对象，所以我们可以在闭包中使用 `it` 获取表对象，进而获取到它的字段。我们还发现，这个闭包函数同时也是 `AsssignmentsBuilder` 类的扩展函数，因此，在闭包的范围内，`this` 引用指向的是一个 `AssignmentsBuilder` 对象，因此我们可以调用到它的成员函数 `set`。
 
 有时我们的表会使用自增主键，我们可能希望在插入一条数据后，能够获取到数据库自动生成的主键，这时我们可以使用 `insertAndGenerateKey` 函数。与 `insert` 函数不同，它不再返回受影响的记录数，而是返回自动生成的主键，除此之外，其他用法完全一致。
 
 ```kotlin
 val id = database.insertAndGenerateKey(Employees) {
-    it.name to "jerry"
-    it.job to "trainee"
-    it.managerId to 1
-    it.hireDate to LocalDate.now()
-    it.salary to 50
-    it.departmentId to 1
+    set(it.name, "jerry")
+    set(it.job, "trainee")
+    set(it.managerId, 1)
+    set(it.hireDate, LocalDate.now())
+    set(it.salary, 50)
+    set(it.departmentId, 1)
 }
 ```
 
@@ -82,20 +57,20 @@ val id = database.insertAndGenerateKey(Employees) {
 ```kotlin
 database.batchInsert(Employees) {
     item {
-        it.name to "jerry"
-        it.job to "trainee"
-        it.managerId to 1
-        it.hireDate to LocalDate.now()
-        it.salary to 50
-        it.departmentId to 1
+        set(it.name, "jerry")
+        set(it.job, "trainee")
+        set(it.managerId, 1)
+        set(it.hireDate, LocalDate.now())
+        set(it.salary, 50)
+        set(it.departmentId, 1)
     }
     item {
-        it.name to "linda"
-        it.job to "assistant"
-        it.managerId to 3
-        it.hireDate to LocalDate.now()
-        it.salary to 100
-        it.departmentId to 2
+        set(it.name, "linda")
+        set(it.job, "assistant")
+        set(it.managerId, 3)
+        set(it.hireDate, LocalDate.now())
+        set(it.salary, 100)
+        set(it.departmentId, 2)
     }
 }
 ```
@@ -129,13 +104,13 @@ Ktorm 使用 `update` 函数实现数据更新，它也是 `Database` 类的扩�
 fun <T : BaseTable<*>> Database.update(table: T, block: UpdateStatementBuilder.(T) -> Unit): Int
 ```
 
-与 `insert` 函数类似，它也接受一个闭包作为参数，更新成功后，返回受影响的记录数。闭包函数的类型是 `UpdateStatementBuilder.(T) -> Unit`，其中，`UpdateStatementBuilder` 正是 `AssignmentsBuilder` 的子类，所以在这里我们仍然可以使用 `it.name to "jerry"` 的写法为 name 字段赋值为 jerry。不同的是，`UpdateStatementBuilder` 增加了一个 `where` 函数，用于指定更新的条件。使用方法如下：
+与 `insert` 函数类似，它也接受一个闭包作为参数，更新成功后，返回受影响的记录数。闭包函数的类型是 `UpdateStatementBuilder.(T) -> Unit`，其中，`UpdateStatementBuilder` 正是 `AssignmentsBuilder` 的子类，所以在这里我们仍然可以使用 `set(it.name, "jerry")` 的写法为 name 字段赋值为 jerry。不同的是，`UpdateStatementBuilder` 增加了一个 `where` 函数，用于指定更新的条件。使用方法如下：
 
 ```kotlin
 database.update(Employees) {
-    it.job to "engineer"
-    it.managerId to null
-    it.salary to 100
+    set(it.job, "engineer")
+    set(it.managerId, null)
+    set(it.salary, 100)
     where {
         it.id eq 2
     }
@@ -148,12 +123,14 @@ database.update(Employees) {
 update t_employee set job = ?, manager_id = ?, salary = ? where id = ? 
 ````
 
-值得注意的是，`to` 函数的右侧不仅可以是一个参数值，也可以是一个表达式，即一个字段不仅可以更新为一个固定值，也可更新为指定表达式的计算结果。我们可以利用此特性实现一些特殊的功能，比如为某个员工增加 100 薪水：
+值得注意的是，`set` 函数的第二个参数不仅可以是一个值，也可以是一个表达式，即一个字段不仅可以更新为一个固定值，也可更新为指定表达式的计算结果。我们可以利用此特性实现一些特殊的功能，比如为某个员工增加 100 薪水：
 
 ```kotlin
 database.update(Employees) {
-    it.salary to it.salary + 100
-    where { it.id eq 1 }
+    set(it.salary, it.salary + 100)
+    where { 
+        it.id eq 1 
+    }
 }
 ```
 
@@ -169,7 +146,7 @@ update t_employee set salary = salary + ? where id = ?
 database.batchUpdate(Departments) {
     for (i in 1..2) {
         item {
-            it.location to "Hong Kong"
+            set(it.location, "Hong Kong")
             where {
                 it.id eq i
             }
