@@ -144,10 +144,10 @@ Here is a list of SQL types supported in Ktorm by default:
 Sometimes, Ktorm's built-in data types may not satisfy your requirements. For example, you may want to save a JSON column to a table, many relational databases have supported JSON data type, but raw JDBC haven't yet, nor Ktorm doesn't support it by default. However, you can do it by yourself: 
 
 ```kotlin
-class JsonSqlType<T : Any>(type: java.lang.reflect.Type, val objectMapper: ObjectMapper) 
-    : SqlType<T>(Types.VARCHAR, typeName = "json") {
-        
-    private val javaType = objectMapper.constructType(type)
+class JsonSqlType<T : Any>(
+    val objectMapper: ObjectMapper,
+    val javaType: JavaType
+) : SqlType<T>(Types.VARCHAR, "json") {
 
     override fun doSetParameter(ps: PreparedStatement, index: Int, parameter: T) {
         ps.setString(index, objectMapper.writeValueAsString(parameter))
@@ -167,12 +167,11 @@ class JsonSqlType<T : Any>(type: java.lang.reflect.Type, val objectMapper: Objec
 The class above is a subclass of `SqlType`, it provides JSON data type support via the Jackson framework. Now we have `JsonSqlType`, how can we use it to define a column? Looking back the `int` function's implementation above, we notice that there is a `registerColumn` function called. This function is exactly the entry point provided by Ktorm to support datatype extensions. We can also write an extension function like this: 
 
 ```kotlin
-fun <C : Any> BaseTable<*>.json(
+inline fun <reified C : Any> BaseTable<*>.json(
     name: String,
-    typeReference: TypeReference<C>,
-    objectMapper: ObjectMapper = sharedObjectMapper
+    mapper: ObjectMapper = sharedObjectMapper
 ): Column<C> {
-    return registerColumn(name, JsonSqlType(typeReference.referencedType, objectMapper))
+    return registerColumn(name, JsonSqlType(mapper, mapper.constructType(typeOf<C>())))
 }
 ```
 
@@ -180,7 +179,7 @@ The usage is as follows:
 
 ```kotlin
 object Foo : Table<Nothing>("foo") {
-    val bar = json("bar", typeRef<List<Int>>())
+    val bar = json<List<Int>>("bar")
 }
 ```
 
