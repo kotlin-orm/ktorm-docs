@@ -20,12 +20,12 @@ The function accepts a closure as its parameter in which we configure our insert
 
 ```kotlin
 database.insert(Employees) {
-    it.name to "jerry"
-    it.job to "trainee"
-    it.managerId to 1
-    it.hireDate to LocalDate.now()
-    it.salary to 50
-    it.departmentId to 1
+    set(it.name, "jerry")
+    set(it.job, "trainee")
+    set(it.managerId, 1)
+    set(it.hireDate, LocalDate.now())
+    set(it.salary, 50)
+    set(it.departmentId, 1)
 }
 ```
 
@@ -35,45 +35,20 @@ Generated SQL:
 insert into t_employee (name, job, manager_id, hire_date, salary, department_id) values (?, ?, ?, ?, ?, ?) 
 ```
 
-Here, we use `it.name to "jerry"` to set the name to jerry in the closure, do you know how it works? 
+Here, we use `set(it.name, "jerry")` to set the name to jerry in the closure, do you know how it works? 
 
-It can be seen that the type of the closure is `AssignmentsBuilder.(T) -> Unit`, which is a function that accepts a parameter `T`, the table object specified by the first parameter of `insert`, that's why we can use `it` to access the current table and its columns in the closure. Moreover, the closure is also an extension function of `AssignmentsBuilder`, so in the scope of the closure, `this` reference is changed to an `AssignmentsBuilder` instance, that's why we can call its member function `to` there. Yes, this `to` function is a member function of `AssignmentsBuilder`, but not the `to` function used to create `Pair` instances of Kotlin standard lib. 
-
-Here is the source code of `AssignmentsBuilder`, we can see that the `to` function doesn't return any values, it just save the current column and its value into a `MutableList`.
-
-```kotlin
-@KtormDsl
-open class AssignmentsBuilder(
-    private val assignments: MutableList<ColumnAssignmentExpression<*>>
-) {
-    infix fun <C : Any> Column<C>.to(expr: ColumnDeclaring<C>) {
-        assignments += ColumnAssignmentExpression(asExpression(), expr.asExpression())
-    }
-
-    infix fun <C : Any> Column<C>.to(argument: C?) {
-        this to wrapArgument(argument)
-    }
-    
-    @JvmName("toAny")
-    infix fun Column<*>.to(argument: Any?) {
-        checkAssignableFrom(argument)
-        this to argument
-    }
-}
-```
-
-> Because the member function `to` doesn't return any values, we are not likely to mix it with the `kotlin.to`  of Kotlin standard lib. If you really want to use `kotlin.to` in the closure, but found it's resolved to `AssignmentsBuilder.to` and compiler error occurs. We recommend you to refactor your code and move the calling of `kotlin.to` outside the closure. 
+It can be seen that the type of the closure is `AssignmentsBuilder.(T) -> Unit`, which is a function that accepts a parameter `T`, the table object specified by the first parameter of `insert`, that's why we can use `it` to access the current table and its columns in the closure. Moreover, the closure is also an extension function of `AssignmentsBuilder`, so in the scope of the closure, `this` reference is changed to an `AssignmentsBuilder` instance, that's why we can call its member function `set` there. 
 
 Sometimes we may use auto-increment keys in our tables, we may need to obtain the auto-generated keys from databases after records are inserted. This time we can use `insertAndGenerateKey` function, the usage of which is similar to `insert`, but differently, it doesn't return the affected record numbers anymore, but returns the auto-generated keys instead. 
 
 ```kotlin
 val id = database.insertAndGenerateKey(Employees) {
-    it.name to "jerry"
-    it.job to "trainee"
-    it.managerId to 1
-    it.hireDate to LocalDate.now()
-    it.salary to 50
-    it.departmentId to 1
+    set(it.name, "jerry")
+    set(it.job, "trainee")
+    set(it.managerId, 1)
+    set(it.hireDate, LocalDate.now())
+    set(it.salary, 50)
+    set(it.departmentId, 1)
 }
 ```
 
@@ -82,20 +57,20 @@ Sometimes we may need to insert a large number of records in one time, and the p
 ```kotlin
 database.batchInsert(Employees) {
     item {
-        it.name to "jerry"
-        it.job to "trainee"
-        it.managerId to 1
-        it.hireDate to LocalDate.now()
-        it.salary to 50
-        it.departmentId to 1
+        set(it.name, "jerry")
+        set(it.job, "trainee")
+        set(it.managerId, 1)
+        set(it.hireDate, LocalDate.now())
+        set(it.salary, 50)
+        set(it.departmentId, 1)
     }
     item {
-        it.name to "linda"
-        it.job to "assistant"
-        it.managerId to 3
-        it.hireDate to LocalDate.now()
-        it.salary to 100
-        it.departmentId to 2
+        set(it.name, "linda")
+        set(it.job, "assistant")
+        set(it.managerId, 3)
+        set(it.hireDate, LocalDate.now())
+        set(it.salary, 100)
+        set(it.departmentId, 2)
     }
 }
 ```
@@ -129,13 +104,13 @@ Ktorm uses an extension function `update` of `Database` class to support data up
 fun <T : BaseTable<*>> Database.update(table: T, block: UpdateStatementBuilder.(T) -> Unit): Int
 ```
 
-Similar to the `insert` function, it also accepts a closure as its parameter and returns the affected record number after the update completes. The closure's type is `UpdateStatementBuilder.(T) -> Unit`, in which `UpdateStatementBuilder` is a subclass of `AssignmentsBuilder`, so we can still use `it.name to "jerry"` to set the name to jerry. Differently, `UpdateStatementBuilder` provides an additional function `where`, that's used to specify our update conditions. Usage: 
+Similar to the `insert` function, it also accepts a closure as its parameter and returns the affected record number after the update completes. The closure's type is `UpdateStatementBuilder.(T) -> Unit`, in which `UpdateStatementBuilder` is a subclass of `AssignmentsBuilder`, so we can still use `set(it.name, "jerry")` to set the name to jerry. Differently, `UpdateStatementBuilder` provides an additional function `where`, that's used to specify our update conditions. Usage: 
 
 ```kotlin
 database.update(Employees) {
-    it.job to "engineer"
-    it.managerId to null
-    it.salary to 100
+    set(it.job, "engineer")
+    set(it.managerId, null)
+    set(it.salary, 100)
     where {
         it.id eq 2
     }
@@ -148,12 +123,14 @@ Generated SQL:
 update t_employee set job = ?, manager_id = ?, salary = ? where id = ? 
 ```
 
-It is worth mentioning that we can not only put a column value at the right side of the `to` function, but an expression is also OK. It means that a column can be updated to a specific value or a result of any complex expressions. We can use this feature to do something special, for instance, increasing someone's salary: 
+It is worth mentioning that we can not only use a column value as the second argument of the `set` function, but an expression is also OK. It means that a column can be updated to a specific value or a result of any complex expressions. We can use this feature to do something special, for instance, increasing someone's salary: 
 
 ```kotlin
 database.update(Employees) {
-    it.salary to it.salary + 100
-    where { it.id eq 1 }
+    set(it.salary, it.salary + 100)
+    where { 
+        it.id eq 1 
+    }
 }
 ```
 
@@ -169,7 +146,7 @@ Sometimes we may need to execute a large number of updates in one time, and the 
 database.batchUpdate(Departments) {
     for (i in 1..2) {
         item {
-            it.location to "Hong Kong"
+            set(it.location, "Hong Kong")
             where {
                 it.id eq i
             }

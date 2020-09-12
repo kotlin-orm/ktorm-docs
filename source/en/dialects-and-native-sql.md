@@ -55,15 +55,15 @@ Now we have enabled MySQL's dialect implementation and all of its features are a
 
 ```kotlin
 database.insertOrUpdate(Employees) {
-    it.id to 1
-    it.name to "vince"
-    it.job to "engineer"
-    it.salary to 1000
-    it.hireDate to LocalDate.now()
-    it.departmentId to 1
+    set(it.id, 1)
+    set(it.name, "vince")
+    set(it.job, "engineer")
+    set(it.salary, 1000)
+    set(it.hireDate, LocalDate.now())
+    set(it.departmentId, 1)
 
     onDuplicateKey {
-        it.salary to it.salary + 900
+        set(it.salary, it.salary + 900)
     }
 }
 ```
