@@ -26,12 +26,12 @@ val max = database.employees
     .aggregateColumns { max(it.salary) }
 ```
 
-If we want to aggregate two or more columns, we can change to `aggregateColumns2` or `aggregateColumns3`, then we need to wrap our aggregate expressions by `Pair` or `Triple` in the closure, and the function's return type becomes `Pair<C1?, C2?>` or `Triple<C1?, C2?, C3?>`. The example below obtains the average and the range of salaries in department 1: 
+If we want to aggregate two or more columns, we just need to wrap our aggregate expressions by `tupleOf` in the closure, and the function's return type becomes `TupleN<C1?, C2?, .. Cn?>`. The example below obtains the average and the range of salaries in department 1: 
 
 ```kotlin
 val (avg, diff) = database.employees
     .filter { it.departmentId eq 1 }
-    .aggregateColumns2 { Pair(avg(it.salary), max(it.salary) - min(it.salary)) }
+    .aggregateColumns { tupleOf(avg(it.salary), max(it.salary) - min(it.salary)) }
 ```
 
 Generated SQL: 
@@ -42,7 +42,7 @@ from t_employee
 where t_employee.department_id = ? 
 ```
 
-> Just like `mapColumnsN`, Ktorm provides many `aggregateColumnsN` functions (from `aggregateColumns2` to `aggregateColumns9`). That's to say, we are able to aggregate a maximum of nine columns at once with these functions. 
+> Just like `mapColumns`, as the return type of `tupleOf` can be from `Tuple2` to `Tuple9`, we are able to aggregate a maximum of nine columns at once with `aggregateColumns` function. 
 
 Additionally, Ktorm also provides many convenient helper functions, they are all implemented based on `aggregateColumns`. For example, we can use `maxBy { it.salary }` to obtain the max salary, that's equivalent to `aggregateColumns { max(it.salary) }`. Here is a list of these functions: 
 
@@ -139,12 +139,12 @@ from t_employee
 group by t_employee.department_id 
 ```
 
-If we want to aggregate two or more columns, we can change to `aggregateColumns2` or `aggregateColumns3`, then we need to wrap our aggregate expressions by `Pair` or `Triple` in the closure, and the function’s return type becomes `Map<K?, Pair<C1?, C2?>>` or `Map<K?, Triple<C1?, C2?, C3?>>`. The following code prints the averages and the ranges of salaries for each department: 
+If we want to aggregate two or more columns, we just need to wrap our aggregate expressions by `tupleOf` in the closure, and the function’s return type becomes `Map<K?, TupleN<C1?, C2?, .. Cn?>>`. The following code prints the averages and the ranges of salaries for each department: 
 
 ```kotlin
 database.employees
     .groupingBy { it.departmentId }
-    .aggregateColumns2 { Pair(avg(it.salary), max(it.salary) - min(it.salary)) }
+    .aggregateColumns { tupleOf(avg(it.salary), max(it.salary) - min(it.salary)) }
     .forEach { departmentId, (avg, diff) ->
         println("$departmentId:$avg:$diff")
     }
