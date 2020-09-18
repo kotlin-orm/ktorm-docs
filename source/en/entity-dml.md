@@ -93,6 +93,24 @@ Using `flushChanges`, we also need to note that:
 
 > For the second point above, a simple explanation is that the entity object calling `flushChanges` must be obtained from sequence APIs or already saved into the database via `add` function. Please also note that when we are serializing entities, Ktorm will save their property values only, any other data (including `fromTable`) that used to track entity status are lost (marked as transient). So we can not obtain an entity object from one system, then flush its changes into the database in another system.
 
+In version 3.1, Ktorm also provides an `update` function that can update all the non-null properties of a given entity to the database. Using this function, the entity object is **not required** to be associated with a table first, that is, comparing to `flushChanges`, we don't have to obtain an entity object from the database first before performing the update. The usage is as follows:
+
+```kotlin
+val employee = Employee {
+    id = 5
+    job = "engineer"
+    salary = 100
+}
+
+database.employees.update(employee)
+```
+
+Generated SQL: 
+
+```sql
+update t_employee set job = ?, salary = ? where id = ? 
+```
+
 ## Delete
 
 `Entity` interface also provides a `delete` function, which deletes the entity object in the database, and returns the affected record number after the deletion completes. Typical usage is to obtain entity objects via sequence APIs first, then call the `delete` function to delete them according to our requirements.
