@@ -109,10 +109,10 @@ main:
     type: support-link
     path: api-docs/index.html
 
-  - text: Author's Blog
-    type: support-link
-    path: https://www.liuwj.me
-
-  - text: Raise an Issue on GitHub
+  - text: Issue Feedback
     type: support-link
     path: https://github.com/kotlin-orm/ktorm/issues/new
+
+  - text: Sponsor the Project
+    type: support-link
+    path: en/sponsor.html

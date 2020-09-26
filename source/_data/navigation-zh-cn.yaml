@@ -109,10 +109,10 @@ main:
     type: support-link
     path: api-docs/index.html
 
-  - text: 作者博客
-    type: support-link
-    path: https://www.liuwj.me
-
-  - text: 在 GitHub 提出 issue
+  - text: 问题反馈
     type: support-link
     path: https://github.com/kotlin-orm/ktorm/issues/new
+
+  - text: 打赏作者
+    type: support-link
+    path: zh-cn/sponsor.html
