@@ -50,7 +50,7 @@ java \
     -format hexo \
     -classpath $(cat build/ktorm.classpath) \
     -jdkVersion 8 \
-    -include ./packages.md \
+    -include ./PACKAGES.md \
     -output ../ktorm-docs/source/ \
     -module api-docs \
     -srcLink $(join_by "^^" ${srcLinks[@]}) \
