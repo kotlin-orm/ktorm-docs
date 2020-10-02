@@ -291,12 +291,12 @@ select t_employee.name
 from t_employee 
 ````
 
-如果你希望 `mapColumns` 能一次查询多个字段，可以改用 `mapColumns2` 或 `mapColumns3` 函数，这时我们需要在闭包中使用 `Pair` 或 `Triple` 包装我们的这些字段，函数的返回值也相应变成了 `List<Pair<C1?, C2?>>` 或 `List<Triple<C1?, C2?, C3?>>`。下面的例子会打印出部门 1 中所有员工的 ID，姓名和入职天数：
+如果你希望 `mapColumns` 能一次查询多个字段，可以在闭包中使用 `tupleOf` 包装我们的这些字段，函数的返回值就相应变成了 `List<TupleN<C1?, C2?, .. Cn?>>`。下面的例子会打印出部门 1 中所有员工的 ID，姓名和入职天数：
 
 ```kotlin
 database.employees
     .filter { it.departmentId eq 1 }
-    .mapColumns3 { Triple(it.id, it.name, dateDiff(LocalDate.now(), it.hireDate)) }
+    .mapColumns { tupleOf(it.id, it.name, dateDiff(LocalDate.now(), it.hireDate)) }
     .forEach { (id, name, days) ->
         println("$id:$name:$days")
     }
@@ -317,9 +317,9 @@ from t_employee
 where t_employee.department_id = ? 
 ````
 
-> Ktorm 提供了从 `mapColumns2` 到 `mapColumns9` 等多个函数和它们的变体，也就是说，我们最多可以使用 `mapColumnsN` 系列函数一次查询九个字段。但如果我们希望超过九个字段呢？很遗憾，Ktorm 认为这并不是一个常用的功能，如果你确实有这种特殊的需求，可以使用[查询 DSL](./query.html) 代替。另外，为支持这些函数， Ktorm 还提供了从 `Tuple2` 到 `Tuple9` 等一系列的元组类。其中，`Tuple2` 和 `Tuple3` 分别是 `Pair` 和 `Triple` 的别名（typealias）。
+> `tupleOf` 函数的功能是创建一个元组对象，根据参数个数的不同，它的返回值可以是 `Tuple2` 到 `Tuple9`，也就是说，我们最多可以使用 `mapColumns` 系列函数一次查询九个字段。但如果我们希望超过九个字段呢？很遗憾，Ktorm 认为这并不是一个常用的功能，如果你确实有这种特殊的需求，可以使用 `filterColumns` 函数或[查询 DSL](./query.html) 代替。
 
-除了基本的 `mapColumns` 函数，Ktorm 还提供了 `mapColumnsTo`、`mapColumnsNotNull`、`mapColumnsNotNullTo`、`mapColumnsNTo`，通过名字你应该也猜到了它们的用法，在此就不重复说明了。
+除了基本的 `mapColumns` 函数，Ktorm 还提供了 `mapColumnsTo`、`mapColumnsNotNull`、`mapColumnsNotNullTo`，通过名字你应该也猜到了它们的用法，在此就不重复说明了。
 
 ### associate
 

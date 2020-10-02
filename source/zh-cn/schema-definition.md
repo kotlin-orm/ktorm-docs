@@ -144,10 +144,10 @@ Ktorm 默认支持的数据类型如下表：
 有时候，Ktorm 内置的这些数据类型可能并不能完全满足你的需求，比如你希望在数据库中存储一个 json 字段，许多关系数据库都已经支持了 json 类型，但是原生 JDBC 并不支持，Ktorm 也并没有默认支持。这时你可以自己提供一个 `SqlType` 的实现：
 
 ```kotlin
-class JsonSqlType<T : Any>(type: java.lang.reflect.Type, val objectMapper: ObjectMapper) 
-    : SqlType<T>(Types.VARCHAR, typeName = "json") {
-        
-    private val javaType = objectMapper.constructType(type)
+class JsonSqlType<T : Any>(
+    val objectMapper: ObjectMapper,
+    val javaType: JavaType
+) : SqlType<T>(Types.VARCHAR, "json") {
 
     override fun doSetParameter(ps: PreparedStatement, index: Int, parameter: T) {
         ps.setString(index, objectMapper.writeValueAsString(parameter))
@@ -167,12 +167,11 @@ class JsonSqlType<T : Any>(type: java.lang.reflect.Type, val objectMapper: Objec
 上面这个类使用 Jackson 框架进行 json 与对象之间的转换，提供了 json 数据类型的支持。有了 `JsonSqlType` 之后，怎样使用这个类型定义一个列呢？在前面 int 函数的实现中，我们注意到其中调用了 `registerColumn` 函数，这正是其中的秘诀，`registerColumn` 函数正是 Ktorm 提供的用来支持类型扩展的入口。我们可以写一个这样的扩展函数：
 
 ```kotlin
-fun <C : Any> BaseTable<*>.json(
+inline fun <reified C : Any> BaseTable<*>.json(
     name: String,
-    typeReference: TypeReference<C>,
-    objectMapper: ObjectMapper = sharedObjectMapper
+    mapper: ObjectMapper = sharedObjectMapper
 ): Column<C> {
-    return registerColumn(name, JsonSqlType(typeReference.referencedType, objectMapper))
+    return registerColumn(name, JsonSqlType(mapper, mapper.constructType(typeOf<C>())))
 }
 ```
 
@@ -180,7 +179,7 @@ fun <C : Any> BaseTable<*>.json(
 
 ```kotlin
 object Foo : Table<Nothing>("foo") {
-    val bar = json("bar", typeRef<List<Int>>())
+    val bar = json<List<Int>>("bar")
 }
 ```
 

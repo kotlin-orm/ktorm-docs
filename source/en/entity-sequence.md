@@ -291,12 +291,12 @@ select t_employee.name
 from t_employee 
 ```
 
-If we want to select two or more columns, we can change to `mapColumns2` or `mapColumns3`, then we need to wrap our selected columns by `Pair` or `Triple` in the closure, and the function's return type becomes `List<Pair<C1?, C2?>>`  or  `List<Triple<C1?, C2?, C3?>>`. The example below prints the IDs, names and hired days of the employees in department 1:  
+If we want to select two or more columns, we just need to wrap our selected columns by `tupleOf` in the closure, then the function's return type becomes `List<TupleN<C1?, C2?, .. Cn?>>`. The example below prints the IDs, names and hired days of the employees in department 1:  
 
 ```kotlin
 database.employees
     .filter { it.departmentId eq 1 }
-    .mapColumns3 { Triple(it.id, it.name, dateDiff(LocalDate.now(), it.hireDate)) }
+    .mapColumns { tupleOf(it.id, it.name, dateDiff(LocalDate.now(), it.hireDate)) }
     .forEach { (id, name, days) ->
         println("$id:$name:$days")
     }
@@ -317,9 +317,9 @@ from t_employee
 where t_employee.department_id = ? 
 ```
 
-> Ktorm provides many `mapColumnsN` functions and their variants (from `mapColumns2` to `mapColumns9`). That's to say, we are able to select a maximum of nine columns at once with these functions. But what if we want ten columns or more? I'm sorry to say no. Ktorm doesn't think it's a frequent-used feature. If you really need that, you can use the [query DSL](./query.html) instead. Moreover, to implement these functions, Ktorm also provides many tuple classes (from `Tuple2` to `Tuple9`), in which `Tuple2` and `Tuple3` are type aliases of `Pair` and `Triple`. 
+> `tupleOf` creates a tuple of the given arguments. Its return type can be from `Tuple2` to `Tuple9` depending on the number of its parameters. That's to say, we are able to select a maximum of nine columns at once with `mapColumns` function. But what if we want ten columns or more? I'm sorry to say no. Ktorm doesn't think it's a frequent-used feature. If you really need that, you can use `filterColumns` or [query DSL](./query.html) instead. 
 
-In addition to the basic form of `mapColumns` function, Ktorm also provides `mapColumnsTo`, `mapColumnsNotNull`, `mapColumnsNotNullTo`, `mapColumnsNTo`. It's easy to know their usages by the names, so we won't repeat it. 
+In addition to the basic form of `mapColumns` function, Ktorm also provides `mapColumnsTo`, `mapColumnsNotNull`, `mapColumnsNotNullTo`. It's easy to know their usages by the names, so we won't repeat it. 
 
 ### associate
 

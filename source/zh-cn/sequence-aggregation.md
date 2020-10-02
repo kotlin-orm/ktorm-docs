@@ -26,12 +26,12 @@ val max = database.employees
     .aggregateColumns { max(it.salary) }
 ```
 
-如果你希望同时获取多个聚合结果，可以改用 `aggregateColumns2` 或 `aggregateColumns3` 函数，这时我们需要在闭包中使用 `Pair` 或 `Triple` 包装我们的这些聚合表达式，函数的返回值也相应变成了 `Pair<C1?, C2?>` 或 `Triple<C1?, C2?, C3?>`。下面的例子获取部门 1 中工资的平均值和极差：
+如果你希望同时获取多个聚合结果，可以在闭包中使用 `tupleOf` 包装我们的这些聚合表达式，函数的返回值就相应变成了 `TupleN<C1?, C2?, .. Cn?>`。下面的例子获取部门 1 中工资的平均值和极差：
 
 ```kotlin
 val (avg, diff) = database.employees
     .filter { it.departmentId eq 1 }
-    .aggregateColumns2 { Pair(avg(it.salary), max(it.salary) - min(it.salary)) }
+    .aggregateColumns { tupleOf(avg(it.salary), max(it.salary) - min(it.salary)) }
 ```
 
 生成 SQL：
@@ -42,7 +42,7 @@ from t_employee
 where t_employee.department_id = ? 
 ````
 
-> 与 `mapColumnsN` 类似，Ktorm 提供了从 `aggregateColumns2` 到 `aggregateColumns9` 等多个函数，也就是说，我们最多可以使用 `aggregateColumnsN` 系列函数一次获得九个聚合结果。
+> 与 `mapColumns` 类似，由于 `tupleOf` 函数的返回值是 `Tuple2` 到 `Tuple9`，我们最多可以使用 `aggregateColumns` 系列函数一次获得九个聚合结果。
 
 除了直接使用 `aggregateColumns` 函数以外，Ktorm 还为序列提供了许多方便的辅助函数，他们都是基于 `aggregateColumns` 函数实现的。比如 `maxBy { it.salary }` 即可获得工资的最大值，相当于 `aggregateColumns { max(it.salary) }`。下面是这些函数的一个列表：
 
@@ -139,12 +139,12 @@ from t_employee
 group by t_employee.department_id 
 ````
 
-如果你希望同时获取多个聚合结果，可以改用 `aggregateColumns2` 或 `aggregateColumns3` 函数，这时我们需要在闭包中使用 `Pair` 或 `Triple` 包装我们的这些聚合表达式，函数的返回值也相应变成了 `Map<K?, Pair<C1?, C2?>>` 或 `Map<K?, Triple<C1?, C2?, C3?>>`。下面的例子会打印出所有部门工资的平均值和极差：
+如果你希望同时获取多个聚合结果，可以在闭包中使用 `tupleOf` 包装我们的这些聚合表达式，函数的返回值就相应变成了 `Map<K?, TupleN<C1?, C2?, .. Cn?>>`。下面的例子会打印出所有部门工资的平均值和极差：
 
 ```kotlin
 database.employees
     .groupingBy { it.departmentId }
-    .aggregateColumns2 { Pair(avg(it.salary), max(it.salary) - min(it.salary)) }
+    .aggregateColumns { tupleOf(avg(it.salary), max(it.salary) - min(it.salary)) }
     .forEach { departmentId, (avg, diff) ->
         println("$departmentId:$avg:$diff")
     }
