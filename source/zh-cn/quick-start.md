@@ -10,7 +10,7 @@ Ktorm 已经发布到 maven 中央仓库和 jcenter，因此，如果你使用 m
 
 ```xml
 <dependency>
-    <groupId>me.liuwj.ktorm</groupId>
+    <groupId>org.ktorm</groupId>
     <artifactId>ktorm-core</artifactId>
     <version>${ktorm.version}</version>
 </dependency>
@@ -19,7 +19,7 @@ Ktorm 已经发布到 maven 中央仓库和 jcenter，因此，如果你使用 m
 或者 gradle： 
 
 ```groovy
-compile "me.liuwj.ktorm:ktorm-core:${ktorm.version}"
+compile "org.ktorm:ktorm-core:${ktorm.version}"
 ```
 
 首先，创建 Kotlin object，[描述你的表结构](./schema-definition.html)： 

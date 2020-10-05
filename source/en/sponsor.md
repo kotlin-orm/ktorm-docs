@@ -9,6 +9,6 @@ related_path: zh-cn/sponsor.html
 Please sponsor the project if it really helped you. Thank you for your contribution! 
 
 - PayPal: https://www.paypal.me/ktorm
-- Wechat: https://ktorm.liuwj.me/images/wechat-sponsor.jpg
-- Alipay: https://ktorm.liuwj.me/images/alipay-sponsor.jpg
+- Wechat: https://www.ktorm.org/images/wechat-sponsor.jpg
+- Alipay: https://www.ktorm.org/images/alipay-sponsor.jpg
 

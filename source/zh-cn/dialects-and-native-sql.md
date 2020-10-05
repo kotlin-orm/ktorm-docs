@@ -14,11 +14,11 @@ related_path: en/dialects-and-native-sql.html
 
 | 数据库类型 | 模块名                   | SqlDialect 实现类                                   |
 | ---------- | ------------------------ | --------------------------------------------------- |
-| MySQL      | ktorm-support-mysql      | me.liuwj.ktorm.support.mysql.MySqlDialect           |
-| PostgreSQL | ktorm-support-postgresql | me.liuwj.ktorm.support.postgresql.PostgreSqlDialect |
-| Oracle     | ktorm-support-oracle     | me.liuwj.ktorm.support.oracle.OracleDialect         |
-| SqlServer  | ktorm-support-sqlserver  | me.liuwj.ktorm.support.sqlserver.SqlServerDialect   |
-| SQLite     | ktorm-support-sqlite     | me.liuwj.ktorm.support.sqlite.SQLiteDialect         |
+| MySQL      | ktorm-support-mysql      | org.ktorm.support.mysql.MySqlDialect           |
+| PostgreSQL | ktorm-support-postgresql | org.ktorm.support.postgresql.PostgreSqlDialect |
+| Oracle     | ktorm-support-oracle     | org.ktorm.support.oracle.OracleDialect         |
+| SqlServer  | ktorm-support-sqlserver  | org.ktorm.support.sqlserver.SqlServerDialect   |
+| SQLite     | ktorm-support-sqlite     | org.ktorm.support.sqlite.SQLiteDialect         |
 
 现在我们以 MySQL 的 `on duplicate key update` 功能为例，介绍如何在 Ktorm 中启用方言。
 
@@ -26,7 +26,7 @@ MySQL 的 `on duplicate key update` 功能可以在插入记录时，判断是�
 
 ```
 <dependency>
-    <groupId>me.liuwj.ktorm</groupId>
+    <groupId>org.ktorm</groupId>
     <artifactId>ktorm-support-mysql</artifactId>
     <version>${ktorm.version}</version>
 </dependency>
@@ -35,7 +35,7 @@ MySQL 的 `on duplicate key update` 功能可以在插入记录时，判断是�
 或者 gradle：
 
 ```groovy
-compile "me.liuwj.ktorm:ktorm-support-mysql:${ktorm.version}"
+compile "org.ktorm:ktorm-support-mysql:${ktorm.version}"
 ```
 
 添加完依赖后，我们需要修改 `Database.connect` 函数的调用处，这个函数用于创建一个 `Database` 对象，Ktorm 正是用这个对象来连接到数据库。我们需要指定 `dialect` 参数，告诉 Ktorm 需要使用哪个 `SqlDialect` 的实现类：

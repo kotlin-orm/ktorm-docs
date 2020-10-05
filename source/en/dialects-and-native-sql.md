@@ -14,11 +14,11 @@ In Ktorm, `SqlDialect` interface is the abstraction of dialects. Ktorm supports 
 
 | Database Name | Module Name              | SqlDialect Implementation                           |
 | ------------- | ------------------------ | --------------------------------------------------- |
-| MySQL         | ktorm-support-mysql      | me.liuwj.ktorm.support.mysql.MySqlDialect           |
-| PostgreSQL    | ktorm-support-postgresql | me.liuwj.ktorm.support.postgresql.PostgreSqlDialect |
-| Oracle        | ktorm-support-oracle     | me.liuwj.ktorm.support.oracle.OracleDialect         |
-| SqlServer     | ktorm-support-sqlserver  | me.liuwj.ktorm.support.sqlserver.SqlServerDialect   |
-| SQLite        | ktorm-support-sqlite     | me.liuwj.ktorm.support.sqlite.SQLiteDialect         |
+| MySQL         | ktorm-support-mysql      | org.ktorm.support.mysql.MySqlDialect           |
+| PostgreSQL    | ktorm-support-postgresql | org.ktorm.support.postgresql.PostgreSqlDialect |
+| Oracle        | ktorm-support-oracle     | org.ktorm.support.oracle.OracleDialect         |
+| SqlServer     | ktorm-support-sqlserver  | org.ktorm.support.sqlserver.SqlServerDialect   |
+| SQLite        | ktorm-support-sqlite     | org.ktorm.support.sqlite.SQLiteDialect         |
 
 Now let's take MySQL's `on duplicate key update` feature as an example, learning how to enable dialects in Ktorm. 
 
@@ -26,7 +26,7 @@ This feature can determine if there is a conflict while records are being insert
 
 ```
 <dependency>
-    <groupId>me.liuwj.ktorm</groupId>
+    <groupId>org.ktorm</groupId>
     <artifactId>ktorm-support-mysql</artifactId>
     <version>${ktorm.version}</version>
 </dependency>
@@ -35,7 +35,7 @@ This feature can determine if there is a conflict while records are being insert
 Or Gradle: 
 
 ```groovy
-compile "me.liuwj.ktorm:ktorm-support-mysql:${ktorm.version}"
+compile "org.ktorm:ktorm-support-mysql:${ktorm.version}"
 ```
 
 Having the dependency, we also need to modify the calling of the `Database.connect` function, this function is used to create `Database` objects. We need to specify its `dialect` parameter, telling Ktorm which `SqlDialect` implementation should be used. 

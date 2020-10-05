@@ -23,7 +23,7 @@ To use ktorm-global, you should add a Maven dependency first:
 
 ```xml
 <dependency>
-    <groupId>me.liuwj.ktorm</groupId>
+    <groupId>org.ktorm</groupId>
     <artifactId>ktorm-global</artifactId>
     <version>${ktorm.version}</version>
 </dependency>
@@ -32,7 +32,7 @@ To use ktorm-global, you should add a Maven dependency first:
 Or Gradle： 
 
 ```groovy
-compile "me.liuwj.ktorm:ktorm-global:${ktorm.version}"
+compile "org.ktorm:ktorm-global:${ktorm.version}"
 ```
 
 Then connect to the database via function `Database.connectGlobally`: 
@@ -118,7 +118,7 @@ But this also brings us a lot of problems, because the names of many extension f
 Therefore, we decided that in Ktorm 3.0, `Query` no longer implements the `Iterable` interface anymore. And to keep our DSL code unchanged, we also provide some extension functions that are equivalent to those of `Iterable`'s. After the upgrade, you will find that although some compilation errors may occur, your code is almost not needed to change. The only thing you may need is to add a line of `import` statement to change the original calls to the `Iterable.map` function to `Query.map`: 
 
 ```kotlin
-import me.liuwj.ktorm.dsl.*
+import org.ktorm.dsl.*
 ```
 
 ## Support Compound Primary Keys
