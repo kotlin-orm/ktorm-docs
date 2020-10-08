@@ -352,7 +352,7 @@ val query = database.from(Employees).select().limit(0, 1)
 When we are using the `limit` function, Ktorm will generate appropriate SQLs depending on the currently enabled dialect. If we don't use any dialects, an exception might be thrown: 
 
 ```
-me.liuwj.ktorm.database.DialectFeatureNotSupportedException: Pagination is not supported in Standard SQL.
+org.ktorm.database.DialectFeatureNotSupportedException: Pagination is not supported in Standard SQL.
 ```
 
 This is OK, the SQL standard doesn't say how to implement paging queries, so Ktorm is not able to generate the SQL for us. To avoid this exception, do not use `limit`, or enable a dialect. Refer to later chapters for how to [enable dialects](./dialects-and-native-sql.html#Enable-Dialects).

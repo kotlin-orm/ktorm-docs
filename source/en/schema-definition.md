@@ -189,7 +189,7 @@ Maven：
 
 ```xml
 <dependency>
-    <groupId>me.liuwj.ktorm</groupId>
+    <groupId>org.ktorm</groupId>
     <artifactId>ktorm-jackson</artifactId>
     <version>${ktorm.version}</version>
 </dependency>
@@ -198,7 +198,7 @@ Maven：
 Or Gradle： 
 
 ```groovy
-compile "me.liuwj.ktorm:ktorm-jackson:${ktorm.version}"
+compile "org.ktorm:ktorm-jackson:${ktorm.version}"
 ```
 
 Additionally, Ktorm 2.7 provides a `transform` function. With this function, we can extend data types based on existing ones by adding some specific transformations to them. In this way, we get new data types without writing `SqlType` implementations manually. 

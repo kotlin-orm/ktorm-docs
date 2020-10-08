@@ -10,7 +10,7 @@ Ktorm was deployed to maven central and jcenter, so you just need to add a depen
 
 ```xml
 <dependency>
-    <groupId>me.liuwj.ktorm</groupId>
+    <groupId>org.ktorm</groupId>
     <artifactId>ktorm-core</artifactId>
     <version>${ktorm.version}</version>
 </dependency>
@@ -19,7 +19,7 @@ Ktorm was deployed to maven central and jcenter, so you just need to add a depen
 Or Gradle: 
 
 ```groovy
-compile "me.liuwj.ktorm:ktorm-core:${ktorm.version}"
+compile "org.ktorm:ktorm-core:${ktorm.version}"
 ```
 
 Firstly, create Kotlin objects to [describe your table schemas](./schema-definition.html): 

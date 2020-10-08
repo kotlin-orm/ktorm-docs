@@ -189,7 +189,7 @@ Maven 依赖：
 
 ```xml
 <dependency>
-    <groupId>me.liuwj.ktorm</groupId>
+    <groupId>org.ktorm</groupId>
     <artifactId>ktorm-jackson</artifactId>
     <version>${ktorm.version}</version>
 </dependency>
@@ -198,7 +198,7 @@ Maven 依赖：
 或者 gradle： 
 
 ```groovy
-compile "me.liuwj.ktorm:ktorm-jackson:${ktorm.version}"
+compile "org.ktorm:ktorm-jackson:${ktorm.version}"
 ```
 
 最后，Ktorm 2.7 版本还新增了一个 `transform` 函数，使用这个函数，我们可以基于现有的数据类型进行扩展，增加一些自定义的转换行为，得到新的数据类型，而不必手动写一个 `SqlType` 的实现类。

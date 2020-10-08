@@ -22,7 +22,7 @@ Ktorm 3.0 已经完全删除了`Database.global` 相关的 API，但是，为了
 
 ```xml
 <dependency>
-    <groupId>me.liuwj.ktorm</groupId>
+    <groupId>org.ktorm</groupId>
     <artifactId>ktorm-global</artifactId>
     <version>${ktorm.version}</version>
 </dependency>
@@ -31,7 +31,7 @@ Ktorm 3.0 已经完全删除了`Database.global` 相关的 API，但是，为了
 或者 Gradle： 
 
 ```groovy
-compile "me.liuwj.ktorm:ktorm-global:${ktorm.version}"
+compile "org.ktorm:ktorm-global:${ktorm.version}"
 ```
 
 然后，使用 `Database.connectGlobally` 函数连接到数据库：
@@ -117,7 +117,7 @@ query
 因此，我们决定在 Ktorm 3.0 中，`Query` 类不再实现 `Iterable` 接口，为了确保原来的 DSL 代码不变，我们还提供了与 `Iterable` 相同的扩展函数。升级之后你会发现，尽管可能会产生一些编译错误，但是你的代码几乎是不用改的，唯一需要的可能是增加一行 `import` 语句，把原来对 `Iterable.map` 函数的调用，改成 `Query.map`：
 
 ```kotlin
-import me.liuwj.ktorm.dsl.*
+import org.ktorm.dsl.*
 ```
 
 ## 支持复合主键

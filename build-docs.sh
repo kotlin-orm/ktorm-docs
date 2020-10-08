@@ -64,8 +64,8 @@ hexo clean && hexo generate
 
 zip -r ktorm-docs.zip ./public
 
-scp ktorm-docs.zip root@liuwj.me:~/ktorm-docs.zip
+scp ktorm-docs.zip ubuntu@ktorm.org:~/ktorm-docs.zip
 
-ssh root@liuwj.me "unzip ktorm-docs.zip && rm -rf ktorm-docs && mv public ktorm-docs && rm ktorm-docs.zip"
+ssh ubuntu@ktorm.org "unzip ktorm-docs.zip && sudo rm -rf /var/www/www.ktorm.org && sudo mv public /var/www/www.ktorm.org && rm ktorm-docs.zip"
 
 rm ktorm-docs.zip

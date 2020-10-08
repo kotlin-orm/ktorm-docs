@@ -354,7 +354,7 @@ val query = database.from(Employees).select().limit(0, 1)
 使用 `limit` 函数时，Ktorm 会根据当前使用的不同数据库（Dialect）生成合适的分页 SQL。但是如果你没有启用任何方言，你可能会得到这样一个异常：
 
 ````
-me.liuwj.ktorm.database.DialectFeatureNotSupportedException: Pagination is not supported in Standard SQL.
+org.ktorm.database.DialectFeatureNotSupportedException: Pagination is not supported in Standard SQL.
 ````
 
 这个是正常的，因为标准 SQL 中的确没有规定分页的语法，因此 Ktorm 无法为你生成这种 SQL，要避免这个异常，要么放弃使用 `limit` 函数，要么启用一个数据库方言。关于如何[启用方言](./dialects-and-native-sql.html#启用方言)，可参考后面的章节。

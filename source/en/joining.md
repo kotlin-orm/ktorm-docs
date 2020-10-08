@@ -206,7 +206,7 @@ Maven dependency:
 
 ```
 <dependency>
-    <groupId>me.liuwj.ktorm</groupId>
+    <groupId>org.ktorm</groupId>
     <artifactId>ktorm-support-mysql</artifactId>
     <version>${ktorm.version}</version>
 </dependency>
@@ -215,6 +215,6 @@ Maven dependency:
 Or Gradle: 
 
 ```groovy
-compile "me.liuwj.ktorm:ktorm-support-mysql:${ktorm.version}"
+compile "org.ktorm:ktorm-support-mysql:${ktorm.version}"
 ```
 
