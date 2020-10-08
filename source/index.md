@@ -20,7 +20,8 @@ Ktorm is a lightweight and efficient ORM Framework for Kotlin directly based on 
 
 ## Latest Posts
 
-- 2020-09-19 [Ktorm 3.1 Released, Upgrade to Kotlin 1.4 & Many Other Optimizations](https://github.com/kotlin-orm/ktorm/releases/tag/v3.1.0) <sup class="new-icon">NEW</sup>
+- 2020-10-08 [Ktorm 3.2 Released, Package Name Changed to org.ktorm](https://github.com/kotlin-orm/ktorm/releases/tag/v3.2.0) <sup class="new-icon">NEW</sup>
+- 2020-09-19 [Ktorm 3.1 Released, Upgrade to Kotlin 1.4 & Many Other Optimizations](https://github.com/kotlin-orm/ktorm/releases/tag/v3.1.0)
 - 2020-06-17 [Ktorm 3.0 Released with the New ktorm-global Module](/en/break-changes-in-ktorm-3.0.html)
 - 2020-02-01 [Ktorm 2.7 Released, Deprecate Database.global, Making APIs More Intuitive and Easier to Extend](/en/about-deprecating-database-global.html)
 - 2019-08-24 [Ktorm 2.5 Released, Support Defining Entities as Any Kind of Classes, Such as Data Class or POJO](/en/define-entities-as-any-kind-of-classes.html)
