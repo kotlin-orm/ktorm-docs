@@ -30,6 +30,14 @@
     <link rel="shortcut icon" type="image/x-icon" href="<%- url_for('images/favicon.ico') %>">
   </head>
   <body>
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-180275463-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
 
     <script type="text/javascript">
       window.__INITIAL_STATE__ = <%- JSON.stringify(initial_state) %>;
@@ -104,15 +112,6 @@
             node.removeClass("keyword");
           }
         });
-      })();
-    </script>
-    <script type="text/javascript">
-      // tencent analysis
-      (function() {
-        var hm = document.createElement("script");
-        hm.src = "//tajs.qq.com/stats?sId=66145320";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
       })();
     </script>
   </body>
