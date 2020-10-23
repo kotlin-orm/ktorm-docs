@@ -25,7 +25,7 @@ The functions above are all extensions of `QuerySource`, a simple usage is given
 val joining = database.from(Employees).crossJoin(Departments)
 ```
 
-Here, the function `from` wraps a table object as a `QuerySource` instance, then `crossJoin` cross joins the instance to another table and returns a new `QuerySource` as the result. But it's useless for us to hold a `QuerySource` for most of the time, we need a `Query` object instead to perform a query and obtain our results.  
+Here, the function `from` wraps a table object as a `QuerySource` instance, then `crossJoin` cross joins the instance to another table and returns a new `QuerySource` as the result. For most of the time, it's useless for us to hold a `QuerySource` instance, we need a `Query` object instead to perform a query and obtain our results.  
 
 Remember how to create a `Query` from a `QuerySource`? Yes, we just need to call `select`: 
 
@@ -41,7 +41,7 @@ from t_employee
 cross join t_department 
 ```
 
-That's so simple, but honestly, such a simple joining query doesn't make any sense to us in practical use. Here is a more practical example, we want to list those employees whose salary is greater than 100, and return their names and the departments they are from. Here, we specify the second parameter `on` of the function `leftJoin`, that's the joining condition. As for the usage of `select` and `where` function, we have discussed that in the former section. 
+That's so simple, but honestly, such a simple joining query doesn't make any sense to us in practical use. Here is a more practical example, we want to list those employees whose salary is greater than 100, and return their names and the departments they are from. Here, we specify the second parameter `on` of the function `leftJoin`, that's the joining condition. 
 
 ```kotlin
 val query = database
@@ -74,7 +74,7 @@ order by emp.id
 
 It can be seen that the `t_employee` table appears twice with different aliases, `emp` and `mgr`, in the SQL above. It is exactly the aliases that distinguish the two same tables in the self joining query. Then how can we achieve this with Ktorm?  
 
-If you are careful enough, you might have found that there is an `aliased` function in the `Table` class, this function returns a new created table object with all properties (including the table name and columns and so on) being copied from current table, but applying a new alias given by the parameter. Using the `aliased` function, try to implement the self joining above, we may write codes like this: 
+You might have noticed that there is an `aliased` function in the `Table` class, this function returns a new created table object with all properties (including the table name and columns and so on) being copied from current table, but applying a new alias given by the parameter. Using the `aliased` function, try to implement the self joining above, we may write code like this: 
 
 ```kotlin
 data class Names(val name: String?, val managerName: String?, val departmentName: String?)
@@ -118,7 +118,7 @@ Here is the signature of the `aliased` function in the super class `Table`:
 open fun aliased(alias: String): Table<E> { ... }
 ```
 
-Obviously, according to the signature of the `aliased` function, the return value's type of `Employees.aliased("emp")` at line 3 should be `Table<E>`, and the type of the variable `mgr` at line 4 is also `Table<E>`. Then, the `emp.managerId eq mrg.id` at line 8 is clearly incorrect now because properties `id` and `managerId` are defined in the `Employees` object, and the two aliased table objects are typed of `Table<E>` instead of `Employees`. 
+Obviously, according to the signature of the `aliased` function, the return value's type of `Employees.aliased("emp")` at line 3 should be `Table<E>`, and the type of the variable `mgr` at line 4 is also `Table<E>`. Then, the `emp.managerId eq mrg.id` at line 8 is clearly incorrect because properties `id` and `managerId` are defined in the `Employees` object, and the two aliased table objects are typed of `Table<E>` instead of `Employees`. 
 
 Limited to the Kotlin language, although the `Table.aliased` can create a copied table object with a specific alias, it's return type cannot be the same as the caller's type but only `Table<E>`. Here we define the `Employees` table by an object keyword, and because the keyword defines a singleton object, it's not possible for Ktorm to create a new object of type `Employees`. 
 
@@ -152,7 +152,7 @@ That's the Ktorm's support for table aliases. Now you can try to run the self jo
 
 ## More Joining Types
 
-Ktorm only provides four built-in join types in its core module (see [Joining Functions](#Joining-Functions)), and that's enough in most cases. But what if we want to use some special join types provided by a special database? Let's take MySQL's natural join as an example, learning how to extend more joining types with Ktorm. 
+Ktorm only provides four built-in join types in its core module (see [Joining Functions](#Joining-Functions)). That's enough in most cases, but what if we want to use some special join types provided by a special database? Let's take MySQL's natural join as an example, learning how to extend more joining types with Ktorm. 
 
 By reading the source code, we can know that the `JoinExpression` extends from an abstract class `QuerySourceExpression`. We can also create a class extending from the abstract class by ourselves, let's name it as `NaturalJoinExpression`: 
 
