@@ -192,9 +192,20 @@ class CustomSqlFormatter(database: Database, beautifySql: Boolean, indentSize: I
 }
 ```
 
-接下来的事情就是使用方言（Dialect）支持将这个自定义的 SqlFormatter 注册到 Ktorm 中了，关于如何[启用方言](./dialects-and-native-sql.html#启用方言)，可参考后面的章节。
+最后，使用方言（Dialect）将这个自定义的 SqlFormatter 注册到 `Database` 对象中。更多关于[方言](./dialects-and-native-sql.html)的细节，可参考后面的章节。
 
-`naturalJoin` 的使用方式如下：
+```kotlin
+val database = Database.connect(
+    url = "jdbc:mysql://localhost:3306/ktorm?user=root&password=***",
+    dialect = object : SqlDialect {
+        override fun createSqlFormatter(database: Database, beautifySql: Boolean, indentSize: Int): SqlFormatter {
+            return CustomSqlFormatter(database, beautifySql, indentSize)
+        }
+    }
+)
+```
+
+大功告成，`naturalJoin` 的使用方式如下：
 
 ```kotlin
 val query = database.from(Employees).naturalJoin(Departments).select()

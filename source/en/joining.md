@@ -192,9 +192,20 @@ class CustomSqlFormatter(database: Database, beautifySql: Boolean, indentSize: I
 }
 ```
 
-Now, the last thing we should do is to register this custom SQL formatter into Ktorm by dialect support, you can read the later chapters for how to [enable dialects](./dialects-and-native-sql.html#Enable-Dialects).
+Finally, register this custom SQL formatter into the `Database` object by dialect support. Refer to the later chapters for more details about [dialects](./dialects-and-native-sql.html).
 
-The usage of `naturalJoin`: 
+```kotlin
+val database = Database.connect(
+    url = "jdbc:mysql://localhost:3306/ktorm?user=root&password=***",
+    dialect = object : SqlDialect {
+        override fun createSqlFormatter(database: Database, beautifySql: Boolean, indentSize: Int): SqlFormatter {
+            return CustomSqlFormatter(database, beautifySql, indentSize)
+        }
+    }
+)
+```
+
+All done! The usage of `naturalJoin`: 
 
 ```kotlin
 val query = database.from(Employees).naturalJoin(Departments).select()
