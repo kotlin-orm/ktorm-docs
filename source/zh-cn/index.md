@@ -20,7 +20,7 @@ Ktorm 是直接基于纯 JDBC 编写的高效简洁的轻量级 Kotlin ORM 框�
 
 ## 最新文章
 
-- 2020-09-19 [Ktorm 3.2 发布, 包名修改为 org.ktorm](https://github.com/kotlin-orm/ktorm/releases/tag/v3.2.0) <sup class="new-icon">NEW</sup>
+- 2020-10-08 [Ktorm 3.2 发布, 包名修改为 org.ktorm](https://github.com/kotlin-orm/ktorm/releases/tag/v3.2.0) <sup class="new-icon">NEW</sup>
 - 2020-09-19 [Ktorm 3.1 发布, 升级 Kotlin 1.4，还有众多功能优化](https://github.com/kotlin-orm/ktorm/releases/tag/v3.1.0)
 - 2020-06-17 [Ktorm 3.0 不兼容更新](/zh-cn/break-changes-in-ktorm-3.0.html)
 - 2020-02-01 [Ktorm 2.7 发布，废弃 Database.global 对象，使 API 的设计更直观、更易扩展](/zh-cn/about-deprecating-database-global.html)
