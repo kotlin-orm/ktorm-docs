@@ -52,7 +52,7 @@ infix operator fun <T : Number> ColumnDeclaring<T>.plus(expr: ColumnDeclaring<T>
 }
 ```
 
-**Normal operator functions:** There are many limits overloading Kotlin's built-in operators. For example, the `equals` function is restricted to return `Boolean` values only, but Ktorm's operator functions need to return SQL expressions, so Ktorm provides another function `eq` for us to implement equality comparisons. Additionally, there are also many operators that don't exist in Kotlin, such as like, Ktorm provides a `like` function for string matching in SQL. Here is the implementation of the `like` function, and this kind of functions are generally marked with an infix keyword: 
+**Normal operator functions:** There are many limits overloading Kotlin's built-in operators. For example, the `equals` function is restricted to return `Boolean` values only, but Ktorm's operator functions need to return SQL expressions, so Ktorm provides another function `eq` for us to implement equality comparisons. Additionally, there are also many operators that don't exist in Kotlin, such as `like`, Ktorm provides a `like` function for string matching in SQL. Here is the implementation of the `like` function, and this kind of functions are generally marked with an infix keyword: 
 
 ```kotlin
 infix fun ColumnDeclaring<*>.like(argument: String): BinaryExpression<Boolean> {
@@ -79,9 +79,9 @@ For detailed precedence in Kotlin language, please refer to [Kotlin Reference](h
 
 ## Custom Operators
 
-We've talked about the built-in operators provided by Ktorm's core module, those operators provided supports for operators in standard SQL, but what if we want to use some special operators provided by a special database? Let's take PostgreSQL's ilike operator as an example, learning how to extend our custom operators with Ktorm. 
+We've talked about the built-in operators provided by Ktorm's core module, they provided supports for operators in standard SQL, but what if we want to use some special operators provided by a special database? Let's take PostgreSQL's `ilike` operator as an example, learning how to extend our custom operators with Ktorm. 
 
-ilike is a special operator in PostgreSQL. Similar to like, it also matches strings, but ignoring cases. Firstly, we create an expression type extending from `ScalarExpression<Boolean>`: 
+`ilike` is a special operator in PostgreSQL. Similar to `like`, it also matches strings, but ignoring cases. Firstly, we create an expression type extending from `ScalarExpression<Boolean>`: 
 
 ```kotlin
 data class ILikeExpression(
@@ -92,7 +92,7 @@ data class ILikeExpression(
 ) : ScalarExpression<Boolean>()
 ```
 
-Having the expression type, we also need an extension function to create expression instances conveniently, that's the operator function. We mark the function with an infix keyword, so it can be used just like a real operator in SQL: 
+Having the expression type, we also need an extension function to create expression instances conveniently, that's the operator function. We mark this function with an infix keyword, so it can be used just like a real operator in SQL: 
 
 ```kotlin
 infix fun ColumnDeclaring<*>.ilike(argument: String): ILikeExpression {
@@ -100,11 +100,11 @@ infix fun ColumnDeclaring<*>.ilike(argument: String): ILikeExpression {
 }
 ```
 
-Now we can use this operator function, just like other operators. But Ktorm cannot recognize our custom expression type `ILikeExpression` by default and are not able to generate SQLs correctly. Just like before, we need to extend the `SqlFormatter` class: 
+Now we can use this operator function, just like other operators. But Ktorm cannot recognize our custom expression type `ILikeExpression` by default and are not able to generate SQLs correctly. So we can extend the `SqlFormatter` class, override the `visitUnknown` function, detect our custom expression types and generate proper SQLs:
 
 ```kotlin
-class PostgreSqlFormatter(database: Database, beautifySql: Boolean, indentSize: Int)
-    : SqlFormatter(database, beautifySql, indentSize) {
+class CustomSqlFormatter(database: Database, beautifySql: Boolean, indentSize: Int)
+    : PostgreSqlFormatter(database, beautifySql, indentSize) {
 
     override fun visitUnknown(expr: SqlExpression): SqlExpression {
         if (expr is ILikeExpression) {
@@ -136,5 +136,40 @@ class PostgreSqlFormatter(database: Database, beautifySql: Boolean, indentSize: 
 }
 ```
 
-Now, the last thing we should do is to register this custom sql formatter into Ktorm by dialect support, you can read the later chapters for how to [enable dialects](./dialects-and-native-sql.html#Enable-Dialects).
+Finally, register this custom SQL formatter into the `Database` object by dialect support. Refer to the later chapters for more details about [dialects](./dialects-and-native-sql.html).
+
+```kotlin
+val database = Database.connect(
+    url = "jdbc:postgresql://localhost:5432/ktorm",
+    dialect = object : SqlDialect {
+        override fun createSqlFormatter(database: Database, beautifySql: Boolean, indentSize: Int): SqlFormatter {
+            return CustomSqlFormatter(database, beautifySql, indentSize)
+        }
+    }
+)
+```
+
+All done! The usage of `ilike`: 
+
+```kotlin
+val query = database.from(Employees).select().where { Employees.name ilike "VINCE" }
+```
+
+In this way, Ktorm supports `ilike` operator now. Actually, this is one of the features of ktorm-support-postgresql module, if you really need to use `ilike`, you don't have to repeat the code above, please add the dependency to your project.
+
+Maven dependency: 
+
+```
+<dependency>
+    <groupId>org.ktorm</groupId>
+    <artifactId>ktorm-support-postgresql</artifactId>
+    <version>${ktorm.version}</version>
+</dependency>
+```
+
+Or Gradle: 
+
+```groovy
+compile "org.ktorm:ktorm-support-postgresql:${ktorm.version}"
+```
 
