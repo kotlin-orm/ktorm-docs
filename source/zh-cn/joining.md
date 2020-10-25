@@ -176,7 +176,7 @@ Ktorm 默认情况下无法识别我们自己创建的表达式类型 `NaturalJo
 
 ```kotlin
 class CustomSqlFormatter(database: Database, beautifySql: Boolean, indentSize: Int)
-    : SqlFormatter(database, beautifySql, indentSize) {
+    : MySqlFormatter(database, beautifySql, indentSize) {
 
     override fun visitUnknown(expr: SqlExpression): SqlExpression {
         if (expr is NaturalJoinExpression) {

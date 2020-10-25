@@ -79,9 +79,9 @@ infix fun ColumnDeclaring<*>.like(argument: String): BinaryExpression<Boolean> {
 
 ## 自定义运算符
 
-前面已经介绍过 Ktorm 核心模块的内置运算符，这些运算符为标准 SQL 中的运算符提供了支持，但如果我们想使用一些数据库方言中特有的运算符呢？下面我们以 PostgreSQL 中的 ilike 运算符为例，了解如何增加自己的运算符。
+前面已经介绍过 Ktorm 核心模块的内置运算符，这些运算符为标准 SQL 中的运算符提供了支持，但如果我们想使用一些数据库方言中特有的运算符呢？下面我们以 PostgreSQL 中的 `ilike` 运算符为例，了解如何增加自己的运算符。
 
-ilike 是 PostgreSQL 中特有的运算符，它的功能与 like 一样，也是进行字符串匹配，但是忽略大小写。我们首先创建一个表达式类型，它继承于 `ScalarExpression<Boolean>`，表示一个 ilike 操作：
+`ilike` 是 PostgreSQL 中特有的运算符，它的功能与 `like` 一样，也是进行字符串匹配，但是忽略大小写。我们首先创建一个表达式类型，它继承于 `ScalarExpression<Boolean>`，表示一个 ilike 操作：
 
 ```kotlin
 data class ILikeExpression(
@@ -100,11 +100,11 @@ infix fun ColumnDeclaring<*>.ilike(argument: String): ILikeExpression {
 }
 ```
 
-这样我们就能使用这个运算符函数了，就像使用其他运算符一样。不过现在 Ktorm 还无法识别我们自己创建的 `ILikeExpression`，无法为我们生成正确的 SQL，跟之前一样，我们需要扩展 `SqlFormatter` 类：
+这样我们就能使用这个运算符函数了，就像使用其他运算符一样。不过现在 Ktorm 还无法识别我们自己创建的 `ILikeExpression`，无法为我们生成正确的 SQL。因此，我们需要扩展 `SqlFormatter` 类，重写它的 `visitUnknown` 方法，在里面检测我们的自定义表达式，为其生成正确的 SQL：
 
 ```kotlin
-class PostgreSqlFormatter(database: Database, beautifySql: Boolean, indentSize: Int)
-    : SqlFormatter(database, beautifySql, indentSize) {
+class CustomSqlFormatter(database: Database, beautifySql: Boolean, indentSize: Int)
+    : PostgreSqlFormatter(database, beautifySql, indentSize) {
 
     override fun visitUnknown(expr: SqlExpression): SqlExpression {
         if (expr is ILikeExpression) {
@@ -136,5 +136,42 @@ class PostgreSqlFormatter(database: Database, beautifySql: Boolean, indentSize: 
 }
 ```
 
-接下来的事情就是使用方言（Dialect）支持将这个自定义的 SqlFormatter 注册到 Ktorm 中了，关于如何[启用方言](./dialects-and-native-sql.html#启用方言)，可参考后面的章节。
+最后，使用方言（Dialect）将这个自定义的 SqlFormatter 注册到 `Database` 对象中。更多关于[方言](./dialects-and-native-sql.html)的细节，可参考后面的章节。
+
+```kotlin
+val database = Database.connect(
+    url = "jdbc:postgresql://localhost:5432/ktorm",
+    dialect = object : SqlDialect {
+        override fun createSqlFormatter(database: Database, beautifySql: Boolean, indentSize: Int): SqlFormatter {
+            return CustomSqlFormatter(database, beautifySql, indentSize)
+        }
+    }
+)
+```
+
+大功告成，`ilike` 的使用方式如下：
+
+```kotlin
+val query = database.from(Employees).select().where { Employees.name ilike "VINCE" }
+```
+
+这样，Ktorm 就能够无缝支持 `ilike` 运算符，事实上，这正是 ktorm-support-postgresql 模块的功能之一，如果你真的需要使用 PostgreSQL 的 `ilike` 运算符，请直接在项目中添加依赖，不必再写一遍上面的代码，这里仅作示范。
+
+Maven 依赖：
+
+```
+<dependency>
+    <groupId>org.ktorm</groupId>
+    <artifactId>ktorm-support-postgresql</artifactId>
+    <version>${ktorm.version}</version>
+</dependency>
+```
+
+或者 gradle：
+
+```groovy
+compile "org.ktorm:ktorm-support-postgresql:${ktorm.version}"
+```
+
+
 
