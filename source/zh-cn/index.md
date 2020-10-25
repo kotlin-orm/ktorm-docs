@@ -18,12 +18,9 @@ Ktorm 是直接基于纯 JDBC 编写的高效简洁的轻量级 Kotlin ORM 框�
 - 实体序列 API，使用 `filter`、`map`、`sortedBy` 等序列函数进行查询，就像使用 Kotlin 中的原生集合一样方便
 - 易扩展的设计，可以灵活编写扩展，支持更多运算符、数据类型、 SQL 函数、数据库方言等
 
-## 最新文章
+## 文章
 
-- 2020-10-08 [Ktorm 3.2 发布, 包名修改为 org.ktorm](https://github.com/kotlin-orm/ktorm/releases/tag/v3.2.0) <sup class="new-icon">NEW</sup>
-- 2020-09-19 [Ktorm 3.1 发布, 升级 Kotlin 1.4，还有众多功能优化](https://github.com/kotlin-orm/ktorm/releases/tag/v3.1.0)
-- 2020-06-17 [Ktorm 3.0 不兼容更新](/zh-cn/break-changes-in-ktorm-3.0.html)
-- 2020-02-01 [Ktorm 2.7 发布，废弃 Database.global 对象，使 API 的设计更直观、更易扩展](/zh-cn/about-deprecating-database-global.html)
-- 2019-08-12 [Ktorm 2.5 发布，支持使用 data class、POJO 或者任意的类型作为实体类](/zh-cn/define-entities-as-any-kind-of-classes.html)
-- 2019-06-28 [Ktorm - 让你的数据库操作更具 Kotlin 风味](https://www.liuwj.me/posts/ktorm-write-database-operations-in-kotlin-style/)
-- 2019-05-04 [你还在用 MyBatis 吗，Ktorm 了解一下？ - 专注于 Kotlin 的 ORM 框架](https://www.liuwj.me/posts/ktorm-introduction/)
+- [Ktorm 3.2 发布, 包名修改为 org.ktorm](https://github.com/kotlin-orm/ktorm/releases/tag/v3.2.0) <sup class="new-icon">NEW</sup>
+- [为 Ktorm 框架拓展 PostgreSQL 方言进行 Json 访问](https://www.liuwj.me/posts/ktorm-dialect-extension/) <sup class="new-icon">NEW</sup>
+- [Ktorm - 让你的数据库操作更具 Kotlin 风味](https://www.liuwj.me/posts/ktorm-write-database-operations-in-kotlin-style/)
+- [你还在用 MyBatis 吗，Ktorm 了解一下？ - 专注于 Kotlin 的 ORM 框架](https://www.liuwj.me/posts/ktorm-introduction/)
