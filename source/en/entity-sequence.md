@@ -180,13 +180,13 @@ left join t_department _ref0 on t_employee.department_id = _ref0.id
 order by t_employee.salary 
 ```
 
-The `sortedBy` function sorts entities in ascending order, if we need descending order, we can use `sortedByDescending` instead. 
+The `sortedBy` function defaultly sorts entities in ascending order, if we need descending order, we can use `sortedByDescending` instead. 
 
-Sometimes, we need to sort entities by two or more columns, then we can use the `sorted` function, which accepts a closure of type `(T) -> List<OrderByExpression>` as its parameter. The example below sorts the employees firstly by salaries descending, then by hire dates ascending: 
+Sometimes, we need to sort entities by two or more columns, then we can call the `sortedBy` function with multiple closures. The example below sorts the employees firstly by salaries descending, then by hire dates ascending: 
 
 ```kotlin
 val employees = database.employees
-    .sorted { listOf(it.salary.desc(), it.hireDate.asc()) }
+    .sortedBy({ it.salary.desc() }, { it.hireDate.asc() })
     .toList()
 ```
 

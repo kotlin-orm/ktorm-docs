@@ -180,13 +180,13 @@ left join t_department _ref0 on t_employee.department_id = _ref0.id
 order by t_employee.salary 
 ````
 
-`sortedBy` 函数按升序进行排序，如果你希望使用降序，可以改用 `sortedByDescending` 函数，它的用法是一样的。
+`sortedBy` 函数默认按升序进行排序，如果你希望使用降序，可以改用 `sortedByDescending` 函数，它的用法是一样的。
 
-有时候，我们的排序需要考虑多个不同的字段，这时我们需要使用 `sorted` 方法，这个方法接受一个类型为 `(T) -> List<OrderByExpression>` 的闭包作为参数。下面是一个使用示例，它将员工按工资从高到低排序，在工资相等的情况下，再按入职时间从远到近排序：
+有时候，我们的排序需要考虑多个不同的字段，这时我们可以给 `sortedBy` 函数传入多个 lambda 表达式。下面是一个使用示例，它将员工按工资从高到低排序，在工资相等的情况下，再按入职时间从远到近排序：
 
 ```kotlin
 val employees = database.employees
-    .sorted { listOf(it.salary.desc(), it.hireDate.asc()) }
+    .sortedBy({ it.salary.desc() }, { it.hireDate.asc() })
     .toList()
 ```
 
