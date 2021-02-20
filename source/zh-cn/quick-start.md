@@ -46,7 +46,7 @@ object Employees : Table<Nothing>("t_employee") {
 
 ```kotlin
 fun main() {
-    val database = Database.connect("jdbc:mysql://localhost:3306/ktorm?user=root&password=***")
+    val database = Database.connect("jdbc:mysql://localhost:3306/ktorm",null,"userName","password")
 
     for (row in database.from(Employees).select()) {
         println(row[Employees.name])
