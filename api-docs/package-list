@@ -1,0 +1,20 @@
+$dokka.format:hexo
+$dokka.linkExtension:html
+$dokka.location:org.ktorm.database$setArguments(java.sql.PreparedStatement, kotlin.collections.List((org.ktorm.expression.ArgumentExpression((kotlin.Any)))))org.ktorm.database/java.sql.-prepared-statement/set-arguments.html
+$dokka.location:org.ktorm.dsl$and(kotlin.Boolean, org.ktorm.schema.ColumnDeclaring((kotlin.Boolean)))org.ktorm.dsl/kotlin.-boolean/and.html
+$dokka.location:org.ktorm.dsl$combineConditions(kotlin.collections.Iterable((org.ktorm.schema.ColumnDeclaring((kotlin.Boolean)))), kotlin.Boolean)org.ktorm.dsl/kotlin.collections.-iterable/combine-conditions.html
+$dokka.location:org.ktorm.dsl$or(kotlin.Boolean, org.ktorm.schema.ColumnDeclaring((kotlin.Boolean)))org.ktorm.dsl/kotlin.-boolean/or.html
+$dokka.location:org.ktorm.dsl$xor(kotlin.Boolean, org.ktorm.schema.ColumnDeclaring((kotlin.Boolean)))org.ktorm.dsl/kotlin.-boolean/xor.html
+org.ktorm.database
+org.ktorm.dsl
+org.ktorm.entity
+org.ktorm.expression
+org.ktorm.global
+org.ktorm.jackson
+org.ktorm.logging
+org.ktorm.schema
+org.ktorm.support.mysql
+org.ktorm.support.oracle
+org.ktorm.support.postgresql
+org.ktorm.support.sqlite
+org.ktorm.support.sqlserver
