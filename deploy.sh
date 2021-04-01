@@ -9,9 +9,11 @@ function join_by {
     printf "%s" "${@/#/$d}"
 }
 
-rm -rf ./source/api-docs
 
-cd ../ktorm && ./gradlew printClasspath
+PRGDIR=$(dirname "$0")
+BASEDIR=$(cd "$PRGDIR" > /dev/null; pwd)
+PROJECT_DIR=~/.ktorm-docs/temp/repo/ktorm
+DEPLOY_DIR=~/.ktorm-docs/temp/repo/ktorm-docs
 
 srcDirs=(
     "./ktorm-core/src/main/kotlin"
@@ -44,28 +46,44 @@ links=(
     "http://commons.apache.org/proper/commons-logging/javadocs/api-release/^http://commons.apache.org/proper/commons-logging/javadocs/api-release/package-list"
 )
 
+# Clone the project repo. 
+[ -e "$PROJECT_DIR" ] && rm -rf "$PROJECT_DIR"
+git clone --depth=1 --branch=master https://github.com/kotlin-orm/ktorm.git "$PROJECT_DIR"
+
+# Go to the project repo and print the classpath. 
+cd "$PROJECT_DIR" && ./gradlew printClasspath
+
+# Generate API documents. 
+[ -e "$BASEDIR/source/api-docs" ] && rm -rf "$BASEDIR/source/api-docs"
 java \
-    -jar ../ktorm-docs/tools/dokka-fatjar-with-hexo-format-0.9.18-SNAPSHOT.jar \
+    -jar "$BASEDIR/tools/dokka-fatjar-with-hexo-format-0.9.18-SNAPSHOT.jar" \
     -src $(join_by ":" ${srcDirs[@]}) \
     -format hexo \
-    -classpath $(cat build/ktorm.classpath) \
+    -classpath $(cat "build/ktorm.classpath") \
     -jdkVersion 8 \
-    -include ./PACKAGES.md \
-    -output ../ktorm-docs/source/ \
-    -module api-docs \
+    -include "./PACKAGES.md" \
+    -output "$BASEDIR/source/" \
+    -module "api-docs" \
     -srcLink $(join_by "^^" ${srcLinks[@]}) \
     -links $(join_by "^^" ${links[@]})
 
-cd ../ktorm-docs/
+# Compile doc.js
+cd "$BASEDIR/themes/doc" && npx webpack -p
 
-cd themes/doc && npx webpack -p && cd ../..
+# Generate the site. 
+cd "$BASEDIR" && hexo clean && hexo generate
 
-hexo clean && hexo generate
+# Write custom domain to CNAME file (required by GitHub Pages). 
+echo "test.ktorm.org" > "$BASEDIR/public/CNAME"
 
-zip -r ktorm-docs.zip ./public
+# Clone the deploy repo. 
+[ -e "$DEPLOY_DIR" ] && rm -rf "$DEPLOY_DIR"
+git clone --depth=1 --branch=gh-pages https://github.com/kotlin-orm/ktorm-docs.git "$DEPLOY_DIR"
 
-scp ktorm-docs.zip ubuntu@ktorm.org:~/ktorm-docs.zip
+# Copy static files to the deploy dir. 
+cd "$DEPLOY_DIR" && git rm -rf . && cp -r "$BASEDIR/public/." "$DEPLOY_DIR"
 
-ssh ubuntu@ktorm.org "unzip ktorm-docs.zip && sudo rm -rf /var/www/www.ktorm.org && sudo mv public /var/www/www.ktorm.org && rm ktorm-docs.zip"
-
-rm ktorm-docs.zip
+# Commit to GitHub Pages.
+git add . 
+git commit -m "deploy the site"
+git push
