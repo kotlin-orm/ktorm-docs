@@ -74,7 +74,7 @@ cd "$BASEDIR/themes/doc" && npx webpack -p
 cd "$BASEDIR" && hexo clean && hexo generate
 
 # Write custom domain to CNAME file (required by GitHub Pages). 
-echo "test.ktorm.org" > "$BASEDIR/public/CNAME"
+echo "www.ktorm.org" > "$BASEDIR/public/CNAME"
 
 # Clone the deploy repo. 
 [ -e "$DEPLOY_DIR" ] && rm -rf "$DEPLOY_DIR"
