@@ -51,7 +51,7 @@ Our main goal of this refactoring is to deprecate the global variable `Database.
 In previous versions, although `Database.connect` returns a new created `Database` object, we usually ignore it because Ktorm automatically saves it to an internal global variable. But now, we have to define a variable by ourselves to hold the return value: 
 
 ```kotlin
-val database = Database.connect("jdbc:mysql://localhost:3306/ktorm?user=root&password=***")
+val database = Database.connect("jdbc:mysql://localhost:3306/ktorm", user = "root", password = "***")
 ```
 
 We used to create queries by the extension function `Table.select` before: 

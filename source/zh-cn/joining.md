@@ -196,7 +196,7 @@ class CustomSqlFormatter(database: Database, beautifySql: Boolean, indentSize: I
 
 ```kotlin
 val database = Database.connect(
-    url = "jdbc:mysql://localhost:3306/ktorm?user=root&password=***",
+    url = "jdbc:mysql://localhost:3306/ktorm", user = "root", password = "***",
     dialect = object : SqlDialect {
         override fun createSqlFormatter(database: Database, beautifySql: Boolean, indentSize: Int): SqlFormatter {
             return CustomSqlFormatter(database, beautifySql, indentSize)

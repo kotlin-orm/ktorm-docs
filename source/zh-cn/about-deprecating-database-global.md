@@ -51,7 +51,7 @@ h2 {
 在之前，虽然 `Database.connect` 函数会返回一个 `Database` 对象，但是我们通常都会忽略它，因为 Ktorm 会自动把它保存到内部的全局变量中。但是现在，我们必须自己定义一个变量去接收它的返回值：
 
 ```kotlin
-val database = Database.connect("jdbc:mysql://localhost:3306/ktorm?user=root&password=***")
+val database = Database.connect("jdbc:mysql://localhost:3306/ktorm", user = "root", password = "***")
 ```
 
 在之前，我们直接使用 `Table.select` 扩展函数就可以创建一个查询：

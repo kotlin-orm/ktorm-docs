@@ -38,7 +38,7 @@ compile "org.ktorm:ktorm-global:${ktorm.version}"
 Then connect to the database via function `Database.connectGlobally`: 
 
 ```kotlin
-Database.connectGlobally("jdbc:mysql://localhost:3306/ktorm?user=root&password=***")
+Database.connectGlobally("jdbc:mysql://localhost:3306/ktorm", user = "root", password = "***")
 ```
 
 This function returns a new-created `Database` object, you can define a variable to save the returned value if needed. But generally, it's not necessary to do that, because ktorm-global will save the latest created `Database` instance automatically, then obtain it via `Database.global` when needed.  
