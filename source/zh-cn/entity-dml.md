@@ -89,11 +89,11 @@ update t_employee set job = ?, salary = ? where id = ?
 使用 `flushChanges` 函数还有以下两个注意事项：
 
 1. 该函数要求在表对象中必须使用 `primaryKey` 函数指定主键列，否则 Ktorm 无法确定实体对象的唯一标识，在调用 `flushChanges` 的时候就会抛出异常。
-2. 调用 `flushChanges` 函数的实体对象必须首先”与某个表关联“。在 Ktorm 的实现中，实体对象的内部持有一个表对象的引用 `fromTable`，表示该对象与某个表关联，或者来自某个表。使用序列 API 获取的实体对象，其内部的 `fromTable` 引用都指向其序列的来源表。而使用 `Entity.create` 函数或 `Entity.Factory` 新创建的实体对象，其 `fromTable` 引用初始为空，因此不能对其调用 `flushChanges`，但是在使用 `add` 函数将其保存到数据库后，Ktorm 会修改 `fromTable` 为当前表对象，再调用 `flushChanges` 函数就没有问题了。
+2. 调用 `flushChanges` 的实体对象必须首先”与数据库关联“。在 Ktorm 的实现中，实体对象的内部持有一个数据库对象的引用 `fromDatabase`。使用序列 API 获取的实体对象，其内部的 `fromDatabase` 引用都指向查询的当前数据库。使用 `Entity.create` 函数或 `Entity.Factory` 新创建的实体对象，其 `fromDatabase` 引用初始为空，因此不能对其调用 `flushChanges`，但是在使用 `add` 或 `update` 函数将其保存到数据库后，`fromDatabase` 会被修改为当前数据库对象，再调用 `flushChanges` 函数就没有问题了。
 
-> 对于以上第二点，通俗来说，调用 `flushChanges` 函数的实体对象，必须来自序列 API 或者已被 `add` 函数保存到数据库。还有一点需要注意，在序列化时，Ktorm 只会保存各个属性的值，包括 `fromTable` 在内的用于追踪实体状态变化的数据都会丢失（被标记为 transient），因此你无法在一个系统中获取实体，然后在另一个系统中调用实体的 `flushChanges` 方法将属性变化更新到数据库。
+> 对于以上第二点，通俗来说，调用 `flushChanges` 函数的实体对象，必须来自序列 API 或者已被 `add` 或 `update` 函数保存到数据库。还有一点需要注意，在序列化时，Ktorm 只会保存各个属性的值，包括 `fromDatabase` 在内的用于追踪实体状态变化的数据都会丢失（被标记为 transient），因此你无法在一个系统中获取实体，然后在另一个系统中调用实体的 `flushChanges` 方法将属性变化更新到数据库。
 
-在 Ktorm 3.1 版本中，序列 API 还提供了一个 `update` 函数，可以把指定实体对象中的所有已赋值的属性都更新到数据库。使用这个函数，我们不需要先把实体对象“与某个表关联”，也就是说，执行更新操作之前，可以省去一次查询。使用方法如下：
+在 Ktorm 3.1 版本中，序列 API 还提供了一个 `update` 函数，可以把指定实体对象中的所有已赋值的属性都更新到数据库。使用这个函数，我们不需要先把实体对象“与数据库关联”，也就是说，执行更新操作之前，可以省去一次查询。使用方法如下：
 
 ```kotlin
 val employee = Employee {
@@ -129,7 +129,7 @@ delete from t_employee where id = ?
 与 `flushChanges` 相同， 使用 `delete` 函数也有两个注意事项：
 
 1. 在表对象中必须使用 `primaryKey` 函数指定主键列，否则 Ktorm 无法确定实体对象的唯一标识。
-2. 调用 `delete` 函数的实体对象必须首先”与某个表关联“。
+2. 调用 `delete` 函数的实体对象必须首先”与数据库关联“。
 
 最后，序列 API 还提供了 `removeIf` 和 `clear` 两个函数，`removeIf` 可以删除表中符合条件的记录，`clear` 可以删除表中的所有记录。下面使用 `removeIf` 删除部门 1 中的所有员工：
 
