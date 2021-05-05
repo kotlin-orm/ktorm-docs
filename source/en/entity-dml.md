@@ -42,7 +42,7 @@ insert into t_employee (name, job, hire_date, salary, department_id)
 values (?, ?, ?, ?, ?) 
 ```
 
-It can be seen that the generated SQL contains all the non-null properties in the entity object, and if we remove the assignment of a property or set its value to null, then it's also removed from the SQL. For instance, if we create the employee object with only a name given `Employee { name = "jerry" }`, then the generated SQL will change to `insert into t_employee (name) values (?)`. 
+It can be seen that the generated SQL contains all the existing properties in the entity object, and if we remove the assignment of a property, then it's also removed from the SQL. For instance, if we create the employee object with only a name given `Employee { name = "jerry" }`, then the generated SQL will change to `insert into t_employee (name) values (?)`. 
 
 If we use an auto-increment key in our table, we just need to tell Ktorm which column is the primary key by calling the `primaryKey` function on the column registration, then the `add` function will obtain the generated key from the database and fill it into the corresponding property after the insertion completes. But this requires us not to set the primary key's value beforehand, otherwise, if you do that, the given value will be inserted into the database, and no keys will be generated. 
 
@@ -93,7 +93,7 @@ Using `flushChanges`, we also need to note that:
 
 > For the second point above, a simple explanation is that the entity object calling `flushChanges` must be obtained from sequence APIs or already saved into the database via `add` function. Please also note that when we are serializing entities, Ktorm will save their property values only, any other data (including `fromTable`) that used to track entity status are lost (marked as transient). So we can not obtain an entity object from one system, then flush its changes into the database in another system.
 
-In version 3.1, Ktorm also provides an `update` function that can update all the non-null properties of an entity object to the database. Using this function, the entity object is **not required** to be associated with a table first. That means, comparing to `flushChanges`, we don't have to obtain an entity object from the database first before performing the update. The usage is as follows:
+In version 3.1, Ktorm also provides an `update` function that can update all the existing properties of an entity object to the database. Using this function, the entity object is **not required** to be associated with a table first. That means, comparing to `flushChanges`, we don't have to obtain an entity object from the database first before performing the update. The usage is as follows:
 
 ```kotlin
 val employee = Employee {
