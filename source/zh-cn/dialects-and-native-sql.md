@@ -62,7 +62,6 @@ database.insertOrUpdate(Employees) {
     set(it.salary, 1000)
     set(it.hireDate, LocalDate.now())
     set(it.departmentId, 1)
-
     onDuplicateKey {
         set(it.salary, it.salary + 900)
     }
@@ -82,38 +81,41 @@ on duplicate key update salary = salary + ?
 
 那么，除了前面出现过的那些，Ktorm 内置的方言还提供了什么功能呢？
 
-下面是 **ktorm-support-mysql** 模块的功能列表：
+**ktorm-support-mysql**：
 
-- 支持使用 `limit` 函数进行分页，会自动翻译为 MySQL 的 `limit ?, ?` 语句
-- 增加了 `bulkInsert` 函数，支持批量插入，与核心库的 `batchInsert` 函数不同，`bulkInsert` 使用 MySQL 的批量插入语法，具有更优的性能
-- 增加了 `insertOrUpdate` 函数，支持插入或更新的功能，基于 `on duplicate key update` 语法
-- 增加了 `naturalJoin` 函数，支持自然连接，基于 `natural join` 关键字
-- 增加了 `jsonContains` 函数，判断 json 数组中是否存在指定元素，基于 `json_contains` 函数
-- 增加了 `jsonExtract` 函数，支持从 json 中获取字段，即 MySQL 中的 -> 语法，基于 `json_extract` 函数
-- 增加了 `match` 和 `against` 函数，支持全文搜索，基于 MySQL 的 `match ... against` 语法
-- 增加了 `rand`、`ifnull`、`greatest`、`least`、`dateDiff`、`replace` 等函数，支持 MySQL 中的同名函数
+- 支持 Ktorm 的标准分页函数，自动翻译为 MySQL 的 `limit ?, ?` 语句
+- 支持 insert 语句的扩展语法，如 [insertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/insert-or-update.html)、[bulkInsert](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/bulk-insert.html)、[bulkInsertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/bulk-insert-or-update.html) 等函数
+- 通过 [locking](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/locking.html) 函数支持 `select ... for update` 等加锁语法
+- 支持基于 [match](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/match.html) 和 [against](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/against.html) 的全文搜索
+- 支持常用的 json 操作函数，如 [jsonContains](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/json-contains.html)、[jsonExtract](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/json-extract.html)
+- 支持 [IF](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/-i-f.html)、[ifNull](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/if-null.html)、[greatest](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/greatest.html)、[least](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/least.html)、[replace](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/replace.html) 等常用函数
+- 更多功能请参考详细的 API 文档 https://www.ktorm.org/api-docs/org.ktorm.support.mysql/index.html
 
-**ktorm-support-postgresql** 提供的功能有：
+**ktorm-support-postgresql**：
 
-- 支持使用 `limit` 函数进行分页，会自动翻译为 PostgreSQL 中的 `limit ? offset ?` 语句
-- 增加了 `insertOrUpdate` 函数，支持插入或更新的功能，基于 PostgreSQL 中的 `on conflict (key) do update set` 语法
-- 增加了 `ilike` 运算符，用于忽略大小写的字符串匹配，基于 PostgreSQL 的 `ilike` 关键字
-- 增加了 `hstore` 数据类型及其一系列运算符，如 `->`、`||`、`?`、`?&`、`?|` 等
+- 支持 Ktorm 的标准分页函数，自动翻译为 PostgreSQL 中的 `limit ? offset ?` 语句
+- 支持 insert 语句的扩展语法，如 [insertReturning](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/insert-returning.html)、[insertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/insert-or-update.html)、[bulkInsert](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/bulk-insert.html)、[bulkInsertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/bulk-insert-or-update.html) 等函数
+- 通过 [locking](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/locking.html) 函数支持 `select ... for update` 等加锁语法
+- 支持 [hstore](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/hstore.html) 数据类型及其操作符
+- 更多功能请参考详细的 API 文档 https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/index.html
 
-**ktorm-support-oracle** 提供的功能有：
+**ktorm-support-oracle**：
 
-- 支持使用 `limit` 函数进行分页，会自动翻译为 Oracle 中使用 `rownum` 筛选分页的写法
+- 支持 Ktorm 的标准分页函数，自动翻译为 Oracle 中使用 `rownum` 筛选分页的写法
+- 更多功能请参考详细的 API 文档：https://www.ktorm.org/api-docs/org.ktorm.support.oracle/index.html
 
-**ktorm-support-sqlserver** 提供的功能有：
+**ktorm-support-sqlserver**：
 
-- 支持使用 `limit` 函数进行分页，会自动翻译为 SqlServer 中使用 `top` 和 `row_number() over(...)` 筛选分页的写法
-- 支持 SqlServer 特有的 `datetimeoffset` 数据类型
+- 支持 Ktorm 的标准分页函数，自动翻译为 SqlServer 中使用 `top` 和 `row_number() over(...)` 筛选分页的写法
+- 支持 SqlServer 特有的 [datetimeoffset](https://www.ktorm.org/api-docs/org.ktorm.support.sqlserver/datetimeoffset.html) 数据类型
+- 更多功能请参考详细的 API 文档 https://www.ktorm.org/api-docs/org.ktorm.support.sqlserver/index.html
 
-**ktorm-support-sqlite** 提供的功能有：
+**ktorm-support-sqlite**：
 
-- 支持使用 `limit` 函数进行分页，会自动翻译为 SQLite 的 `limit ?, ?` 语句
+- 支持 Ktorm 的标准分页函数，自动翻译为 SQLite 的 `limit ?, ?` 语句
+- 更多功能请参考详细的 API 文档 https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/index.html
 
-很遗憾地告诉大家，虽然 Ktorm 一直声称支持多种方言，但是实际上除了 MySQL 以外，我们对其他数据库的特殊语法的支持实在是十分有限。这是因为作者本人的精力有限，只能做到支持工作中常用的 MySQL，对于其他数据库纷繁复杂的特殊用法只能暂时把优先级降低。
+很遗憾地告诉大家，虽然 Ktorm 一直声称支持多种方言，但是实际上除了 MySQL 和 PostgreSQL 以外，我们对其他数据库的特殊语法的支持实在是十分有限。这是因为作者本人的精力有限，只能做到支持工作中常用的数据库，对于其他数据库纷繁复杂的特殊用法只能暂时把优先级降低。
 
 好在核心库中支持的标准 SQL 已经能够实现我们的大部分需求，在那些方言支持完成之前，只使用标准 SQL 的功能子集也不会影响我们的业务功能。
 

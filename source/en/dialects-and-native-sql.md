@@ -61,7 +61,6 @@ database.insertOrUpdate(Employees) {
     set(it.salary, 1000)
     set(it.hireDate, LocalDate.now())
     set(it.departmentId, 1)
-
     onDuplicateKey {
         set(it.salary, it.salary + 900)
     }
@@ -81,38 +80,41 @@ Perfect！
 
 Now, let's talk about Ktorm's built-in dialects' features. 
 
-Here is a list of features provided by module **ktorm-support-mysql**: 
+**ktorm-support-mysql**: 
 
-- Support paginations via `limit` function, translating paging expressions into MySQL's `limit ?, ?` statement. 
-- Add `bulkInsert` function for bulk insertion, different from `batchInsert` in the core module, it uses MySQL's bulk insertion syntax and the performance is much better. 
-- Add `insertOrUpdate` function for data "upsert", based on MySQL's feature of `on duplicate key update`. 
-- Add `naturalJoin` function for natural joining, based on `natural join` keyword. 
-- Add `jsonContains` function to determine if the specific item exists in a json array, based on the `json_contains` function in MySQL. 
-- Add `jsonExtract` function to obtain fields in a json, that's the `->` grammar in MySQL, based on `json_extract` function. 
-- Add `match` and `against` functions for fulltext search, based on MySQL's `match ... against ...` syntax. 
-- Add other functions such as `rand`, `ifnull`, `greatest`, `least`, `dateDiff`, `replace`, etc, supporting the corresponding functions in MySQL. 
+- Support standard pagination functions of Ktorm, translating to MySQL's `limit ?, ?` clause. 
+- Support extended syntax for insert statements, like [insertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/insert-or-update.html), [bulkInsert](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/bulk-insert.html), [bulkInsertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/bulk-insert-or-update.html), etc.
+- Support locking clause via [locking](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/locking.html) function, eg. `select ... for update`.
+- Support fulltext search via [match](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/match.html) and [against](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/against.html) functions. 
+- Support some common-used JSON operating functions, like [jsonContains](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/json-contains.html), [jsonExtract](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/json-extract.html).
+- Support some common-used functions like [IF](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/-i-f.html), [ifNull](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/if-null.html), [greatest](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/greatest.html), [least](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/least.html), [replace](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/replace.html), etc.
+- For more functionality, please refer to the API docs https://www.ktorm.org/api-docs/org.ktorm.support.mysql/index.html
 
-**ktorm-support-postgresql** provides: 
+**ktorm-support-postgresql**: 
 
-- Support paginations via `limit` function, translating paging expressions into PostgreSQL's `limit ? offset ?` statement. 
-- Add `insertOrUpdate` function for data "upsert", based on PostgreSQL's `on conflict (key) do update set` syntax.
-- Add `ilike` operator for string matchings ignoring cases, based on PostgreSQL's `ilike` keyword. 
-- Add `hstore` data type and a series of operators for it, such as `->`, `||`, `?`, `?&`, `?|` and so on. 
+- Support standard pagination functions of Ktorm, translating to PostgreSQL's `limit ? offset ?` clause.
+- Support extended syntax for insert statements, like [insertReturning](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/insert-returning.html), [insertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/insert-or-update.html), [bulkInsert](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/bulk-insert.html), [bulkInsertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/bulk-insert-or-update.html), etc. 
+- Support locking clause via [locking](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/locking.html) function, eg. `select ... for update`. 
+- Support [hstore](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/hstore.html) data type and a series of operators for it. 
+- For more functionality, please refer to the API docs  https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/index.html
 
-**ktorm-support-oracle** provides: 
+**ktorm-support-oracle**: 
 
-- Support paginations via `limit` function, translating paging expressions into Oracle's paging SQL using `rownum`. 
+- Support standard pagination functions of Ktorm, translating to Oracle's paging SQL using `rownum`.
+- For more functionality, please refer to the API docs  https://www.ktorm.org/api-docs/org.ktorm.support.oracle/index.html
 
-**ktorm-support-sqlserver** provides: 
+**ktorm-support-sqlserver**: 
 
-- Support paginations via `limit` function, translating paging expressions into SqlServer's paging SQL using `top` and `row_number() over(...)`. 
-- Support `datetimeoffset` data type. 
+- Support standard pagination functions of Ktorm, translating to SqlServer's paging SQL using `top` and `row_number over(...)`
+- Support [datetimeoffset](https://www.ktorm.org/api-docs/org.ktorm.support.sqlserver/datetimeoffset.html) data type. 
+- For more functionality, please refer to the API docs https://www.ktorm.org/api-docs/org.ktorm.support.sqlserver/index.html
 
-**ktorm-support-sqlite** provides: 
+**ktorm-support-sqlite**: 
 
-- Support paginations via `limit` function, translating paging expressions into SQLite's `limit ?, ?` statement. 
+- Support standard pagination functions of Ktorm, translating to SQLite's `limit ?, ?` statement. 
+- For more functionality, please refer to the API docs  https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/index.html
 
-Ktorm always claims that we are supporting many dialects, but actually, the support for databases other than MySQL is really not enough. I'm so sorry about that, my time and energy are really limited, so I have to lower the precedence of supporting other databases. 
+Ktorm always claims that we are supporting many dialects, but actually, the support for databases other than MySQL & PostgreSQL is really not enough. I'm so sorry about that, my time and energy are really limited, so I have to lower the precedence of supporting other databases. 
 
 Fortunately, the standard SQL supported by the core module is enough for most scenarios, so there is little influence on our business before the dialects are completed. 
 
