@@ -6,7 +6,7 @@ related_path: en/quick-start.html
 
 # 快速开始
 
-Ktorm 已经发布到 maven 中央仓库和 jcenter，因此，如果你使用 maven 的话，只需要在 `pom.xml` 文件里面添加一个依赖： 
+Ktorm 已经发布到 maven 中央仓库，因此，如果你使用 maven 的话，只需要在 `pom.xml` 文件里面添加一个依赖： 
 
 ```xml
 <dependency>
