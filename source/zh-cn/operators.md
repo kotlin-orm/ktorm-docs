@@ -12,35 +12,35 @@ related_path: en/operators.html
 
 Ktorm 的每个运算符实际上都是一个返回 `SqlExpression` 的 Kotlin 函数，下面是目前我们支持的所有运算符的列表及使用示例：
 
-| Kotlin 函数名 | SQL 关键字/符号 | 使用示例                                                     |
-| ------------- | --------------- | ------------------------------------------------------------ |
-| isNull        | is null         | Ktorm: Employees.name.isNull()<br />SQL: t_employee.name is null |
-| isNotNull     | is not null     | Ktorm: Employees.name.isNotNull()<br />SQL: t_employee.name is not null |
-| unaryMinus(-) | -               | Ktorm: -Employees.salary<br />SQL: -t_employee.salary        |
-| unaryPlus(+)  | +               | Ktorm: +Employees.salary<br />SQL: +t_employee.salary        |
-| not(!)        | not             | Ktorm: !Employees.name.isNull()<br />SQL: not (t_employee.name is null) |
-| plus(+)       | +               | Ktorm: Employees.salary + Employees.salary<br />SQL: t_employee.salary + t_employee.salary |
-| minus(-)      | -               | Ktorm: Employees.salary - Employees.salary<br />SQL: t_employee.salary - t_employee.salary |
-| times(*)      | *               | Ktorm: Employees.salary \* 2<br />SQL: t_employee.salary \* 2 |
-| div(/)        | /               | Ktorm: Employees.salary / 2<br />SQL: t_employee.salary / 2  |
-| rem(%)        | %               | Ktorm: Employees.id % 2<br />SQL: t_employee.id % 2          |
-| like          | like            | Ktorm: Employees.name like "vince"<br />SQL: t_employee.name like 'vince' |
-| notLike       | not like        | Ktorm: Employees.name notLike "vince"<br />SQL: t_employee.name not like 'vince' |
-| and           | and             | Ktorm: Employees.name.isNotNull() and (Employees.name like "vince")<br />SQL: t_employee.name is not null and t_employee.name like 'vince' |
-| or            | or              | Ktorm: Employees.name.isNull() or (Employees.name notLike "vince")<br />SQL: t_employee.name is null or t_employee.name not like 'vince' |
-| xor           | xor             | Ktorm: Employees.name.isNotNull() xor (Employees.name notLike "vince")<br />SQL: t_employee.name is not null xor t_employee.name not like 'vince' |
-| less          | <               | Ktorm: Employees.salary less 1000<br />SQL: t_employee.salary < 1000 |
-| lessEq        | <=              | Ktorm: Employees.salary lessEq 1000<br />SQL: t_employee.salary <= 1000 |
-| greater       | >               | Ktorm: Employees.salary greater 1000<br />SQL: t_employee.salary > 1000 |
-| greaterEq     | >=              | Ktorm: Employees.salary greaterEq 1000<br />SQL: t_employee.salary >= 1000 |
-| eq            | =               | Ktorm: Employees.id eq 1<br />SQL: t_employee.id = 1         |
-| notEq         | <>              | Ktorm: Employees.id notEq 1<br />SQL: t_employee.id <> 1     |
-| between       | between         | Ktorm: Employees.id between 1..3<br />SQL: t_employee.id between 1 and 3 |
-| notBetween    | not between     | Ktorm: Employees.id notBetween 1..3<br />SQL: t_employee.id not between 1 and 3 |
-| inList        | in              | Ktorm: Employees.departmentId.inList(1, 2, 3)<br />SQL: t_employee.department_id in (1, 2, 3) |
-| notInList     | not in          | Ktorm: Employees.departmentId notInList db.from(Departments).selectDistinct(Departments.id)<br />SQL: t_employee.department_id not in (select distinct t_department.id from t_department) |
-| exists        | exists          | Ktorm: exists(db.from(Employees).select())<br />SQL: exists (select * from t_employee) |
-| notExists     | not exists      | Ktorm: notExists(db.from(Employees).select())<br />SQL: not exists (select * from t_employee) |
+| Kotlin 函数名   | SQL 关键字/符号 | 使用示例                                                     |
+| --------------- | --------------- | ------------------------------------------------------------ |
+| isNull          | is null         | Ktorm: Employees.name.isNull()<br />SQL: t_employee.name is null |
+| isNotNull       | is not null     | Ktorm: Employees.name.isNotNull()<br />SQL: t_employee.name is not null |
+| unaryMinus (-)  | -               | Ktorm: -Employees.salary<br />SQL: -t_employee.salary        |
+| unaryPlus (+)   | +               | Ktorm: +Employees.salary<br />SQL: +t_employee.salary        |
+| not (!)         | not             | Ktorm: !Employees.name.isNull()<br />SQL: not (t_employee.name is null) |
+| plus (+)        | +               | Ktorm: Employees.salary + Employees.salary<br />SQL: t_employee.salary + t_employee.salary |
+| minus (-)       | -               | Ktorm: Employees.salary - Employees.salary<br />SQL: t_employee.salary - t_employee.salary |
+| times (*)       | *               | Ktorm: Employees.salary \* 2<br />SQL: t_employee.salary \* 2 |
+| div (/)         | /               | Ktorm: Employees.salary / 2<br />SQL: t_employee.salary / 2  |
+| rem (%)         | %               | Ktorm: Employees.id % 2<br />SQL: t_employee.id % 2          |
+| like            | like            | Ktorm: Employees.name like "vince"<br />SQL: t_employee.name like 'vince' |
+| notLike         | not like        | Ktorm: Employees.name notLike "vince"<br />SQL: t_employee.name not like 'vince' |
+| and             | and             | Ktorm: Employees.name.isNotNull() and (Employees.name like "vince")<br />SQL: t_employee.name is not null and t_employee.name like 'vince' |
+| or              | or              | Ktorm: Employees.name.isNull() or (Employees.name notLike "vince")<br />SQL: t_employee.name is null or t_employee.name not like 'vince' |
+| xor             | xor             | Ktorm: Employees.name.isNotNull() xor (Employees.name notLike "vince")<br />SQL: t_employee.name is not null xor t_employee.name not like 'vince' |
+| lt / less       | <               | Ktorm: Employees.salary lt 1000<br />SQL: t_employee.salary < 1000 |
+| lte / lessEq    | <=              | Ktorm: Employees.salary lte 1000<br />SQL: t_employee.salary <= 1000 |
+| gt / greater    | >               | Ktorm: Employees.salary gt 1000<br />SQL: t_employee.salary > 1000 |
+| gte / greaterEq | >=              | Ktorm: Employees.salary gte 1000<br />SQL: t_employee.salary >= 1000 |
+| eq              | =               | Ktorm: Employees.id eq 1<br />SQL: t_employee.id = 1         |
+| neq / notEq     | <>              | Ktorm: Employees.id neq 1<br />SQL: t_employee.id <> 1       |
+| between         | between         | Ktorm: Employees.id between 1..3<br />SQL: t_employee.id between 1 and 3 |
+| notBetween      | not between     | Ktorm: Employees.id notBetween 1..3<br />SQL: t_employee.id not between 1 and 3 |
+| inList          | in              | Ktorm: Employees.departmentId.inList(1, 2, 3)<br />SQL: t_employee.department_id in (1, 2, 3) |
+| notInList       | not in          | Ktorm: Employees.departmentId notInList db.from(Departments).selectDistinct(Departments.id)<br />SQL: t_employee.department_id not in (select distinct t_department.id from t_department) |
+| exists          | exists          | Ktorm: exists(db.from(Employees).select())<br />SQL: exists (select * from t_employee) |
+| notExists       | not exists      | Ktorm: notExists(db.from(Employees).select())<br />SQL: not exists (select * from t_employee) |
 
 这些运算符按照实现方式大概可以分为两类：
 

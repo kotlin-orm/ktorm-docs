@@ -181,7 +181,7 @@ where (t_employee.department_id = ?) and (t_employee.name like ?)
 
 在 `where` 闭包中，我们可以返回任何查询条件，这里我们使用 `eq`、`and` 和 `like` 运算符构造了一个。infix 是 Kotlin 提供的关键字，使用此关键字修饰的函数，在调用时可以省略点和括号，这样，代码写起来就像说话一样自然，我们这里使用的运算符正是 Ktorm 提供的 infix 函数。
 
-> Ktorm 提供的内置运算符分为两类，一类是通过运算符重载实现的，比如加减乘除取反取余等常用运算，还有一类就是基于 infix 函数实现的，如 `and`、`or`、`eq`、`like`、`greater`、`less` 等 Kotlin 中无法重载的运算符。
+> Ktorm 提供的内置运算符分为两类，一类是通过运算符重载实现的，比如加减乘除取反取余等常用运算，还有一类就是基于 infix 函数实现的，如 `and`、`or`、`eq`、`gt`、`lt`、`like` 等 Kotlin 中无法重载的运算符。
 
 有时候，我们的查询需要许多个筛选条件，这些条件使用 and 或 or 运算符连接，他们的数量不定，而且还会根据不同的情况启用不同的条件。为满足这种需求，许多 ORM 框架都提供了名为“动态查询”的特性，比如 MyBatis 的 `<if>` 标签。然而，在 Ktorm 中，这种需求根本就不是问题，因为 Ktorm 的查询都是纯 Kotlin 代码，因此天然具有这种“动态性”。我们看看下面这个查询：
 
@@ -251,7 +251,7 @@ val query = database
     .from(t)
     .select(t.departmentId, avg(t.salary))
     .groupBy(t.departmentId)
-    .having { avg(t.salary) greater 100.0 }
+    .having { avg(t.salary) gt 100.0 }
 ```
 
 这个查询获取平均工资大于 100 的部门，返回他们的部门 id 以及平均工资。用法与前面介绍的 `select`、`where` 等函数相似，生成的 SQL 也是十分简单直接：
@@ -270,7 +270,7 @@ val query = database
     .from(t)
     .select(t.departmentId, avg(t.salary), t.name)
     .groupBy(t.departmentId)
-    .having { avg(t.salary) greater 100.0 }
+    .having { avg(t.salary) gt 100.0 }
 ```
 
 现在生成的 SQL 是这样的：
@@ -404,7 +404,7 @@ database
     .from(Employees)
     .select(deptId, salaryAvg)
     .groupBy(deptId)
-    .having { salaryAvg greater 100.0 }
+    .having { salaryAvg gt 100.0 }
     .forEach { row ->
         println("${row[deptId]}:${row[salaryAvg]}")
     }

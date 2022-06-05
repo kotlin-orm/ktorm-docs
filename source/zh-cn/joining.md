@@ -48,7 +48,7 @@ val query = database
     .from(Employees)
     .leftJoin(Departments, on = Employees.departmentId eq Departments.id)
     .select(Employees.name, Departments.name)
-    .where { Employees.salary greater 100L }
+    .where { Employees.salary gt 100L }
 ```
 
 生成的 SQL 如下：

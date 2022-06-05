@@ -46,16 +46,16 @@ where t_employee.department_id = ?
 
 除了直接使用 `aggregateColumns` 函数以外，Ktorm 还为序列提供了许多方便的辅助函数，他们都是基于 `aggregateColumns` 函数实现的。比如 `maxBy { it.salary }` 即可获得工资的最大值，相当于 `aggregateColumns { max(it.salary) }`。下面是这些函数的一个列表：
 
-| 函数名    | 使用示例                           | 示例描述                           | 相当于                                                       |
-| --------- | ---------------------------------- | ---------------------------------- | ------------------------------------------------------------ |
-| count     | `count { it.salary greater 1000 }` | 获取薪水超 1000 的员工数           | `filter { it.salary greater 1000 }`<br/>`.aggregateColumns { count() }` |
-| any       | `any { it.salary greater 1000 }`   | 判断是否存在薪水大于 1000 的员工   | `count { it.salary greater 1000 } > 0`                       |
-| none      | `none { it.salary greater 1000 }`  | 判断是否不存在薪水大于 1000 的员工 | `count { it.salary greater 1000 } == 0`                      |
-| all       | `all { it.salary greater 1000 }`   | 判断是否所有员工的薪水都大于 1000  | `count { it.salary lessEq 1000 } == 0`                       |
-| sumBy     | `sumBy { it.salary }`              | 获得员工的薪水总和                 | `aggregateColumns { sum(it.salary) }`                        |
-| maxBy     | `maxBy { it.salary }`              | 获得员工薪水的最大值               | `aggregateColumns { max(it.salary) }`                        |
-| minBy     | `minBy { it.salary }`              | 获得员工薪水的最小值               | `aggregateColumns { min(it.salary) }`                        |
-| averageBy | `averageBy { it.salary }`          | 获得员工薪水的平均值               | `aggregateColumns { avg(it.salary) }`                        |
+| 函数名    | 使用示例                      | 示例描述                           | 相当于                                                       |
+| --------- | ----------------------------- | ---------------------------------- | ------------------------------------------------------------ |
+| count     | `count { it.salary gt 1000 }` | 获取薪水超 1000 的员工数           | `filter { it.salary gt 1000 }`<br/>`.aggregateColumns { count() }` |
+| any       | `any { it.salary gt 1000 }`   | 判断是否存在薪水大于 1000 的员工   | `count { it.salary gt 1000 } > 0`                            |
+| none      | `none { it.salary gt 1000 }`  | 判断是否不存在薪水大于 1000 的员工 | `count { it.salary gt 1000 } == 0`                           |
+| all       | `all { it.salary gt 1000 }`   | 判断是否所有员工的薪水都大于 1000  | `count { it.salary lte 1000 } == 0`                          |
+| sumBy     | `sumBy { it.salary }`         | 获得员工的薪水总和                 | `aggregateColumns { sum(it.salary) }`                        |
+| maxBy     | `maxBy { it.salary }`         | 获得员工薪水的最大值               | `aggregateColumns { max(it.salary) }`                        |
+| minBy     | `minBy { it.salary }`         | 获得员工薪水的最小值               | `aggregateColumns { min(it.salary) }`                        |
+| averageBy | `averageBy { it.salary }`     | 获得员工薪水的平均值               | `aggregateColumns { avg(it.salary) }`                        |
 
 ## 分组聚合
 

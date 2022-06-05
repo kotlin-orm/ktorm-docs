@@ -85,7 +85,7 @@ val staffs = database.staffs
 
 ```kotlin
 val counts = database.staffs
-    .filter { it.salary less 100000L }
+    .filter { it.salary lt 100000L }
     .groupingBy { it.sectionId }
     .eachCount()
 ```
