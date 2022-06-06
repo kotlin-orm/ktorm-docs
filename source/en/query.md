@@ -179,7 +179,7 @@ where (t_employee.department_id = ?) and (t_employee.name like ?)
 
 We can return any filter conditions in `where` closure, here we constructed one by operators `eq`, `and` and  `like`. Kotlin provides an infix keyword, functions marked with it can be called using the [infix notation](https://kotlinlang.org/docs/reference/functions.html#infix-notation) (omitting the dot and the parentheses for the call), that's how these operators work.  
 
-> Ktorm's built-in operators can be divided into two groups: those that is implemented by operator overloading, such as basic arithmetic operators; and those that is based on infix notations, such as `and`, `or`, `eq`, `like`, `greater`, `less`, etc. 
+> Ktorm's built-in operators can be divided into two groups: those that is implemented by operator overloading, such as basic arithmetic operators; and those that is based on infix notations, such as `and`, `or`, `eq`, `gt`, `lt`, `like`, etc. 
 
 Sometimes, we need a variable number of filter conditions in our queries, those conditions are combined with `and` or `or` operator and each of them can be enabled or disabled depending on different conditions. To meet this requirement, many ORM frameworks provide features like *dynamic query*, such as the `<if>` tag of MyBatis. However, this is not a problem at all in Ktorm, because queries in Ktorm are pure Kotlin codes, which is natively *dynamic*. Let's learn the query below: 
 
@@ -249,7 +249,7 @@ val query = database
     .from(t)
     .select(t.departmentId, avg(t.salary))
     .groupBy(t.departmentId)
-    .having { avg(t.salary) greater 100.0 }
+    .having { avg(t.salary) gt 100.0 }
 ```
 
 This query selects departments whose average salary is greater than 100, then returns the average salaries along with their department's IDs. The usage is similar to other extension functions like `select` and  `where`, and the generated SQL is also simple and direct too: 
@@ -268,7 +268,7 @@ val query = database
     .from(t)
     .select(t.departmentId, avg(t.salary), t.name)
     .groupBy(t.departmentId)
-    .having { avg(t.salary) greater 100.0 }
+    .having { avg(t.salary) gt 100.0 }
 ```
 
 The generated SQL will be changed to: 
@@ -402,7 +402,7 @@ database
     .from(Employees)
     .select(deptId, salaryAvg)
     .groupBy(deptId)
-    .having { salaryAvg greater 100.0 }
+    .having { salaryAvg gt 100.0 }
     .forEach { row ->
         println("${row[deptId]}:${row[salaryAvg]}")
     }

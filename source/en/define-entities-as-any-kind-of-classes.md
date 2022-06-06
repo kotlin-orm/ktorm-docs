@@ -85,7 +85,7 @@ Get the number of staffs with a salary of less than 100 thousand in each departm
 
 ```kotlin
 val counts = database.staffs
-    .filter { it.salary less 100000L }
+    .filter { it.salary lt 100000L }
     .groupingBy { it.sectionId }
     .eachCount()
 ```

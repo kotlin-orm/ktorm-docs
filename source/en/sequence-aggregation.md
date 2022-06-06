@@ -46,16 +46,16 @@ where t_employee.department_id = ?
 
 Additionally, Ktorm also provides many convenient helper functions, they are all implemented based on `aggregateColumns`. For example, we can use `maxBy { it.salary }` to obtain the max salary, that's equivalent to `aggregateColumns { max(it.salary) }`. Here is a list of these functions: 
 
-| Name      | Usage Example                      | Description                                 | Quivalent                                                    |
-| --------- | ---------------------------------- | ------------------------------------------- | ------------------------------------------------------------ |
-| count     | `count { it.salary greater 1000 }` | Count those whose salary greater than 1000  | `filter { it.salary greater 1000 }`<br/>`.aggregateColumns { count() }` |
-| any       | `any { it.salary greater 1000 }`   | True if any one's salary greater than 1000  | `count { it.salary greater 1000 } > 0`                       |
-| none      | `none { it.salary greater 1000 }`  | True if no one's salary greater than 1000   | `count { it.salary greater 1000 } == 0`                      |
-| all       | `all { it.salary greater 1000 }`   | True if everyone's salary greater than 1000 | `count { it.salary lessEq 1000 } == 0`                       |
-| sumBy     | `sumBy { it.salary }`              | Obtain the salaries' sum                    | `aggregateColumns { sum(it.salary) }`                        |
-| maxBy     | `maxBy { it.salary }`              | Obtain the salaries' max value              | `aggregateColumns { max(it.salary) }`                        |
-| minBy     | `minBy { it.salary }`              | Obtain the salaries' min value              | `aggregateColumns { min(it.salary) }`                        |
-| averageBy | `averageBy { it.salary }`          | Obtain the average salary                   | `aggregateColumns { avg(it.salary) }`                        |
+| Name      | Usage Example                 | Description                                 | Quivalent                                                    |
+| --------- | ----------------------------- | ------------------------------------------- | ------------------------------------------------------------ |
+| count     | `count { it.salary gt 1000 }` | Count those whose salary greater than 1000  | `filter { it.salary gt 1000 }`<br/>`.aggregateColumns { count() }` |
+| any       | `any { it.salary gt 1000 }`   | True if any one's salary greater than 1000  | `count { it.salary gt 1000 } > 0`                            |
+| none      | `none { it.salary gt 1000 }`  | True if no one's salary greater than 1000   | `count { it.salary gt 1000 } == 0`                           |
+| all       | `all { it.salary gt 1000 }`   | True if everyone's salary greater than 1000 | `count { it.salary lte 1000 } == 0`                          |
+| sumBy     | `sumBy { it.salary }`         | Obtain the salaries' sum                    | `aggregateColumns { sum(it.salary) }`                        |
+| maxBy     | `maxBy { it.salary }`         | Obtain the salaries' max value              | `aggregateColumns { max(it.salary) }`                        |
+| minBy     | `minBy { it.salary }`         | Obtain the salaries' min value              | `aggregateColumns { min(it.salary) }`                        |
+| averageBy | `averageBy { it.salary }`     | Obtain the average salary                   | `aggregateColumns { avg(it.salary) }`                        |
 
 ## Grouping Aggregation
 
