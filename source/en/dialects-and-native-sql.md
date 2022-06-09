@@ -96,6 +96,7 @@ Now, let's talk about Ktorm's built-in dialects' features.
 - Support extended syntax for insert statements, like [insertReturning](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/insert-returning.html), [insertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/insert-or-update.html), [bulkInsert](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/bulk-insert.html), [bulkInsertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/bulk-insert-or-update.html), etc. 
 - Support locking clause via [locking](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/locking.html) function, eg. `select ... for update`. 
 - Support [hstore](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/hstore.html) data type and a series of operators for it. 
+- Support for [earthdistance](https://www.postgresql.org/docs/12/earthdistance.html) extension and its [cube](https://www.postgresql.org/docs/12/cube.html) dependency.
 - For more functionality, please refer to the API docs  https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/index.html
 
 **ktorm-support-oracle**: 
