@@ -172,7 +172,7 @@ interface Foo : Entity<Foo> {
 
 在上面的例子中，如果我们调用 `Foo().printName()`，就会输出 `name` 属性的值。
 
-> 这看起来十分自然，但其背后的实现却没那么简单。我们知道，Ktorm 使用 JDK 动态代理创建实体对象，因此，`printName` 函数的调用实际上也会转发到 `EntityImplementation` 内部。这时， `EntityImplementation` 会检测到当前调用的函数并非抽象函数，然后自动查找到 `DefaultImpls` 类中的默认实现并调用之，然而在我们看起来，这跟直接调用该函数并没有任何区别。但是，如果你在方法上添加 `@JvmDefault` 注解，就可能导致 Ktorm 无法查找 `DefaultImpls` 类，具体原因有兴趣可以参考 [Kotlin 语言手册](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-default/index.html)，这对我们使用 Ktorm 并无太大影响。
+> 这看起来十分自然，但其背后的实现却没那么简单。我们知道，Ktorm 使用 JDK 动态代理创建实体对象，因此，`printName` 函数的调用实际上也会转发到 `EntityImplementation` 内部。这时， `EntityImplementation` 会检测到当前调用的函数并非抽象函数，然后通过一些手段找到这个函数的默认实现并调用之，然而在我们看起来，这跟直接调用该函数并没有任何区别。如果你对其中的原理该兴趣，可以阅读我们的[源码](https://github.com/kotlin-orm/ktorm/blob/master/ktorm-core/src/main/kotlin/org/ktorm/entity/DefaultMethodHandler.kt)。
 
 除了非抽象函数，Kotlin 也允许我们在接口中添加具有自定义 getter 或 setter 的属性。例如下面的代码，当调用 `upperName` 时，就会返回全大写的名称，其原理与前面所说的完全一致：
 
