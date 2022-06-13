@@ -120,7 +120,7 @@ Now, let's talk about Ktorm's built-in dialects' features.
 
 To be honest, Ktorm's support for special syntax of many database dialects is really not enough. This is because my time and energy are really limited, so I have to lower the precedence of some infrequently used dialect features. 
 
-Fortunately, the standard SQL supported by the core module is enough for most scenarios, so there is little influence on us even if some dialect features are lacking. 
+However, the standard SQL supported by the core module is enough for most scenarios, so there is little influence on us even if some dialect features are lacking. 
 
 Ktorm's design is open, it's easy to add features to it, and we have learned how to write our own extensions in the former sections, so it's possible for everyone to implement dialects by themselves. Welcome to fork the repository and send your pull requests to me, I'm glad to review and merge your code. Looking forward to your contributions!
 
