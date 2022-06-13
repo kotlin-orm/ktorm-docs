@@ -12,13 +12,13 @@ related_path: en/dialects-and-native-sql.html
 
 在 Ktorm 中，方言被抽象为一个接口 `SqlDialect`。Ktorm 目前支持多种数据库方言，每种方言都作为一个独立于 ktorm-core 的模块发布，他们都会提供一个自己的 `SqlDialect` 实现类：
 
-| 数据库类型 | 模块名                   | SqlDialect 实现类                                   |
-| ---------- | ------------------------ | --------------------------------------------------- |
+| 数据库类型 | 模块名                   | SqlDialect 实现类                              |
+| ---------- | ------------------------ | ---------------------------------------------- |
 | MySQL      | ktorm-support-mysql      | org.ktorm.support.mysql.MySqlDialect           |
 | PostgreSQL | ktorm-support-postgresql | org.ktorm.support.postgresql.PostgreSqlDialect |
-| Oracle     | ktorm-support-oracle     | org.ktorm.support.oracle.OracleDialect         |
-| SqlServer  | ktorm-support-sqlserver  | org.ktorm.support.sqlserver.SqlServerDialect   |
 | SQLite     | ktorm-support-sqlite     | org.ktorm.support.sqlite.SQLiteDialect         |
+| SqlServer  | ktorm-support-sqlserver  | org.ktorm.support.sqlserver.SqlServerDialect   |
+| Oracle     | ktorm-support-oracle     | org.ktorm.support.oracle.OracleDialect         |
 
 现在我们以 MySQL 的 `on duplicate key update` 功能为例，介绍如何在 Ktorm 中启用方言。
 
@@ -97,12 +97,16 @@ on duplicate key update salary = salary + ?
 - 支持 insert 语句的扩展语法，如 [insertReturning](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/insert-returning.html)、[insertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/insert-or-update.html)、[bulkInsert](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/bulk-insert.html)、[bulkInsertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/bulk-insert-or-update.html) 等函数
 - 通过 [locking](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/locking.html) 函数支持 `select ... for update` 等加锁语法
 - 支持 [hstore](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/hstore.html) 数据类型及其操作符
+- 支持 [cube](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/cube.html) 和 [earth](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/earth.html) 数据类型及其相关的函数
 - 更多功能请参考详细的 API 文档 https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/index.html
 
-**ktorm-support-oracle**：
+**ktorm-support-sqlite**：
 
-- 支持 Ktorm 的标准分页函数，自动翻译为 Oracle 中使用 `rownum` 筛选分页的写法
-- 更多功能请参考详细的 API 文档：https://www.ktorm.org/api-docs/org.ktorm.support.oracle/index.html
+- 支持 Ktorm 的标准分页函数，自动翻译为 SQLite 的 `limit ?, ?` 语句
+- 支持 insert 语句的扩展语法，如 [insertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/insert-or-update.html)、[bulkInsert](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/bulk-insert.html)、[bulkInsertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/bulk-insert-or-update.html) 等函数
+- 支持常用的 json 操作函数，如 [jsonExtract](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/json-extract.html)、[jsonPatch](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/json-patch.html)
+- 支持 [iif](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/iif.html)、[ifNull](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/if-null.html)、[instr](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/instr.html)、[replace](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/replace.html) 等常用函数
+- 更多功能请参考详细的 API 文档 https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/index.html
 
 **ktorm-support-sqlserver**：
 
@@ -110,16 +114,16 @@ on duplicate key update salary = salary + ?
 - 支持 SqlServer 特有的 [datetimeoffset](https://www.ktorm.org/api-docs/org.ktorm.support.sqlserver/datetimeoffset.html) 数据类型
 - 更多功能请参考详细的 API 文档 https://www.ktorm.org/api-docs/org.ktorm.support.sqlserver/index.html
 
-**ktorm-support-sqlite**：
+**ktorm-support-oracle**：
 
-- 支持 Ktorm 的标准分页函数，自动翻译为 SQLite 的 `limit ?, ?` 语句
-- 更多功能请参考详细的 API 文档 https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/index.html
+- 支持 Ktorm 的标准分页函数，自动翻译为 Oracle 中使用 `rownum` 筛选分页的写法
+- 更多功能请参考详细的 API 文档：https://www.ktorm.org/api-docs/org.ktorm.support.oracle/index.html
 
-很遗憾地告诉大家，虽然 Ktorm 一直声称支持多种方言，但是实际上除了 MySQL 和 PostgreSQL 以外，我们对其他数据库的特殊语法的支持实在是十分有限。这是因为作者本人的精力有限，只能做到支持工作中常用的数据库，对于其他数据库纷繁复杂的特殊用法只能暂时把优先级降低。
+老实说，Ktorm 对许多数据库方言的特殊语法的支持确实存在不足，这是因为作者本人的精力有限，只能做到支持工作中常用的功能，对于其他纷繁复杂的特殊语法只能暂时把优先级降低。
 
-好在核心库中支持的标准 SQL 已经能够实现我们的大部分需求，在那些方言支持完成之前，只使用标准 SQL 的功能子集也不会影响我们的业务功能。
+但好在核心库中支持的标准 SQL 已经能够实现我们的大部分需求，即使不使用特殊语法，只用标准 SQL 的功能子集也不会影响我们的业务功能。
 
-Ktorm 的设计是开放的，为其增加功能十分容易，我们在前面的章节中就曾经示范过如何对 Ktorm 进行扩展。因此如果你需要的话，完全可以自己编写扩展，同时，欢迎 fork 我们的仓库，提交 PR，我们会将你编写的扩展合并到主分支，让更多的人受益。期待您的贡献！
+Ktorm 的设计是开放的，为其增加功能十分容易，我们在前面的章节中就曾经示范过如何对 Ktorm 进行扩展。因此如果你需要的话，完全可以自己编写扩展，同时，欢迎 fork 我们的仓库，提交 PR，我们会合并你编写的扩展，让更多的人受益。期待您的贡献！
 
 ## 原生 SQL
 

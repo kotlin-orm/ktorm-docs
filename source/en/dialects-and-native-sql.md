@@ -12,13 +12,13 @@ It's known that there is a uniform standard for SQL language, but beyond the sta
 
 In Ktorm, `SqlDialect` interface is the abstraction of dialects. Ktorm supports many dialects now, each of them is published as a separated module independent of ktorm-core, and they all provide their own implementation of `SqlDialect`. 
 
-| Database Name | Module Name              | SqlDialect Implementation                           |
-| ------------- | ------------------------ | --------------------------------------------------- |
+| Database Name | Module Name              | SqlDialect Implementation                      |
+| ------------- | ------------------------ | ---------------------------------------------- |
 | MySQL         | ktorm-support-mysql      | org.ktorm.support.mysql.MySqlDialect           |
 | PostgreSQL    | ktorm-support-postgresql | org.ktorm.support.postgresql.PostgreSqlDialect |
-| Oracle        | ktorm-support-oracle     | org.ktorm.support.oracle.OracleDialect         |
-| SqlServer     | ktorm-support-sqlserver  | org.ktorm.support.sqlserver.SqlServerDialect   |
 | SQLite        | ktorm-support-sqlite     | org.ktorm.support.sqlite.SQLiteDialect         |
+| SqlServer     | ktorm-support-sqlserver  | org.ktorm.support.sqlserver.SqlServerDialect   |
+| Oracle        | ktorm-support-oracle     | org.ktorm.support.oracle.OracleDialect         |
 
 Now let's take MySQL's `on duplicate key update` feature as an example, learning how to enable dialects in Ktorm. 
 
@@ -96,13 +96,16 @@ Now, let's talk about Ktorm's built-in dialects' features.
 - Support extended syntax for insert statements, like [insertReturning](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/insert-returning.html), [insertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/insert-or-update.html), [bulkInsert](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/bulk-insert.html), [bulkInsertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/bulk-insert-or-update.html), etc. 
 - Support locking clause via [locking](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/locking.html) function, eg. `select ... for update`. 
 - Support [hstore](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/hstore.html) data type and a series of operators for it. 
-- Support for [earthdistance](https://www.postgresql.org/docs/12/earthdistance.html) extension and its [cube](https://www.postgresql.org/docs/12/cube.html) dependency.
+- Support [cube](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/cube.html) & [earth](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/earth.html) data type and their utility functions.
 - For more functionality, please refer to the API docs  https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/index.html
 
-**ktorm-support-oracle**: 
+**ktorm-support-sqlite**: 
 
-- Support standard pagination functions of Ktorm, translating to Oracle's paging SQL using `rownum`.
-- For more functionality, please refer to the API docs  https://www.ktorm.org/api-docs/org.ktorm.support.oracle/index.html
+- Support standard pagination functions of Ktorm, translating to SQLite's `limit ?, ?` statement. 
+- Support extended syntax for insert statements, like [insertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/insert-or-update.html), [bulkInsert](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/bulk-insert.html), [bulkInsertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/bulk-insert-or-update.html), etc.
+- Support some common-used JSON operating functions, like [jsonExtract](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/json-extract.html), [jsonPatch](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/json-patch.html).
+- Support some common-used functions like [iif](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/iif.html), [ifNull](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/if-null.html), [instr](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/instr.html), [replace](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/replace.html), etc.
+- For more functionality, please refer to the API docs  https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/index.html
 
 **ktorm-support-sqlserver**: 
 
@@ -110,16 +113,16 @@ Now, let's talk about Ktorm's built-in dialects' features.
 - Support [datetimeoffset](https://www.ktorm.org/api-docs/org.ktorm.support.sqlserver/datetimeoffset.html) data type. 
 - For more functionality, please refer to the API docs https://www.ktorm.org/api-docs/org.ktorm.support.sqlserver/index.html
 
-**ktorm-support-sqlite**: 
+**ktorm-support-oracle**: 
 
-- Support standard pagination functions of Ktorm, translating to SQLite's `limit ?, ?` statement. 
-- For more functionality, please refer to the API docs  https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/index.html
+- Support standard pagination functions of Ktorm, translating to Oracle's paging SQL using `rownum`.
+- For more functionality, please refer to the API docs  https://www.ktorm.org/api-docs/org.ktorm.support.oracle/index.html
 
-Ktorm always claims that we are supporting many dialects, but actually, the support for databases other than MySQL & PostgreSQL is really not enough. I'm so sorry about that, my time and energy are really limited, so I have to lower the precedence of supporting other databases. 
+To be honest, Ktorm's support for special syntax of many database dialects is really not enough. This is because my time and energy are really limited, so I have to lower the precedence of some infrequently used dialect features. 
 
-Fortunately, the standard SQL supported by the core module is enough for most scenarios, so there is little influence on our business before the dialects are completed. 
+Fortunately, the standard SQL supported by the core module is enough for most scenarios, so there is little influence on us even if some dialect features are lacking. 
 
-Ktorm's design is open, it's easy to add features to it, and we have learned how to write our own extensions in the former sections. So we can also implement dialects by ourselves if it's really needed. Welcome to fork the repository and send your pull requests to me, I'm glad to check and merge your code. Looking forward to your contributions!
+Ktorm's design is open, it's easy to add features to it, and we have learned how to write our own extensions in the former sections, so it's possible for everyone to implement dialects by themselves. Welcome to fork the repository and send your pull requests to me, I'm glad to review and merge your code. Looking forward to your contributions!
 
 ## Native SQL
 
