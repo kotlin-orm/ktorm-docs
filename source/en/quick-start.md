@@ -280,7 +280,7 @@ employee.salary = 100
 employee.flushChanges()
 ```
 
-Delete a entity from database: 
+Delete an entity from database: 
 
 ```kotlin
 val employee = database.employees.find { it.id eq 2 } ?: return
