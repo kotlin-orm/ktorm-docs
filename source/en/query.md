@@ -366,10 +366,10 @@ val query = database
     .from(Employees)
     .select(Employees.id)
     .union(
-        Departments.select(Departments.id)
+        database.from(Departments).select(Departments.id)
     )
     .unionAll(
-        Departments.select(Departments.id)
+        database.from(Departments).select(Departments.id)
     )
     .orderBy(Employees.id.desc())
 ```
