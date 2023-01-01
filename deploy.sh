@@ -38,12 +38,10 @@ srcLinks=(
 )
 
 links=(
-    "https://docs.spring.io/spring/docs/current/javadoc-api/^https://docs.spring.io/spring/docs/current/javadoc-api/package-list"
+#"https://docs.spring.io/spring/docs/current/javadoc-api/^https://docs.spring.io/spring/docs/current/javadoc-api/package-list"
     "https://fasterxml.github.io/jackson-databind/javadoc/2.9/^https://fasterxml.github.io/jackson-databind/javadoc/2.9/package-list"
     "https://fasterxml.github.io/jackson-core/javadoc/2.9/^https://fasterxml.github.io/jackson-core/javadoc/2.9/package-list"
     "https://fasterxml.github.io/jackson-annotations/javadoc/2.9/^https://fasterxml.github.io/jackson-annotations/javadoc/2.9/package-list"
-    "https://www.slf4j.org/apidocs/^https://www.slf4j.org/apidocs/package-list"
-    "http://commons.apache.org/proper/commons-logging/javadocs/api-release/^http://commons.apache.org/proper/commons-logging/javadocs/api-release/package-list"
 )
 
 # Clone the project repo. 
