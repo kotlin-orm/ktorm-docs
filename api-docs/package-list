@@ -5,6 +5,7 @@ $dokka.location:org.ktorm.dsl$and(kotlin.Boolean, org.ktorm.schema.ColumnDeclari
 $dokka.location:org.ktorm.dsl$combineConditions(kotlin.collections.Iterable((org.ktorm.schema.ColumnDeclaring((kotlin.Boolean)))), kotlin.Boolean)org.ktorm.dsl/kotlin.collections.-iterable/combine-conditions.html
 $dokka.location:org.ktorm.dsl$or(kotlin.Boolean, org.ktorm.schema.ColumnDeclaring((kotlin.Boolean)))org.ktorm.dsl/kotlin.-boolean/or.html
 $dokka.location:org.ktorm.dsl$xor(kotlin.Boolean, org.ktorm.schema.ColumnDeclaring((kotlin.Boolean)))org.ktorm.dsl/kotlin.-boolean/xor.html
+$dokka.location:org.ktorm.expression$newVisitorInstance(kotlin.reflect.KClass((org.ktorm.expression.newVisitorInstance.T)), org.ktorm.expression.SqlExpressionVisitorInterceptor)org.ktorm.expression/kotlin.reflect.-k-class/new-visitor-instance.html
 org.ktorm.database
 org.ktorm.dsl
 org.ktorm.entity
