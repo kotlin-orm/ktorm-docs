@@ -38,10 +38,11 @@ srcLinks=(
 )
 
 links=(
-#"https://docs.spring.io/spring/docs/current/javadoc-api/^https://docs.spring.io/spring/docs/current/javadoc-api/package-list"
-    "https://fasterxml.github.io/jackson-databind/javadoc/2.9/^https://fasterxml.github.io/jackson-databind/javadoc/2.9/package-list"
-    "https://fasterxml.github.io/jackson-core/javadoc/2.9/^https://fasterxml.github.io/jackson-core/javadoc/2.9/package-list"
-    "https://fasterxml.github.io/jackson-annotations/javadoc/2.9/^https://fasterxml.github.io/jackson-annotations/javadoc/2.9/package-list"
+    # "https://javadoc.io/doc/org.springframework/spring-jdbc/latest/^https://javadoc.io/doc/org.springframework/spring-jdbc/latest/package-list"
+    # "https://javadoc.io/doc/org.springframework/spring-tx/latest/^https://javadoc.io/doc/org.springframework/spring-tx/latest/package-list"
+    "https://www.javadoc.io/doc/com.fasterxml.jackson.core/jackson-databind/latest/^https://www.javadoc.io/doc/com.fasterxml.jackson.core/jackson-databind/latest/package-list"
+    "https://www.javadoc.io/doc/com.fasterxml.jackson.core/jackson-core/latest/^https://www.javadoc.io/doc/com.fasterxml.jackson.core/jackson-core/latest/package-list"
+    "https://www.javadoc.io/doc/com.fasterxml.jackson.core/jackson-annotations/latest/^https://www.javadoc.io/doc/com.fasterxml.jackson.core/jackson-annotations/latest/package-list"
 )
 
 # Clone the project repo. 
