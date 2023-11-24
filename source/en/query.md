@@ -59,7 +59,7 @@ There are some other useful properties in the `Query` class:
 
 ## Obtain Query Results
 
-Every JDBC user knows how to obtain query results from a `ResultSet`. We need a loop to iterate rows in it, calling the getter functions (such as `getInt`, `getString`, etc) to obtain the data of the specific column. A typical usage is based on a while loop: `while (rs.netxt())  { ... } `. Moreover, after finishing these works, we also have to call `close` function to release the resources. 
+Every JDBC user knows how to obtain query results from a `ResultSet`. We need a loop to iterate rows in it, calling the getter functions (such as `getInt`, `getString`, etc) to obtain the data of the specific column. A typical usage is based on a while loop: `while (rs.next())  { ... } `. Moreover, after finishing these works, we also have to call `close` function to release the resources. 
 
 That's not so hard, but it's still easy to get bored with writing those duplicated codes, but Ktorm provided another possibility for us. We can iterate results sets by a for-each loop, or process them via extension functions like `map`, `flatMap`, etc, just like the previous example. 
 
