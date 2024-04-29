@@ -49,7 +49,7 @@ Note:
 
 ## Transaction Manager
 
-Sometimes, the simple `useTransaction` function may not satisfy you requirements. You may want to control your transactions more precisely, like setting the isolation level of them, or rollinkg back them only when some special exceptions thrown in some conditions. At this time, you can obtain a `TransactionManager` via `database.transactionManager`, here is an example: 
+Sometimes, the simple `useTransaction` function may not satisfy you requirements. You may want to control your transactions more precisely, like setting the isolation level of them, or rolling back them only when some special exceptions thrown in some conditions. At this time, you can obtain a `TransactionManager` via `database.transactionManager`, here is an example:
 
 ```kotlin
 val transactionManager = database.transactionManager
