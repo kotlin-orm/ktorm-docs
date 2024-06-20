@@ -18,6 +18,7 @@ Ktorm supports joining queries by some extension functions, there are four built
 | left join  | leftJoin                | left join                  |
 | right join | rightJoin               | right join                 |
 | cross join | crossJoin               | cross join                 |
+| full outer join | fullOuterJoin      | full outer join            |
 
 The functions above are all extensions of `QuerySource`, a simple usage is given as follows: 
 
