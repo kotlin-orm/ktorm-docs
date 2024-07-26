@@ -191,7 +191,7 @@ Note that Ktorm only saves entities' property values when serialization, any oth
 
 > Java uses `ObjectOutputStream` to serialize objects, and uses `ObjectInputStream` to deserialize them, you can refer to their documentation for more details. 
 
-Besides of JDK serialization, the ktorm-jackson module also supports serializing entities in JSON format. This module provides an extension for Jackson, the famous JSON framework in Java word. It supports serializing entity objects into JSON format and parsing JSONs as entity objects. We just need to register the `KtormModule` into an `ObjectMapper`: 
+Besides of JDK serialization, the ktorm-jackson module also supports serializing entities in JSON format. This module provides an extension for Jackson, the famous JSON framework in Java world. It supports serializing entity objects into JSON format and parsing JSONs as entity objects. We just need to register the `KtormModule` into an `ObjectMapper`: 
 
 ```kotlin
 val objectMapper = ObjectMapper()
