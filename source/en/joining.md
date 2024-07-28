@@ -14,11 +14,11 @@ Ktorm supports joining queries by some extension functions, there are four built
 
 | Join Type  | Extension Function Name | Corresponding SQL Key Word |
 | ---------- | ----------------------- | -------------------------- |
+| cross join | crossJoin               | cross join                 |
 | inner join | innerJoin               | inner join                 |
 | left join  | leftJoin                | left join                  |
 | right join | rightJoin               | right join                 |
-| cross join | crossJoin               | cross join                 |
-| full outer join | fullOuterJoin      | full outer join            |
+| full join  | fullJoin                | full join                  |
 
 The functions above are all extensions of `QuerySource`, a simple usage is given as follows: 
 

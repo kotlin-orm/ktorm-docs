@@ -14,10 +14,11 @@ Ktorm 使用扩展函数对连接查询提供支持，内置的标准连接类�
 
 | 连接类型 | 扩展函数名 | 对应的 SQL 关键字 |
 | -------- | ---------- | ----------------- |
+| 交叉连接  | crossJoin  | cross join        |
 | 内连接   | innerJoin  | inner join        |
-| 左连接   | leftJoin   | left join         |
-| 右连接   | rightJoin  | right join        |
-| 交叉连接 | crossJoin  | cross join        |
+| 左外连接  | leftJoin   | left join         |
+| 右外连接  | rightJoin  | right join        |
+| 全外连接  | fullJoin   | full join         |
 
 以上函数都是 `QuerySource` 的扩展函数，最简单的使用方式如下：
 
