@@ -1,0 +1,21 @@
+////
+/// @group Structure and Grid
+////
+
+/// The default column count for the grid
+/// @type Number
+$dc-grid-column-count: 12 !default;
+
+/// The amount of space between columns at different screen sizes.
+/// <br>
+/// To use just one size, set the variable to a number instead of a map.
+/// @type Map
+$dc-grid-gutter: (
+    small: 16px,
+    medium: 24px,
+    large: 32px
+) !default;
+
+/// Grid breakpoints
+/// @type Map
+$dc-grid-breakpoints: $dc-breakpoints !default;

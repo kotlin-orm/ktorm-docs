@@ -1,0 +1,162 @@
+////
+/// @group core
+////
+
+@import "./colors";
+
+//  ---------------------------------------------------------------------------
+//
+//  Defines all BASIC variables.
+//
+//  ---------------------------------------------------------------------------
+
+//  = PATHS
+//  ---------------------------------------------------------------------------
+
+/// Fonts folder
+/// @type String
+$dc-font-path: "../fonts" !default;
+
+/// Images folder
+/// @type String
+$dc-image-path: "../img" !default;
+
+// = COLORS
+//
+
+$dc-primary-accent: $dc-blue40 !default;
+$dc-secondary-accent: $dc-orange40 !default;
+$dc-debugmessage-color: rgba(255, 255, 0, .9) !default;
+
+//  = SCAFFOLDING
+//  ---------------------------------------------------------------------------
+
+$dc-body-background-color: $dc-gray70 !default;
+$dc-text-color: $dc-gray10 !default;
+
+//  = LINKS
+//  ---------------------------------------------------------------------------
+
+$dc-link-color: $dc-primary-accent !default;
+$dc-link-color-hover: $dc-blue30 !default;
+
+//  = SPACING
+//  ---------------------------------------------------------------------------
+
+$dc-space50: .4rem !default;
+$dc-space75: .8rem !default;
+$dc-space100: 1.2rem !default;
+$dc-space125: $dc-space75 * 2 !default;
+$dc-space150: $dc-space100 * 2 !default;
+$dc-space200: $dc-space100 * 3 !default;
+$dc-space250: $dc-space100 * 4 !default;
+$dc-space300: $dc-space100 * 5 !default;
+$dc-space350: $dc-space100 * 6 !default;
+$dc-touch-size: $dc-space50 * 11 !default;
+
+
+//  = TYPOGRAPHY
+//  ---------------------------------------------------------------------------
+
+$dc-sans-font-family: "Ubuntu", "Helvetica Neue", "Helvetica", "Arial", sans-serif !default;
+$dc-serif-font-family: "Georgia", "Geneva", "Times New Roman", serif !default;
+$dc-mono-font-family: "Menlo", "Monaco", "Consolas", "Courier New", monospace !default;
+
+$dc-html-font-size: 62.5% !default;
+$dc-html-line-height: 1 !default;
+$dc-body-font-size: 1.4rem !default;
+$dc-body-line-height: $dc-space150 !default;
+$dc-base-font-family: $dc-sans-font-family !default;
+$dc-alt-font-family: $dc-sans-font-family !default;
+
+$dc-font50: 1.1rem !default;
+$dc-font100: 1.4rem !default;
+$dc-font150: 1.8rem !default;
+$dc-font200: 2.2rem !default;
+$dc-font250: 2.7rem !default;
+$dc-font300: 3.4rem !default;
+
+$dc-normal-font-weight: 300 !default;
+$dc-bold-font-weight: 500 !default;
+
+$dc-headings-font-family: $dc-sans-font-family !default;
+$dc-headings-font-weight: $dc-normal-font-weight !default;
+$dc-headings-color: $dc-text-color !default;
+
+$dc-h1-size: $dc-font300 !default;
+$dc-h2-size: $dc-font250 !default;
+$dc-h3-size: $dc-font200 !default;
+$dc-h4-size: $dc-font150 !default;
+
+$dc-h1-line-height: 4.8rem !default;
+$dc-h2-line-height: 3.6rem !default;
+$dc-h3-line-height: 3.6rem !default;
+$dc-h4-line-height: 2.4rem !default;
+
+
+//  = BORDERS & RADII
+//  ---------------------------------------------------------------------------
+
+$dc-radius100: 2px !default;
+$dc-radius50: 1px !default;
+$dc-border50: 1px !default;
+$dc-border100: 2px !default;
+$dc-border150: 4px !default;
+
+//  = BOX SHADOW
+//  ---------------------------------------------------------------------------
+$dc-box-shadow-color: rgba(0, 0, 0, .2) !default;
+$dc-box-shadow100: 0 1px 1px $dc-box-shadow-color !default;
+
+//  = Z-INDEX
+//  ---------------------------------------------------------------------------
+$dc-z-index100: 9999 !default;
+
+//  = BREAKPOINTS
+//  ---------------------------------------------------------------------------
+
+// Base is 16px at this point
+
+/// base breakpoint
+/// @type Number
+$dc-tiny-width: 0 !default;
+
+/// small screens breakpoint 320px {Smartphones}
+/// @type Number
+$dc-small-width: 20em !default;
+
+/// medium screens breakpoint 600px {Tablets}
+/// @type Number
+$dc-medium-width: 37.5em !default;
+
+/// large screens breakpoint 1024px {Desktops}
+/// @type Number
+$dc-large-width: 64em !default;
+
+/// huge screens breakpoint 1280px {Full HD}
+/// @type Number
+$dc-huge-width: 80em !default;
+
+/// giant breakpoint 1280px {Full HD}
+/// @deprecated kept for legacy reasons
+/// @type Number
+$dc-giant-width: 80em !default;
+
+/// monstrous breakpoint 1400px
+/// @deprecated kept for legacy reasons
+/// @type Number
+$dc-monstrous-width: 100em !default;
+
+/// responsive breakpoints map
+/// @type Map
+$dc-breakpoints: (
+    tiny: $dc-tiny-width,
+    small: $dc-small-width,
+    medium: $dc-medium-width,
+    large: $dc-large-width,
+    huge: $dc-huge-width
+) !default;
+
+//  = Atoms default
+//  ---------------------------------------------------------------------------
+$dc-tab-color : $dc-orange40 !default;

@@ -1,0 +1,266 @@
+// @import "../core/core";
+
+@mixin _dc-table-element--is-block {
+    display: block;
+    width: 100%;
+    font-weight: $dc-normal-font-weight;
+}
+
+@mixin _dc-table__tr--spacing-modifier($padding, $child-column-selector : ".dc-table__td") {
+    @media (min-width: $dc-medium-width) {
+        > #{$child-column-selector} {
+            padding-top: $padding + .1;
+            padding-bottom: $padding + .1;
+        }
+    }
+}
+
+@mixin dc-table {
+    width: 100%;
+    border-radius: 2px;
+    background: $dc-white;
+    text-align: left;
+}
+
+@mixin dc-table--responsive(
+    $thead-selector : ".dc-table__thead",
+    $th-selector : ".dc-table__th",
+    $tbody-selector : ".dc-table__tbody",
+    $tr-selector : ".dc-table__tr",
+    $tr-interactive--selector : ".dc-table__tr--interactive",
+    $td-selector : ".dc-table__td") {
+    @media (max-width: $dc-medium-width - .1) {
+        @include _dc-table-element--is-block;
+
+        #{$thead-selector} {
+            display: none;
+        }
+
+        #{$th-selector}, #{$tbody-selector}, #{$tr-selector}, #{$td-selector} {
+            @include _dc-table-element--is-block;
+        }
+
+        #{$tr-selector} {
+            @media (max-width: $dc-large-width - .1) {
+                position: relative;
+                padding: $dc-space100 0;
+                border-bottom: 1px solid $dc-gray70;
+
+                &:last-child {
+                    border-bottom: 0 none;
+                }
+            }
+        }
+
+        #{$td-selector} {
+            @media (max-width: $dc-medium-width - .1) {
+                min-height: $dc-space150;
+                padding-left: calc(30% + 12px);
+                text-align: left;
+
+                &:first-child {
+                    padding-left: calc(30% + 12px);
+                }
+
+                &:before {
+                    display: block;
+                    position: absolute;
+                    right: 70%;
+                    left: 0;
+                    max-width: 30%;
+                    font-size: $dc-font50;
+                    font-weight: $dc-bold-font-weight;
+                    line-height: $dc-body-line-height;
+                    text-align: right;
+                    text-overflow: ellipsis;
+                    text-transform: uppercase;
+                    content: attr(data-col);
+                    overflow: hidden;
+                }
+            }
+        }
+
+        #{$tr-interactive--selector} {
+            @media (max-width: $dc-medium-width - .1) {
+                &:after {
+                    position: absolute;
+                    top: 50%;
+                    right: -.6rem;
+                    width: 3.6rem;
+                    height: 3.6rem;
+                    margin-top: -1.8rem;
+                    background-image: url("#{$dc-image-path}/svg-icons/arrow-right.svg");
+                    content: " ";
+                }
+            }
+        }
+    }
+}
+
+
+@mixin dc-table__th {
+    position: relative;
+    font-weight: $dc-bold-font-weight;
+    text-align: left;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+@mixin dc-table__th--sortable($child-sorter-selector : ".dc-table__sorter", $sorter-modifier-ascending : "--ascending", $sorter-modifier-descending : "--descending") {
+    padding-right: 20px;
+    cursor: pointer;
+
+    #{$child-sorter-selector} {
+        position: absolute;
+        top: 9px;
+        margin-left: 4px;
+        transition: opacity .3s;
+        border-top: 0;
+        border-right: 4px solid transparent;
+        border-bottom: 4px solid $dc-gray50;
+        border-left: 4px solid transparent;
+        content: "";
+
+        &:after {
+            position: absolute;
+            top: 6px;
+            margin-left: -4px;
+            transition: opacity .3s;
+            border-top: 4px solid $dc-gray50;
+            border-right: 4px solid transparent;
+            border-bottom: 0;
+            border-left: 4px solid transparent;
+            content: "";
+        }
+
+        &#{$sorter-modifier-descending} {
+            &:after {
+                border-top: 4px solid $dc-gray10;
+            }
+        }
+
+        &#{$sorter-modifier-ascending} {
+            border-bottom: 4px solid $dc-gray10;
+        }
+    }
+
+    &:hover {
+
+        #{$child-sorter-selector} {
+            border-bottom: 4px solid $dc-gray10;
+        }
+
+        #{$child-sorter-selector}#{$sorter-modifier-ascending} {
+            border-bottom: 4px solid $dc-gray50;
+
+            &:after {
+                border-top: 4px solid $dc-gray10;
+            }
+        }
+
+        #{$child-sorter-selector}#{$sorter-modifier-descending} {
+            border-bottom: 4px solid $dc-gray10;
+
+            &:after {
+                border-top: 4px solid $dc-gray50;
+            }
+        }
+    }
+}
+
+
+@mixin dc-table__tr {
+    @include dc-cf;
+    border-bottom: 1px solid $dc-gray70;
+    cursor: default;
+}
+
+@mixin dc-table__tr--interactive {
+    cursor: pointer;
+
+    &:hover {
+        background: $dc-blue80;
+    }
+}
+
+@mixin dc-table__tr--tight {
+    @include _dc-table__tr--spacing-modifier($dc-space50);
+}
+
+@mixin dc-table__tr--comfortable {
+    @include _dc-table__tr--spacing-modifier($dc-space100);
+}
+
+@mixin dc-table__tr--spacious {
+    @include _dc-table__tr--spacing-modifier($dc-space125);
+}
+
+@mixin dc-table__td {
+    padding: $dc-space75 + .1 $dc-space50 $dc-space75 + .1;
+    font-weight: $dc-normal-font-weight;
+    line-height: $dc-body-line-height;
+
+    &:first-child {
+        padding-left: $dc-space100 / 2;
+    }
+}
+
+@mixin dc-table__item-title {
+    font-weight: $dc-bold-font-weight;
+}
+
+@mixin dc-table__actions-wrapper {
+    display: none;
+}
+
+@mixin dc-table-selectors {
+
+    .dc-table {
+        @include dc-table;
+    }
+
+    .dc-table--responsive {
+        @include dc-table--responsive;
+    }
+
+    .dc-table__item-title {
+        @include dc-table__item-title;
+    }
+
+    .dc-table__th {
+        @include dc-table__th;
+    }
+
+    .dc-table__th--sortable {
+        @include dc-table__th--sortable;
+
+    }
+
+    .dc-table__tr {
+        @include dc-table__tr;
+    }
+
+    .dc-table__tr--tight {
+        @include dc-table__tr--tight;
+    }
+
+    .dc-table__tr--comfortable {
+        @include dc-table__tr--comfortable;
+    }
+
+    .dc-table__tr--spacious {
+        @include dc-table__tr--spacious;
+    }
+
+    .dc-table__tr--interactive {
+        @include dc-table__tr--interactive;
+    }
+
+    .dc-table__td {
+        @include dc-table__td;
+    }
+
+    .dc-table__actions-wrapper {
+        @include dc-table__actions-wrapper;
+    }
+}

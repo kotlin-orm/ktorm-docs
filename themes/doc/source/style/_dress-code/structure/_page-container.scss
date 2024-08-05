@@ -1,0 +1,35 @@
+@mixin dc-page {
+
+    padding: $dc-space75;
+
+    @media (min-width:$dc-medium-width) {
+        padding: $dc-space100;
+    }
+
+    @media (min-width:$dc-large-width) {
+        padding: $dc-space150;
+    }
+
+    @media (min-width:$dc-huge-width) {
+        padding: $dc-space150 $dc-space250;
+    }
+}
+
+@mixin dc-container {
+    margin: 0 auto;
+
+    &--limited {
+        max-width: 120rem;
+    }
+}
+
+
+@mixin dc-structure-selectors {
+    .dc-page {
+        @include dc-page;
+    }
+
+    .dc-container {
+        @include dc-container;
+    }
+}

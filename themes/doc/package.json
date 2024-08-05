@@ -36,7 +36,6 @@
     "clipboard": "^2.0.4",
     "codacy-coverage": "^3.4.0",
     "consolidate": "^0.15.1",
-    "dress-code": "~2.4.0",
     "ejs": "^2.7.2",
     "escape-string-regexp": "^2.0.0",
     "hexo-log": "~4.1.0",
