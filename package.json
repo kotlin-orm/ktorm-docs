@@ -13,9 +13,8 @@
     "hexo-generator-tag": "~2.0.0",
     "hexo-neat": "~1.0.9",
     "hexo-renderer-ejs": "~2.0.0",
-    "hexo-renderer-marked": "~6.3.0",
+    "hexo-renderer-markdown-it-plus": "~1.0.6",
     "hexo-renderer-sass": "~0.5.0",
-    "hexo-renderer-stylus": "~3.0.1",
     "hexo-server": "~3.0.0"
   }
 }
