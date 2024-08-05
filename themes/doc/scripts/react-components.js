@@ -24,10 +24,9 @@ const components = {
  * @param  {Object} [props={}] - injected props
  * @return {string}
  */
-function reactComponent (componentName, props = {}) {
+function reactComponent(componentName, props = {}) {
     const Component = components[componentName];
-    const componentFactory = React.createFactory(Component);
-    return ReactDOM.renderToString(componentFactory(props));
+    return ReactDOM.renderToString(React.createElement(Component, props));
 }
 
 hexo.extend.helper.register('react_component', reactComponent);
