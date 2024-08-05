@@ -2,8 +2,8 @@
 // @import "../atoms/divider";
 
 @mixin dc-btn-dropdown {
-    @include dc-cf;
     position: relative;
+    @include dc-cf;
 }
 
 @mixin dc-btn-dropdown__arrow {

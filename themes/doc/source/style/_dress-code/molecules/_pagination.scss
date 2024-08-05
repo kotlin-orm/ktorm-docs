@@ -5,11 +5,11 @@
 }
 
 @mixin dc-pagination-btn {
-    @include dc-btn--in-btn-group;
-
     background: $dc-white;
     color: $dc-blue40;
     cursor: pointer;
+
+    @include dc-btn--in-btn-group;
 
     &:hover {
         background: $dc-blue80;

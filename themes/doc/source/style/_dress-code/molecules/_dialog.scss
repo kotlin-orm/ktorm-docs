@@ -54,21 +54,21 @@
 }
 
 @mixin dc-dialog__title {
-    @include dc-h3;
     display: inline-block;
     margin: 0 0 $dc-space50;
     color: $dc-gray10;
     font-size: 2.2rem;
     font-weight: 300;
+    @include dc-h3;
 }
 
 @mixin dc-dialog__subtitle {
-    @include dc-h4;
     display: inline-block;
     margin: 0 0 $dc-space50;
     color: $dc-gray50;
     font-size: 1.4rem;
     font-weight: 300;
+    @include dc-h4;
 }
 
 @mixin dc-dialog-selectors {

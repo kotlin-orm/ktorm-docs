@@ -10,8 +10,8 @@
 }
 
 @mixin dc-btn-group-row {
-    @include dc-cf;
     clear: both;
+    @include dc-cf;
 }
 
 @mixin dc-btn-group--in-row {

@@ -140,9 +140,9 @@
 }
 
 @mixin dc-heading($font-size, $line-height, $small-selector: ".dc-small") {
-    @include dc-heading-base($small-selector);
     font-size: $font-size;
     line-height: $line-height;
+    @include dc-heading-base($small-selector);
 }
 
 @mixin dc-h1 {

@@ -1,7 +1,7 @@
 @mixin dc-row {
-    @include dc-grid-row;
     display: flex;
     flex-flow: row wrap;
+    @include dc-grid-row;
 }
 
 @mixin dc-row--collapse ($column-selector: ".dc-column") {

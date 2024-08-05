@@ -3,14 +3,13 @@
 }
 
 @mixin dc-tab {
-    @include dc-cf;
-
     display: block;
     margin: 0;
     padding: 0;
     background-color: $dc-white;
     list-style: none;
     box-shadow: $dc-box-shadow100;
+    @include dc-cf;
 }
 
 @mixin dc-tab--vertical {

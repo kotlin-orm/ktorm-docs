@@ -1,4 +1,5 @@
 // @import "../core/core";
+@use "sass:math";
 
 $dc-spinner-width: 64px;
 $dc-spinner-stroke-width: 4px;
@@ -38,8 +39,8 @@ $dc-spinner-stroke-width: 4px;
 @mixin dc-spinner--small {
     &,
     &:after {
-        width: $dc-spinner-width / 2;
-        height: $dc-spinner-width / 2;
+        width: math.div($dc-spinner-width, 2);
+        height: math.div($dc-spinner-width, 2);
         border-radius: 50%;
     }
 }
@@ -49,7 +50,7 @@ $dc-spinner-stroke-width: 4px;
 }
 
 @mixin dc-spinner--thin {
-    border-width: $dc-spinner-stroke-width / 2;
+    border-width: math.div($dc-spinner-stroke-width, 2);
 }
 
 @mixin dc-spinner--error {

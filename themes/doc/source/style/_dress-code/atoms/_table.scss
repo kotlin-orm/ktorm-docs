@@ -1,4 +1,5 @@
 // @import "../core/core";
+@use "sass:math";
 
 @mixin _dc-table-element--is-block {
     display: block;
@@ -170,9 +171,9 @@
 
 
 @mixin dc-table__tr {
-    @include dc-cf;
     border-bottom: 1px solid $dc-gray70;
     cursor: default;
+    @include dc-cf;
 }
 
 @mixin dc-table__tr--interactive {
@@ -201,7 +202,7 @@
     line-height: $dc-body-line-height;
 
     &:first-child {
-        padding-left: $dc-space100 / 2;
+        padding-left: math.div($dc-space100, 2);
     }
 }
 
