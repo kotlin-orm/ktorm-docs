@@ -6,8 +6,7 @@ const allowedProperties = {
     'theme',
     'theme_config',
     'time_format',
-    'timezone',
-    'algolia'
+    'timezone'
   ],
   page: [
     'path',
