@@ -20,6 +20,7 @@ home:
 
   - title: API 文档
     link: api-docs/index.html
+    target: _blank
     color: red
     icon: paperclip
     description: 查看 Ktorm 中类与函数的 API 文档
@@ -108,10 +109,12 @@ main:
   - text: API 文档
     type: support-link
     path: api-docs/index.html
+    target: _blank
 
   - text: 问题反馈
     type: support-link
     path: https://github.com/kotlin-orm/ktorm/issues/new
+    target: _blank
 
   - text: 打赏作者
     type: support-link

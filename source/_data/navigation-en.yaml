@@ -20,6 +20,7 @@ home:
 
   - title: API Documents
     link: api-docs/index.html
+    target: _blank
     color: red
     icon: paperclip
     description: API documents for Ktorm's classes and functions.
@@ -108,10 +109,12 @@ main:
   - text: API Documents
     type: support-link
     path: api-docs/index.html
+    target: _blank
 
   - text: Issue Feedback
     type: support-link
     path: https://github.com/kotlin-orm/ktorm/issues/new
+    target: _blank
 
   - text: Sponsor the Project
     type: support-link

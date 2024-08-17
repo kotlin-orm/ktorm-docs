@@ -1,5 +1,5 @@
 const React = require('react');
-const ReactDOM = require('react-dom');
+const ReactDOM = require('react-dom/client');
 const $ = require('jquery');
 const {Sidebar, SidebarToggle, SidebarClose, Navbar, Logo} = require('./components.jsx');
 const {LangSwitcher} = require('../lang-switcher/components.jsx');
@@ -111,14 +111,14 @@ class Navigation extends React.Component {
       const span = document.createElement('span');
       h.insertBefore(span, h.firstChild);
 
-      ReactDOM.render((
+      ReactDOM.createRoot(span).render((
         <a
           className="doc-anchor"
           href={'#' + h.id}
           aria-hidden={true}
           data-scroll>
         </a>
-      ), span);
+      ));
     });
   }
 

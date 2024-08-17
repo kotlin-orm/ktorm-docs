@@ -38,13 +38,12 @@
             <% var item = navigation.home[i]; %>
             <div class="cards-item cards-item-<%- item.color %>" >
                 <div class="cards-item-inner" >
-                    <a href="<%- url_for(item.link) %>">
+                    <a href="<%- url_for(item.link) %>" target="<%- item.target || '_self' %>">
                         <i class="card-icon fa fa-3x fa-<%- item.icon %>"></i>
                         <h3 class="card-title"><%- item.title %></h3>
                     </a>
                     <p class="card-description">
                         <%- item.description %>
-                        <br/><br/><br/><br/>
                     </p>
                 </div>
             </div>
