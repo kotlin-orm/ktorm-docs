@@ -12,7 +12,6 @@ class Navigation extends React.Component {
     super(props);
 
     this.url_for = this.props.url_for;
-    this.items = this.getItems();
 
     this.state = {
       collapsed: false,
@@ -28,6 +27,7 @@ class Navigation extends React.Component {
 
     this.$body = $('body');
     this.$content = $('.doc-content');
+    this.items = this.getItems();
 
     // this selector is wrapped in a function
     // since the selected element can be removed and recreated depending on the state
@@ -45,7 +45,8 @@ class Navigation extends React.Component {
     }
 
     this.setState({
-      tocItems
+      tocItems,
+      visibleHeaderId: window.location.hash.replace('#', '')
     });
   }
 
@@ -73,7 +74,9 @@ class Navigation extends React.Component {
 
         // check if the item represents the current page,
         // and traverse ancestors
-        if (item.path === page.path || item.path === page.path.replace('index.html', '')) {
+        const itemPath = (item.path || '').replace(/index\.html$/, '').replace(/\/$/, '');
+        const pagePath = (page.path || '').replace(/index\.html$/, '').replace(/\/$/, '');
+        if (item.type !== 'label' && itemPath === pagePath) {
           item.isCurrent = true;
           (function walk (p) {
             if (p) {

@@ -28,7 +28,7 @@ home:
 main:
   - text: Overview
     type: link
-    path: ''
+    path: '/'
 
   - text: Quick Start
     type: link

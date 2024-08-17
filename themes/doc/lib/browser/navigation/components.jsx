@@ -189,9 +189,9 @@ class SidebarItem extends React.Component  {
           <span onClick={this.toggleChildrenVisibility.bind(this)} className={toggleClassName}>{item.text}</span> :
           <a
             className={toggleClassName}
-            href={url_for(item.path)}
+            href={item.path ? url_for(item.path) : '/'}
             target={item.target ? item.target : '_self'}>
-            <span>{ item.text }</span>
+            <span>{item.text}</span>
           </a>
         }
         { toc }
