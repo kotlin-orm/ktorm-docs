@@ -247,6 +247,17 @@
         height: 30px;
       }
     }
+    &--current.doc-sidebar-list__item--no-children > a::before {
+      position: absolute;
+      left: 2.2rem;
+      display: block;
+      width: 1rem;
+      height: 1rem;
+      line-height: 1rem;
+      margin-top: 0.85rem;
+      text-align: center;
+      content: '-';
+    }
   }
 
   &__toc-list {

@@ -171,6 +171,7 @@ class SidebarItem extends React.Component  {
       'doc-sidebar-list__item--current': isCurrent,
       'doc-sidebar-list__item--current-ancestor': !!isCurrentAncestor,
       'doc-sidebar-list__item--has-children': hasChildren,
+      'doc-sidebar-list__item--no-children': !hasChildren,
       'doc-sidebar-list__item--children-list--hidden': hasChildren && !childrenListIsVisible,
       [className]: true
     });
