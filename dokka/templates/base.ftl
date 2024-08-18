@@ -28,8 +28,25 @@
     </script>
     <#-- Resources (scripts, stylesheets) are handled by Dokka. Use customStyleSheets and customAssets to change them. -->
     <@resources/>
+    <#-- Custom styles -->
+    <style>
+      :root {
+        --dokka-logo-image-url: url('/images/logo.png');
+        --dokka-logo-height: 24px;
+        --dokka-logo-width: 24px;
+      }
+    </style>
   </head>
   <body>
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-180275463-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+
     <div class="root">
       <@header.display/>
       <div id="container">
