@@ -39,10 +39,21 @@
         display: block;
         padding-top: 20px;
         font-size: 16px;
+        line-height: 1.6em;
         color: #666;
         overflow: hidden;
         white-space: nowrap;
         text-align: center;
+      }
+      .footer img {
+        display: inline-block;
+        padding: 0 5px;
+        max-width: 100%;
+        position: relative;
+        vertical-align: text-bottom;
+      }
+      .theme-dark .footer {
+        color: hsla(0, 0%, 100%, 0.6);
       }
     </style>
   </head>
