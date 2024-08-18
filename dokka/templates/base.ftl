@@ -35,6 +35,15 @@
         --dokka-logo-height: 24px;
         --dokka-logo-width: 24px;
       }
+      .footer {
+        display: block;
+        padding-top: 20px;
+        font-size: 16px;
+        color: #666;
+        overflow: hidden;
+        white-space: nowrap;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
