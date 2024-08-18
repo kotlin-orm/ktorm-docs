@@ -20,7 +20,7 @@ echo "www.ktorm.org" > "$BASEDIR/public/CNAME"
 git clone --depth=1 --branch=dev https://github.com/kotlin-orm/ktorm.git "$PROJECT_DIR"
 
 # Generate dokka html. 
-cd "$PROJECT_DIR" && ./gradlew dokkaHtmlMultiModule
+cd "$PROJECT_DIR" && ./gradlew dokkaHtmlMultiModule -Ddokka.templatesDir="$BASEDIR/dokka/templates"
 cp -r "$PROJECT_DIR/build/dokka/htmlMultiModule" "$BASEDIR/public/api-docs"
 
 # Skip Github deployement.
