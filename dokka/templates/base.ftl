@@ -35,6 +35,11 @@
         --dokka-logo-height: 24px;
         --dokka-logo-width: 24px;
       }
+      @media (max-width: 759px) {
+        .library-name--link::before {
+          display: inline-block;
+        }
+      }
       .footer {
         display: block;
         padding-top: 20px;
