@@ -177,7 +177,7 @@ class Navigation extends React.Component {
   }
 
   onContentClick () {
-    if ( this.$body.hasClass(SIDEBAR_IS_VISIBLE_CLASS) ) {
+    if (this.$body.hasClass(SIDEBAR_IS_VISIBLE_CLASS)) {
       this.toggleSidebar();
     }
   }
@@ -192,7 +192,7 @@ class Navigation extends React.Component {
 
   uncollapseSidebar () {
     this.$body.removeClass(NAVIGATION_IS_COLLAPSED_CLASS);
-    this.$searchFormInput().focus();
+    this.$searchFormInput()[0].focus();
 
     if (window.localStorage) {
       window.localStorage.setItem('navigation_collapsed', 'false');
@@ -201,6 +201,10 @@ class Navigation extends React.Component {
 
   toggleSidebar () {
     this.$body.toggleClass(SIDEBAR_IS_VISIBLE_CLASS);
+
+    if (this.$body.hasClass(SIDEBAR_IS_VISIBLE_CLASS)) {
+      this.$searchFormInput()[0].focus();
+    }
   }
 
   hideSidebar () {

@@ -25,16 +25,6 @@
     width: $doc-sidebar-width;
   }
 
-  .doc-search-form {
-    margin-top: 0.7rem;
-    margin-bottom: 0rem;
-    margin-left: auto;
-
-    @media screen and (min-width: $doc-breakpoint) {
-      display: none
-    }
-  }
-
   &__logo {
     flex-grow: 1;
     display: flex;
@@ -84,7 +74,7 @@
 
   &__sidebar-toggle {
     line-height: $doc-navbar-height;
-    font-size:2rem;
+    font-size: 2rem;
     height: 100%;
     display: inline-block;
     vertical-align: middle;
@@ -178,18 +168,31 @@
   }
 
   &__search-form {
-    height: 36px;
-    width: 100%;
-    margin: 24px 0 0 22px;
+    width: $doc-sidebar-width;
+    background-color: white;
 
-    @media screen and (max-width: $doc-breakpoint) {
-      display: none;
+    @media screen and (min-width: $doc-breakpoint) {
+      position: fixed;
+      left: 0;
+      top: 50px;
+      z-index: 3;
+    }
+
+    .doc-search-form {
+      margin: 15px 22px;
+      width: 236px;
+      height: 36px;
     }
   }
 }
 
 .doc-sidebar-list {
   padding-left: 0px;
+  margin-top: -10px;
+
+  @media screen and (min-width: $doc-breakpoint) {
+    margin-top: 66px;
+  }
 
   &__item {
     margin-left: 34px;
