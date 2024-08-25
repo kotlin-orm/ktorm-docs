@@ -26,11 +26,14 @@ home:
     description: 查看 Ktorm 中类与函数的 API 文档
 
 main:
-  - text: 概述
+  - text: 开始
+    type: label
+
+  - text: 简介
     type: link
     path: zh-cn/
 
-  - text: 快速开始
+  - text: 快速上手
     type: link
     path: zh-cn/quick-start.html
 

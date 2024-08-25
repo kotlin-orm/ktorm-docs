@@ -26,6 +26,9 @@ home:
     description: API documents for Ktorm's classes and functions.
 
 main:
+  - text: GETTING STARTED
+    type: label
+
   - text: Overview
     type: link
     path: '/'

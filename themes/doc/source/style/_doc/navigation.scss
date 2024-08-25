@@ -192,7 +192,8 @@
   padding-left: 0px;
 
   &__item {
-    margin-left: $doc-sidebar-left-margin;
+    margin-left: 34px;
+    margin-right: 22px;
     list-style: none;
     line-height: 30px;
     font-size: $doc-sidebar-font-size-normal;
@@ -211,16 +212,14 @@
     }
 
     &--label{
+      margin-left: 22px;
+      margin-top: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
       border-top: $doc-sidebar-item-border;
-      margin-left: 0px;
-      padding-left: $doc-sidebar-left-margin;
       font-weight: $doc-sidebar-font-weight-bold;
       font-size: $doc-sidebar-font-size-small;
-      padding-bottom: 5px;
-      padding-top: 5px;
-      margin-top: 10px;
       color: $doc-sidebar-label-color;
-
 
       &:first-of-type{
         border-top: initial;
@@ -249,7 +248,7 @@
     }
     &--current.doc-sidebar-list__item--no-children > a::before {
       position: absolute;
-      left: 2.2rem;
+      left: 22px;
       display: block;
       width: 1rem;
       height: 1rem;
@@ -284,7 +283,7 @@
 // Sidebar children list
 .doc-sidebar-list {
   &__children-list {
-    padding-left: 10px;
+    padding-left: 12px;
   }
 
   &__children-list--hidden {
@@ -293,12 +292,11 @@
 }
 
 .doc-sidebar-list__item {
-
   &--child {
       margin-left: 0;
   }
 
-  &--has-children > .doc-sidebar-list__toc-list{
+  &--has-children > .doc-sidebar-list__toc-list {
       padding-left: 24px;
   }
 
@@ -308,7 +306,7 @@
 
     &:before {
       position: absolute;
-      left: 2.2rem;
+      left: 22px;
       display: block;
       width: 1rem;
       height: 1rem;
