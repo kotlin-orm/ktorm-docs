@@ -17,7 +17,7 @@ echo "www.ktorm.org" > "$BASEDIR/public/CNAME"
 
 # Clone the project repo. 
 [ -e "$PROJECT_DIR" ] && rm -rf "$PROJECT_DIR"
-git clone --depth=1 --branch=dev https://github.com/kotlin-orm/ktorm.git "$PROJECT_DIR"
+git clone --depth=1 --branch=master https://github.com/kotlin-orm/ktorm.git "$PROJECT_DIR"
 
 # Generate dokka html. 
 cd "$PROJECT_DIR" && ./gradlew dokkaHtmlMultiModule -Ddokka.templatesDir="$BASEDIR/dokka/templates"
