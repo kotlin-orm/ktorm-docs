@@ -16,7 +16,6 @@ function Logo ({page, url_for}) {
       <a href={url_for(homePath)}>
         <img src={url_for('images/logo.png')} className="doc-navbar__logo__img"/>
         <img src={url_for('images/logo-middle.png')} className="doc-navbar__logo__img-full"/>
-        {/* <span className="doc-navbar__logo__text">{navigation.logo.text}</span> */}
       </a>
     </span>
   );

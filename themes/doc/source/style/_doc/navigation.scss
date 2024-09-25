@@ -58,20 +58,6 @@
     }
   }
 
-  &__logo__text {
-    flex-grow: 1;
-    margin-right: 0.6rem;
-    line-height: 1.6rem;
-    font-size: 14px;
-    font-family: "Source Sans Pro", "Ubuntu", "Helvetica Neue", "Helvetica", sans-serif;
-    font-weight: 700;
-    color: $doc-navbar-logo-text-color;
-
-    @media screen and (max-width: $doc-breakpoint) {
-      display: none
-    }
-  }
-
   &__sidebar-toggle {
     line-height: $doc-navbar-height;
     font-size: 2rem;
