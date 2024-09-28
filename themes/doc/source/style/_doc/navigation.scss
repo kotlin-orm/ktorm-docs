@@ -71,6 +71,7 @@
   }
 
   &__sidebar-close {
+    float: right;
     display: table;
     height: 100%;
     font-size: 12px;
@@ -80,10 +81,6 @@
       display: table-cell;
       vertical-align: middle;
     }
-  }
-
-  &__sidebar-close--desktop {
-    float: right;
 
     @media screen and (max-width: $doc-breakpoint) {
       display: none

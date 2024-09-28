@@ -1,6 +1,6 @@
 const React = require('react');
 
-function Navbar (props) {
+function Navbar(props) {
   return (
     <nav className="doc-navbar">
       {props.children}
@@ -8,7 +8,7 @@ function Navbar (props) {
   );
 }
 
-function Logo ({page, url_for}) {
+function Logo({page, url_for}) {
   var homePath = page.lang === 'zh-cn' ? 'zh-cn/' : '/';
 
   return (
@@ -246,16 +246,13 @@ function SidebarTocItem ({item, visibleHeaderId}) {
 
 function SidebarToggle ({className, onClick}) {
   return (
-    <i className={'dc-icon dc-icon--menu dc-icon--interactive doc-sidebar-toggle ' + (className || '')}
-      onClick={onClick}>
-    </i> );
+    <i className={'dc-icon dc-icon--menu dc-icon--interactive doc-sidebar-toggle ' + (className || '')} onClick={onClick}/>
+  );
 }
 
 function SidebarClose ({className, onClick}) {
   return (
-    <i className={'dc-icon dc-icon--close dc-icon--interactive doc-sidebar-close ' + (className || '')}
-      onClick={onClick}>
-    </i>
+    <i className={'dc-icon dc-icon--close dc-icon--interactive doc-sidebar-close ' + (className || '')} onClick={onClick}/>
   );
 }
 

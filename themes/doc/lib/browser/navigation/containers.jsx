@@ -214,20 +214,11 @@ class Navigation extends React.Component {
   render () {
     return (
       <div className="doc-navigation">
-        <Navbar
-          config={this.props.config}
-          data={this.props.data}
-          url_for={this.url_for}>
+        <Navbar>
+          <SidebarToggle className="doc-navbar__sidebar-toggle" onClick={this.toggleSidebar.bind(this)} />
           <Logo page={this.props.page} url_for={this.url_for} />
-          <SidebarClose
-            className="doc-navbar__sidebar-close doc-navbar__sidebar-close--desktop"
-            onClick={this.collapseSidebar.bind(this)} />
-          <SidebarToggle
-            className="doc-navbar__sidebar-toggle"
-            onClick={this.toggleSidebar.bind(this)} />
-          <LangSwitcher 
-            page={this.props.page}
-            url_for={this.url_for} />
+          <SidebarClose className="doc-navbar__sidebar-close" onClick={this.collapseSidebar.bind(this)} />
+          <LangSwitcher page={this.props.page} url_for={this.url_for} />
         </Navbar>
 
         <Sidebar
