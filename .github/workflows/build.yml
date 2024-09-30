@@ -43,6 +43,7 @@ jobs:
         run: |
           BASEDIR=$(pwd)
           PROJECT_DIR=~/.ktorm-docs/temp/repo/ktorm
+          echo 'org.gradle.jvmargs="-XX:MaxMetaspaceSize=2g"' > ~/.gradle/gradle.properties
           git clone --depth=1 --branch=master https://github.com/kotlin-orm/ktorm.git "$PROJECT_DIR"
           cd "$PROJECT_DIR" && ./gradlew dokkaHtmlMultiModule -Ddokka.templatesDir="$BASEDIR/dokka/templates"
           cp -r "$PROJECT_DIR/build/dokka/htmlMultiModule" "$BASEDIR/public/api-docs"
