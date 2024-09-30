@@ -1,31 +1,66 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
 name: build
 
 on:
   push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+    branches: [master]
 
 jobs:
   build:
-
+    name: Build & Deploy Docs Site
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x, 22.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.8.0
+          cache: 'npm'
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: 8
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Build Theme
+        working-directory: ./themes/doc
+        run: |
+          npm ci
+          npx webpack --mode production
+        
+      - name: Build HTML
+        run: |
+          npm ci
+          npx hexo generate
+          echo "www.ktorm.org" > "./public/CNAME"
+
+      - name: Build Dokka HTML
+        run: |
+          BASEDIR=$(pwd)
+          PROJECT_DIR=~/.ktorm-docs/temp/repo/ktorm
+          git clone --depth=1 --branch=master https://github.com/kotlin-orm/ktorm.git "$PROJECT_DIR"
+          cd "$PROJECT_DIR" && ./gradlew dokkaHtmlMultiModule -Ddokka.templatesDir="$BASEDIR/dokka/templates"
+          cp -r "$PROJECT_DIR/build/dokka/htmlMultiModule" "$BASEDIR/public/api-docs"
+
+      - name: Deploy
+        run: |
+          BASEDIR=$(pwd)
+          DEPLOY_DIR=~/.ktorm-docs/temp/repo/ktorm-docs
+
+          git clone --depth=1 --branch=gh-pages https://github.com/kotlin-orm/ktorm-docs.git "$DEPLOY_DIR"
+          cd "$DEPLOY_DIR"
+          git rm -rf .
+          cp -r "$BASEDIR/public/." "$DEPLOY_DIR"
+          
+          if [[ `git status --porcelain` ]]; then
+            git config user.name 'vince'
+            git config user.email 'me@liuwj.me'
+            git add . 
+            git commit -m "[github actions] deploy the site"
+            git push "https://$GIT_PUSH_TOKEN@github.com/kotlin-orm/ktorm-docs.git" gh-pages
+          fi
