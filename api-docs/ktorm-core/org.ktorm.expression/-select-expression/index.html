@@ -1,0 +1,351 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="Kotlin, ORM, SQL, DSL, sequence">
+
+  <!-- 站内所有 HTTP 资源，一律替换为 HTTPS -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+  <!-- 协议降级，跳转到非 HTTPS 的站点时，仍然携带 referrer 请求头 -->
+  <meta name="referrer" content="always">
+
+  <!-- Disable Baidu transformation -->
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <!-- Page title -->
+  <title>Ktorm | SelectExpression</title>
+
+  <!-- favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+<script>
+      var pathToRoot = "../../../";
+    </script>    <script>
+      document.documentElement.classList.replace("no-js","js");
+
+      const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>    <style>
+      :root {
+        --dokka-logo-image-url: url('/images/logo.png');
+        --dokka-logo-height: 24px;
+        --dokka-logo-width: 24px;
+      }
+      @media (max-width: 759px) {
+        .library-name--link::before {
+          display: inline-block;
+        }
+      }
+      .footer {
+        display: block;
+        padding-top: 20px;
+        font-size: 16px;
+        line-height: 1.6em;
+        color: #666;
+        overflow: hidden;
+        white-space: nowrap;
+        text-align: center;
+      }
+      .footer img {
+        display: inline-block;
+        padding: 0 5px;
+        max-width: 100%;
+        position: relative;
+        vertical-align: text-bottom;
+      }
+      .theme-dark .footer {
+        color: hsla(0, 0%, 100%, 0.6);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-180275463-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+    <!-- End Google Analytics -->
+
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+  <div class="navigation--inner">
+    <div class="navigation-title">
+      <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+      <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+              ktorm
+          </a>      </div>
+      <div class="library-version">4.1.1
+      </div>
+    </div>
+    <div class="filter-section" id="filter-section">
+        <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":ktorm-core:dokkaHtmlPartial/main">jvm</button>
+    </div>
+  </div>
+  <div class="navigation-controls">
+    <a class="navigation-controls--btn navigation-controls--homepage" id="homepage-link" href="/" target="_blank"></a>
+    <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+    <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+  </div>
+</nav>
+      <div id="container">
+        <div class="sidebar" id="leftColumn">
+          <div class="sidebar--inner" id="sideMenu"></div>
+        </div>
+        <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="ktorm-core::org.ktorm.expression/SelectExpression///PointingToDeclaration//1326944285">
+  <div class="breadcrumbs"><a href="../../index.html">ktorm-core</a><span class="delimiter">/</span><a href="../index.html">org.ktorm.expression</a><span class="delimiter">/</span><span class="current">SelectExpression</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Select</span><wbr><span><span>Expression</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">SelectExpression</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>columns<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-column-declaring-expression/index.html">ColumnDeclaringExpression</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>from<span class="token operator">: </span><a href="../-query-source-expression/index.html">QuerySourceExpression</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>where<span class="token operator">: </span><a href="../-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>groupBy<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>having<span class="token operator">: </span><a href="../-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>isDistinct<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>orderBy<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-order-by-expression/index.html">OrderByExpression</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>offset<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>limit<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>tableAlias<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>extraProperties<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyMap()</span></span><span class="token punctuation">)</span> : <a href="../-query-expression/index.html">QueryExpression</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/kotlin-orm/ktorm/blob/master/ktorm-core/src/main/kotlin/org/ktorm/expression/SqlExpressions.kt#L108">source</a>)</span></span></div><p class="paragraph">Select expression, represents a <code class="lang-kotlin">select</code> statement of SQL.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-1997263228%2FConstructors%2F1326944285" anchor-label="SelectExpression" id="-1997263228%2FConstructors%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-select-expression.html"><span>Select</span><wbr><span><span>Expression</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1997263228%2FConstructors%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">columns<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-column-declaring-expression/index.html">ColumnDeclaringExpression</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()<span class="token punctuation">, </span></span><span class="parameter ">from<span class="token operator">: </span><a href="../-query-source-expression/index.html">QuerySourceExpression</a><span class="token punctuation">, </span></span><span class="parameter ">where<span class="token operator">: </span><a href="../-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">groupBy<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()<span class="token punctuation">, </span></span><span class="parameter ">having<span class="token operator">: </span><a href="../-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">isDistinct<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">orderBy<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-order-by-expression/index.html">OrderByExpression</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()<span class="token punctuation">, </span></span><span class="parameter ">offset<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">limit<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">tableAlias<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">extraProperties<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyMap()</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1950041563%2FProperties%2F1326944285" anchor-label="columns" id="1950041563%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="columns.html"><span><span>columns</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1950041563%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="columns.html">columns</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-column-declaring-expression/index.html">ColumnDeclaringExpression</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">the selected column declarations, empty means <code class="lang-kotlin">select *</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2100245483%2FProperties%2F1326944285" anchor-label="extraProperties" id="-2100245483%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="extra-properties.html"><span>extra</span><wbr><span><span>Properties</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2100245483%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="extra-properties.html">extraProperties</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Extra properties of this expression, maybe useful in <a href="../-sql-formatter/index.html">SqlFormatter</a> to generate some special SQLs.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="104185304%2FProperties%2F1326944285" anchor-label="from" id="104185304%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="from.html"><span><span>from</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="104185304%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="from.html">from</a><span class="token operator">: </span><a href="../-query-source-expression/index.html">QuerySourceExpression</a></div><div class="brief "><p class="paragraph">the query's source, represents the <code class="lang-kotlin">from</code> clause of SQL.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-648492894%2FProperties%2F1326944285" anchor-label="groupBy" id="-648492894%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="group-by.html"><span>group</span><wbr><span><span>By</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-648492894%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="group-by.html">groupBy</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">the grouping conditions, represents the <code class="lang-kotlin">group by</code> clause of SQL.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1117951101%2FProperties%2F1326944285" anchor-label="having" id="1117951101%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="having.html"><span><span>having</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1117951101%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="having.html">having</a><span class="token operator">: </span><a href="../-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">the having condition, represents the <code class="lang-kotlin">having</code> clause of SQL.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="182955772%2FProperties%2F1326944285" anchor-label="isDistinct" id="182955772%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-distinct.html"><span>is</span><wbr><span><span>Distinct</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="182955772%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="is-distinct.html">isDistinct</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div><div class="brief "><p class="paragraph">mark if this query is distinct, true means the SQL is <code class="lang-kotlin">select distinct ...</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1198359940%2FProperties%2F1326944285" anchor-label="isLeafNode" id="1198359940%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-query-expression/is-leaf-node.html"><span>is</span><wbr><span>Leaf</span><wbr><span><span>Node</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1198359940%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">override </span><span class="token keyword">val </span><a href="../-query-expression/is-leaf-node.html">isLeafNode</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div><div class="brief "><p class="paragraph">Check if this expression is a leaf node in expression trees.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-385015171%2FProperties%2F1326944285" anchor-label="limit" id="-385015171%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="limit.html"><span><span>limit</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-385015171%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="limit.html">limit</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">max record numbers returned by the query.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1078260785%2FProperties%2F1326944285" anchor-label="offset" id="-1078260785%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="offset.html"><span><span>offset</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1078260785%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="offset.html">offset</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">the offset of the first returned record.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1611869811%2FProperties%2F1326944285" anchor-label="orderBy" id="1611869811%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="order-by.html"><span>order</span><wbr><span><span>By</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1611869811%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="order-by.html">orderBy</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-order-by-expression/index.html">OrderByExpression</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">a list of order-by expressions, used in the <code class="lang-kotlin">order by</code> clause of a query.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1911367264%2FProperties%2F1326944285" anchor-label="tableAlias" id="-1911367264%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="table-alias.html"><span>table</span><wbr><span><span>Alias</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1911367264%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="table-alias.html">tableAlias</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">the alias when this query is nested in another query's source, e.g. <code class="lang-kotlin">select * from (...) alias</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="683547345%2FProperties%2F1326944285" anchor-label="where" id="683547345%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="where.html"><span><span>where</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="683547345%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="where.html">where</a><span class="token operator">: </span><a href="../-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">the filter condition, represents the <code class="lang-kotlin">where</code> clause of SQL.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="footer">
+    © 2024 KTORM.ORG. Licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a> <br>
+    Hosted by
+    <a href="https://github.com/kotlin-orm/ktorm">GitHub</a>
+    <a href="https://github.com/kotlin-orm/ktorm/stargazers">
+      <img src="https://img.shields.io/github/stars/kotlin-orm/ktorm.svg?style=social" alt="Stars">
+    </a>
+  </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+

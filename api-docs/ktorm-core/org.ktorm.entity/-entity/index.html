@@ -1,0 +1,370 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="Kotlin, ORM, SQL, DSL, sequence">
+
+  <!-- 站内所有 HTTP 资源，一律替换为 HTTPS -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+  <!-- 协议降级，跳转到非 HTTPS 的站点时，仍然携带 referrer 请求头 -->
+  <meta name="referrer" content="always">
+
+  <!-- Disable Baidu transformation -->
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <!-- Page title -->
+  <title>Ktorm | Entity</title>
+
+  <!-- favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+<script>
+      var pathToRoot = "../../../";
+    </script>    <script>
+      document.documentElement.classList.replace("no-js","js");
+
+      const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>    <style>
+      :root {
+        --dokka-logo-image-url: url('/images/logo.png');
+        --dokka-logo-height: 24px;
+        --dokka-logo-width: 24px;
+      }
+      @media (max-width: 759px) {
+        .library-name--link::before {
+          display: inline-block;
+        }
+      }
+      .footer {
+        display: block;
+        padding-top: 20px;
+        font-size: 16px;
+        line-height: 1.6em;
+        color: #666;
+        overflow: hidden;
+        white-space: nowrap;
+        text-align: center;
+      }
+      .footer img {
+        display: inline-block;
+        padding: 0 5px;
+        max-width: 100%;
+        position: relative;
+        vertical-align: text-bottom;
+      }
+      .theme-dark .footer {
+        color: hsla(0, 0%, 100%, 0.6);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-180275463-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+    <!-- End Google Analytics -->
+
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+  <div class="navigation--inner">
+    <div class="navigation-title">
+      <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+      <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+              ktorm
+          </a>      </div>
+      <div class="library-version">4.1.1
+      </div>
+    </div>
+    <div class="filter-section" id="filter-section">
+        <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":ktorm-core:dokkaHtmlPartial/main">jvm</button>
+    </div>
+  </div>
+  <div class="navigation-controls">
+    <a class="navigation-controls--btn navigation-controls--homepage" id="homepage-link" href="/" target="_blank"></a>
+    <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+    <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+  </div>
+</nav>
+      <div id="container">
+        <div class="sidebar" id="leftColumn">
+          <div class="sidebar--inner" id="sideMenu"></div>
+        </div>
+        <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="ktorm-core::org.ktorm.entity/Entity///PointingToDeclaration//1326944285">
+  <div class="breadcrumbs"><a href="../../index.html">ktorm-core</a><span class="delimiter">/</span><a href="../index.html">org.ktorm.entity</a><span class="delimiter">/</span><span class="current">Entity</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Entity</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">Entity</a><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator"> : </span><a href="index.html">Entity</a><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span> : <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html">Serializable</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/kotlin-orm/ktorm/blob/master/ktorm-core/src/main/kotlin/org/ktorm/entity/Entity.kt#L135">source</a>)</span></span></div><p class="paragraph">The super interface of all entity classes in Ktorm. This interface injects many useful functions into entities.</p><p class="paragraph">Ktorm requires us to define entity classes as interfaces extending from this interface. A simple example is given as follows:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">interface Department : Entity&lt;Department&gt; {<br>    val id: Int<br>    var name: String<br>    var location: String<br>}</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><h3 class="">Creating Entity Objects</h3><p class="paragraph">As everyone knows, interfaces cannot be instantiated, so Ktorm provides a <a href="../../../ktorm-core/org.ktorm.entity/-entity/-companion/create.html">Entity.create</a> function for us to create entity objects. This function will generate implementations for entity interfaces via JDK dynamic proxy and create their instances.</p><p class="paragraph">In case you don't like creating objects by <a href="../../../ktorm-core/org.ktorm.entity/-entity/-companion/create.html">Entity.create</a>, Ktorm also provides an abstract factory class <a href="-factory/index.html">Entity.Factory</a>. This class overloads the <code class="lang-kotlin">invoke</code> operator of Kotlin, so we just need to add a companion object to our entity class extending from <a href="-factory/index.html">Entity.Factory</a>, then entity objects can be created just like there is a constructor: <code class="lang-kotlin">val department = Department()</code>.</p><h3 class="">Getting and Setting Properties</h3><p class="paragraph">Entity objects in Ktorm are proxies, that's why Ktorm can intercept all the invocations on entities and listen the status changes of them. Behind those entity objects, there is a value table that holds all the values of the properties for each entity. Any operation of getting or setting a property is actually operating the underlying value table. However, what if the value doesn't exist while we are getting a property? Ktorm defines a set of rules for this situation:</p><ul><li><p class="paragraph">If the value doesn't exist and the property’s type is nullable (e.g. <code class="lang-kotlin">var name: String?</code>), then we’ll return null.</p></li><li><p class="paragraph">If the value doesn't exist and the property’s type is not nullable (e.g. <code class="lang-kotlin">var name: String</code>), then we can not return null anymore, because the null value here can cause an unexpected null pointer exception, we’ll return the type’s default value instead.</p></li></ul><p class="paragraph">The default values of different types are well-defined:</p><ul><li><p class="paragraph">For <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a> type, the default value is <code class="lang-kotlin">false</code>.</p></li><li><p class="paragraph">For <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char/index.html">Char</a> type, the default value is <code class="lang-kotlin">\u0000</code>.</p></li><li><p class="paragraph">For number types (such as <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a>, <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html">Long</a>, <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a>, etc.), the default value is zero.</p></li><li><p class="paragraph">For <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a> type, the default value is an empty string.</p></li><li><p class="paragraph">For entity types, the default value is a new-created entity object which is empty.</p></li><li><p class="paragraph">For enum types, the default value is the first value of the enum, whose ordinal is 0.</p></li><li><p class="paragraph">For array types, the default value is a new-created empty array.</p></li><li><p class="paragraph">For collection types (such as <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html">Set</a>, <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a>, <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a>, etc.), the default value is a new created mutable collection of the concrete type.</p></li><li><p class="paragraph">For any other types, the default value is an instance created by its no-args constructor. If the constructor doesn't exist, an exception is thrown.</p></li></ul><p class="paragraph">Moreover, there is a cache mechanism for default values, that ensures a property always returns the same default value instance even if it’s called twice or more. This can avoid some counterintuitive bugs.</p><h3 class="">Non-abstract members</h3><p class="paragraph">If we are using domain driven design, then entities are not only data containers that hold property values, there are also some behaviors, so we need to add some business functions to our entities. Fortunately, Kotlin allows us to define non-abstract functions in interfaces, that’s why we don’t lose anything even if Ktorm’s entity classes are all interfaces. Here is an example:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">interface Foo : Entity&lt;Foo&gt; {<br>    companion object : Entity.Factory&lt;Foo&gt;()<br>    val name: String<br>    fun printName() {<br>        println(name)<br>    }<br>}</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Then if we call <code class="lang-kotlin">Foo().printName()</code>, the value of the property <code class="lang-kotlin">name</code> will be printed.</p><p class="paragraph">Besides of non-abstract functions, Kotlin also allows us to define properties with custom getters or setters in interfaces. For example, in the following code, if we call <code class="lang-kotlin">Foo().upperName</code>, then the value of the <code class="lang-kotlin">name</code> property will be returned in upper case:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">interface Foo : Entity&lt;Foo&gt; {<br>    companion object : Entity.Factory&lt;Foo&gt;()<br>    val name: String<br>    val upperName get() = name.toUpperCase()<br>}</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">More details can be found in our website: https://www.ktorm.org/en/entities-and-column-binding.html#More-About-Entities</p><h3 class="">Serialization</h3><p class="paragraph">The <a href="index.html">Entity</a> interface extends from <a href="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html">Serializable</a>, so all entity objects are serializable by default. We can save them to our disks, or transfer them between systems through networks.</p><p class="paragraph">Note that Ktorm only saves entities’ property values when serialization, any other data that used to track entity status are lost (marked as transient). So we can not obtain an entity object from one system, then flush its changes into the database in another system.</p><p class="paragraph">Java uses <a href="https://docs.oracle.com/javase/8/docs/api/java/io/ObjectOutputStream.html">ObjectOutputStream</a> to serialize objects, and uses <a href="https://docs.oracle.com/javase/8/docs/api/java/io/ObjectInputStream.html">ObjectInputStream</a> to deserialize them, you can refer to their documentation for more details.</p><p class="paragraph">Besides of JDK serialization, the ktorm-jackson module also supports serializing entities in JSON format. This module provides an extension for Jackson, the famous JSON framework in Java world. It supports serializing entity objects into JSON format and parsing JSONs as entity objects. More details can be found in its documentation.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="825900827%2FClasslikes%2F1326944285" anchor-label="Companion" id="825900827%2FClasslikes%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="825900827%2FClasslikes%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div><div class="brief "><p class="paragraph">Companion object provides functions to create entity instances.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2115317853%2FClasslikes%2F1326944285" anchor-label="Factory" id="2115317853%2FClasslikes%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-factory/index.html"><span><span>Factory</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2115317853%2FClasslikes%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-factory/index.html">Factory</a><span class="token operator">&lt;</span><a href="-factory/index.html">E</a><span class="token operator"> : </span><a href="index.html">Entity</a><span class="token operator">&lt;</span><a href="-factory/index.html">E</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span> : <a href="../../org.ktorm.schema/-type-reference/index.html">TypeReference</a><span class="token operator">&lt;</span><a href="-factory/index.html">E</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Abstract factory used to create entity objects, typically declared as companion objects of entity classes.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-211480147%2FProperties%2F1326944285" anchor-label="changedProperties" id="-211480147%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="changed-properties.html"><span>changed</span><wbr><span><span>Properties</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-211480147%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="changed-properties.html">changedProperties</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Return the immutable view of this entity's changed properties and their original values.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-361794977%2FProperties%2F1326944285" anchor-label="entityClass" id="-361794977%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="entity-class.html"><span>entity</span><wbr><span><span>Class</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-361794977%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="entity-class.html">entityClass</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html">KClass</a><span class="token operator">&lt;</span><a href="index.html">E</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Return this entity's <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html">KClass</a> instance, which must be an interface.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-795754829%2FProperties%2F1326944285" anchor-label="properties" id="-795754829%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="properties.html"><span><span>properties</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-795754829%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">val </span><a href="properties.html">properties</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Return the immutable view of this entity's all properties.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-1367681679%2FFunctions%2F1326944285" anchor-label="copy" id="-1367681679%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="copy.html"><span><span>copy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1367681679%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="copy.html"><span class="token function">copy</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">E</a></div><div class="brief "><p class="paragraph">Return a deep copy of this entity, which has the same property values and tracked statuses.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1585744315%2FFunctions%2F1326944285" anchor-label="delete" id="1585744315%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="delete.html"><span><span>delete</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1585744315%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="delete.html"><span class="token function">delete</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Delete this entity in the database and return the affected record number.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2020748447%2FFunctions%2F1326944285" anchor-label="discardChanges" id="-2020748447%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="discard-changes.html"><span>discard</span><wbr><span><span>Changes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2020748447%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="discard-changes.html"><span class="token function">discardChanges</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Clear the tracked property changes of this entity.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1739296901%2FFunctions%2F1326944285" anchor-label="equals" id="-1739296901%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="equals.html"><span><span>equals</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1739296901%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">operator override </span><span class="token keyword">fun </span><a href="equals.html"><span class="token function">equals</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">other<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Indicate whether some other object is "equal to" this entity. Two entities are equal only if they have the same <a href="entity-class.html">entityClass</a> and <a href="properties.html">properties</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1059296249%2FFunctions%2F1326944285" anchor-label="flushChanges" id="-1059296249%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="flush-changes.html"><span>flush</span><wbr><span><span>Changes</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1059296249%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="flush-changes.html"><span class="token function">flushChanges</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Update the property changes of this entity into the database and return the affected record number.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1251116358%2FFunctions%2F1326944285" anchor-label="get" id="1251116358%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get.html"><span><span>get</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1251116358%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="get.html"><span class="token function">get</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Obtain a property's value by its name.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-265530613%2FFunctions%2F1326944285" anchor-label="hashCode" id="-265530613%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="hash-code.html"><span>hash</span><wbr><span><span>Code</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-265530613%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="hash-code.html"><span class="token function">hashCode</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Return a hash code value for this entity.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="267402869%2FFunctions%2F1326944285" anchor-label="set" id="267402869%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set.html"><span><span>set</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="267402869%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="set.html"><span class="token function">set</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">value<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Modify a property's value by its name.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-443696678%2FFunctions%2F1326944285" anchor-label="toString" id="-443696678%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-string.html"><span>to</span><wbr><span><span>String</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-443696678%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="to-string.html"><span class="token function">toString</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Return a string representation of this entity. The format is like <code class="lang-kotlin">Employee(id=1, name=Eric, job=contributor, hireDate=2021-05-05, salary=50)</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="footer">
+    © 2024 KTORM.ORG. Licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a> <br>
+    Hosted by
+    <a href="https://github.com/kotlin-orm/ktorm">GitHub</a>
+    <a href="https://github.com/kotlin-orm/ktorm/stargazers">
+      <img src="https://img.shields.io/github/stars/kotlin-orm/ktorm.svg?style=social" alt="Stars">
+    </a>
+  </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+

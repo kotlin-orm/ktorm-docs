@@ -1,0 +1,415 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="Kotlin, ORM, SQL, DSL, sequence">
+
+  <!-- 站内所有 HTTP 资源，一律替换为 HTTPS -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+  <!-- 协议降级，跳转到非 HTTPS 的站点时，仍然携带 referrer 请求头 -->
+  <meta name="referrer" content="always">
+
+  <!-- Disable Baidu transformation -->
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <!-- Page title -->
+  <title>Ktorm | DefaultValueExpression</title>
+
+  <!-- favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+<script>
+      var pathToRoot = "../../../";
+    </script>    <script>
+      document.documentElement.classList.replace("no-js","js");
+
+      const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>    <style>
+      :root {
+        --dokka-logo-image-url: url('/images/logo.png');
+        --dokka-logo-height: 24px;
+        --dokka-logo-width: 24px;
+      }
+      @media (max-width: 759px) {
+        .library-name--link::before {
+          display: inline-block;
+        }
+      }
+      .footer {
+        display: block;
+        padding-top: 20px;
+        font-size: 16px;
+        line-height: 1.6em;
+        color: #666;
+        overflow: hidden;
+        white-space: nowrap;
+        text-align: center;
+      }
+      .footer img {
+        display: inline-block;
+        padding: 0 5px;
+        max-width: 100%;
+        position: relative;
+        vertical-align: text-bottom;
+      }
+      .theme-dark .footer {
+        color: hsla(0, 0%, 100%, 0.6);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-180275463-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+    <!-- End Google Analytics -->
+
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+  <div class="navigation--inner">
+    <div class="navigation-title">
+      <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+      <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+              ktorm
+          </a>      </div>
+      <div class="library-version">4.1.1
+      </div>
+    </div>
+    <div class="filter-section" id="filter-section">
+        <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":ktorm-support-postgresql:dokkaHtmlPartial/main">jvm</button>
+    </div>
+  </div>
+  <div class="navigation-controls">
+    <a class="navigation-controls--btn navigation-controls--homepage" id="homepage-link" href="/" target="_blank"></a>
+    <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+    <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+  </div>
+</nav>
+      <div id="container">
+        <div class="sidebar" id="leftColumn">
+          <div class="sidebar--inner" id="sideMenu"></div>
+        </div>
+        <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="ktorm-support-postgresql::org.ktorm.support.postgresql/DefaultValueExpression///PointingToDeclaration//703461578">
+  <div class="breadcrumbs"><a href="../../index.html">ktorm-support-postgresql</a><span class="delimiter">/</span><a href="../index.html">org.ktorm.support.postgresql</a><span class="delimiter">/</span><span class="current">DefaultValueExpression</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Default</span><wbr><span>Value</span><wbr><span><span>Expression</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-postgresql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">DefaultValueExpression</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>sqlType<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.schema/-sql-type/index.html">SqlType</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>isLeafNode<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>extraProperties<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyMap()</span></span><span class="token punctuation">)</span> : <a href="../../../ktorm-core/org.ktorm.expression/-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt; </span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/kotlin-orm/ktorm/blob/master/ktorm-support-postgresql/src/main/kotlin/org/ktorm/support/postgresql/DefaultValue.kt#L35">source</a>)</span></span></div><p class="paragraph">Default value expression, translated to the <code class="lang-kotlin">default</code> keyword in PostgreSQL, used in insert statements.</p><p class="paragraph">For example:</p><div class="sample-container"><pre><code class="block lang-sql" theme="idea">insert into table (column1, column2) values (default, ?)</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-2136808990%2FConstructors%2F703461578" anchor-label="DefaultValueExpression" id="-2136808990%2FConstructors%2F703461578" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":ktorm-support-postgresql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-default-value-expression.html"><span>Default</span><wbr><span>Value</span><wbr><span><span>Expression</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2136808990%2FConstructors%2F703461578"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-postgresql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">sqlType<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.schema/-sql-type/index.html">SqlType</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">isLeafNode<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter ">extraProperties<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyMap()</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="2011088412%2FProperties%2F703461578" anchor-label="extraProperties" id="2011088412%2FProperties%2F703461578" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-postgresql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="extra-properties.html"><span>extra</span><wbr><span><span>Properties</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2011088412%2FProperties%2F703461578"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-postgresql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="extra-properties.html">extraProperties</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-879766127%2FProperties%2F703461578" anchor-label="isLeafNode" id="-879766127%2FProperties%2F703461578" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-postgresql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-leaf-node.html"><span>is</span><wbr><span>Leaf</span><wbr><span><span>Node</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-879766127%2FProperties%2F703461578"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-postgresql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="is-leaf-node.html">isLeafNode</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="167788279%2FProperties%2F703461578" anchor-label="sqlType" id="167788279%2FProperties%2F703461578" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-postgresql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="sql-type.html"><span>sql</span><wbr><span><span>Type</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="167788279%2FProperties%2F703461578"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-postgresql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="sql-type.html">sqlType</a><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.schema/-sql-type/index.html">SqlType</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-338367304%2FFunctions%2F703461578" anchor-label="aliased" id="-338367304%2FFunctions%2F703461578" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-postgresql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-i-like-expression/index.html#-338367304%2FFunctions%2F703461578"><span><span>aliased</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-338367304%2FFunctions%2F703461578"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-postgresql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-i-like-expression/index.html#-338367304%2FFunctions%2F703461578"><span class="token function">aliased</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">label<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-column-declaring-expression/index.html">ColumnDeclaringExpression</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1351302920%2FFunctions%2F703461578" anchor-label="asExpression" id="1351302920%2FFunctions%2F703461578" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-postgresql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-i-like-expression/index.html#1351302920%2FFunctions%2F703461578"><span>as</span><wbr><span><span>Expression</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1351302920%2FFunctions%2F703461578"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-postgresql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-i-like-expression/index.html#1351302920%2FFunctions%2F703461578"><span class="token function">asExpression</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="64017109%2FFunctions%2F703461578" anchor-label="containedIn" id="64017109%2FFunctions%2F703461578" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-support-postgresql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../contained-in.html"><span>contained</span><wbr><span><span>In</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="64017109%2FFunctions%2F703461578"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-postgresql:dokkaHtmlPartial/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-name/index.html"><span class="token annotation builtin">JvmName</span></a><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"earthContainedIn"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-earth/index.html">Earth</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../contained-in.html"><span class="token function">containedIn</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-cube/index.html">Cube</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-cube-expression/index.html">CubeExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-name/index.html"><span class="token annotation builtin">JvmName</span></a><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"earthContainedIn"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-earth/index.html">Earth</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../contained-in.html"><span class="token function">containedIn</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">argument<span class="token operator">: </span><a href="../-cube/index.html">Cube</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-cube-expression/index.html">CubeExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-cube/index.html">Cube</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../contained-in.html"><span class="token function">containedIn</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-cube/index.html">Cube</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-cube-expression/index.html">CubeExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-cube/index.html">Cube</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../contained-in.html"><span class="token function">containedIn</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">argument<span class="token operator">: </span><a href="../-cube/index.html">Cube</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-cube-expression/index.html">CubeExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Cube contained in operator, translated to the &lt;@ operator in PostgreSQL.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../contained-in.html"><span class="token function">containedIn</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">argument<span class="token operator">: </span><a href="../-h-store/index.html">HStore</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-h-store-expression/index.html">HStoreExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../contained-in.html"><span class="token function">containedIn</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-h-store-expression/index.html">HStoreExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">HStore contained-in operator, translated to the &lt;@ operator in PostgreSQL.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-506459025%2FFunctions%2F703461578" anchor-label="contains" id="-506459025%2FFunctions%2F703461578" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-support-postgresql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../contains.html"><span><span>contains</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-506459025%2FFunctions%2F703461578"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-postgresql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">argument<span class="token operator">: </span><a href="../-h-store/index.html">HStore</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-h-store-expression/index.html">HStoreExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-h-store-expression/index.html">HStoreExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">HStore contains operator, translated to the @&gt; operator in PostgreSQL.</p></div><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-name/index.html"><span class="token annotation builtin">JvmName</span></a><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"containsEarth"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-cube/index.html">Cube</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">argument<span class="token operator">: </span><a href="../-earth/index.html">Earth</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-cube-expression/index.html">CubeExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-name/index.html"><span class="token annotation builtin">JvmName</span></a><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"containsEarth"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-cube/index.html">Cube</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-earth/index.html">Earth</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-cube-expression/index.html">CubeExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-cube/index.html">Cube</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-cube/index.html">Cube</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-cube-expression/index.html">CubeExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-cube/index.html">Cube</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../contains.html"><span class="token function">contains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">argument<span class="token operator">: </span><a href="../-cube/index.html">Cube</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-cube-expression/index.html">CubeExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Cube contains operator, translated to the @&gt; operator in PostgreSQL.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="575583305%2FFunctions%2F703461578" anchor-label="containsAll" id="575583305%2FFunctions%2F703461578" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-support-postgresql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../contains-all.html"><span>contains</span><wbr><span><span>All</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="575583305%2FFunctions%2F703461578"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-postgresql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../contains-all.html"><span class="token function">containsAll</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">argument<span class="token operator">: </span><a href="../-text-array/index.html">TextArray</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-h-store-expression/index.html">HStoreExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../contains-all.html"><span class="token function">containsAll</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-text-array/index.html">TextArray</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-h-store-expression/index.html">HStoreExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">HStore contains-all-keys operator, translated to the ?&amp; operator in PostgreSQL.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1572954701%2FFunctions%2F703461578" anchor-label="containsAny" id="-1572954701%2FFunctions%2F703461578" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-support-postgresql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../contains-any.html"><span>contains</span><wbr><span><span>Any</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1572954701%2FFunctions%2F703461578"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-postgresql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../contains-any.html"><span class="token function">containsAny</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">argument<span class="token operator">: </span><a href="../-text-array/index.html">TextArray</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-h-store-expression/index.html">HStoreExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../contains-any.html"><span class="token function">containsAny</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-text-array/index.html">TextArray</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-h-store-expression/index.html">HStoreExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">HStore contains-any-keys operator, translated to the ?| operator in PostgreSQL.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1992539179%2FFunctions%2F703461578" anchor-label="containsKey" id="1992539179%2FFunctions%2F703461578" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-support-postgresql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../contains-key.html"><span>contains</span><wbr><span><span>Key</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1992539179%2FFunctions%2F703461578"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-postgresql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../contains-key.html"><span class="token function">containsKey</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">argument<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-h-store-expression/index.html">HStoreExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../contains-key.html"><span class="token function">containsKey</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-h-store-expression/index.html">HStoreExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">HStore contains-key operator, translated to the ? operator in PostgreSQL.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-615373810%2FFunctions%2F703461578" anchor-label="get" id="-615373810%2FFunctions%2F703461578" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-support-postgresql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../get.html"><span><span>get</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-615373810%2FFunctions%2F703461578"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-postgresql:dokkaHtmlPartial/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-name/index.html"><span class="token annotation builtin">JvmName</span></a><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"getValues"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../get.html"><span class="token function">get</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">argument<span class="token operator">: </span><a href="../-text-array/index.html">TextArray</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-h-store-expression/index.html">HStoreExpression</a><span class="token operator">&lt;</span><a href="../-text-array/index.html">TextArray</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-name/index.html"><span class="token annotation builtin">JvmName</span></a><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"getValues"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../get.html"><span class="token function">get</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-text-array/index.html">TextArray</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-h-store-expression/index.html">HStoreExpression</a><span class="token operator">&lt;</span><a href="../-text-array/index.html">TextArray</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">HStore get-values-for-keys operator, translated to the -&gt; operator in PostgreSQL.</p></div><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-name/index.html"><span class="token annotation builtin">JvmName</span></a><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"getValue"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../get.html"><span class="token function">get</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">argument<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-h-store-expression/index.html">HStoreExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-name/index.html"><span class="token annotation builtin">JvmName</span></a><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"getValue"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../get.html"><span class="token function">get</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-h-store-expression/index.html">HStoreExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">HStore get-value-for-key operator, translated to the -&gt; operator in PostgreSQL.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1194387925%2FFunctions%2F703461578" anchor-label="ilike" id="-1194387925%2FFunctions%2F703461578" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-support-postgresql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../ilike.html"><span><span>ilike</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1194387925%2FFunctions%2F703461578"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-postgresql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">infix </span><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../ilike.html"><span class="token function">ilike</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">argument<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-i-like-expression/index.html">ILikeExpression</a></div><div class="symbol monospace"><span class="token keyword">infix </span><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../ilike.html"><span class="token function">ilike</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-i-like-expression/index.html">ILikeExpression</a></div><div class="brief "><p class="paragraph">ILike operator, translated to the <code class="lang-kotlin">ilike</code> keyword in PostgreSQL.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-160002173%2FFunctions%2F703461578" anchor-label="minus" id="-160002173%2FFunctions%2F703461578" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-support-postgresql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../minus.html"><span><span>minus</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-160002173%2FFunctions%2F703461578"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-postgresql:dokkaHtmlPartial/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-name/index.html"><span class="token annotation builtin">JvmName</span></a><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"minusKeys"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../minus.html"><span class="token function">minus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">argument<span class="token operator">: </span><a href="../-text-array/index.html">TextArray</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-h-store-expression/index.html">HStoreExpression</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-name/index.html"><span class="token annotation builtin">JvmName</span></a><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"minusKeys"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../minus.html"><span class="token function">minus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-text-array/index.html">TextArray</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-h-store-expression/index.html">HStoreExpression</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">HStore delete-keys operator, translated to the - operator in PostgreSQL.</p></div><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-name/index.html"><span class="token annotation builtin">JvmName</span></a><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"minusKey"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../minus.html"><span class="token function">minus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">argument<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-h-store-expression/index.html">HStoreExpression</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-name/index.html"><span class="token annotation builtin">JvmName</span></a><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"minusKey"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../minus.html"><span class="token function">minus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-h-store-expression/index.html">HStoreExpression</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">HStore delete-key operator, translated to the - operator in PostgreSQL.</p></div><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-name/index.html"><span class="token annotation builtin">JvmName</span></a><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"minusMatching"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../minus.html"><span class="token function">minus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">argument<span class="token operator">: </span><a href="../-h-store/index.html">HStore</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-h-store-expression/index.html">HStoreExpression</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-name/index.html"><span class="token annotation builtin">JvmName</span></a><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"minusMatching"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../minus.html"><span class="token function">minus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-h-store-expression/index.html">HStoreExpression</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">HStore delete-matching-pairs operator, translated to the - operator in PostgreSQL.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-297327657%2FFunctions%2F703461578" anchor-label="overlaps" id="-297327657%2FFunctions%2F703461578" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-support-postgresql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../overlaps.html"><span><span>overlaps</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-297327657%2FFunctions%2F703461578"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-postgresql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-cube/index.html">Cube</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../overlaps.html"><span class="token function">overlaps</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-cube/index.html">Cube</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-cube-expression/index.html">CubeExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-cube/index.html">Cube</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../overlaps.html"><span class="token function">overlaps</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">argument<span class="token operator">: </span><a href="../-cube/index.html">Cube</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-cube-expression/index.html">CubeExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Cube overlap operator, translated to the &amp;&amp; operator in PostgreSQL.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1905696255%2FFunctions%2F703461578" anchor-label="plus" id="-1905696255%2FFunctions%2F703461578" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-support-postgresql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../plus.html"><span><span>plus</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1905696255%2FFunctions%2F703461578"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-postgresql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../plus.html"><span class="token function">plus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">argument<span class="token operator">: </span><a href="../-h-store/index.html">HStore</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-h-store-expression/index.html">HStoreExpression</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">operator </span><span class="token keyword">fun </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="../plus.html"><span class="token function">plus</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-h-store-expression/index.html">HStoreExpression</a><span class="token operator">&lt;</span><a href="../-h-store/index.html">HStore</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">HStore concatenate operator, translated to the || operator in PostgreSQL.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1463203765%2FFunctions%2F703461578" anchor-label="wrapArgument" id="-1463203765%2FFunctions%2F703461578" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-postgresql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-postgresql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-h-store-expression/index.html#-1463203765%2FFunctions%2F703461578"><span>wrap</span><wbr><span><span>Argument</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1463203765%2FFunctions%2F703461578"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-postgresql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="../-h-store-expression/index.html#-1463203765%2FFunctions%2F703461578"><span class="token function">wrapArgument</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">argument<span class="token operator">: </span><a href="index.html">T</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-argument-expression/index.html">ArgumentExpression</a><span class="token operator">&lt;</span><a href="index.html">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="footer">
+    © 2024 KTORM.ORG. Licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a> <br>
+    Hosted by
+    <a href="https://github.com/kotlin-orm/ktorm">GitHub</a>
+    <a href="https://github.com/kotlin-orm/ktorm/stargazers">
+      <img src="https://img.shields.io/github/stars/kotlin-orm/ktorm.svg?style=social" alt="Stars">
+    </a>
+  </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+

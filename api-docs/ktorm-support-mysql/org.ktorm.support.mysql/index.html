@@ -1,0 +1,710 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="Kotlin, ORM, SQL, DSL, sequence">
+
+  <!-- 站内所有 HTTP 资源，一律替换为 HTTPS -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+  <!-- 协议降级，跳转到非 HTTPS 的站点时，仍然携带 referrer 请求头 -->
+  <meta name="referrer" content="always">
+
+  <!-- Disable Baidu transformation -->
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <!-- Page title -->
+  <title>Ktorm | org.ktorm.support.mysql</title>
+
+  <!-- favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+<script>
+      var pathToRoot = "../../";
+    </script>    <script>
+      document.documentElement.classList.replace("no-js","js");
+
+      const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>    <style>
+      :root {
+        --dokka-logo-image-url: url('/images/logo.png');
+        --dokka-logo-height: 24px;
+        --dokka-logo-width: 24px;
+      }
+      @media (max-width: 759px) {
+        .library-name--link::before {
+          display: inline-block;
+        }
+      }
+      .footer {
+        display: block;
+        padding-top: 20px;
+        font-size: 16px;
+        line-height: 1.6em;
+        color: #666;
+        overflow: hidden;
+        white-space: nowrap;
+        text-align: center;
+      }
+      .footer img {
+        display: inline-block;
+        padding: 0 5px;
+        max-width: 100%;
+        position: relative;
+        vertical-align: text-bottom;
+      }
+      .theme-dark .footer {
+        color: hsla(0, 0%, 100%, 0.6);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-180275463-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+    <!-- End Google Analytics -->
+
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+  <div class="navigation--inner">
+    <div class="navigation-title">
+      <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+      <div class="library-name">
+<a class="library-name--link" href="../../index.html">
+              ktorm
+          </a>      </div>
+      <div class="library-version">4.1.1
+      </div>
+    </div>
+    <div class="filter-section" id="filter-section">
+        <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":ktorm-support-mysql:dokkaHtmlPartial/main">jvm</button>
+    </div>
+  </div>
+  <div class="navigation-controls">
+    <a class="navigation-controls--btn navigation-controls--homepage" id="homepage-link" href="/" target="_blank"></a>
+    <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+    <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+  </div>
+</nav>
+      <div id="container">
+        <div class="sidebar" id="leftColumn">
+          <div class="sidebar--inner" id="sideMenu"></div>
+        </div>
+        <div id="main">
+<div class="main-content" data-page-type="package" id="content" pageids="ktorm-support-mysql::org.ktorm.support.mysql////PointingToDeclaration//224247522">
+  <div class="breadcrumbs"><a href="../index.html">ktorm-support-mysql</a><span class="delimiter">/</span><span class="current">org.ktorm.support.mysql</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="1787750571%2FClasslikes%2F224247522" anchor-label="BulkInsertExpression" id="1787750571%2FClasslikes%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-bulk-insert-expression/index.html"><span>Bulk</span><wbr><span>Insert</span><wbr><span><span>Expression</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1787750571%2FClasslikes%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-bulk-insert-expression/index.html">BulkInsertExpression</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>table<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.expression/-table-expression/index.html">TableExpression</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>assignments<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../ktorm-core/org.ktorm.expression/-column-assignment-expression/index.html">ColumnAssignmentExpression</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>updateAssignments<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../ktorm-core/org.ktorm.expression/-column-assignment-expression/index.html">ColumnAssignmentExpression</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>isLeafNode<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>extraProperties<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyMap()</span></span><span class="token punctuation">)</span> : <a href="../../ktorm-core/org.ktorm.expression/-sql-expression/index.html">SqlExpression</a></div><div class="brief "><p class="paragraph">Bulk insert expression, represents a bulk insert statement in MySQL.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1229358062%2FClasslikes%2F224247522" anchor-label="BulkInsertOrUpdateOnDuplicateKeyClauseBuilder" id="-1229358062%2FClasslikes%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-bulk-insert-or-update-on-duplicate-key-clause-builder/index.html"><span>Bulk</span><wbr><span>Insert</span><wbr><span>Or</span><wbr><span>Update</span><wbr><span>On</span><wbr><span>Duplicate</span><wbr><span>Key</span><wbr><span>Clause</span><wbr><span><span>Builder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1229358062%2FClasslikes%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-bulk-insert-or-update-on-duplicate-key-clause-builder/index.html">BulkInsertOrUpdateOnDuplicateKeyClauseBuilder</a> : <a href="-my-sql-assignments-builder/index.html">MySqlAssignmentsBuilder</a></div><div class="brief "><p class="paragraph">DSL builder for bulk insert or update on duplicate key clause.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1665138709%2FClasslikes%2F224247522" anchor-label="BulkInsertOrUpdateStatementBuilder" id="-1665138709%2FClasslikes%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-bulk-insert-or-update-statement-builder/index.html"><span>Bulk</span><wbr><span>Insert</span><wbr><span>Or</span><wbr><span>Update</span><wbr><span>Statement</span><wbr><span><span>Builder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1665138709%2FClasslikes%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-bulk-insert-or-update-statement-builder/index.html">BulkInsertOrUpdateStatementBuilder</a><span class="token operator">&lt;</span><a href="-bulk-insert-or-update-statement-builder/index.html">T</a><span class="token operator"> : </span><a href="../../ktorm-core/org.ktorm.schema/-base-table/index.html">BaseTable</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">table<span class="token operator">: </span><a href="-bulk-insert-or-update-statement-builder/index.html">T</a></span></span><span class="token punctuation">)</span> : <a href="-bulk-insert-statement-builder/index.html">BulkInsertStatementBuilder</a><span class="token operator">&lt;</span><a href="-bulk-insert-or-update-statement-builder/index.html">T</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">DSL builder for bulk insert or update statements.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-595885801%2FClasslikes%2F224247522" anchor-label="BulkInsertStatementBuilder" id="-595885801%2FClasslikes%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-bulk-insert-statement-builder/index.html"><span>Bulk</span><wbr><span>Insert</span><wbr><span>Statement</span><wbr><span><span>Builder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-595885801%2FClasslikes%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-bulk-insert-statement-builder/index.html">BulkInsertStatementBuilder</a><span class="token operator">&lt;</span><a href="-bulk-insert-statement-builder/index.html">T</a><span class="token operator"> : </span><a href="../../ktorm-core/org.ktorm.schema/-base-table/index.html">BaseTable</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">table<span class="token operator">: </span><a href="-bulk-insert-statement-builder/index.html">T</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">DSL builder for bulk insert statements.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-523948538%2FClasslikes%2F224247522" anchor-label="DefaultValueExpression" id="-523948538%2FClasslikes%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-default-value-expression/index.html"><span>Default</span><wbr><span>Value</span><wbr><span><span>Expression</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-523948538%2FClasslikes%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-default-value-expression/index.html">DefaultValueExpression</a><span class="token operator">&lt;</span><a href="-default-value-expression/index.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>sqlType<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.schema/-sql-type/index.html">SqlType</a><span class="token operator">&lt;</span><a href="-default-value-expression/index.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>isLeafNode<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>extraProperties<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyMap()</span></span><span class="token punctuation">)</span> : <a href="../../ktorm-core/org.ktorm.expression/-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><a href="-default-value-expression/index.html">T</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Default value expression, translated to the <code class="lang-kotlin">default</code> keyword in MySQL, used in insert statements.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-817291279%2FClasslikes%2F224247522" anchor-label="InsertOrUpdateExpression" id="-817291279%2FClasslikes%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-insert-or-update-expression/index.html"><span>Insert</span><wbr><span>Or</span><wbr><span>Update</span><wbr><span><span>Expression</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-817291279%2FClasslikes%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-insert-or-update-expression/index.html">InsertOrUpdateExpression</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>table<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.expression/-table-expression/index.html">TableExpression</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>assignments<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../ktorm-core/org.ktorm.expression/-column-assignment-expression/index.html">ColumnAssignmentExpression</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>updateAssignments<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../ktorm-core/org.ktorm.expression/-column-assignment-expression/index.html">ColumnAssignmentExpression</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>isLeafNode<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>extraProperties<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyMap()</span></span><span class="token punctuation">)</span> : <a href="../../ktorm-core/org.ktorm.expression/-sql-expression/index.html">SqlExpression</a></div><div class="brief "><p class="paragraph">Insert or update expression, represents an insert statement with an <code class="lang-kotlin">on duplicate key update</code> clause in MySQL.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="996453341%2FClasslikes%2F224247522" anchor-label="InsertOrUpdateStatementBuilder" id="996453341%2FClasslikes%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-insert-or-update-statement-builder/index.html"><span>Insert</span><wbr><span>Or</span><wbr><span>Update</span><wbr><span>Statement</span><wbr><span><span>Builder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="996453341%2FClasslikes%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-insert-or-update-statement-builder/index.html">InsertOrUpdateStatementBuilder</a> : <a href="-my-sql-assignments-builder/index.html">MySqlAssignmentsBuilder</a></div><div class="brief "><p class="paragraph">DSL builder for insert or update statements.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="494655470%2FClasslikes%2F224247522" anchor-label="LockingClause" id="494655470%2FClasslikes%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-locking-clause/index.html"><span>Locking</span><wbr><span><span>Clause</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="494655470%2FClasslikes%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-locking-clause/index.html">LockingClause</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>mode<span class="token operator">: </span><a href="-locking-mode/index.html">LockingMode</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>tables<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../ktorm-core/org.ktorm.expression/-table-expression/index.html">TableExpression</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>wait<span class="token operator">: </span><a href="-locking-wait/index.html">LockingWait</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">MySQL locking clause, See https://dev.mysql.com/doc/refman/8.0/en/innodb-locking-reads.html</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="773534010%2FClasslikes%2F224247522" anchor-label="LockingMode" id="773534010%2FClasslikes%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-locking-mode/index.html"><span>Locking</span><wbr><span><span>Mode</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="773534010%2FClasslikes%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-locking-mode/index.html">LockingMode</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-locking-mode/index.html">LockingMode</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">MySQL locking mode.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-635639384%2FClasslikes%2F224247522" anchor-label="LockingWait" id="-635639384%2FClasslikes%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-locking-wait/index.html"><span>Locking</span><wbr><span><span>Wait</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-635639384%2FClasslikes%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-locking-wait/index.html">LockingWait</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-locking-wait/index.html">LockingWait</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">MySQL wait strategy for locked records.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2118386182%2FClasslikes%2F224247522" anchor-label="MatchAgainstExpression" id="-2118386182%2FClasslikes%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-match-against-expression/index.html"><span>Match</span><wbr><span>Against</span><wbr><span><span>Expression</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2118386182%2FClasslikes%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-match-against-expression/index.html">MatchAgainstExpression</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>matchColumns<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../ktorm-core/org.ktorm.expression/-column-expression/index.html">ColumnExpression</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>searchString<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>searchModifier<span class="token operator">: </span><a href="-search-modifier/index.html">SearchModifier</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>sqlType<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.schema/-sql-type/index.html">SqlType</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span><span class="token operator"> = </span>BooleanSqlType<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>isLeafNode<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>extraProperties<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyMap()</span></span><span class="token punctuation">)</span> : <a href="../../ktorm-core/org.ktorm.expression/-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Match against expression, represents an <code class="lang-kotlin">match ... against ...</code> operation in MySQL. See https://dev.mysql.com/doc/refman/5.5/en/insert-on-duplicate.html</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="90002518%2FClasslikes%2F224247522" anchor-label="MatchColumns" id="90002518%2FClasslikes%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-match-columns/index.html"><span>Match</span><wbr><span><span>Columns</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="90002518%2FClasslikes%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-match-columns/index.html">MatchColumns</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">columns<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../ktorm-core/org.ktorm.expression/-column-expression/index.html">ColumnExpression</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../ktorm-core/org.ktorm.expression/-column-expression/index.html">ColumnExpression</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Intermediate class that wraps the search columns of a <a href="-match-against-expression/index.html">MatchAgainstExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="817722077%2FClasslikes%2F224247522" anchor-label="MySqlAssignmentsBuilder" id="817722077%2FClasslikes%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-my-sql-assignments-builder/index.html"><span>My</span><wbr><span>Sql</span><wbr><span>Assignments</span><wbr><span><span>Builder</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="817722077%2FClasslikes%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-my-sql-assignments-builder/index.html">MySqlAssignmentsBuilder</a> : <a href="../../ktorm-core/org.ktorm.dsl/-assignments-builder/index.html">AssignmentsBuilder</a></div><div class="brief "><p class="paragraph">Base class of MySQL DSL builders, provide basic functions used to build assignments for insert or update DSL.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1932782358%2FClasslikes%2F224247522" anchor-label="MySqlDialect" id="-1932782358%2FClasslikes%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-my-sql-dialect/index.html"><span>My</span><wbr><span>Sql</span><wbr><span><span>Dialect</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1932782358%2FClasslikes%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-my-sql-dialect/index.html">MySqlDialect</a> : <a href="../../ktorm-core/org.ktorm.database/-sql-dialect/index.html">SqlDialect</a></div><div class="brief "><p class="paragraph"><a href="../../ktorm-core/org.ktorm.database/-sql-dialect/index.html">SqlDialect</a> implementation for MySQL database.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2052187034%2FClasslikes%2F224247522" anchor-label="MySqlExpressionVisitor" id="2052187034%2FClasslikes%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-my-sql-expression-visitor/index.html"><span>My</span><wbr><span>Sql</span><wbr><span>Expression</span><wbr><span><span>Visitor</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2052187034%2FClasslikes%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-my-sql-expression-visitor/index.html">MySqlExpressionVisitor</a> : <a href="../../ktorm-core/org.ktorm.expression/-sql-expression-visitor/index.html">SqlExpressionVisitor</a></div><div class="brief "><p class="paragraph">Base interface designed to visit or modify MySQL expression trees using visitor pattern.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="337665798%2FClasslikes%2F224247522" anchor-label="MySqlFormatter" id="337665798%2FClasslikes%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-my-sql-formatter/index.html"><span>My</span><wbr><span>Sql</span><wbr><span><span>Formatter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="337665798%2FClasslikes%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-my-sql-formatter/index.html">MySqlFormatter</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">database<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.database/-database/index.html">Database</a><span class="token punctuation">, </span></span><span class="parameter ">beautifySql<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter ">indentSize<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="../../ktorm-core/org.ktorm.expression/-sql-formatter/index.html">SqlFormatter</a>, <a href="-my-sql-expression-visitor/index.html">MySqlExpressionVisitor</a></div><div class="brief "><p class="paragraph"><a href="../../ktorm-core/org.ktorm.expression/-sql-formatter/index.html">SqlFormatter</a> implementation for MySQL, formatting SQL expressions as strings with their execution arguments.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="28520393%2FClasslikes%2F224247522" anchor-label="NaturalJoinExpression" id="28520393%2FClasslikes%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-natural-join-expression/index.html"><span>Natural</span><wbr><span>Join</span><wbr><span><span>Expression</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="28520393%2FClasslikes%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-natural-join-expression/index.html">NaturalJoinExpression</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>left<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.expression/-query-source-expression/index.html">QuerySourceExpression</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>right<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.expression/-query-source-expression/index.html">QuerySourceExpression</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>isLeafNode<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>extraProperties<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyMap()</span></span><span class="token punctuation">)</span> : <a href="../../ktorm-core/org.ktorm.expression/-query-source-expression/index.html">QuerySourceExpression</a></div><div class="brief "><p class="paragraph">MySQL natural join expression.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1772302161%2FClasslikes%2F224247522" anchor-label="SearchModifier" id="-1772302161%2FClasslikes%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-search-modifier/index.html"><span>Search</span><wbr><span><span>Modifier</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1772302161%2FClasslikes%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-search-modifier/index.html">SearchModifier</a> : <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-search-modifier/index.html">SearchModifier</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Enum class represents search modifiers in MySQL <code class="lang-kotlin">match ... against ...</code> expressions. See https://dev.mysql.com/doc/refman/5.5/en/fulltext-search.html</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-2057450137%2FFunctions%2F224247522" anchor-label="against" id="-2057450137%2FFunctions%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="against.html"><span><span>against</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2057450137%2FFunctions%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="-match-columns/index.html">MatchColumns</a><span class="token punctuation">.</span><a href="against.html"><span class="token function">against</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">searchString<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">modifier<span class="token operator">: </span><a href="-search-modifier/index.html">SearchModifier</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-match-against-expression/index.html">MatchAgainstExpression</a></div><div class="brief "><p class="paragraph">Create a <a href="-match-against-expression/index.html">MatchAgainstExpression</a> that searches on the current <a href="-match-columns/index.html">MatchColumns</a>. Translated to <code class="lang-kotlin">match (col1, col2) against (searchString modifier)</code> in SQL.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-579494596%2FFunctions%2F224247522" anchor-label="bulkInsert" id="-579494596%2FFunctions%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="bulk-insert.html"><span>bulk</span><wbr><span><span>Insert</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-579494596%2FFunctions%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="bulk-insert.html">T</a><span class="token operator"> : </span><a href="../../ktorm-core/org.ktorm.schema/-base-table/index.html">BaseTable</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="bulk-insert.html">T</a><span class="token punctuation">.</span><a href="bulk-insert.html"><span class="token function"><strike>bulkInsert</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><a href="-bulk-insert-statement-builder/index.html">BulkInsertStatementBuilder</a><span class="token operator">&lt;</span><a href="bulk-insert.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="bulk-insert.html">T</a><span class="token operator"> : </span><a href="../../ktorm-core/org.ktorm.schema/-base-table/index.html">BaseTable</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="../../ktorm-core/org.ktorm.database/-database/index.html">Database</a><span class="token punctuation">.</span><a href="bulk-insert.html"><span class="token function">bulkInsert</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">table<span class="token operator">: </span><a href="bulk-insert.html">T</a><span class="token punctuation">, </span></span><span class="parameter ">block<span class="token operator">: </span><a href="-bulk-insert-statement-builder/index.html">BulkInsertStatementBuilder</a><span class="token operator">&lt;</span><a href="bulk-insert.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Construct a bulk insert expression in the given closure, then execute it and return the effected row count.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="915155084%2FFunctions%2F224247522" anchor-label="bulkInsertOrUpdate" id="915155084%2FFunctions%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="bulk-insert-or-update.html"><span>bulk</span><wbr><span>Insert</span><wbr><span>Or</span><wbr><span><span>Update</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="915155084%2FFunctions%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="bulk-insert-or-update.html">T</a><span class="token operator"> : </span><a href="../../ktorm-core/org.ktorm.schema/-base-table/index.html">BaseTable</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="bulk-insert-or-update.html">T</a><span class="token punctuation">.</span><a href="bulk-insert-or-update.html"><span class="token function"><strike>bulkInsertOrUpdate</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><a href="-bulk-insert-or-update-statement-builder/index.html">BulkInsertOrUpdateStatementBuilder</a><span class="token operator">&lt;</span><a href="bulk-insert-or-update.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="bulk-insert-or-update.html">T</a><span class="token operator"> : </span><a href="../../ktorm-core/org.ktorm.schema/-base-table/index.html">BaseTable</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="../../ktorm-core/org.ktorm.database/-database/index.html">Database</a><span class="token punctuation">.</span><a href="bulk-insert-or-update.html"><span class="token function">bulkInsertOrUpdate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">table<span class="token operator">: </span><a href="bulk-insert-or-update.html">T</a><span class="token punctuation">, </span></span><span class="parameter ">block<span class="token operator">: </span><a href="-bulk-insert-or-update-statement-builder/index.html">BulkInsertOrUpdateStatementBuilder</a><span class="token operator">&lt;</span><a href="bulk-insert-or-update.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Bulk insert records to the table, determining if there is a key conflict while inserting each of them, and automatically performs updates if any conflict exists.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1881784715%2FFunctions%2F224247522" anchor-label="dateDiff" id="-1881784715%2FFunctions%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="date-diff.html"><span>date</span><wbr><span><span>Diff</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1881784715%2FFunctions%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="date-diff.html"><span class="token function">dateDiff</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">left<span class="token operator">: </span><a href="https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html">LocalDate</a><span class="token punctuation">, </span></span><span class="parameter ">right<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html">LocalDate</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.expression/-function-expression/index.html">FunctionExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="date-diff.html"><span class="token function">dateDiff</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">left<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html">LocalDate</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">right<span class="token operator">: </span><a href="https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html">LocalDate</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.expression/-function-expression/index.html">FunctionExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="date-diff.html"><span class="token function">dateDiff</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">left<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html">LocalDate</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">right<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html">LocalDate</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.expression/-function-expression/index.html">FunctionExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">MySQL datediff function, translated to <code class="lang-kotlin">datediff(left, right)</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2073713686%2FFunctions%2F224247522" anchor-label="defaultValue" id="2073713686%2FFunctions%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="default-value.html"><span>default</span><wbr><span><span>Value</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2073713686%2FFunctions%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="default-value.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="../../ktorm-core/org.ktorm.schema/-column/index.html">Column</a><span class="token operator">&lt;</span><a href="default-value.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="default-value.html"><span class="token function">defaultValue</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-default-value-expression/index.html">DefaultValueExpression</a><span class="token operator">&lt;</span><a href="default-value.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Return a default value for <a href="../../ktorm-support-mysql/org.ktorm.support.mysql/index.html">this</a> column, see <a href="-default-value-expression/index.html">DefaultValueExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-225962730%2FFunctions%2F224247522" anchor-label="greatest" id="-225962730%2FFunctions%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="greatest.html"><span><span>greatest</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-225962730%2FFunctions%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="greatest.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparable/index.html">Comparable</a><span class="token operator">&lt;</span><a href="greatest.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="greatest.html"><span class="token function">greatest</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>columns<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="greatest.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.expression/-function-expression/index.html">FunctionExpression</a><span class="token operator">&lt;</span><a href="greatest.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">MySQL greatest function, translated to <code class="lang-kotlin">greatest(column1, column2, ...)</code>.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="greatest.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparable/index.html">Comparable</a><span class="token operator">&lt;</span><a href="greatest.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="greatest.html"><span class="token function">greatest</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">left<span class="token operator">: </span><a href="greatest.html">T</a><span class="token punctuation">, </span></span><span class="parameter ">right<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="greatest.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.expression/-function-expression/index.html">FunctionExpression</a><span class="token operator">&lt;</span><a href="greatest.html">T</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="greatest.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparable/index.html">Comparable</a><span class="token operator">&lt;</span><a href="greatest.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="greatest.html"><span class="token function">greatest</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">left<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="greatest.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">right<span class="token operator">: </span><a href="greatest.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.expression/-function-expression/index.html">FunctionExpression</a><span class="token operator">&lt;</span><a href="greatest.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">MySQL greatest function, translated to <code class="lang-kotlin">greatest(left, right)</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1715026546%2FFunctions%2F224247522" anchor-label="IF" id="1715026546%2FFunctions%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-i-f.html"><span><span>IF</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1715026546%2FFunctions%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="-i-f.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="-i-f.html"><span class="token function">IF</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">condition<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">then<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="-i-f.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">otherwise<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="-i-f.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.expression/-function-expression/index.html">FunctionExpression</a><span class="token operator">&lt;</span><a href="-i-f.html">T</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="-i-f.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="-i-f.html"><span class="token function">IF</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">condition<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">then<span class="token operator">: </span><a href="-i-f.html">T</a><span class="token punctuation">, </span></span><span class="parameter ">otherwise<span class="token operator">: </span><a href="-i-f.html">T</a><span class="token punctuation">, </span></span><span class="parameter ">sqlType<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.schema/-sql-type/index.html">SqlType</a><span class="token operator">&lt;</span><a href="-i-f.html">T</a><span class="token operator">&gt;</span><span class="token operator"> = </span>SqlType.of() ?: error("Cannot detect the param's SqlType, please specify manually.")</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.expression/-function-expression/index.html">FunctionExpression</a><span class="token operator">&lt;</span><a href="-i-f.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">MySQL <code class="lang-kotlin">if</code> function, translated to <code class="lang-kotlin">if(condition, then, otherwise)</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1674194336%2FFunctions%2F224247522" anchor-label="ifNull" id="1674194336%2FFunctions%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="if-null.html"><span>if</span><wbr><span><span>Null</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1674194336%2FFunctions%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="if-null.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="if-null.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="if-null.html"><span class="token function">ifNull</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">right<span class="token operator">: </span><a href="if-null.html">T</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.expression/-function-expression/index.html">FunctionExpression</a><span class="token operator">&lt;</span><a href="if-null.html">T</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="if-null.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="if-null.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="if-null.html"><span class="token function">ifNull</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">right<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="if-null.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.expression/-function-expression/index.html">FunctionExpression</a><span class="token operator">&lt;</span><a href="if-null.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">MySQL ifnull function, translated to <code class="lang-kotlin">ifnull(left, right)</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="237048384%2FFunctions%2F224247522" anchor-label="insertOrUpdate" id="237048384%2FFunctions%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="insert-or-update.html"><span>insert</span><wbr><span>Or</span><wbr><span><span>Update</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="237048384%2FFunctions%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="insert-or-update.html">T</a><span class="token operator"> : </span><a href="../../ktorm-core/org.ktorm.schema/-base-table/index.html">BaseTable</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="insert-or-update.html">T</a><span class="token punctuation">.</span><a href="insert-or-update.html"><span class="token function"><strike>insertOrUpdate</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">block<span class="token operator">: </span><a href="-insert-or-update-statement-builder/index.html">InsertOrUpdateStatementBuilder</a><span class="token punctuation">.</span><span class="token punctuation">(</span><a href="insert-or-update.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="insert-or-update.html">T</a><span class="token operator"> : </span><a href="../../ktorm-core/org.ktorm.schema/-base-table/index.html">BaseTable</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="../../ktorm-core/org.ktorm.database/-database/index.html">Database</a><span class="token punctuation">.</span><a href="insert-or-update.html"><span class="token function">insertOrUpdate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">table<span class="token operator">: </span><a href="insert-or-update.html">T</a><span class="token punctuation">, </span></span><span class="parameter ">block<span class="token operator">: </span><a href="-insert-or-update-statement-builder/index.html">InsertOrUpdateStatementBuilder</a><span class="token punctuation">.</span><span class="token punctuation">(</span><a href="insert-or-update.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Insert a record to the table, determining if there is a key conflict while it's being inserted, and automatically performs an update if any conflict exists.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="404402958%2FFunctions%2F224247522" anchor-label="jsonContains" id="404402958%2FFunctions%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="json-contains.html"><span>json</span><wbr><span><span>Contains</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="404402958%2FFunctions%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="json-contains.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="../../ktorm-core/org.ktorm.schema/-column/index.html">Column</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="json-contains.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="json-contains.html"><span class="token function">jsonContains</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">item<span class="token operator">: </span><a href="json-contains.html">T</a><span class="token punctuation">, </span></span><span class="parameter ">sqlType<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.schema/-sql-type/index.html">SqlType</a><span class="token operator">&lt;</span><a href="json-contains.html">T</a><span class="token operator">&gt;</span><span class="token operator"> = </span>SqlType.of() ?: error("Cannot detect the item's SqlType, please specify manually.")</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.expression/-function-expression/index.html">FunctionExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">MySQL json_contains function, translated to <code class="lang-kotlin">json_contains(column, json_array(item))</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1584325452%2FFunctions%2F224247522" anchor-label="jsonExtract" id="1584325452%2FFunctions%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="json-extract.html"><span>json</span><wbr><span><span>Extract</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1584325452%2FFunctions%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="json-extract.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="../../ktorm-core/org.ktorm.schema/-column/index.html">Column</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="json-extract.html"><span class="token function">jsonExtract</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">path<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">sqlType<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.schema/-sql-type/index.html">SqlType</a><span class="token operator">&lt;</span><a href="json-extract.html">T</a><span class="token operator">&gt;</span><span class="token operator"> = </span>SqlType.of() ?: error("Cannot detect the result's SqlType, please specify manually.")</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.expression/-function-expression/index.html">FunctionExpression</a><span class="token operator">&lt;</span><a href="json-extract.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">MySQL json_extract function, translated to <code class="lang-kotlin">json_extract(column, path)</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1106466694%2FFunctions%2F224247522" anchor-label="least" id="1106466694%2FFunctions%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="least.html"><span><span>least</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1106466694%2FFunctions%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="least.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparable/index.html">Comparable</a><span class="token operator">&lt;</span><a href="least.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="least.html"><span class="token function">least</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>columns<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="least.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.expression/-function-expression/index.html">FunctionExpression</a><span class="token operator">&lt;</span><a href="least.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">MySQL least function, translated to <code class="lang-kotlin">least(column1, column2, ...)</code>.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="least.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparable/index.html">Comparable</a><span class="token operator">&lt;</span><a href="least.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="least.html"><span class="token function">least</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">left<span class="token operator">: </span><a href="least.html">T</a><span class="token punctuation">, </span></span><span class="parameter ">right<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="least.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.expression/-function-expression/index.html">FunctionExpression</a><span class="token operator">&lt;</span><a href="least.html">T</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="least.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-comparable/index.html">Comparable</a><span class="token operator">&lt;</span><a href="least.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="least.html"><span class="token function">least</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">left<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="least.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">right<span class="token operator">: </span><a href="least.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.expression/-function-expression/index.html">FunctionExpression</a><span class="token operator">&lt;</span><a href="least.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">MySQL least function, translated to <code class="lang-kotlin">least(left, right)</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1691689137%2FFunctions%2F224247522" anchor-label="locking" id="1691689137%2FFunctions%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="locking.html"><span><span>locking</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1691689137%2FFunctions%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../ktorm-core/org.ktorm.dsl/-query/index.html">Query</a><span class="token punctuation">.</span><a href="locking.html"><span class="token function">locking</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mode<span class="token operator">: </span><a href="-locking-mode/index.html">LockingMode</a><span class="token punctuation">, </span></span><span class="parameter ">tables<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../ktorm-core/org.ktorm.schema/-base-table/index.html">BaseTable</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()<span class="token punctuation">, </span></span><span class="parameter ">wait<span class="token operator">: </span><a href="-locking-wait/index.html">LockingWait</a><span class="token operator"> = </span>WAIT</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.dsl/-query/index.html">Query</a></div><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="locking.html">E</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><a href="locking.html">T</a><span class="token operator"> : </span><a href="../../ktorm-core/org.ktorm.schema/-base-table/index.html">BaseTable</a><span class="token operator">&lt;</span><a href="locking.html">E</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="../../ktorm-core/org.ktorm.entity/-entity-sequence/index.html">EntitySequence</a><span class="token operator">&lt;</span><a href="locking.html">E</a><span class="token punctuation">, </span><a href="locking.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="locking.html"><span class="token function">locking</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">mode<span class="token operator">: </span><a href="-locking-mode/index.html">LockingMode</a><span class="token punctuation">, </span></span><span class="parameter ">tables<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../ktorm-core/org.ktorm.schema/-base-table/index.html">BaseTable</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()<span class="token punctuation">, </span></span><span class="parameter ">wait<span class="token operator">: </span><a href="-locking-wait/index.html">LockingWait</a><span class="token operator"> = </span>WAIT</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.entity/-entity-sequence/index.html">EntitySequence</a><span class="token operator">&lt;</span><a href="locking.html">E</a><span class="token punctuation">, </span><a href="locking.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Specify the locking clause of this query, an example generated SQL could be:</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1168468856%2FFunctions%2F224247522" anchor-label="match" id="1168468856%2FFunctions%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="match.html"><span><span>match</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1168468856%2FFunctions%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="match.html"><span class="token function">match</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>columns<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.schema/-column/index.html">Column</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="-match-columns/index.html">MatchColumns</a></div><div class="brief "><p class="paragraph">Return an intermediate object that wraps the columns to be searched. We can continue to call <a href="against.html">against</a> on the returned object to create a <a href="-match-against-expression/index.html">MatchAgainstExpression</a> that searches the wrapped columns.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1106056128%2FFunctions%2F224247522" anchor-label="naturalJoin" id="1106056128%2FFunctions%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="natural-join.html"><span>natural</span><wbr><span><span>Join</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1106056128%2FFunctions%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../ktorm-core/org.ktorm.dsl/-query-source/index.html">QuerySource</a><span class="token punctuation">.</span><a href="natural-join.html"><span class="token function">naturalJoin</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">right<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.schema/-base-table/index.html">BaseTable</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.dsl/-query-source/index.html">QuerySource</a></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../ktorm-core/org.ktorm.schema/-base-table/index.html">BaseTable</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="natural-join.html"><span class="token function"><strike>naturalJoin</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">right<span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.schema/-base-table/index.html">BaseTable</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.dsl/-query-source/index.html">QuerySource</a></div><div class="brief "><p class="paragraph">Join the right table and return a new <a href="../../ktorm-core/org.ktorm.dsl/-query-source/index.html">QuerySource</a>, translated to <code class="lang-kotlin">natural join</code> in SQL.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1560778132%2FFunctions%2F224247522" anchor-label="rand" id="-1560778132%2FFunctions%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="rand.html"><span><span>rand</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1560778132%2FFunctions%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="rand.html"><span class="token function">rand</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.expression/-function-expression/index.html">FunctionExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html">Double</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">MySQL rand function, translated to <code class="lang-kotlin">rand()</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1174664355%2FFunctions%2F224247522" anchor-label="replace" id="1174664355%2FFunctions%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="replace.html"><span><span>replace</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1174664355%2FFunctions%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="replace.html"><span class="token function">replace</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">oldValue<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">newValue<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.expression/-function-expression/index.html">FunctionExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">MySQL replace function, translated to <code class="lang-kotlin">replace(str, oldValue, newValue)</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-631316120%2FFunctions%2F224247522" anchor-label="toLowerCase" id="-631316120%2FFunctions%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-lower-case.html"><span>to</span><wbr><span>Lower</span><wbr><span><span>Case</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-631316120%2FFunctions%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="to-lower-case.html"><span class="token function">toLowerCase</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.expression/-function-expression/index.html">FunctionExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">MySQL lower function, translated to <code class="lang-kotlin">lower(str). </code></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1786256777%2FFunctions%2F224247522" anchor-label="toUpperCase" id="1786256777%2FFunctions%2F224247522" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-support-mysql:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-mysql:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="to-upper-case.html"><span>to</span><wbr><span>Upper</span><wbr><span><span>Case</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1786256777%2FFunctions%2F224247522"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-mysql:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="../../ktorm-core/org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><a href="to-upper-case.html"><span class="token function">toUpperCase</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../ktorm-core/org.ktorm.expression/-function-expression/index.html">FunctionExpression</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">MySQL upper function, translated to <code class="lang-kotlin">upper(str). </code></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="footer">
+    © 2024 KTORM.ORG. Licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a> <br>
+    Hosted by
+    <a href="https://github.com/kotlin-orm/ktorm">GitHub</a>
+    <a href="https://github.com/kotlin-orm/ktorm/stargazers">
+      <img src="https://img.shields.io/github/stars/kotlin-orm/ktorm.svg?style=social" alt="Stars">
+    </a>
+  </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+

@@ -1,0 +1,632 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="Kotlin, ORM, SQL, DSL, sequence">
+
+  <!-- 站内所有 HTTP 资源，一律替换为 HTTPS -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+  <!-- 协议降级，跳转到非 HTTPS 的站点时，仍然携带 referrer 请求头 -->
+  <meta name="referrer" content="always">
+
+  <!-- Disable Baidu transformation -->
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <!-- Page title -->
+  <title>Ktorm | SqlExpressionVisitor</title>
+
+  <!-- favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+<script>
+      var pathToRoot = "../../../";
+    </script>    <script>
+      document.documentElement.classList.replace("no-js","js");
+
+      const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>    <style>
+      :root {
+        --dokka-logo-image-url: url('/images/logo.png');
+        --dokka-logo-height: 24px;
+        --dokka-logo-width: 24px;
+      }
+      @media (max-width: 759px) {
+        .library-name--link::before {
+          display: inline-block;
+        }
+      }
+      .footer {
+        display: block;
+        padding-top: 20px;
+        font-size: 16px;
+        line-height: 1.6em;
+        color: #666;
+        overflow: hidden;
+        white-space: nowrap;
+        text-align: center;
+      }
+      .footer img {
+        display: inline-block;
+        padding: 0 5px;
+        max-width: 100%;
+        position: relative;
+        vertical-align: text-bottom;
+      }
+      .theme-dark .footer {
+        color: hsla(0, 0%, 100%, 0.6);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-180275463-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+    <!-- End Google Analytics -->
+
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+  <div class="navigation--inner">
+    <div class="navigation-title">
+      <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+      <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+              ktorm
+          </a>      </div>
+      <div class="library-version">4.1.1
+      </div>
+    </div>
+    <div class="filter-section" id="filter-section">
+        <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":ktorm-core:dokkaHtmlPartial/main">jvm</button>
+    </div>
+  </div>
+  <div class="navigation-controls">
+    <a class="navigation-controls--btn navigation-controls--homepage" id="homepage-link" href="/" target="_blank"></a>
+    <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+    <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+  </div>
+</nav>
+      <div id="container">
+        <div class="sidebar" id="leftColumn">
+          <div class="sidebar--inner" id="sideMenu"></div>
+        </div>
+        <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="ktorm-core::org.ktorm.expression/SqlExpressionVisitor///PointingToDeclaration//1326944285">
+  <div class="breadcrumbs"><a href="../../index.html">ktorm-core</a><span class="delimiter">/</span><a href="../index.html">org.ktorm.expression</a><span class="delimiter">/</span><span class="current">SqlExpressionVisitor</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Sql</span><wbr><span>Expression</span><wbr><span><span>Visitor</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">SqlExpressionVisitor</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/kotlin-orm/ktorm/blob/master/ktorm-core/src/main/kotlin/org/ktorm/expression/SqlExpressionVisitor.kt#L39">source</a>)</span></span></div><p class="paragraph">Base interface designed to visit or modify SQL expression trees using visitor pattern.</p><p class="paragraph">This interface provides a general <a href="visit.html">visit</a> function to dispatch different type of expression nodes to their specific <code class="lang-kotlin">visit*</code> functions. Custom expression types that are unknown to Ktorm will be dispatched to <a href="visit-unknown.html">visitUnknown</a>.</p><p class="paragraph">For each expression type, there is a corresponding <code class="lang-kotlin">visit*</code> function in this interface; for <a href="../-select-expression/index.html">SelectExpression</a>, it's <a href="visit-select.html">visitSelect</a>; for <a href="../-table-expression/index.html">TableExpression</a>, it's <a href="visit-table.html">visitTable</a>; and so on. Those functions generally accept an expression instance of the specific type and dispatch the children nodes to their own <code class="lang-kotlin">visit*</code> functions. Finally, after all children nodes are visited, the parent expression instance will be directly returned if no children are modified.</p><p class="paragraph">As SQL expressions are immutable, to modify an expression, we need to override a child <code class="lang-kotlin">visit*</code> function, and return a new-created expression in it. Then its parent's <code class="lang-kotlin">visit*</code> function will notice the change and create a new parent expression using the modified child node returned by us. As the process is recursive, the ancestor nodes also returns new-created instances. Finally, as a result of calling <a href="visit.html">visit</a>, a new expression tree will be returned with our modifications applied.</p><p class="paragraph"><a href="../-sql-formatter/index.html">SqlFormatter</a> is a typical example used to format expressions as executable SQL strings.</p><h4 class="">Inheritors</h4><div class="table"><div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"><div class="main-subrow keyValue "><div class=""><span class="inline-flex"><div><a href="../-sql-formatter/index.html">SqlFormatter</a></div></span></div><div></div></div></div></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-234538510%2FFunctions%2F1326944285" anchor-label="visit" id="-234538510%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit.html"><span><span>visit</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-234538510%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="visit.html"><span class="token function">visit</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-sql-expression/index.html">SqlExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-sql-expression/index.html">SqlExpression</a></div><div class="brief "><p class="paragraph">Dispatch different type of expression nodes to their specific <code class="lang-kotlin">visit*</code> functions. Custom expression types that are unknown to Ktorm will be dispatched to <a href="visit-unknown.html">visitUnknown</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="934872955%2FFunctions%2F1326944285" anchor-label="visitAggregate" id="934872955%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-aggregate.html"><span>visit</span><wbr><span><span>Aggregate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="934872955%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="visit-aggregate.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="visit-aggregate.html"><span class="token function">visitAggregate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-aggregate-expression/index.html">AggregateExpression</a><span class="token operator">&lt;</span><a href="visit-aggregate.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-aggregate-expression/index.html">AggregateExpression</a><span class="token operator">&lt;</span><a href="visit-aggregate.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Function that visits an <a href="../-aggregate-expression/index.html">AggregateExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1008150685%2FFunctions%2F1326944285" anchor-label="visitArgument" id="-1008150685%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-argument.html"><span>visit</span><wbr><span><span>Argument</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1008150685%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="visit-argument.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="visit-argument.html"><span class="token function">visitArgument</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-argument-expression/index.html">ArgumentExpression</a><span class="token operator">&lt;</span><a href="visit-argument.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-argument-expression/index.html">ArgumentExpression</a><span class="token operator">&lt;</span><a href="visit-argument.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Function that visits an <a href="../-argument-expression/index.html">ArgumentExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2112193704%2FFunctions%2F1326944285" anchor-label="visitBetween" id="-2112193704%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-between.html"><span>visit</span><wbr><span><span>Between</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2112193704%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="visit-between.html"><span class="token function">visitBetween</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-between-expression/index.html">BetweenExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-between-expression/index.html">BetweenExpression</a></div><div class="brief "><p class="paragraph">Function that visits a <a href="../-between-expression/index.html">BetweenExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="82493283%2FFunctions%2F1326944285" anchor-label="visitBinary" id="82493283%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-binary.html"><span>visit</span><wbr><span><span>Binary</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="82493283%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="visit-binary.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="visit-binary.html"><span class="token function">visitBinary</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-binary-expression/index.html">BinaryExpression</a><span class="token operator">&lt;</span><a href="visit-binary.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-binary-expression/index.html">BinaryExpression</a><span class="token operator">&lt;</span><a href="visit-binary.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Function that visits a <a href="../-binary-expression/index.html">BinaryExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1304044285%2FFunctions%2F1326944285" anchor-label="visitCaseWhen" id="-1304044285%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-case-when.html"><span>visit</span><wbr><span>Case</span><wbr><span><span>When</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1304044285%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="visit-case-when.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="visit-case-when.html"><span class="token function">visitCaseWhen</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-case-when-expression/index.html">CaseWhenExpression</a><span class="token operator">&lt;</span><a href="visit-case-when.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-case-when-expression/index.html">CaseWhenExpression</a><span class="token operator">&lt;</span><a href="visit-case-when.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Function that visits a <a href="../-case-when-expression/index.html">CaseWhenExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-82968717%2FFunctions%2F1326944285" anchor-label="visitCasting" id="-82968717%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-casting.html"><span>visit</span><wbr><span><span>Casting</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-82968717%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="visit-casting.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="visit-casting.html"><span class="token function">visitCasting</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-casting-expression/index.html">CastingExpression</a><span class="token operator">&lt;</span><a href="visit-casting.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-casting-expression/index.html">CastingExpression</a><span class="token operator">&lt;</span><a href="visit-casting.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Function that visits a <a href="../-casting-expression/index.html">CastingExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="935913283%2FFunctions%2F1326944285" anchor-label="visitColumn" id="935913283%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-column.html"><span>visit</span><wbr><span><span>Column</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="935913283%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="visit-column.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="visit-column.html"><span class="token function">visitColumn</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-column-expression/index.html">ColumnExpression</a><span class="token operator">&lt;</span><a href="visit-column.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-column-expression/index.html">ColumnExpression</a><span class="token operator">&lt;</span><a href="visit-column.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Function that visits a <a href="../-column-expression/index.html">ColumnExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-45457373%2FFunctions%2F1326944285" anchor-label="visitColumnAssignment" id="-45457373%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-column-assignment.html"><span>visit</span><wbr><span>Column</span><wbr><span><span>Assignment</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-45457373%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="visit-column-assignment.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="visit-column-assignment.html"><span class="token function">visitColumnAssignment</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-column-assignment-expression/index.html">ColumnAssignmentExpression</a><span class="token operator">&lt;</span><a href="visit-column-assignment.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-column-assignment-expression/index.html">ColumnAssignmentExpression</a><span class="token operator">&lt;</span><a href="visit-column-assignment.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Function that visits a <a href="../-column-assignment-expression/index.html">ColumnAssignmentExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1302100969%2FFunctions%2F1326944285" anchor-label="visitColumnDeclaring" id="-1302100969%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-column-declaring.html"><span>visit</span><wbr><span>Column</span><wbr><span><span>Declaring</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1302100969%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="visit-column-declaring.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="visit-column-declaring.html"><span class="token function">visitColumnDeclaring</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-column-declaring-expression/index.html">ColumnDeclaringExpression</a><span class="token operator">&lt;</span><a href="visit-column-declaring.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-column-declaring-expression/index.html">ColumnDeclaringExpression</a><span class="token operator">&lt;</span><a href="visit-column-declaring.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Function that visits a <a href="../-column-declaring-expression/index.html">ColumnDeclaringExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1482005138%2FFunctions%2F1326944285" anchor-label="visitDelete" id="1482005138%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-delete.html"><span>visit</span><wbr><span><span>Delete</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1482005138%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="visit-delete.html"><span class="token function">visitDelete</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-delete-expression/index.html">DeleteExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-delete-expression/index.html">DeleteExpression</a></div><div class="brief "><p class="paragraph">Function that visits a <a href="../-delete-expression/index.html">DeleteExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="306177266%2FFunctions%2F1326944285" anchor-label="visitExists" id="306177266%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-exists.html"><span>visit</span><wbr><span><span>Exists</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="306177266%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="visit-exists.html"><span class="token function">visitExists</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-exists-expression/index.html">ExistsExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-exists-expression/index.html">ExistsExpression</a></div><div class="brief "><p class="paragraph">Function that visits an <a href="../-exists-expression/index.html">ExistsExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1945827721%2FFunctions%2F1326944285" anchor-label="visitExpressionList" id="-1945827721%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-expression-list.html"><span>visit</span><wbr><span>Expression</span><wbr><span><span>List</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1945827721%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="visit-expression-list.html">T</a><span class="token operator"> : </span><a href="../-sql-expression/index.html">SqlExpression</a><span class="token operator">&gt; </span><a href="visit-expression-list.html"><span class="token function">visitExpressionList</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">original<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="visit-expression-list.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">subVisitor<span class="token operator">: </span><span class="token punctuation">(</span><a href="visit-expression-list.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="visit-expression-list.html">T</a><span class="token operator"> = </span>{ visit(it) as T }</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="visit-expression-list.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Helper function for visiting a list of expressions.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-827502909%2FFunctions%2F1326944285" anchor-label="visitFunction" id="-827502909%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-function.html"><span>visit</span><wbr><span><span>Function</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-827502909%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="visit-function.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="visit-function.html"><span class="token function">visitFunction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-function-expression/index.html">FunctionExpression</a><span class="token operator">&lt;</span><a href="visit-function.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-function-expression/index.html">FunctionExpression</a><span class="token operator">&lt;</span><a href="visit-function.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Function that visits a <a href="../-function-expression/index.html">FunctionExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1152385134%2FFunctions%2F1326944285" anchor-label="visitInList" id="-1152385134%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-in-list.html"><span>visit</span><wbr><span>In</span><wbr><span><span>List</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1152385134%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="visit-in-list.html"><span class="token function">visitInList</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-in-list-expression/index.html">InListExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-in-list-expression/index.html">InListExpression</a></div><div class="brief "><p class="paragraph">Function that visits an <a href="../-in-list-expression/index.html">InListExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-102076462%2FFunctions%2F1326944285" anchor-label="visitInsert" id="-102076462%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-insert.html"><span>visit</span><wbr><span><span>Insert</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-102076462%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="visit-insert.html"><span class="token function">visitInsert</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-insert-expression/index.html">InsertExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-insert-expression/index.html">InsertExpression</a></div><div class="brief "><p class="paragraph">Function that visits an <a href="../-insert-expression/index.html">InsertExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1287724126%2FFunctions%2F1326944285" anchor-label="visitInsertFromQuery" id="1287724126%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-insert-from-query.html"><span>visit</span><wbr><span>Insert</span><wbr><span>From</span><wbr><span><span>Query</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1287724126%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="visit-insert-from-query.html"><span class="token function">visitInsertFromQuery</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-insert-from-query-expression/index.html">InsertFromQueryExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-insert-from-query-expression/index.html">InsertFromQueryExpression</a></div><div class="brief "><p class="paragraph">Function that visits an <a href="../-insert-from-query-expression/index.html">InsertFromQueryExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-276260878%2FFunctions%2F1326944285" anchor-label="visitJoin" id="-276260878%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-join.html"><span>visit</span><wbr><span><span>Join</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-276260878%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="visit-join.html"><span class="token function">visitJoin</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-join-expression/index.html">JoinExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-join-expression/index.html">JoinExpression</a></div><div class="brief "><p class="paragraph">Function that visits a <a href="../-join-expression/index.html">JoinExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1075647198%2FFunctions%2F1326944285" anchor-label="visitOrderBy" id="1075647198%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-order-by.html"><span>visit</span><wbr><span>Order</span><wbr><span><span>By</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1075647198%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="visit-order-by.html"><span class="token function">visitOrderBy</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-order-by-expression/index.html">OrderByExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-order-by-expression/index.html">OrderByExpression</a></div><div class="brief "><p class="paragraph">Function that visits an <a href="../-order-by-expression/index.html">OrderByExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-234461032%2FFunctions%2F1326944285" anchor-label="visitQuery" id="-234461032%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-query.html"><span>visit</span><wbr><span><span>Query</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-234461032%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="visit-query.html"><span class="token function">visitQuery</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-query-expression/index.html">QueryExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-query-expression/index.html">QueryExpression</a></div><div class="brief "><p class="paragraph">Function that visits a <a href="../-query-expression/index.html">QueryExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-685161118%2FFunctions%2F1326944285" anchor-label="visitQuerySource" id="-685161118%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-query-source.html"><span>visit</span><wbr><span>Query</span><wbr><span><span>Source</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-685161118%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="visit-query-source.html"><span class="token function">visitQuerySource</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-query-source-expression/index.html">QuerySourceExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-query-source-expression/index.html">QuerySourceExpression</a></div><div class="brief "><p class="paragraph">Function that visits a <a href="../-query-source-expression/index.html">QuerySourceExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="870895491%2FFunctions%2F1326944285" anchor-label="visitScalar" id="870895491%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-scalar.html"><span>visit</span><wbr><span><span>Scalar</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="870895491%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="visit-scalar.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="visit-scalar.html"><span class="token function">visitScalar</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><a href="visit-scalar.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><a href="visit-scalar.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Function that visits a general <a href="../-scalar-expression/index.html">ScalarExpression</a>, this function dispatches different type of scalar expressions to their specific <code class="lang-kotlin">visit*</code> functions. Custom expression types that are unknown to Ktorm will be dispatched to <a href="visit-unknown.html">visitUnknown</a></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-347791118%2FFunctions%2F1326944285" anchor-label="visitSelect" id="-347791118%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-select.html"><span>visit</span><wbr><span><span>Select</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-347791118%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="visit-select.html"><span class="token function">visitSelect</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-select-expression/index.html">SelectExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-select-expression/index.html">SelectExpression</a></div><div class="brief "><p class="paragraph">Function that visits a <a href="../-select-expression/index.html">SelectExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1724684556%2FFunctions%2F1326944285" anchor-label="visitTable" id="1724684556%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-table.html"><span>visit</span><wbr><span><span>Table</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1724684556%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="visit-table.html"><span class="token function">visitTable</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-table-expression/index.html">TableExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-table-expression/index.html">TableExpression</a></div><div class="brief "><p class="paragraph">Function that visits a <a href="../-table-expression/index.html">TableExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="807448219%2FFunctions%2F1326944285" anchor-label="visitUnary" id="807448219%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-unary.html"><span>visit</span><wbr><span><span>Unary</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="807448219%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="visit-unary.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="visit-unary.html"><span class="token function">visitUnary</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-unary-expression/index.html">UnaryExpression</a><span class="token operator">&lt;</span><a href="visit-unary.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-unary-expression/index.html">UnaryExpression</a><span class="token operator">&lt;</span><a href="visit-unary.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Function that visits an <a href="../-unary-expression/index.html">UnaryExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="846714570%2FFunctions%2F1326944285" anchor-label="visitUnion" id="846714570%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-union.html"><span>visit</span><wbr><span><span>Union</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="846714570%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="visit-union.html"><span class="token function">visitUnion</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-union-expression/index.html">UnionExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-union-expression/index.html">UnionExpression</a></div><div class="brief "><p class="paragraph">Function that visits an <a href="../-union-expression/index.html">UnionExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1701886896%2FFunctions%2F1326944285" anchor-label="visitUnknown" id="-1701886896%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-unknown.html"><span>visit</span><wbr><span><span>Unknown</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1701886896%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="visit-unknown.html"><span class="token function">visitUnknown</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-sql-expression/index.html">SqlExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-sql-expression/index.html">SqlExpression</a></div><div class="brief "><p class="paragraph">Function that visits an unknown expression.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1109707310%2FFunctions%2F1326944285" anchor-label="visitUpdate" id="-1109707310%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-update.html"><span>visit</span><wbr><span><span>Update</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1109707310%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="visit-update.html"><span class="token function">visitUpdate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-update-expression/index.html">UpdateExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-update-expression/index.html">UpdateExpression</a></div><div class="brief "><p class="paragraph">Function that visits an <a href="../-update-expression/index.html">UpdateExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2114272187%2FFunctions%2F1326944285" anchor-label="visitWhenClauses" id="2114272187%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-when-clauses.html"><span>visit</span><wbr><span>When</span><wbr><span><span>Clauses</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2114272187%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="visit-when-clauses.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="visit-when-clauses.html"><span class="token function">visitWhenClauses</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">originalClauses<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html">Pair</a><span class="token operator">&lt;</span><a href="../-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="../-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><a href="visit-when-clauses.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html">Pair</a><span class="token operator">&lt;</span><a href="../-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="../-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><a href="visit-when-clauses.html">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Helper function for visiting when clauses of <a href="../-case-when-expression/index.html">CaseWhenExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-474136238%2FFunctions%2F1326944285" anchor-label="visitWindowFrameBound" id="-474136238%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-window-frame-bound.html"><span>visit</span><wbr><span>Window</span><wbr><span>Frame</span><wbr><span><span>Bound</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-474136238%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="visit-window-frame-bound.html"><span class="token function">visitWindowFrameBound</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-window-frame-bound-expression/index.html">WindowFrameBoundExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-window-frame-bound-expression/index.html">WindowFrameBoundExpression</a></div><div class="brief "><p class="paragraph">Function that visits a <a href="../-window-frame-bound-expression/index.html">WindowFrameBoundExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1926260477%2FFunctions%2F1326944285" anchor-label="visitWindowFunction" id="-1926260477%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-window-function.html"><span>visit</span><wbr><span>Window</span><wbr><span><span>Function</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1926260477%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="visit-window-function.html">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="visit-window-function.html"><span class="token function">visitWindowFunction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-window-function-expression/index.html">WindowFunctionExpression</a><span class="token operator">&lt;</span><a href="visit-window-function.html">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-window-function-expression/index.html">WindowFunctionExpression</a><span class="token operator">&lt;</span><a href="visit-window-function.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Function that visits a <a href="../-window-function-expression/index.html">WindowFunctionExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2135766402%2FFunctions%2F1326944285" anchor-label="visitWindowSpecification" id="2135766402%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-window-specification.html"><span>visit</span><wbr><span>Window</span><wbr><span><span>Specification</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2135766402%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="visit-window-specification.html"><span class="token function">visitWindowSpecification</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-window-specification-expression/index.html">WindowSpecificationExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-window-specification-expression/index.html">WindowSpecificationExpression</a></div><div class="brief "><p class="paragraph">Function that visits a <a href="../-window-specification-expression/index.html">WindowSpecificationExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="footer">
+    © 2024 KTORM.ORG. Licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a> <br>
+    Hosted by
+    <a href="https://github.com/kotlin-orm/ktorm">GitHub</a>
+    <a href="https://github.com/kotlin-orm/ktorm/stargazers">
+      <img src="https://img.shields.io/github/stars/kotlin-orm/ktorm.svg?style=social" alt="Stars">
+    </a>
+  </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+

@@ -1,21 +1,32 @@
-$dokka.format:hexo
+$dokka.format:html-v1
 $dokka.linkExtension:html
-$dokka.location:org.ktorm.database$setArguments(java.sql.PreparedStatement, kotlin.collections.List((org.ktorm.expression.ArgumentExpression((kotlin.Any)))))org.ktorm.database/java.sql.-prepared-statement/set-arguments.html
-$dokka.location:org.ktorm.dsl$and(kotlin.Boolean, org.ktorm.schema.ColumnDeclaring((kotlin.Boolean)))org.ktorm.dsl/kotlin.-boolean/and.html
-$dokka.location:org.ktorm.dsl$combineConditions(kotlin.collections.Iterable((org.ktorm.schema.ColumnDeclaring((kotlin.Boolean)))), kotlin.Boolean)org.ktorm.dsl/kotlin.collections.-iterable/combine-conditions.html
-$dokka.location:org.ktorm.dsl$or(kotlin.Boolean, org.ktorm.schema.ColumnDeclaring((kotlin.Boolean)))org.ktorm.dsl/kotlin.-boolean/or.html
-$dokka.location:org.ktorm.dsl$xor(kotlin.Boolean, org.ktorm.schema.ColumnDeclaring((kotlin.Boolean)))org.ktorm.dsl/kotlin.-boolean/xor.html
-$dokka.location:org.ktorm.expression$newVisitorInstance(kotlin.reflect.KClass((org.ktorm.expression.newVisitorInstance.T)), org.ktorm.expression.SqlExpressionVisitorInterceptor)org.ktorm.expression/kotlin.reflect.-k-class/new-visitor-instance.html
+
+module:ktorm-core
 org.ktorm.database
 org.ktorm.dsl
 org.ktorm.entity
 org.ktorm.expression
-org.ktorm.global
-org.ktorm.jackson
 org.ktorm.logging
 org.ktorm.schema
+module:ktorm-global
+org.ktorm.global
+module:ktorm-jackson
+org.ktorm.jackson
+module:ktorm-ksp-annotations
+org.ktorm.ksp.annotation
+module:ktorm-ksp-compiler
+org.ktorm.ksp.compiler
+module:ktorm-ksp-compiler-maven-plugin
+org.ktorm.ksp.compiler.maven
+module:ktorm-ksp-spi
+org.ktorm.ksp.spi
+module:ktorm-support-mysql
 org.ktorm.support.mysql
+module:ktorm-support-oracle
 org.ktorm.support.oracle
+module:ktorm-support-postgresql
 org.ktorm.support.postgresql
+module:ktorm-support-sqlite
 org.ktorm.support.sqlite
+module:ktorm-support-sqlserver
 org.ktorm.support.sqlserver

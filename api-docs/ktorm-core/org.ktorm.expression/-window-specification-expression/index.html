@@ -1,0 +1,370 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="Kotlin, ORM, SQL, DSL, sequence">
+
+  <!-- 站内所有 HTTP 资源，一律替换为 HTTPS -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+  <!-- 协议降级，跳转到非 HTTPS 的站点时，仍然携带 referrer 请求头 -->
+  <meta name="referrer" content="always">
+
+  <!-- Disable Baidu transformation -->
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <!-- Page title -->
+  <title>Ktorm | WindowSpecificationExpression</title>
+
+  <!-- favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+<script>
+      var pathToRoot = "../../../";
+    </script>    <script>
+      document.documentElement.classList.replace("no-js","js");
+
+      const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>    <style>
+      :root {
+        --dokka-logo-image-url: url('/images/logo.png');
+        --dokka-logo-height: 24px;
+        --dokka-logo-width: 24px;
+      }
+      @media (max-width: 759px) {
+        .library-name--link::before {
+          display: inline-block;
+        }
+      }
+      .footer {
+        display: block;
+        padding-top: 20px;
+        font-size: 16px;
+        line-height: 1.6em;
+        color: #666;
+        overflow: hidden;
+        white-space: nowrap;
+        text-align: center;
+      }
+      .footer img {
+        display: inline-block;
+        padding: 0 5px;
+        max-width: 100%;
+        position: relative;
+        vertical-align: text-bottom;
+      }
+      .theme-dark .footer {
+        color: hsla(0, 0%, 100%, 0.6);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-180275463-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+    <!-- End Google Analytics -->
+
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+  <div class="navigation--inner">
+    <div class="navigation-title">
+      <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+      <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+              ktorm
+          </a>      </div>
+      <div class="library-version">4.1.1
+      </div>
+    </div>
+    <div class="filter-section" id="filter-section">
+        <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":ktorm-core:dokkaHtmlPartial/main">jvm</button>
+    </div>
+  </div>
+  <div class="navigation-controls">
+    <a class="navigation-controls--btn navigation-controls--homepage" id="homepage-link" href="/" target="_blank"></a>
+    <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+    <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+  </div>
+</nav>
+      <div id="container">
+        <div class="sidebar" id="leftColumn">
+          <div class="sidebar--inner" id="sideMenu"></div>
+        </div>
+        <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="ktorm-core::org.ktorm.expression/WindowSpecificationExpression///PointingToDeclaration//1326944285">
+  <div class="breadcrumbs"><a href="../../index.html">ktorm-core</a><span class="delimiter">/</span><a href="../index.html">org.ktorm.expression</a><span class="delimiter">/</span><span class="current">WindowSpecificationExpression</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Window</span><wbr><span>Specification</span><wbr><span><span>Expression</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">WindowSpecificationExpression</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>partitionBy<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>orderBy<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-order-by-expression/index.html">OrderByExpression</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>frameUnit<span class="token operator">: </span><a href="../-window-frame-unit-type/index.html">WindowFrameUnitType</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>frameStart<span class="token operator">: </span><a href="../-window-frame-bound-expression/index.html">WindowFrameBoundExpression</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>frameEnd<span class="token operator">: </span><a href="../-window-frame-bound-expression/index.html">WindowFrameBoundExpression</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>isLeafNode<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>extraProperties<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyMap()</span></span><span class="token punctuation">)</span> : <a href="../-sql-expression/index.html">SqlExpression</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/kotlin-orm/ktorm/blob/master/ktorm-core/src/main/kotlin/org/ktorm/expression/SqlExpressions.kt#L796">source</a>)</span></span></div><p class="paragraph">Window specification expression.</p><span class="kdoc-tag"><h4 class="">Since</h4><p class="paragraph">3.6.0</p></span></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="1505731516%2FConstructors%2F1326944285" anchor-label="WindowSpecificationExpression" id="1505731516%2FConstructors%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-window-specification-expression.html"><span>Window</span><wbr><span>Specification</span><wbr><span><span>Expression</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1505731516%2FConstructors%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">partitionBy<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()<span class="token punctuation">, </span></span><span class="parameter ">orderBy<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-order-by-expression/index.html">OrderByExpression</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyList()<span class="token punctuation">, </span></span><span class="parameter ">frameUnit<span class="token operator">: </span><a href="../-window-frame-unit-type/index.html">WindowFrameUnitType</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">frameStart<span class="token operator">: </span><a href="../-window-frame-bound-expression/index.html">WindowFrameBoundExpression</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">frameEnd<span class="token operator">: </span><a href="../-window-frame-bound-expression/index.html">WindowFrameBoundExpression</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">isLeafNode<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">extraProperties<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span><span class="token operator"> = </span>emptyMap()</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-953333250%2FProperties%2F1326944285" anchor-label="extraProperties" id="-953333250%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="extra-properties.html"><span>extra</span><wbr><span><span>Properties</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-953333250%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="extra-properties.html">extraProperties</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html">Map</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Extra properties of this expression, maybe useful in <a href="../-sql-formatter/index.html">SqlFormatter</a> to generate some special SQLs.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1103791733%2FProperties%2F1326944285" anchor-label="frameEnd" id="-1103791733%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="frame-end.html"><span>frame</span><wbr><span><span>End</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1103791733%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="frame-end.html">frameEnd</a><span class="token operator">: </span><a href="../-window-frame-bound-expression/index.html">WindowFrameBoundExpression</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">end bound of the window frame.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1450703452%2FProperties%2F1326944285" anchor-label="frameStart" id="-1450703452%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="frame-start.html"><span>frame</span><wbr><span><span>Start</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1450703452%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="frame-start.html">frameStart</a><span class="token operator">: </span><a href="../-window-frame-bound-expression/index.html">WindowFrameBoundExpression</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">start bound of the window frame.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="457297296%2FProperties%2F1326944285" anchor-label="frameUnit" id="457297296%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="frame-unit.html"><span>frame</span><wbr><span><span>Unit</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="457297296%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="frame-unit.html">frameUnit</a><span class="token operator">: </span><a href="../-window-frame-unit-type/index.html">WindowFrameUnitType</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">frame unit indicates the type of relationship between the current row and frame rows.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="194178159%2FProperties%2F1326944285" anchor-label="isLeafNode" id="194178159%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="is-leaf-node.html"><span>is</span><wbr><span>Leaf</span><wbr><span><span>Node</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="194178159%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">val </span><a href="is-leaf-node.html">isLeafNode</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div><div class="brief "><p class="paragraph">Check if this expression is a leaf node in expression trees.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="536651100%2FProperties%2F1326944285" anchor-label="orderBy" id="536651100%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="order-by.html"><span>order</span><wbr><span><span>By</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="536651100%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="order-by.html">orderBy</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-order-by-expression/index.html">OrderByExpression</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">order-by clause indicates how to sort rows in each partition.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1050539584%2FProperties%2F1326944285" anchor-label="partitionBy" id="1050539584%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="partition-by.html"><span>partition</span><wbr><span><span>By</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1050539584%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="partition-by.html">partitionBy</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">partition-by clause indicates how to divide the query rows into groups.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="EXTENSION_FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="311807134%2FFunctions%2F1326944285" anchor-label="orderBy" id="311807134%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../org.ktorm.dsl/order-by.html"><span>order</span><wbr><span><span>By</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="311807134%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html">WindowSpecificationExpression</a><span class="token punctuation">.</span><a href="../../org.ktorm.dsl/order-by.html"><span class="token function">orderBy</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>orders<span class="token operator">: </span><a href="../-order-by-expression/index.html">OrderByExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">WindowSpecificationExpression</a></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html">WindowSpecificationExpression</a><span class="token punctuation">.</span><a href="../../org.ktorm.dsl/order-by.html"><span class="token function">orderBy</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">orders<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="../-order-by-expression/index.html">OrderByExpression</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">WindowSpecificationExpression</a></div><div class="brief "><p class="paragraph">Specify the order-by clause of this window using the given order-by expressions.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-156663810%2FFunctions%2F1326944285" anchor-label="partitionBy" id="-156663810%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../org.ktorm.dsl/partition-by.html"><span>partition</span><wbr><span><span>By</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-156663810%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html">WindowSpecificationExpression</a><span class="token punctuation">.</span><a href="../../org.ktorm.dsl/partition-by.html"><span class="token function">partitionBy</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">vararg </span>columns<span class="token operator">: </span><a href="../../org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">WindowSpecificationExpression</a></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html">WindowSpecificationExpression</a><span class="token punctuation">.</span><a href="../../org.ktorm.dsl/partition-by.html"><span class="token function">partitionBy</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">columns<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="../../org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">WindowSpecificationExpression</a></div><div class="brief "><p class="paragraph">Specify the partition-by clause of this window using the given columns or expressions.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1432100408%2FFunctions%2F1326944285" anchor-label="range" id="1432100408%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../org.ktorm.dsl/range.html"><span><span>range</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1432100408%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html">WindowSpecificationExpression</a><span class="token punctuation">.</span><a href="../../org.ktorm.dsl/range.html"><span class="token function">range</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">bound<span class="token operator">: </span><a href="../-window-frame-bound-expression/index.html">WindowFrameBoundExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">WindowSpecificationExpression</a></div><div class="brief "><p class="paragraph">Specify the frame clause of this window using the given bound in range unit.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="501098301%2FFunctions%2F1326944285" anchor-label="rangeBetween" id="501098301%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../org.ktorm.dsl/range-between.html"><span>range</span><wbr><span><span>Between</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="501098301%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html">WindowSpecificationExpression</a><span class="token punctuation">.</span><a href="../../org.ktorm.dsl/range-between.html"><span class="token function">rangeBetween</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">start<span class="token operator">: </span><a href="../-window-frame-bound-expression/index.html">WindowFrameBoundExpression</a><span class="token punctuation">, </span></span><span class="parameter ">end<span class="token operator">: </span><a href="../-window-frame-bound-expression/index.html">WindowFrameBoundExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">WindowSpecificationExpression</a></div><div class="brief "><p class="paragraph">Specify the frame clause of this window using the given bounds (start &amp; end) in rows unit.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1349662688%2FFunctions%2F1326944285" anchor-label="rows" id="-1349662688%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../org.ktorm.dsl/rows.html"><span><span>rows</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1349662688%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html">WindowSpecificationExpression</a><span class="token punctuation">.</span><a href="../../org.ktorm.dsl/rows.html"><span class="token function">rows</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">bound<span class="token operator">: </span><a href="../-window-frame-bound-expression/index.html">WindowFrameBoundExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">WindowSpecificationExpression</a></div><div class="brief "><p class="paragraph">Specify the frame clause of this window using the given bound in rows unit.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1451063381%2FFunctions%2F1326944285" anchor-label="rowsBetween" id="1451063381%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../org.ktorm.dsl/rows-between.html"><span>rows</span><wbr><span><span>Between</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1451063381%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html">WindowSpecificationExpression</a><span class="token punctuation">.</span><a href="../../org.ktorm.dsl/rows-between.html"><span class="token function">rowsBetween</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">start<span class="token operator">: </span><a href="../-window-frame-bound-expression/index.html">WindowFrameBoundExpression</a><span class="token punctuation">, </span></span><span class="parameter ">end<span class="token operator">: </span><a href="../-window-frame-bound-expression/index.html">WindowFrameBoundExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="index.html">WindowSpecificationExpression</a></div><div class="brief "><p class="paragraph">Specify the frame clause of this window using the given bounds (start &amp; end) in rows unit.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="footer">
+    © 2024 KTORM.ORG. Licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a> <br>
+    Hosted by
+    <a href="https://github.com/kotlin-orm/ktorm">GitHub</a>
+    <a href="https://github.com/kotlin-orm/ktorm/stargazers">
+      <img src="https://img.shields.io/github/stars/kotlin-orm/ktorm.svg?style=social" alt="Stars">
+    </a>
+  </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+

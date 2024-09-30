@@ -1,0 +1,779 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="Kotlin, ORM, SQL, DSL, sequence">
+
+  <!-- 站内所有 HTTP 资源，一律替换为 HTTPS -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+  <!-- 协议降级，跳转到非 HTTPS 的站点时，仍然携带 referrer 请求头 -->
+  <meta name="referrer" content="always">
+
+  <!-- Disable Baidu transformation -->
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <!-- Page title -->
+  <title>Ktorm | Database</title>
+
+  <!-- favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+<script>
+      var pathToRoot = "../../../";
+    </script>    <script>
+      document.documentElement.classList.replace("no-js","js");
+
+      const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>    <style>
+      :root {
+        --dokka-logo-image-url: url('/images/logo.png');
+        --dokka-logo-height: 24px;
+        --dokka-logo-width: 24px;
+      }
+      @media (max-width: 759px) {
+        .library-name--link::before {
+          display: inline-block;
+        }
+      }
+      .footer {
+        display: block;
+        padding-top: 20px;
+        font-size: 16px;
+        line-height: 1.6em;
+        color: #666;
+        overflow: hidden;
+        white-space: nowrap;
+        text-align: center;
+      }
+      .footer img {
+        display: inline-block;
+        padding: 0 5px;
+        max-width: 100%;
+        position: relative;
+        vertical-align: text-bottom;
+      }
+      .theme-dark .footer {
+        color: hsla(0, 0%, 100%, 0.6);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-180275463-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+    <!-- End Google Analytics -->
+
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+  <div class="navigation--inner">
+    <div class="navigation-title">
+      <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+      <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+              ktorm
+          </a>      </div>
+      <div class="library-version">4.1.1
+      </div>
+    </div>
+    <div class="filter-section" id="filter-section">
+        <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":ktorm-core:dokkaHtmlPartial/main">jvm</button>
+    </div>
+  </div>
+  <div class="navigation-controls">
+    <a class="navigation-controls--btn navigation-controls--homepage" id="homepage-link" href="/" target="_blank"></a>
+    <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+    <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+  </div>
+</nav>
+      <div id="container">
+        <div class="sidebar" id="leftColumn">
+          <div class="sidebar--inner" id="sideMenu"></div>
+        </div>
+        <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="ktorm-core::org.ktorm.database/Database///PointingToDeclaration//1326944285">
+  <div class="breadcrumbs"><a href="../../index.html">ktorm-core</a><span class="delimiter">/</span><a href="../index.html">org.ktorm.database</a><span class="delimiter">/</span><span class="current">Database</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Database</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">Database</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>transactionManager<span class="token operator">: </span><a href="../-transaction-manager/index.html">TransactionManager</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>dialect<span class="token operator">: </span><a href="../-sql-dialect/index.html">SqlDialect</a><span class="token operator"> = </span>detectDialectImplementation()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>logger<span class="token operator">: </span><a href="../../org.ktorm.logging/-logger/index.html">Logger</a><span class="token operator"> = </span>detectLoggerImplementation()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>exceptionTranslator<span class="token operator">: </span><span class="token punctuation">(</span><a href="https://docs.oracle.com/javase/8/docs/api/java/sql/SQLException.html">SQLException</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>alwaysQuoteIdentifiers<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>generateSqlInUpperCase<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="clearfix"><span class="floating-right">(<a href="https://github.com/kotlin-orm/ktorm/blob/master/ktorm-core/src/main/kotlin/org/ktorm/database/Database.kt#L101">source</a>)</span></span></div><p class="paragraph">The entry class of Ktorm, represents a physical database, used to manage connections and transactions.</p><h3 class="">Connect with a URL</h3><p class="paragraph">The simplest way to create a database instance, using a JDBC URL:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">val database = Database.connect("jdbc:mysql://localhost:3306/ktorm", user = "root", password = "123")</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Easy to know what we do in the <a href="-companion/connect.html">connect</a> function. Just like any JDBC boilerplate code, Ktorm loads the MySQL database driver first, then calls <a href="https://docs.oracle.com/javase/8/docs/api/java/sql/DriverManager.html#getConnection-kotlin.String-java.util.Properties-">DriverManager.getConnection</a> with your URL to obtain a connection.</p><p class="paragraph">Of course, Ktorm doesn't call <a href="https://docs.oracle.com/javase/8/docs/api/java/sql/DriverManager.html#getConnection-kotlin.String-java.util.Properties-">DriverManager.getConnection</a> in the beginning. Instead, we obtain connections only when it's really needed (such as executing a SQL), then close them after they are not useful anymore. Therefore, database objects created by this way won't reuse any connections, creating connections frequently can lead to huge performance costs. It's highly recommended to use connection pools in your production environment.</p><h3 class="">Connect with a Pool</h3><p class="paragraph">Ktorm doesn't limit you, you can use any connection pool you like, such as DBCP, C3P0 or Druid. The <a href="-companion/connect.html">connect</a> function provides an overloaded version which accepts a <a href="https://docs.oracle.com/javase/8/docs/api/javax/sql/DataSource.html">DataSource</a> parameter, you just need to create a <a href="https://docs.oracle.com/javase/8/docs/api/javax/sql/DataSource.html">DataSource</a> object and call that function with it:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">val dataSource = SingleConnectionDataSource() // Any DataSource implementation is OK.<br>val database = Database.connect(dataSource)</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Now, Ktorm will obtain connections from the <a href="https://docs.oracle.com/javase/8/docs/api/javax/sql/DataSource.html">DataSource</a> when necessary, then return them to the pool after they are not useful. This avoids the performance costs of frequent connection creation.</p><p class="paragraph">Connection pools are applicative and effective in most cases, we highly recommend you manage your connections in this way.</p><h3 class="">Use SQL DSL &amp; Sequence APIs</h3><p class="paragraph">Now that we've connected to the database, we can perform many operations on it. Ktorm's APIs are mainly divided into two parts, they are SQL DSL and sequence APIs.</p><p class="paragraph">Here, we use SQL DSL to obtains the names of all engineers in department 1:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">database<br>    .from(Employees)<br>    .select(Employees.name)<br>    .where { (Employees.departmentId eq 1) and (Employees.job eq "engineer") }<br>    .forEach { row -&gt;<br>        println(row[Employees.name])<br>    }</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">Equivalent code using sequence APIs:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">database<br>    .sequenceOf(Employees)<br>    .filter { it.departmentId eq 1 }<br>    .filter { it.job eq "engineer" }<br>    .mapColumns { it.name }<br>    .forEach { name -&gt;<br>        println(name)<br>    }</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div><p class="paragraph">More details about SQL DSL, see <a href="../../org.ktorm.dsl/-query/index.html">Query</a>, about sequence APIs, see <a href="../../org.ktorm.entity/-entity-sequence/index.html">EntitySequence</a>.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-436232651%2FConstructors%2F1326944285" anchor-label="Database" id="-436232651%2FConstructors%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-database.html"><span><span>Database</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-436232651%2FConstructors%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">transactionManager<span class="token operator">: </span><a href="../-transaction-manager/index.html">TransactionManager</a><span class="token punctuation">, </span></span><span class="parameter ">dialect<span class="token operator">: </span><a href="../-sql-dialect/index.html">SqlDialect</a><span class="token operator"> = </span>detectDialectImplementation()<span class="token punctuation">, </span></span><span class="parameter ">logger<span class="token operator">: </span><a href="../../org.ktorm.logging/-logger/index.html">Logger</a><span class="token operator"> = </span>detectLoggerImplementation()<span class="token punctuation">, </span></span><span class="parameter ">exceptionTranslator<span class="token operator">: </span><span class="token punctuation">(</span><a href="https://docs.oracle.com/javase/8/docs/api/java/sql/SQLException.html">SQLException</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">alwaysQuoteIdentifiers<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">generateSqlInUpperCase<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="1722712987%2FClasslikes%2F1326944285" anchor-label="Companion" id="1722712987%2FClasslikes%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1722712987%2FClasslikes%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div><div class="brief "><p class="paragraph">Companion object provides functions to connect to databases.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="-2139790295%2FProperties%2F1326944285" anchor-label="alwaysQuoteIdentifiers" id="-2139790295%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="always-quote-identifiers.html"><span>always</span><wbr><span>Quote</span><wbr><span><span>Identifiers</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2139790295%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="always-quote-identifiers.html">alwaysQuoteIdentifiers</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span></div><div class="brief "><p class="paragraph">Whether we need to always quote SQL identifiers in the generated SQLs.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1501430610%2FProperties%2F1326944285" anchor-label="dialect" id="-1501430610%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="dialect.html"><span><span>dialect</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1501430610%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="dialect.html">dialect</a><span class="token operator">: </span><a href="../-sql-dialect/index.html">SqlDialect</a></div><div class="brief "><p class="paragraph">The dialect, auto-detects an implementation by default using JDK <a href="https://docs.oracle.com/javase/8/docs/api/java/util/ServiceLoader.html">ServiceLoader</a> facility.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1609517589%2FProperties%2F1326944285" anchor-label="exceptionTranslator" id="-1609517589%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="exception-translator.html"><span>exception</span><wbr><span><span>Translator</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1609517589%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="exception-translator.html">exceptionTranslator</a><span class="token operator">: </span><span class="token punctuation">(</span><a href="https://docs.oracle.com/javase/8/docs/api/java/sql/SQLException.html">SQLException</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">Function used to translate SQL exceptions to rethrow them to users.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="370253231%2FProperties%2F1326944285" anchor-label="extraNameCharacters" id="370253231%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="extra-name-characters.html"><span>extra</span><wbr><span>Name</span><wbr><span><span>Characters</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="370253231%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="extra-name-characters.html">extraNameCharacters</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">All the "extra" characters that can be used in unquoted identifier names (those beyond a-z, A-Z, 0-9 and _).</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="786975634%2FProperties%2F1326944285" anchor-label="generateSqlInUpperCase" id="786975634%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="generate-sql-in-upper-case.html"><span>generate</span><wbr><span>Sql</span><wbr><span>In</span><wbr><span>Upper</span><wbr><span><span>Case</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="786975634%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="generate-sql-in-upper-case.html">generateSqlInUpperCase</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span><span class="token operator"> = </span>null</div><div class="brief "><p class="paragraph">Whether we need to output the generated SQLs in upper case.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-483404016%2FProperties%2F1326944285" anchor-label="identifierQuoteString" id="-483404016%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="identifier-quote-string.html"><span>identifier</span><wbr><span>Quote</span><wbr><span><span>String</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-483404016%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="identifier-quote-string.html">identifierQuoteString</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The string used to quote SQL identifiers, returns an empty string if identifier quoting is not supported.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-121021988%2FProperties%2F1326944285" anchor-label="keywords" id="-121021988%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="keywords.html"><span><span>keywords</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-121021988%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="keywords.html">keywords</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">A set of all of this database's SQL keywords (including SQL:2003 keywords), all in uppercase.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="636182774%2FProperties%2F1326944285" anchor-label="logger" id="636182774%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="logger.html"><span><span>logger</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="636182774%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="logger.html">logger</a><span class="token operator">: </span><a href="../../org.ktorm.logging/-logger/index.html">Logger</a></div><div class="brief "><p class="paragraph">The logger used to output logs, auto-detects an implementation by default.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="815325481%2FProperties%2F1326944285" anchor-label="maxColumnNameLength" id="815325481%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="max-column-name-length.html"><span>max</span><wbr><span>Column</span><wbr><span>Name</span><wbr><span><span>Length</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="815325481%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="max-column-name-length.html">maxColumnNameLength</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">The maximum number of characters this database allows for a column name. Zero means that there is no limit or the limit is not known.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1000372891%2FProperties%2F1326944285" anchor-label="name" id="1000372891%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="name.html"><span><span>name</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1000372891%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="name.html">name</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The name of the connected database.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="457158074%2FProperties%2F1326944285" anchor-label="productName" id="457158074%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="product-name.html"><span>product</span><wbr><span><span>Name</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="457158074%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="product-name.html">productName</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The name of the connected database product, e.g. MySQL, H2.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1709115715%2FProperties%2F1326944285" anchor-label="productVersion" id="-1709115715%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="product-version.html"><span>product</span><wbr><span><span>Version</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1709115715%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="product-version.html">productVersion</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The version of the connected database product.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="868581179%2FProperties%2F1326944285" anchor-label="storesLowerCaseIdentifiers" id="868581179%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="stores-lower-case-identifiers.html"><span>stores</span><wbr><span>Lower</span><wbr><span>Case</span><wbr><span><span>Identifiers</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="868581179%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="stores-lower-case-identifiers.html">storesLowerCaseIdentifiers</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether this database treats mixed case unquoted SQL identifiers as case-insensitive and stores them in lower case.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1871639235%2FProperties%2F1326944285" anchor-label="storesLowerCaseQuotedIdentifiers" id="1871639235%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="stores-lower-case-quoted-identifiers.html"><span>stores</span><wbr><span>Lower</span><wbr><span>Case</span><wbr><span>Quoted</span><wbr><span><span>Identifiers</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1871639235%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="stores-lower-case-quoted-identifiers.html">storesLowerCaseQuotedIdentifiers</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether this database treats mixed case quoted SQL identifiers as case-insensitive and stores them in lower case.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1901780533%2FProperties%2F1326944285" anchor-label="storesMixedCaseIdentifiers" id="1901780533%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="stores-mixed-case-identifiers.html"><span>stores</span><wbr><span>Mixed</span><wbr><span>Case</span><wbr><span><span>Identifiers</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1901780533%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="stores-mixed-case-identifiers.html">storesMixedCaseIdentifiers</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether this database treats mixed case unquoted SQL identifiers as case-insensitive and stores them in mixed case.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1678004675%2FProperties%2F1326944285" anchor-label="storesMixedCaseQuotedIdentifiers" id="-1678004675%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="stores-mixed-case-quoted-identifiers.html"><span>stores</span><wbr><span>Mixed</span><wbr><span>Case</span><wbr><span>Quoted</span><wbr><span><span>Identifiers</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1678004675%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="stores-mixed-case-quoted-identifiers.html">storesMixedCaseQuotedIdentifiers</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether this database treats mixed case quoted SQL identifiers as case-insensitive and stores them in mixed case.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="563001308%2FProperties%2F1326944285" anchor-label="storesUpperCaseIdentifiers" id="563001308%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="stores-upper-case-identifiers.html"><span>stores</span><wbr><span>Upper</span><wbr><span>Case</span><wbr><span><span>Identifiers</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="563001308%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="stores-upper-case-identifiers.html">storesUpperCaseIdentifiers</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether this database treats mixed case unquoted SQL identifiers as case-insensitive and stores them in upper case.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1000771932%2FProperties%2F1326944285" anchor-label="storesUpperCaseQuotedIdentifiers" id="-1000771932%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="stores-upper-case-quoted-identifiers.html"><span>stores</span><wbr><span>Upper</span><wbr><span>Case</span><wbr><span>Quoted</span><wbr><span><span>Identifiers</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1000771932%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="stores-upper-case-quoted-identifiers.html">storesUpperCaseQuotedIdentifiers</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether this database treats mixed case quoted SQL identifiers as case-insensitive and stores them in upper case.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1814296989%2FProperties%2F1326944285" anchor-label="supportsMixedCaseIdentifiers" id="-1814296989%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="supports-mixed-case-identifiers.html"><span>supports</span><wbr><span>Mixed</span><wbr><span>Case</span><wbr><span><span>Identifiers</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1814296989%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="supports-mixed-case-identifiers.html">supportsMixedCaseIdentifiers</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether this database treats mixed case unquoted SQL identifiers as case-sensitive and as a result stores them in mixed case.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1805812757%2FProperties%2F1326944285" anchor-label="supportsMixedCaseQuotedIdentifiers" id="-1805812757%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="supports-mixed-case-quoted-identifiers.html"><span>supports</span><wbr><span>Mixed</span><wbr><span>Case</span><wbr><span>Quoted</span><wbr><span><span>Identifiers</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1805812757%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="supports-mixed-case-quoted-identifiers.html">supportsMixedCaseQuotedIdentifiers</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether this database treats mixed case quoted SQL identifiers as case-sensitive and as a result stores them in mixed case.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2026378505%2FProperties%2F1326944285" anchor-label="transactionManager" id="-2026378505%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="transaction-manager.html"><span>transaction</span><wbr><span><span>Manager</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2026378505%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="transaction-manager.html">transactionManager</a><span class="token operator">: </span><a href="../-transaction-manager/index.html">TransactionManager</a></div><div class="brief "><p class="paragraph">The transaction manager used to manage connections and transactions.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1367020805%2FProperties%2F1326944285" anchor-label="url" id="1367020805%2FProperties%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="url.html"><span><span>url</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1367020805%2FProperties%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="url.html">url</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The URL of the connected database.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="100244280%2FFunctions%2F1326944285" anchor-label="batchInsert" id="100244280%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../org.ktorm.dsl/batch-insert.html"><span>batch</span><wbr><span><span>Insert</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="100244280%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../org.ktorm.dsl/batch-insert.html">T</a><span class="token operator"> : </span><a href="../../org.ktorm.schema/-base-table/index.html">BaseTable</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="index.html">Database</a><span class="token punctuation">.</span><a href="../../org.ktorm.dsl/batch-insert.html"><span class="token function">batchInsert</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">table<span class="token operator">: </span><a href="../../org.ktorm.dsl/batch-insert.html">T</a><span class="token punctuation">, </span></span><span class="parameter ">block<span class="token operator">: </span><a href="../../org.ktorm.dsl/-batch-insert-statement-builder/index.html">BatchInsertStatementBuilder</a><span class="token operator">&lt;</span><a href="../../org.ktorm.dsl/batch-insert.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html">IntArray</a></div><div class="brief "><p class="paragraph">Construct insert expressions in the given closure, then batch execute them and return the effected row counts for each expression.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="658680120%2FFunctions%2F1326944285" anchor-label="batchUpdate" id="658680120%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../org.ktorm.dsl/batch-update.html"><span>batch</span><wbr><span><span>Update</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="658680120%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../org.ktorm.dsl/batch-update.html">T</a><span class="token operator"> : </span><a href="../../org.ktorm.schema/-base-table/index.html">BaseTable</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="index.html">Database</a><span class="token punctuation">.</span><a href="../../org.ktorm.dsl/batch-update.html"><span class="token function">batchUpdate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">table<span class="token operator">: </span><a href="../../org.ktorm.dsl/batch-update.html">T</a><span class="token punctuation">, </span></span><span class="parameter ">block<span class="token operator">: </span><a href="../../org.ktorm.dsl/-batch-update-statement-builder/index.html">BatchUpdateStatementBuilder</a><span class="token operator">&lt;</span><a href="../../org.ktorm.dsl/batch-update.html">T</a><span class="token operator">&gt;</span><span class="token punctuation">.</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html">IntArray</a></div><div class="brief "><p class="paragraph">Construct update expressions in the given closure, then batch execute them and return the effected row counts for each expression.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1924107908%2FFunctions%2F1326944285" anchor-label="delete" id="1924107908%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../org.ktorm.dsl/delete.html"><span><span>delete</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1924107908%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../org.ktorm.dsl/delete.html">T</a><span class="token operator"> : </span><a href="../../org.ktorm.schema/-base-table/index.html">BaseTable</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="index.html">Database</a><span class="token punctuation">.</span><a href="../../org.ktorm.dsl/delete.html"><span class="token function">delete</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">table<span class="token operator">: </span><a href="../../org.ktorm.dsl/delete.html">T</a><span class="token punctuation">, </span></span><span class="parameter ">predicate<span class="token operator">: </span><span class="token punctuation">(</span><a href="../../org.ktorm.dsl/delete.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="../../org.ktorm.schema/-column-declaring/index.html">ColumnDeclaring</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Delete the records in the <a href="../../org.ktorm.dsl/delete.html">table</a> that matches the given <a href="../../org.ktorm.dsl/delete.html">predicate</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1384502987%2FFunctions%2F1326944285" anchor-label="deleteAll" id="-1384502987%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../org.ktorm.dsl/delete-all.html"><span>delete</span><wbr><span><span>All</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1384502987%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html">Database</a><span class="token punctuation">.</span><a href="../../org.ktorm.dsl/delete-all.html"><span class="token function">deleteAll</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">table<span class="token operator">: </span><a href="../../org.ktorm.schema/-base-table/index.html">BaseTable</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Delete all the records in the table.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2066737570%2FFunctions%2F1326944285" anchor-label="executeBatch" id="2066737570%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="execute-batch.html"><span>execute</span><wbr><span><span>Batch</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2066737570%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="execute-batch.html"><span class="token function">executeBatch</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expressions<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../org.ktorm.expression/-sql-expression/index.html">SqlExpression</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html">IntArray</a></div><div class="brief "><p class="paragraph">Batch execute the given SQL expressions and return the effected row counts for each expression.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="946869487%2FFunctions%2F1326944285" anchor-label="executeExpression" id="946869487%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="execute-expression.html"><span>execute</span><wbr><span><span>Expression</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="946869487%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="execute-expression.html">T</a><span class="token operator">&gt; </span><a href="execute-expression.html"><span class="token function">executeExpression</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expression<span class="token operator">: </span><a href="../../org.ktorm.expression/-sql-expression/index.html">SqlExpression</a><span class="token punctuation">, </span></span><span class="parameter ">func<span class="token operator">: </span><span class="token punctuation">(</span><a href="https://docs.oracle.com/javase/8/docs/api/java/sql/PreparedStatement.html">PreparedStatement</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="execute-expression.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="execute-expression.html">T</a></div><div class="brief "><p class="paragraph">Format the given <a href="execute-expression.html">expression</a> to a SQL string with its execution arguments, then create a <a href="https://docs.oracle.com/javase/8/docs/api/java/sql/PreparedStatement.html">PreparedStatement</a> for the database using the SQL string and execute the specific callback function with it. After the callback function completes, the statement will be closed automatically.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2136624044%2FFunctions%2F1326944285" anchor-label="executeQuery" id="2136624044%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="execute-query.html"><span>execute</span><wbr><span><span>Query</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2136624044%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="execute-query.html"><span class="token function">executeQuery</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expression<span class="token operator">: </span><a href="../../org.ktorm.expression/-sql-expression/index.html">SqlExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-cached-row-set/index.html">CachedRowSet</a></div><div class="brief "><p class="paragraph">Format the given <a href="execute-query.html">expression</a> to a SQL string with its execution arguments, then execute it via <a href="https://docs.oracle.com/javase/8/docs/api/java/sql/PreparedStatement.html#executeQuery--">PreparedStatement.executeQuery</a> and return the result <a href="../-cached-row-set/index.html">CachedRowSet</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1986063345%2FFunctions%2F1326944285" anchor-label="executeUpdate" id="-1986063345%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="execute-update.html"><span>execute</span><wbr><span><span>Update</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1986063345%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="execute-update.html"><span class="token function">executeUpdate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expression<span class="token operator">: </span><a href="../../org.ktorm.expression/-sql-expression/index.html">SqlExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Format the given <a href="execute-update.html">expression</a> to a SQL string with its execution arguments, then execute it via <a href="https://docs.oracle.com/javase/8/docs/api/java/sql/PreparedStatement.html#executeUpdate--">PreparedStatement.executeUpdate</a> and return the effected row count.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-184796426%2FFunctions%2F1326944285" anchor-label="executeUpdateAndRetrieveKeys" id="-184796426%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="execute-update-and-retrieve-keys.html"><span>execute</span><wbr><span>Update</span><wbr><span>And</span><wbr><span>Retrieve</span><wbr><span><span>Keys</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-184796426%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="execute-update-and-retrieve-keys.html"><span class="token function">executeUpdateAndRetrieveKeys</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expression<span class="token operator">: </span><a href="../../org.ktorm.expression/-sql-expression/index.html">SqlExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html">Pair</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span><a href="../-cached-row-set/index.html">CachedRowSet</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Format the given <a href="execute-update-and-retrieve-keys.html">expression</a> to a SQL string with its execution arguments, execute it via <a href="https://docs.oracle.com/javase/8/docs/api/java/sql/PreparedStatement.html#executeUpdate--">PreparedStatement.executeUpdate</a>, then return the effected row count along with the generated keys.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="472366441%2FFunctions%2F1326944285" anchor-label="formatExpression" id="472366441%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="format-expression.html"><span>format</span><wbr><span><span>Expression</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="472366441%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="format-expression.html"><span class="token function">formatExpression</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expression<span class="token operator">: </span><a href="../../org.ktorm.expression/-sql-expression/index.html">SqlExpression</a><span class="token punctuation">, </span></span><span class="parameter ">beautifySql<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">false</span><span class="token punctuation">, </span></span><span class="parameter ">indentSize<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">2</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html">Pair</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../org.ktorm.expression/-argument-expression/index.html">ArgumentExpression</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Format the specific <a href="../../org.ktorm.expression/-sql-expression/index.html">SqlExpression</a> to an executable SQL string with execution arguments.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1291348277%2FFunctions%2F1326944285" anchor-label="from" id="1291348277%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../org.ktorm.dsl/from.html"><span><span>from</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1291348277%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="index.html">Database</a><span class="token punctuation">.</span><a href="../../org.ktorm.dsl/from.html"><span class="token function">from</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">table<span class="token operator">: </span><a href="../../org.ktorm.schema/-base-table/index.html">BaseTable</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../org.ktorm.dsl/-query-source/index.html">QuerySource</a></div><div class="brief "><p class="paragraph">Wrap the specific table as a <a href="../../org.ktorm.dsl/-query-source/index.html">QuerySource</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1248301937%2FFunctions%2F1326944285" anchor-label="insert" id="-1248301937%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../org.ktorm.dsl/insert.html"><span><span>insert</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1248301937%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../org.ktorm.dsl/insert.html">T</a><span class="token operator"> : </span><a href="../../org.ktorm.schema/-base-table/index.html">BaseTable</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="index.html">Database</a><span class="token punctuation">.</span><a href="../../org.ktorm.dsl/insert.html"><span class="token function">insert</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">table<span class="token operator">: </span><a href="../../org.ktorm.dsl/insert.html">T</a><span class="token punctuation">, </span></span><span class="parameter ">block<span class="token operator">: </span><a href="../../org.ktorm.dsl/-assignments-builder/index.html">AssignmentsBuilder</a><span class="token punctuation">.</span><span class="token punctuation">(</span><a href="../../org.ktorm.dsl/insert.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Construct an insert expression in the given closure, then execute it and return the effected row count.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-719392638%2FFunctions%2F1326944285" anchor-label="insertAndGenerateKey" id="-719392638%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../org.ktorm.dsl/insert-and-generate-key.html"><span>insert</span><wbr><span>And</span><wbr><span>Generate</span><wbr><span><span>Key</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-719392638%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../org.ktorm.dsl/insert-and-generate-key.html">T</a><span class="token operator"> : </span><a href="../../org.ktorm.schema/-base-table/index.html">BaseTable</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="index.html">Database</a><span class="token punctuation">.</span><a href="../../org.ktorm.dsl/insert-and-generate-key.html"><span class="token function">insertAndGenerateKey</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">table<span class="token operator">: </span><a href="../../org.ktorm.dsl/insert-and-generate-key.html">T</a><span class="token punctuation">, </span></span><span class="parameter ">block<span class="token operator">: </span><a href="../../org.ktorm.dsl/-assignments-builder/index.html">AssignmentsBuilder</a><span class="token punctuation">.</span><span class="token punctuation">(</span><a href="../../org.ktorm.dsl/insert-and-generate-key.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a></div><div class="brief "><p class="paragraph">Construct an insert expression in the given closure, then execute it and return the auto-generated key.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2061464479%2FFunctions%2F1326944285" anchor-label="sequenceOf" id="2061464479%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../org.ktorm.entity/sequence-of.html"><span>sequence</span><wbr><span><span>Of</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2061464479%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../org.ktorm.entity/sequence-of.html">E</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token punctuation">, </span><a href="../../org.ktorm.entity/sequence-of.html">T</a><span class="token operator"> : </span><a href="../../org.ktorm.schema/-base-table/index.html">BaseTable</a><span class="token operator">&lt;</span><a href="../../org.ktorm.entity/sequence-of.html">E</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="index.html">Database</a><span class="token punctuation">.</span><a href="../../org.ktorm.entity/sequence-of.html"><span class="token function">sequenceOf</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">table<span class="token operator">: </span><a href="../../org.ktorm.entity/sequence-of.html">T</a><span class="token punctuation">, </span></span><span class="parameter ">withReferences<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../org.ktorm.entity/-entity-sequence/index.html">EntitySequence</a><span class="token operator">&lt;</span><a href="../../org.ktorm.entity/sequence-of.html">E</a><span class="token punctuation">, </span><a href="../../org.ktorm.entity/sequence-of.html">T</a><span class="token operator">&gt;</span></div><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.jvm/-jvm-name/index.html"><span class="token annotation builtin">JvmName</span></a><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"sequenceOfNothing"</span></span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../org.ktorm.entity/sequence-of.html">T</a><span class="token operator"> : </span><a href="../../org.ktorm.schema/-base-table/index.html">BaseTable</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing/index.html">Nothing</a><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="index.html">Database</a><span class="token punctuation">.</span><a href="../../org.ktorm.entity/sequence-of.html"><span class="token function"><strike>sequenceOf</strike></span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">table<span class="token operator">: </span><a href="../../org.ktorm.entity/sequence-of.html">T</a><span class="token punctuation">, </span></span><span class="parameter ">withReferences<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator"> = </span><span class="token boolean">true</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../org.ktorm.entity/-entity-sequence/index.html">EntitySequence</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-nothing/index.html">Nothing</a><span class="token punctuation">, </span><a href="../../org.ktorm.entity/sequence-of.html">T</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Create an <a href="../../org.ktorm.entity/-entity-sequence/index.html">EntitySequence</a> from the specific table.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1485166017%2FFunctions%2F1326944285" anchor-label="update" id="-1485166017%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../org.ktorm.dsl/update.html"><span><span>update</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1485166017%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="../../org.ktorm.dsl/update.html">T</a><span class="token operator"> : </span><a href="../../org.ktorm.schema/-base-table/index.html">BaseTable</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt; </span><a href="index.html">Database</a><span class="token punctuation">.</span><a href="../../org.ktorm.dsl/update.html"><span class="token function">update</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">table<span class="token operator">: </span><a href="../../org.ktorm.dsl/update.html">T</a><span class="token punctuation">, </span></span><span class="parameter ">block<span class="token operator">: </span><a href="../../org.ktorm.dsl/-update-statement-builder/index.html">UpdateStatementBuilder</a><span class="token punctuation">.</span><span class="token punctuation">(</span><a href="../../org.ktorm.dsl/update.html">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html">Unit</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div><div class="brief "><p class="paragraph">Construct an update expression in the given closure, then execute it and return the effected row count.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1818254071%2FFunctions%2F1326944285" anchor-label="useConnection" id="-1818254071%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="use-connection.html"><span>use</span><wbr><span><span>Connection</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1818254071%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="use-connection.html">T</a><span class="token operator">&gt; </span><a href="use-connection.html"><span class="token function">useConnection</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">func<span class="token operator">: </span><span class="token punctuation">(</span><a href="https://docs.oracle.com/javase/8/docs/api/java/sql/Connection.html">Connection</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="use-connection.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="use-connection.html">T</a></div><div class="brief "><p class="paragraph">Obtain a connection and invoke the callback function with it.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-461431601%2FFunctions%2F1326944285" anchor-label="useTransaction" id="-461431601%2FFunctions%2F1326944285" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-core:dokkaHtmlPartial/main" data-filterable-set=":ktorm-core:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="use-transaction.html"><span>use</span><wbr><span><span>Transaction</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-461431601%2FFunctions%2F1326944285"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-core:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="use-transaction.html">T</a><span class="token operator">&gt; </span><a href="use-transaction.html"><span class="token function">useTransaction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">isolation<span class="token operator">: </span><a href="../-transaction-isolation/index.html">TransactionIsolation</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">func<span class="token operator">: </span><span class="token punctuation">(</span><a href="../-transaction/index.html">Transaction</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="use-transaction.html">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="use-transaction.html">T</a></div><div class="brief "><p class="paragraph">Execute the specific callback function in a transaction and returns its result if the execution succeeds, otherwise, if the execution fails, the transaction will be rollback.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="footer">
+    © 2024 KTORM.ORG. Licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a> <br>
+    Hosted by
+    <a href="https://github.com/kotlin-orm/ktorm">GitHub</a>
+    <a href="https://github.com/kotlin-orm/ktorm/stargazers">
+      <img src="https://img.shields.io/github/stars/kotlin-orm/ktorm.svg?style=social" alt="Stars">
+    </a>
+  </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+

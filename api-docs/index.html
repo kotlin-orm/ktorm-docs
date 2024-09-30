@@ -1,1 +1,273 @@
-<!-- build time:Mon Jan 01 2024 19:39:06 GMT+0800 (CST) --><!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Ktorm | api-docs</title><meta name="keywords" content="Kotlin, ORM, SQL, DSL, sequence"><meta name="description" content=""><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="always"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,600,700" rel="stylesheet"><link href="/vendors/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet"><link href="/vendors/docsearch@2.6.3/docsearch.min.css" rel="stylesheet"><link href="/style/doc.css" rel="stylesheet"><link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"></head><body><script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-180275463-1","auto"),ga("send","pageview")</script><script async src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript">window.__INITIAL_STATE__={page:{title:"api-docs",path:"api-docs/index.html",lang:"default"},data:{"navigation-zh-cn":{home:[{title:"快速开始",link:"zh-cn/quick-start.html",color:"purple",icon:"flash",description:"快速配置 Ktorm 并开始使用"},{title:"SQL DSL",link:"zh-cn/query.html",color:"blue",icon:"code",description:'<a href="/zh-cn/schema-definition.html">定义表结构</a>，使用强类型的灵活的<a href="/zh-cn/query.html">查询 DSL</a>'},{title:"实体序列",link:"zh-cn/entity-sequence.html",color:"green",icon:"line-chart",description:'<a href="/zh-cn/entities-and-column-binding.html">配置列绑定</a>，使用<a href="/zh-cn/entity-sequence.html">序列 API</a> 获取实体对象'},{title:"API 文档",link:"api-docs/index.html",color:"red",icon:"paperclip",description:"查看 Ktorm 中类与函数的 API 文档"}],main:[{text:"概述",type:"link",path:"zh-cn/"},{text:"快速开始",type:"link",path:"zh-cn/quick-start.html"},{text:"连接管理",type:"label"},{text:"连接数据库",type:"link",path:"zh-cn/connect-to-databases.html"},{text:"事务管理",type:"link",path:"zh-cn/transaction-management.html"},{text:"Spring 支持",type:"link",path:"zh-cn/spring-support.html"},{text:"SQL DSL",type:"label"},{text:"定义表结构",type:"link",path:"zh-cn/schema-definition.html"},{text:"查询",type:"link",path:"zh-cn/query.html"},{text:"联表",type:"link",path:"zh-cn/joining.html"},{text:"增删改",type:"link",path:"zh-cn/dml.html"},{text:"运算符",type:"link",path:"zh-cn/operators.html"},{text:"方言与原生 SQL",type:"link",path:"zh-cn/dialects-and-native-sql.html"},{text:"实体类 API",type:"label"},{text:"实体类与列绑定",type:"link",path:"zh-cn/entities-and-column-binding.html"},{text:"实体查询",type:"link",path:"zh-cn/entity-finding.html"},{text:"实体序列",type:"link",path:"zh-cn/entity-sequence.html"},{text:"序列聚合",type:"link",path:"zh-cn/sequence-aggregation.html"},{text:"实体增删改",type:"link",path:"zh-cn/entity-dml.html"},{text:"使用任意的类作为实体类",type:"link",path:"zh-cn/define-entities-as-any-kind-of-classes.html"},{text:"支持和反馈",type:"label"},{text:"API 文档",type:"support-link",path:"api-docs/index.html"},{text:"问题反馈",type:"support-link",path:"https://github.com/kotlin-orm/ktorm/issues/new"},{text:"打赏作者",type:"support-link",path:"zh-cn/sponsor.html"}]},"navigation-en":{home:[{title:"Quick Start",link:"en/quick-start.html",color:"purple",icon:"flash",description:"Setting up Ktorm and starting up."},{title:"SQL DSL",link:"en/query.html",color:"blue",icon:"code",description:'Use the strong-typed and flexible <a href="/en/query.html">query DSL</a> after <a href="/en/schema-definition.html">defining table schemas</a>.'},{title:"Entity Sequence",link:"en/entity-sequence.html",color:"green",icon:"line-chart",description:'Obtain entities via <a href="/en/entity-sequence.html">sequence APIs</a> after <a href="/en/entities-and-column-binding.html">column bindings</a> configured.'},{title:"API Documents",link:"api-docs/index.html",color:"red",icon:"paperclip",description:"API documents for Ktorm's classes and functions."}],main:[{text:"Overview",type:"link",path:"",isCurrent:!1},{text:"Quick Start",type:"link",path:"en/quick-start.html",isCurrent:!1},{text:"CONNECTION MANAGEMENT",type:"label",isCurrent:!1},{text:"Connect to Databases",type:"link",path:"en/connect-to-databases.html",isCurrent:!1},{text:"Transaction Management",type:"link",path:"en/transaction-management.html",isCurrent:!1},{text:"Spring Support",type:"link",path:"en/spring-support.html",isCurrent:!1},{text:"SQL DSL",type:"label",isCurrent:!1},{text:"Schema Definition",type:"link",path:"en/schema-definition.html",isCurrent:!1},{text:"Query",type:"link",path:"en/query.html",isCurrent:!1},{text:"Joining",type:"link",path:"en/joining.html",isCurrent:!1},{text:"Data Manipulation",type:"link",path:"en/dml.html",isCurrent:!1},{text:"Operators",type:"link",path:"en/operators.html",isCurrent:!1},{text:"Dialects & Native SQL",type:"link",path:"en/dialects-and-native-sql.html",isCurrent:!1},{text:"ENTITY API",type:"label",isCurrent:!1},{text:"Entities & Column Binding",type:"link",path:"en/entities-and-column-binding.html",isCurrent:!1},{text:"Entity Query",type:"link",path:"en/entity-finding.html",isCurrent:!1},{text:"Entity Sequence",type:"link",path:"en/entity-sequence.html",isCurrent:!1},{text:"Sequence Aggregation",type:"link",path:"en/sequence-aggregation.html",isCurrent:!1},{text:"Entity Manipulation",type:"link",path:"en/entity-dml.html",isCurrent:!1},{text:"Define Entities as Any Class",type:"link",path:"en/define-entities-as-any-kind-of-classes.html",isCurrent:!1},{text:"SUPPORT & FEEDBACK",type:"label",isCurrent:!1},{text:"API Documents",type:"support-link",path:"api-docs/index.html",isCurrent:!1},{text:"Issue Feedback",type:"support-link",path:"https://github.com/kotlin-orm/ktorm/issues/new",isCurrent:!1},{text:"Sponsor the Project",type:"support-link",path:"en/sponsor.html",isCurrent:!1}]}},config:{timezone:null,root:"/",time_format:"HH:mm:ss",theme:"doc",algolia:{appId:"2W81KMSLOD",apiKey:"2a146a809de068d9b7a07ba3fb70b4e5",indexName:"ktorm",chunkSize:5e3,fields:["title","lang","date","updated","_content:truncate,0,5200","path","permalink"]}}},window.localStorage&&"true"===window.localStorage.getItem("navigation_collapsed")&&document.getElementsByTagName("body")[0].classList.add("doc-navigation--is-collapsed")</script><div id="navigation-container"><div class="doc-navigation" data-reactroot=""><nav class="doc-navbar"><span class="doc-navbar__logo"><a href="/"><img src="/images/logo.png" class="doc-navbar__logo__img"><img src="/images/logo-middle.png" class="doc-navbar__logo__img-full"></a></span><i class="dc-icon dc-icon--close dc-icon--interactive doc-sidebar-close doc-navbar__sidebar-close doc-navbar__sidebar-close--desktop"></i><i class="dc-icon dc-icon--menu dc-icon--interactive doc-sidebar-toggle doc-navbar__sidebar-toggle"></i><span class="lang-switcher"><span><img src="/images/us.png"><span>English</span></span><span class="lang-divider"> | </span><span><img src="/images/cn.png"><span style="color:#d3d3d3">简体中文</span></span></span></nav><nav class="doc-sidebar"><div class="doc-sidebar__vertical-menu"><i class="dc-icon dc-icon--menu dc-icon--interactive doc-sidebar-toggle doc-sidebar-toggle--primary doc-sidebar__vertical-menu__item"></i><i class="dc-icon dc-icon--search dc-icon--interactive doc-sidebar__vertical-menu__item doc-sidebar__vertical-menu__item--primary"></i></div><div class="doc-sidebar-content"><div class="doc-sidebar__search-form"><div class="dc-search-form doc-search-form"><input type="search" id="doc-search-input" class="dc-input dc-search-form__input doc-search-form__input" placeholder="Search documents" autofocus><button class="dc-btn dc-search-form__btn doc-search-form__btn" aria-label="Search"><i class="dc-icon dc-icon--search"></i></button></div></div><ul class="doc-sidebar-list"><li class="doc-sidebar-list__item doc-sidebar-list__item--link"><a href="/" target="_self"><span>Overview</span></a></li><li class="doc-sidebar-list__item doc-sidebar-list__item--link"><a href="/en/quick-start.html" target="_self"><span>Quick Start</span></a></li><li class="doc-sidebar-list__item doc-sidebar-list__item--label"><span>CONNECTION MANAGEMENT</span></li><li class="doc-sidebar-list__item doc-sidebar-list__item--link"><a href="/en/connect-to-databases.html" target="_self"><span>Connect to Databases</span></a></li><li class="doc-sidebar-list__item doc-sidebar-list__item--link"><a href="/en/transaction-management.html" target="_self"><span>Transaction Management</span></a></li><li class="doc-sidebar-list__item doc-sidebar-list__item--link"><a href="/en/spring-support.html" target="_self"><span>Spring Support</span></a></li><li class="doc-sidebar-list__item doc-sidebar-list__item--label"><span>SQL DSL</span></li><li class="doc-sidebar-list__item doc-sidebar-list__item--link"><a href="/en/schema-definition.html" target="_self"><span>Schema Definition</span></a></li><li class="doc-sidebar-list__item doc-sidebar-list__item--link"><a href="/en/query.html" target="_self"><span>Query</span></a></li><li class="doc-sidebar-list__item doc-sidebar-list__item--link"><a href="/en/joining.html" target="_self"><span>Joining</span></a></li><li class="doc-sidebar-list__item doc-sidebar-list__item--link"><a href="/en/dml.html" target="_self"><span>Data Manipulation</span></a></li><li class="doc-sidebar-list__item doc-sidebar-list__item--link"><a href="/en/operators.html" target="_self"><span>Operators</span></a></li><li class="doc-sidebar-list__item doc-sidebar-list__item--link"><a href="/en/dialects-and-native-sql.html" target="_self"><span>Dialects &amp; Native SQL</span></a></li><li class="doc-sidebar-list__item doc-sidebar-list__item--label"><span>ENTITY API</span></li><li class="doc-sidebar-list__item doc-sidebar-list__item--link"><a href="/en/entities-and-column-binding.html" target="_self"><span>Entities &amp; Column Binding</span></a></li><li class="doc-sidebar-list__item doc-sidebar-list__item--link"><a href="/en/entity-finding.html" target="_self"><span>Entity Query</span></a></li><li class="doc-sidebar-list__item doc-sidebar-list__item--link"><a href="/en/entity-sequence.html" target="_self"><span>Entity Sequence</span></a></li><li class="doc-sidebar-list__item doc-sidebar-list__item--link"><a href="/en/sequence-aggregation.html" target="_self"><span>Sequence Aggregation</span></a></li><li class="doc-sidebar-list__item doc-sidebar-list__item--link"><a href="/en/entity-dml.html" target="_self"><span>Entity Manipulation</span></a></li><li class="doc-sidebar-list__item doc-sidebar-list__item--link"><a href="/en/define-entities-as-any-kind-of-classes.html" target="_self"><span>Define Entities as Any Class</span></a></li><li class="doc-sidebar-list__item doc-sidebar-list__item--label"><span>SUPPORT &amp; FEEDBACK</span></li><li class="doc-sidebar-list__item doc-sidebar-list__item--link doc-sidebar-list__item--current"><a href="/api-docs/index.html" target="_self"><span>API Documents</span></a><ul class="doc-sidebar-list__toc-list"></ul></li><li class="doc-sidebar-list__item doc-sidebar-list__item--link"><a href="https://github.com/kotlin-orm/ktorm/issues/new" target="_self"><span>Issue Feedback</span></a></li><li class="doc-sidebar-list__item doc-sidebar-list__item--link"><a href="/en/sponsor.html" target="_self"><span>Sponsor the Project</span></a></li></ul></div></nav></div></div><div class="doc-content"><div id="lang-switcher-container" class="lang-switcher-container"><span class="lang-switcher" data-reactroot=""><span><img src="/images/us.png"><span>English</span></span><span class="lang-divider"> | </span><span><img src="/images/cn.png"><span style="color:#d3d3d3">简体中文</span></span></span></div><div class="dc-page"><div class="dc-card"><div id="doc-search-results" class="doc-search-results"><div id="doc-search-stats"></div><div id="doc-search-hits"></div><div id="doc-search-pagination"></div></div><article id="page-content" class="doc-formatting api-docs"><p><a href="./index.html">api-docs</a></p><h3>Packages</h3><table class="api-docs-table"><thead><tr><th>Name</th><th>Summary</th></tr></thead><tbody><tr><td><p><a href="org.ktorm.database/index.html">org.ktorm.database</a></p></td><td><p>Entry of Ktorm framework, providing basic features of connection and transaction management.</p></td></tr><tr><td><p><a href="org.ktorm.dsl/index.html">org.ktorm.dsl</a></p></td><td><p>Constructs strong-typed SQL DSL.</p></td></tr><tr><td><p><a href="org.ktorm.entity/index.html">org.ktorm.entity</a></p></td><td><p>Provides entity sequence APIs.</p></td></tr><tr><td><p><a href="org.ktorm.expression/index.html">org.ktorm.expression</a></p></td><td><p>Expression tree and SQL generation supports, providing expression node types, tree visitor, and SQL formatter.</p></td></tr><tr><td><p><a href="org.ktorm.global/index.html">org.ktorm.global</a></p></td><td><p>Provide a more concise DSL syntax based on a global database instance.</p></td></tr><tr><td><p><a href="org.ktorm.jackson/index.html">org.ktorm.jackson</a></p></td><td><p>Jackson extension module for Ktorm, providing JSON serialization for entity objects and JSON SQL type.</p></td></tr><tr><td><p><a href="org.ktorm.logging/index.html">org.ktorm.logging</a></p></td><td><p>Simple logging facade of Ktorm, provides adapters for variable logging frameworks.</p></td></tr><tr><td><p><a href="org.ktorm.schema/index.html">org.ktorm.schema</a></p></td><td><p>Database schema supports, including table and column definition, column binding, and SQL types.</p></td></tr><tr><td><p><a href="org.ktorm.support.mysql/index.html">org.ktorm.support.mysql</a></p></td><td><p>MySQL dialect module for Ktorm.</p></td></tr><tr><td><p><a href="org.ktorm.support.oracle/index.html">org.ktorm.support.oracle</a></p></td><td><p>Oracle dialect module for Ktorm.</p></td></tr><tr><td><p><a href="org.ktorm.support.postgresql/index.html">org.ktorm.support.postgresql</a></p></td><td><p>PostgreSQL dialect module for Ktorm.</p></td></tr><tr><td><p><a href="org.ktorm.support.sqlite/index.html">org.ktorm.support.sqlite</a></p></td><td><p>SQLite dialect module for Ktorm.</p></td></tr><tr><td><p><a href="org.ktorm.support.sqlserver/index.html">org.ktorm.support.sqlserver</a></p></td><td><p>Microsoft SqlServer dialect module for Ktorm.</p></td></tr></tbody></table><h3>Index</h3><a href="alltypes/index.html">All Types</a><p></p></article></div></div><div class="doc-footer">&copy; 2024 KTORM.ORG. Licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache 2.0</a><br>Hosted by <a href="https://github.com/kotlin-orm/ktorm" target="_blank" rel="noopener">GitHub</a> <a href="https://github.com/kotlin-orm/ktorm/stargazers" target="_blank" rel="noopener"><img src="https://img.shields.io/github/stars/kotlin-orm/ktorm.svg?style=social" alt="Stars"></a></div></div><script src="/vendors/jquery@3.2.1/jquery.min.js"></script><script src="/script/doc.js"></script><script type="text/javascript" src="/vendors/docsearch@2.6.3/docsearch.min.js"></script><script type="text/javascript">docsearch({appId:"0DGANM0MZ3",apiKey:"071ea85fb6b0933d3f3d3925aa434e23",indexName:"ktorm",inputSelector:"#doc-search-input",algoliaOptions:{facetFilters:["lang:en","tags:doc"]},autocompleteOptions:{hint:!1,appendTo:"body"},debug:!1})</script><script>!function(){$(".kotlin .code .keyword").each(function(){var e=$(this);("where"===e.text()||"set"===e.text())&&e.removeClass("keyword")})}()</script></body></html><!-- rebuild by neat -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="Kotlin, ORM, SQL, DSL, sequence">
+
+  <!-- 站内所有 HTTP 资源，一律替换为 HTTPS -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+  <!-- 协议降级，跳转到非 HTTPS 的站点时，仍然携带 referrer 请求头 -->
+  <meta name="referrer" content="always" />
+
+  <!-- Disable Baidu transformation -->
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <!-- Page title -->
+  <title>Ktorm | All modules</title>
+
+  <!-- favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+    <script>
+      var pathToRoot = "";
+    </script>
+    <script>
+      document.documentElement.classList.replace("no-js","js");
+
+      const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="scripts/sourceset_dependencies.js" async="async"></script>
+<link href="styles/style.css" rel="Stylesheet">
+<link href="styles/main.css" rel="Stylesheet">
+<link href="styles/prism.css" rel="Stylesheet">
+<link href="styles/logo-styles.css" rel="Stylesheet">
+<link href="styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+    <style>
+      :root {
+        --dokka-logo-image-url: url('/images/logo.png');
+        --dokka-logo-height: 24px;
+        --dokka-logo-width: 24px;
+      }
+      @media (max-width: 759px) {
+        .library-name--link::before {
+          display: inline-block;
+        }
+      }
+      .footer {
+        display: block;
+        padding-top: 20px;
+        font-size: 16px;
+        line-height: 1.6em;
+        color: #666;
+        overflow: hidden;
+        white-space: nowrap;
+        text-align: center;
+      }
+      .footer img {
+        display: inline-block;
+        padding: 0 5px;
+        max-width: 100%;
+        position: relative;
+        vertical-align: text-bottom;
+      }
+      .theme-dark .footer {
+        color: hsla(0, 0%, 100%, 0.6);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-180275463-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+  <div class="navigation--inner">
+    <div class="navigation-title">
+      <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+      <div class="library-name">
+          <a class="library-name--link" href="index.html">
+              ktorm
+          </a>
+      </div>
+      <div class="library-version">
+4.1.1      </div>
+    </div>
+  </div>
+  <div class="navigation-controls">
+    <a class="navigation-controls--btn navigation-controls--homepage" id="homepage-link" href="/" target="_blank"></a>
+    <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+    <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+  </div>
+</nav>
+      <div id="container">
+        <div class="sidebar" id="leftColumn">
+          <div class="sidebar--inner" id="sideMenu"></div>
+        </div>
+        <div id="main">
+<div class="main-content" id="content" pageIds="ktorm::.ext/allModules///PointingToDeclaration//0">
+  <div class="breadcrumbs"></div>
+  <div class="cover ">
+    <h2 class="">All modules:</h2>
+    <div class="table"><a data-name="-1796735318%2FMain%2F0" anchor-label="ktorm-core" id="-1796735318%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="ktorm-core/index.html">ktorm-core</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1796735318%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment"></span></div>
+        </div>
+      </div>
+<a data-name="1321240870%2FMain%2F0" anchor-label="ktorm-global" id="1321240870%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="ktorm-global/index.html">ktorm-global</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1321240870%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment"></span></div>
+        </div>
+      </div>
+<a data-name="875106822%2FMain%2F0" anchor-label="ktorm-jackson" id="875106822%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="ktorm-jackson/index.html">ktorm-jackson</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="875106822%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment"></span></div>
+        </div>
+      </div>
+<a data-name="-682273798%2FMain%2F0" anchor-label="ktorm-ksp-annotations" id="-682273798%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="ktorm-ksp-annotations/index.html">ktorm-ksp-annotations</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-682273798%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment"></span></div>
+        </div>
+      </div>
+<a data-name="1785184549%2FMain%2F0" anchor-label="ktorm-ksp-compiler" id="1785184549%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="ktorm-ksp-compiler/index.html">ktorm-ksp-compiler</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1785184549%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment"></span></div>
+        </div>
+      </div>
+<a data-name="434769819%2FMain%2F0" anchor-label="ktorm-ksp-compiler-maven-plugin" id="434769819%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="ktorm-ksp-compiler-maven-plugin/index.html">ktorm-ksp-compiler-maven-plugin</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="434769819%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment"></span></div>
+        </div>
+      </div>
+<a data-name="1815426930%2FMain%2F0" anchor-label="ktorm-ksp-spi" id="1815426930%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="ktorm-ksp-spi/index.html">ktorm-ksp-spi</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1815426930%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment"></span></div>
+        </div>
+      </div>
+<a data-name="-1833930411%2FMain%2F0" anchor-label="ktorm-support-mysql" id="-1833930411%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="ktorm-support-mysql/index.html">ktorm-support-mysql</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1833930411%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment"></span></div>
+        </div>
+      </div>
+<a data-name="-1229860435%2FMain%2F0" anchor-label="ktorm-support-oracle" id="-1229860435%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="ktorm-support-oracle/index.html">ktorm-support-oracle</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1229860435%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment"></span></div>
+        </div>
+      </div>
+<a data-name="-1975232617%2FMain%2F0" anchor-label="ktorm-support-postgresql" id="-1975232617%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="ktorm-support-postgresql/index.html">ktorm-support-postgresql</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1975232617%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment"></span></div>
+        </div>
+      </div>
+<a data-name="1065732831%2FMain%2F0" anchor-label="ktorm-support-sqlite" id="1065732831%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="ktorm-support-sqlite/index.html">ktorm-support-sqlite</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1065732831%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment"></span></div>
+        </div>
+      </div>
+<a data-name="-6430906%2FMain%2F0" anchor-label="ktorm-support-sqlserver" id="-6430906%2FMain%2F0" data-filterable-set=""></a>
+      <div class="table-row">
+        <div class="main-subrow ">
+          <div class="w-100"><span class="inline-flex">
+              <div><a href="ktorm-support-sqlserver/index.html">ktorm-support-sqlserver</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-6430906%2FMain%2F0"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div><span class="brief-comment"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="footer">
+    &copy; 2024 KTORM.ORG. Licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a> <br/>
+    Hosted by
+    <a href="https://github.com/kotlin-orm/ktorm">GitHub</a>
+    <a href="https://github.com/kotlin-orm/ktorm/stargazers" >
+      <img src="https://img.shields.io/github/stars/kotlin-orm/ktorm.svg?style=social" alt="Stars">
+    </a>
+  </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+

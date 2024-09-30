@@ -1,0 +1,775 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="Kotlin, ORM, SQL, DSL, sequence">
+
+  <!-- 站内所有 HTTP 资源，一律替换为 HTTPS -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+  <!-- 协议降级，跳转到非 HTTPS 的站点时，仍然携带 referrer 请求头 -->
+  <meta name="referrer" content="always">
+
+  <!-- Disable Baidu transformation -->
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <!-- Page title -->
+  <title>Ktorm | SQLiteFormatter</title>
+
+  <!-- favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+<script>
+      var pathToRoot = "../../../";
+    </script>    <script>
+      document.documentElement.classList.replace("no-js","js");
+
+      const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>    <style>
+      :root {
+        --dokka-logo-image-url: url('/images/logo.png');
+        --dokka-logo-height: 24px;
+        --dokka-logo-width: 24px;
+      }
+      @media (max-width: 759px) {
+        .library-name--link::before {
+          display: inline-block;
+        }
+      }
+      .footer {
+        display: block;
+        padding-top: 20px;
+        font-size: 16px;
+        line-height: 1.6em;
+        color: #666;
+        overflow: hidden;
+        white-space: nowrap;
+        text-align: center;
+      }
+      .footer img {
+        display: inline-block;
+        padding: 0 5px;
+        max-width: 100%;
+        position: relative;
+        vertical-align: text-bottom;
+      }
+      .theme-dark .footer {
+        color: hsla(0, 0%, 100%, 0.6);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-180275463-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+    <!-- End Google Analytics -->
+
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+  <div class="navigation--inner">
+    <div class="navigation-title">
+      <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+      <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+              ktorm
+          </a>      </div>
+      <div class="library-version">4.1.1
+      </div>
+    </div>
+    <div class="filter-section" id="filter-section">
+        <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":ktorm-support-sqlite:dokkaHtmlPartial/main">jvm</button>
+    </div>
+  </div>
+  <div class="navigation-controls">
+    <a class="navigation-controls--btn navigation-controls--homepage" id="homepage-link" href="/" target="_blank"></a>
+    <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+    <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+  </div>
+</nav>
+      <div id="container">
+        <div class="sidebar" id="leftColumn">
+          <div class="sidebar--inner" id="sideMenu"></div>
+        </div>
+        <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="ktorm-support-sqlite::org.ktorm.support.sqlite/SQLiteFormatter///PointingToDeclaration//251362706">
+  <div class="breadcrumbs"><a href="../../index.html">ktorm-support-sqlite</a><span class="delimiter">/</span><a href="../index.html">org.ktorm.support.sqlite</a><span class="delimiter">/</span><span class="current">SQLiteFormatter</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>SQLite</span><wbr><span><span>Formatter</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">SQLiteFormatter</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">database<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.database/-database/index.html">Database</a><span class="token punctuation">, </span></span><span class="parameter ">beautifySql<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter ">indentSize<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="../../../ktorm-core/org.ktorm.expression/-sql-formatter/index.html">SqlFormatter</a>, <a href="../-s-q-lite-expression-visitor/index.html">SQLiteExpressionVisitor</a><span class="clearfix"><span class="floating-right">(<a href="https://github.com/kotlin-orm/ktorm/blob/master/ktorm-support-sqlite/src/main/kotlin/org/ktorm/support/sqlite/SQLiteFormatter.kt#L29">source</a>)</span></span></div><p class="paragraph"><a href="../../../ktorm-core/org.ktorm.expression/-sql-formatter/index.html">SqlFormatter</a> implementation for SQLite, formatting SQL expressions as strings with their execution arguments.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="-942880921%2FConstructors%2F251362706" anchor-label="SQLiteFormatter" id="-942880921%2FConstructors%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-s-q-lite-formatter.html"><span>SQLite</span><wbr><span><span>Formatter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-942880921%2FConstructors%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">database<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.database/-database/index.html">Database</a><span class="token punctuation">, </span></span><span class="parameter ">beautifySql<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token punctuation">, </span></span><span class="parameter ">indentSize<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1372650625%2FProperties%2F251362706" anchor-label="beautifySql" id="1372650625%2FProperties%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1372650625%2FProperties%2F251362706"><span>beautify</span><wbr><span><span>Sql</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1372650625%2FProperties%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="index.html#1372650625%2FProperties%2F251362706">beautifySql</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1139142287%2FProperties%2F251362706" anchor-label="database" id="1139142287%2FProperties%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1139142287%2FProperties%2F251362706"><span><span>database</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1139142287%2FProperties%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="index.html#1139142287%2FProperties%2F251362706">database</a><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.database/-database/index.html">Database</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="100526653%2FProperties%2F251362706" anchor-label="indentSize" id="100526653%2FProperties%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#100526653%2FProperties%2F251362706"><span>indent</span><wbr><span><span>Size</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="100526653%2FProperties%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="index.html#100526653%2FProperties%2F251362706">indentSize</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html">Int</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1018495424%2FProperties%2F251362706" anchor-label="parameters" id="1018495424%2FProperties%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1018495424%2FProperties%2F251362706"><span><span>parameters</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1018495424%2FProperties%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="index.html#1018495424%2FProperties%2F251362706">parameters</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../../ktorm-core/org.ktorm.expression/-argument-expression/index.html">ArgumentExpression</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1100979618%2FProperties%2F251362706" anchor-label="sql" id="1100979618%2FProperties%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1100979618%2FProperties%2F251362706"><span><span>sql</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1100979618%2FProperties%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="index.html#1100979618%2FProperties%2F251362706">sql</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="432473545%2FFunctions%2F251362706" anchor-label="visit" id="432473545%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit.html"><span><span>visit</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="432473545%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="visit.html"><span class="token function">visit</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-sql-expression/index.html">SqlExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-sql-expression/index.html">SqlExpression</a></div><div class="brief "><p class="paragraph">Dispatch different type of expression nodes to their specific <code class="lang-kotlin">visit*</code> functions. Custom expression types that are unknown to Ktorm will be dispatched to <a href="../../../ktorm-support-sqlite/org.ktorm.support.sqlite/-s-q-lite-formatter/visit-unknown.html">visitUnknown</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1465511025%2FFunctions%2F251362706" anchor-label="visitAggregate" id="-1465511025%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1465511025%2FFunctions%2F251362706"><span>visit</span><wbr><span><span>Aggregate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1465511025%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="index.html#-1465511025%2FFunctions%2F251362706">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="index.html#-1465511025%2FFunctions%2F251362706"><span class="token function">visitAggregate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-aggregate-expression/index.html">AggregateExpression</a><span class="token operator">&lt;</span><a href="index.html#-1465511025%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-aggregate-expression/index.html">AggregateExpression</a><span class="token operator">&lt;</span><a href="index.html#-1465511025%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1527896183%2FFunctions%2F251362706" anchor-label="visitArgument" id="1527896183%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1527896183%2FFunctions%2F251362706"><span>visit</span><wbr><span><span>Argument</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1527896183%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="index.html#1527896183%2FFunctions%2F251362706">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="index.html#1527896183%2FFunctions%2F251362706"><span class="token function">visitArgument</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-argument-expression/index.html">ArgumentExpression</a><span class="token operator">&lt;</span><a href="index.html#1527896183%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-argument-expression/index.html">ArgumentExpression</a><span class="token operator">&lt;</span><a href="index.html#1527896183%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2102001300%2FFunctions%2F251362706" anchor-label="visitBetween" id="-2102001300%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-2102001300%2FFunctions%2F251362706"><span>visit</span><wbr><span><span>Between</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2102001300%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="index.html#-2102001300%2FFunctions%2F251362706"><span class="token function">visitBetween</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-between-expression/index.html">BetweenExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-between-expression/index.html">BetweenExpression</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1085838729%2FFunctions%2F251362706" anchor-label="visitBinary" id="-1085838729%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1085838729%2FFunctions%2F251362706"><span>visit</span><wbr><span><span>Binary</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1085838729%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="index.html#-1085838729%2FFunctions%2F251362706">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="index.html#-1085838729%2FFunctions%2F251362706"><span class="token function">visitBinary</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-binary-expression/index.html">BinaryExpression</a><span class="token operator">&lt;</span><a href="index.html#-1085838729%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-binary-expression/index.html">BinaryExpression</a><span class="token operator">&lt;</span><a href="index.html#-1085838729%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1031650830%2FFunctions%2F251362706" anchor-label="visitBulkInsert" id="1031650830%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-bulk-insert.html"><span>visit</span><wbr><span>Bulk</span><wbr><span><span>Insert</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1031650830%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="visit-bulk-insert.html"><span class="token function">visitBulkInsert</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-bulk-insert-expression/index.html">BulkInsertExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-bulk-insert-expression/index.html">BulkInsertExpression</a></div><div class="brief "><p class="paragraph">Function that visits a <a href="../-bulk-insert-expression/index.html">BulkInsertExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1977746567%2FFunctions%2F251362706" anchor-label="visitBulkInsertAssignments" id="-1977746567%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-s-q-lite-expression-visitor/visit-bulk-insert-assignments.html"><span>visit</span><wbr><span>Bulk</span><wbr><span>Insert</span><wbr><span><span>Assignments</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1977746567%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="../-s-q-lite-expression-visitor/visit-bulk-insert-assignments.html"><span class="token function">visitBulkInsertAssignments</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">assignments<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../../ktorm-core/org.ktorm.expression/-column-assignment-expression/index.html">ColumnAssignmentExpression</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="../../../ktorm-core/org.ktorm.expression/-column-assignment-expression/index.html">ColumnAssignmentExpression</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">Helper function for visiting insert assignments of <a href="../-bulk-insert-expression/index.html">BulkInsertExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1232002583%2FFunctions%2F251362706" anchor-label="visitCaseWhen" id="1232002583%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1232002583%2FFunctions%2F251362706"><span>visit</span><wbr><span>Case</span><wbr><span><span>When</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1232002583%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="index.html#1232002583%2FFunctions%2F251362706">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="index.html#1232002583%2FFunctions%2F251362706"><span class="token function">visitCaseWhen</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-case-when-expression/index.html">CaseWhenExpression</a><span class="token operator">&lt;</span><a href="index.html#1232002583%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-case-when-expression/index.html">CaseWhenExpression</a><span class="token operator">&lt;</span><a href="index.html#1232002583%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1863567993%2FFunctions%2F251362706" anchor-label="visitCasting" id="-1863567993%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1863567993%2FFunctions%2F251362706"><span>visit</span><wbr><span><span>Casting</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1863567993%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="index.html#-1863567993%2FFunctions%2F251362706">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="index.html#-1863567993%2FFunctions%2F251362706"><span class="token function">visitCasting</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-casting-expression/index.html">CastingExpression</a><span class="token operator">&lt;</span><a href="index.html#-1863567993%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-casting-expression/index.html">CastingExpression</a><span class="token operator">&lt;</span><a href="index.html#-1863567993%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-232418729%2FFunctions%2F251362706" anchor-label="visitColumn" id="-232418729%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-232418729%2FFunctions%2F251362706"><span>visit</span><wbr><span><span>Column</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-232418729%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="index.html#-232418729%2FFunctions%2F251362706">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="index.html#-232418729%2FFunctions%2F251362706"><span class="token function">visitColumn</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-column-expression/index.html">ColumnExpression</a><span class="token operator">&lt;</span><a href="index.html#-232418729%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-column-expression/index.html">ColumnExpression</a><span class="token operator">&lt;</span><a href="index.html#-232418729%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-45457373%2FFunctions%2F251362706" anchor-label="visitColumnAssignment" id="-45457373%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-45457373%2FFunctions%2F251362706"><span>visit</span><wbr><span>Column</span><wbr><span><span>Assignment</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-45457373%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="index.html#-45457373%2FFunctions%2F251362706">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="index.html#-45457373%2FFunctions%2F251362706"><span class="token function">visitColumnAssignment</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-column-assignment-expression/index.html">ColumnAssignmentExpression</a><span class="token operator">&lt;</span><a href="index.html#-45457373%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-column-assignment-expression/index.html">ColumnAssignmentExpression</a><span class="token operator">&lt;</span><a href="index.html#-45457373%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-296021461%2FFunctions%2F251362706" anchor-label="visitColumnDeclaring" id="-296021461%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-296021461%2FFunctions%2F251362706"><span>visit</span><wbr><span>Column</span><wbr><span><span>Declaring</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-296021461%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="index.html#-296021461%2FFunctions%2F251362706">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="index.html#-296021461%2FFunctions%2F251362706"><span class="token function">visitColumnDeclaring</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-column-declaring-expression/index.html">ColumnDeclaringExpression</a><span class="token operator">&lt;</span><a href="index.html#-296021461%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-column-declaring-expression/index.html">ColumnDeclaringExpression</a><span class="token operator">&lt;</span><a href="index.html#-296021461%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1400662618%2FFunctions%2F251362706" anchor-label="visitDelete" id="-1400662618%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1400662618%2FFunctions%2F251362706"><span>visit</span><wbr><span><span>Delete</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1400662618%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="index.html#-1400662618%2FFunctions%2F251362706"><span class="token function">visitDelete</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-delete-expression/index.html">DeleteExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-delete-expression/index.html">DeleteExpression</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1718476806%2FFunctions%2F251362706" anchor-label="visitExists" id="1718476806%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1718476806%2FFunctions%2F251362706"><span>visit</span><wbr><span><span>Exists</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1718476806%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="index.html#1718476806%2FFunctions%2F251362706"><span class="token function">visitExists</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-exists-expression/index.html">ExistsExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-exists-expression/index.html">ExistsExpression</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="201806987%2FFunctions%2F251362706" anchor-label="visitExpressionList" id="201806987%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#201806987%2FFunctions%2F251362706"><span>visit</span><wbr><span>Expression</span><wbr><span><span>List</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="201806987%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="index.html#201806987%2FFunctions%2F251362706">T</a><span class="token operator"> : </span><a href="../../../ktorm-core/org.ktorm.expression/-sql-expression/index.html">SqlExpression</a><span class="token operator">&gt; </span><a href="index.html#201806987%2FFunctions%2F251362706"><span class="token function">visitExpressionList</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">original<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="index.html#201806987%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">subVisitor<span class="token operator">: </span><span class="token punctuation">(</span><a href="index.html#201806987%2FFunctions%2F251362706">T</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="index.html#201806987%2FFunctions%2F251362706">T</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="index.html#201806987%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1708543959%2FFunctions%2F251362706" anchor-label="visitFunction" id="1708543959%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1708543959%2FFunctions%2F251362706"><span>visit</span><wbr><span><span>Function</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1708543959%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="index.html#1708543959%2FFunctions%2F251362706">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="index.html#1708543959%2FFunctions%2F251362706"><span class="token function">visitFunction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-function-expression/index.html">FunctionExpression</a><span class="token operator">&lt;</span><a href="index.html#1708543959%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-function-expression/index.html">FunctionExpression</a><span class="token operator">&lt;</span><a href="index.html#1708543959%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="259914406%2FFunctions%2F251362706" anchor-label="visitInList" id="259914406%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#259914406%2FFunctions%2F251362706"><span>visit</span><wbr><span>In</span><wbr><span><span>List</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="259914406%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="index.html#259914406%2FFunctions%2F251362706"><span class="token function">visitInList</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-in-list-expression/index.html">InListExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-in-list-expression/index.html">InListExpression</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1310223078%2FFunctions%2F251362706" anchor-label="visitInsert" id="1310223078%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1310223078%2FFunctions%2F251362706"><span>visit</span><wbr><span><span>Insert</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1310223078%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="index.html#1310223078%2FFunctions%2F251362706"><span class="token function">visitInsert</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-insert-expression/index.html">InsertExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-insert-expression/index.html">InsertExpression</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-287966606%2FFunctions%2F251362706" anchor-label="visitInsertFromQuery" id="-287966606%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-287966606%2FFunctions%2F251362706"><span>visit</span><wbr><span>Insert</span><wbr><span>From</span><wbr><span><span>Query</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-287966606%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="index.html#-287966606%2FFunctions%2F251362706"><span class="token function">visitInsertFromQuery</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-insert-from-query-expression/index.html">InsertFromQueryExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-insert-from-query-expression/index.html">InsertFromQueryExpression</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1115756110%2FFunctions%2F251362706" anchor-label="visitInsertOrUpdate" id="1115756110%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="visit-insert-or-update.html"><span>visit</span><wbr><span>Insert</span><wbr><span>Or</span><wbr><span><span>Update</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1115756110%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="visit-insert-or-update.html"><span class="token function">visitInsertOrUpdate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../-insert-or-update-expression/index.html">InsertOrUpdateExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../-insert-or-update-expression/index.html">InsertOrUpdateExpression</a></div><div class="brief "><p class="paragraph">Function that visits an <a href="../-insert-or-update-expression/index.html">InsertOrUpdateExpression</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1417100550%2FFunctions%2F251362706" anchor-label="visitJoin" id="1417100550%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1417100550%2FFunctions%2F251362706"><span>visit</span><wbr><span><span>Join</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1417100550%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="index.html#1417100550%2FFunctions%2F251362706"><span class="token function">visitJoin</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-join-expression/index.html">JoinExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-join-expression/index.html">JoinExpression</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1085839602%2FFunctions%2F251362706" anchor-label="visitOrderBy" id="1085839602%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1085839602%2FFunctions%2F251362706"><span>visit</span><wbr><span>Order</span><wbr><span><span>By</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1085839602%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="index.html#1085839602%2FFunctions%2F251362706"><span class="token function">visitOrderBy</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-order-by-expression/index.html">OrderByExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-order-by-expression/index.html">OrderByExpression</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-234461032%2FFunctions%2F251362706" anchor-label="visitQuery" id="-234461032%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-234461032%2FFunctions%2F251362706"><span>visit</span><wbr><span><span>Query</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-234461032%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="index.html#-234461032%2FFunctions%2F251362706"><span class="token function">visitQuery</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-query-expression/index.html">QueryExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-query-expression/index.html">QueryExpression</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1949792118%2FFunctions%2F251362706" anchor-label="visitQuerySource" id="1949792118%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1949792118%2FFunctions%2F251362706"><span>visit</span><wbr><span>Query</span><wbr><span><span>Source</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1949792118%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="index.html#1949792118%2FFunctions%2F251362706"><span class="token function">visitQuerySource</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-query-source-expression/index.html">QuerySourceExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-query-source-expression/index.html">QuerySourceExpression</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="870895491%2FFunctions%2F251362706" anchor-label="visitScalar" id="870895491%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#870895491%2FFunctions%2F251362706"><span>visit</span><wbr><span><span>Scalar</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="870895491%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="index.html#870895491%2FFunctions%2F251362706">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="index.html#870895491%2FFunctions%2F251362706"><span class="token function">visitScalar</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><a href="index.html#870895491%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><a href="index.html#870895491%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1064508422%2FFunctions%2F251362706" anchor-label="visitSelect" id="1064508422%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1064508422%2FFunctions%2F251362706"><span>visit</span><wbr><span><span>Select</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1064508422%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="index.html#1064508422%2FFunctions%2F251362706"><span class="token function">visitSelect</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-select-expression/index.html">SelectExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-select-expression/index.html">SelectExpression</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1252411680%2FFunctions%2F251362706" anchor-label="visitTable" id="1252411680%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1252411680%2FFunctions%2F251362706"><span>visit</span><wbr><span><span>Table</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1252411680%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="index.html#1252411680%2FFunctions%2F251362706"><span class="token function">visitTable</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-table-expression/index.html">TableExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-table-expression/index.html">TableExpression</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1777004881%2FFunctions%2F251362706" anchor-label="visitUnary" id="-1777004881%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1777004881%2FFunctions%2F251362706"><span>visit</span><wbr><span><span>Unary</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1777004881%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="index.html#-1777004881%2FFunctions%2F251362706">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="index.html#-1777004881%2FFunctions%2F251362706"><span class="token function">visitUnary</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-unary-expression/index.html">UnaryExpression</a><span class="token operator">&lt;</span><a href="index.html#-1777004881%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-unary-expression/index.html">UnaryExpression</a><span class="token operator">&lt;</span><a href="index.html#-1777004881%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="374441694%2FFunctions%2F251362706" anchor-label="visitUnion" id="374441694%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#374441694%2FFunctions%2F251362706"><span>visit</span><wbr><span><span>Union</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="374441694%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="index.html#374441694%2FFunctions%2F251362706"><span class="token function">visitUnion</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-union-expression/index.html">UnionExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-union-expression/index.html">UnionExpression</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2120807524%2FFunctions%2F251362706" anchor-label="visitUnknown" id="2120807524%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#2120807524%2FFunctions%2F251362706"><span>visit</span><wbr><span><span>Unknown</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2120807524%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="index.html#2120807524%2FFunctions%2F251362706"><span class="token function">visitUnknown</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-sql-expression/index.html">SqlExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-sql-expression/index.html">SqlExpression</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="302592230%2FFunctions%2F251362706" anchor-label="visitUpdate" id="302592230%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#302592230%2FFunctions%2F251362706"><span>visit</span><wbr><span><span>Update</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="302592230%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="index.html#302592230%2FFunctions%2F251362706"><span class="token function">visitUpdate</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-update-expression/index.html">UpdateExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-update-expression/index.html">UpdateExpression</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2114272187%2FFunctions%2F251362706" anchor-label="visitWhenClauses" id="2114272187%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#2114272187%2FFunctions%2F251362706"><span>visit</span><wbr><span>When</span><wbr><span><span>Clauses</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2114272187%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="index.html#2114272187%2FFunctions%2F251362706">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="index.html#2114272187%2FFunctions%2F251362706"><span class="token function">visitWhenClauses</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">originalClauses<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html">Pair</a><span class="token operator">&lt;</span><a href="../../../ktorm-core/org.ktorm.expression/-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="../../../ktorm-core/org.ktorm.expression/-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><a href="index.html#2114272187%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html">List</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-pair/index.html">Pair</a><span class="token operator">&lt;</span><a href="../../../ktorm-core/org.ktorm.expression/-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">, </span><a href="../../../ktorm-core/org.ktorm.expression/-scalar-expression/index.html">ScalarExpression</a><span class="token operator">&lt;</span><a href="index.html#2114272187%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1410525798%2FFunctions%2F251362706" anchor-label="visitWindowFrameBound" id="1410525798%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#1410525798%2FFunctions%2F251362706"><span>visit</span><wbr><span>Window</span><wbr><span>Frame</span><wbr><span><span>Bound</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1410525798%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="index.html#1410525798%2FFunctions%2F251362706"><span class="token function">visitWindowFrameBound</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-window-frame-bound-expression/index.html">WindowFrameBoundExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-window-frame-bound-expression/index.html">WindowFrameBoundExpression</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-736388073%2FFunctions%2F251362706" anchor-label="visitWindowFunction" id="-736388073%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-736388073%2FFunctions%2F251362706"><span>visit</span><wbr><span>Window</span><wbr><span><span>Function</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-736388073%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="index.html#-736388073%2FFunctions%2F251362706">T</a><span class="token operator"> : </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html">Any</a><span class="token operator">&gt; </span><a href="index.html#-736388073%2FFunctions%2F251362706"><span class="token function">visitWindowFunction</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-window-function-expression/index.html">WindowFunctionExpression</a><span class="token operator">&lt;</span><a href="index.html#-736388073%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-window-function-expression/index.html">WindowFunctionExpression</a><span class="token operator">&lt;</span><a href="index.html#-736388073%2FFunctions%2F251362706">T</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1157841002%2FFunctions%2F251362706" anchor-label="visitWindowSpecification" id="-1157841002%2FFunctions%2F251362706" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-support-sqlite:dokkaHtmlPartial/main" data-filterable-set=":ktorm-support-sqlite:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="index.html#-1157841002%2FFunctions%2F251362706"><span>visit</span><wbr><span>Window</span><wbr><span><span>Specification</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1157841002%2FFunctions%2F251362706"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-support-sqlite:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">override </span><span class="token keyword">fun </span><a href="index.html#-1157841002%2FFunctions%2F251362706"><span class="token function">visitWindowSpecification</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">expr<span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-window-specification-expression/index.html">WindowSpecificationExpression</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../../ktorm-core/org.ktorm.expression/-window-specification-expression/index.html">WindowSpecificationExpression</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="footer">
+    © 2024 KTORM.ORG. Licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a> <br>
+    Hosted by
+    <a href="https://github.com/kotlin-orm/ktorm">GitHub</a>
+    <a href="https://github.com/kotlin-orm/ktorm/stargazers">
+      <img src="https://img.shields.io/github/stars/kotlin-orm/ktorm.svg?style=social" alt="Stars">
+    </a>
+  </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+
