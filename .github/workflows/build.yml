@@ -49,6 +49,8 @@ jobs:
           cp -r "$PROJECT_DIR/build/dokka/htmlMultiModule" "$BASEDIR/public/api-docs"
 
       - name: Deploy
+        env:
+          GIT_PUSH_TOKEN: ${{secrets.GIT_PUSH_TOKEN}}
         run: |
           BASEDIR=$(pwd)
           DEPLOY_DIR=~/.ktorm-docs/temp/repo/ktorm-docs
