@@ -110,8 +110,8 @@ Now, let's talk about Ktorm's built-in dialects' features.
 **ktorm-support-sqlserver**: 
 
 - Support standard pagination functions of Ktorm, translating to SqlServer's paging SQL using `top` and `row_number over(...)`
-- Support [datetimeoffset](https://www.ktorm.org/api-docs/ktorm-support-sqlserver/ktorm-support-sqlite/org.ktorm.support.sqlite/datetimeoffset.html) data type. 
-- For more functionality, please refer to the API docs https://www.ktorm.org/api-docs/ktorm-support-sqlserver/ktorm-support-sqlite/org.ktorm.support.sqlite/index.html
+- Support [datetimeoffset](https://www.ktorm.org/api-docs/ktorm-support-sqlserver/org.ktorm.support.sqlserver/datetimeoffset.html) data type. 
+- For more functionality, please refer to the API docs https://www.ktorm.org/api-docs/ktorm-support-sqlserver/org.ktorm.support.sqlserver/index.html
 
 **ktorm-support-oracle**: 
 
