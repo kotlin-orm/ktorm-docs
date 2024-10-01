@@ -28,6 +28,7 @@
     "url": "git@github.com:zalando-incubator/hexo-theme-doc.git"
   },
   "dependencies": {
+    "@docsearch/react": "^3.6.2",
     "@rbarilani/parse-template-object": "^1.0.0",
     "cheerio": "^1.0.0-rc.1",
     "clipboard": "^2.0.4",

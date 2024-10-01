@@ -1,4 +1,5 @@
 const React = require('react');
+const { DocSearch  } = require('@docsearch/react');
 
 function Navbar(props) {
   return (
@@ -79,16 +80,14 @@ class Sidebar extends React.Component {
 
         <div className="doc-sidebar-content">
           <div className="doc-sidebar__search-form">
-            <div className="dc-search-form doc-search-form">
-              <input type="search"
-                     id="doc-search-input"
-                     className="dc-input dc-search-form__input doc-search-form__input"
-                     placeholder={page.lang === 'zh-cn' ? '搜索文档' : 'Search documents'}
-                     autoFocus={true} />
-              <button className="dc-btn dc-search-form__btn doc-search-form__btn" aria-label="Search">
-                <i className="dc-icon dc-icon--search"/>
-              </button>
-            </div>
+            <DocSearch 
+              appId="0DGANM0MZ3"
+              apiKey="071ea85fb6b0933d3f3d3925aa434e23"
+              indexName="ktorm"
+              searchParameters={{ facetFilters: ["lang:" + page.lang, "tags:doc"] }}
+              placeholder={page.lang === 'zh-cn' ? '搜索文档' : 'Search documents'}
+              translations={{ button: { buttonText: page.lang === 'zh-cn' ? '搜索文档' : 'Search documents' } }}
+            />
           </div>
           <ul className="doc-sidebar-list">
             { renderItems() }
@@ -109,7 +108,7 @@ class SidebarItem extends React.Component  {
     };
   }
 
-  componentDidMount () {
+  componentDidMount() {
     const {item, page} = this.props;
     const hasChildren = Array.isArray(item.children) && item.children.length > 0;
     const childrenListIsVisible = (item.children || []).find((child) => {
@@ -122,14 +121,14 @@ class SidebarItem extends React.Component  {
     });
   }
 
-  toggleChildrenVisibility () {
+  toggleChildrenVisibility() {
     if (!this.state.hasChildren) { return; }
     this.setState({
       childrenListIsVisible: !this.state.childrenListIsVisible
     });
   }
 
-  render () {
+  render() {
     const {item, page, url_for, tocItems, config, visibleHeaderId, className} = this.props;
     const isLabel = item.type === 'label';
     const isCurrentAncestor = item.isCurrentAncestor;
@@ -205,8 +204,7 @@ class SidebarItem extends React.Component  {
   }
 }
 
-function SidebarChildrenList ({item, page, config, tocItems, visibleHeaderId, url_for, hidden}) {
-
+function SidebarChildrenList({item, page, config, tocItems, visibleHeaderId, url_for, hidden}) {
   return (<ul className={classNames({
     'doc-sidebar-list__children-list': true,
     'doc-sidebar-list__children-list--hidden': hidden
@@ -229,34 +227,28 @@ function SidebarChildrenList ({item, page, config, tocItems, visibleHeaderId, ur
   </ul>);
 }
 
-function SidebarTocItem ({item, visibleHeaderId}) {
-  const handleOnClick = () => {
-    $('#doc-search-results').hide();
-    $('#page-content').show();
-  };
-
+function SidebarTocItem({item, visibleHeaderId}) {
   return (
     <li className={`doc-sidebar-list__toc-item ${item.id === visibleHeaderId ? 'doc-sidebar-list__toc-item--current' : '' }`}>
-      <a href={ '#' + item.id } data-scroll onClick={handleOnClick}>
+      <a href={ '#' + item.id } data-scroll>
         <span>{ item.text }</span>
       </a>
     </li>);
 }
 
-
-function SidebarToggle ({className, onClick}) {
+function SidebarToggle({className, onClick}) {
   return (
     <i className={'dc-icon dc-icon--menu dc-icon--interactive doc-sidebar-toggle ' + (className || '')} onClick={onClick}/>
   );
 }
 
-function SidebarClose ({className, onClick}) {
+function SidebarClose({className, onClick}) {
   return (
     <i className={'dc-icon dc-icon--close dc-icon--interactive doc-sidebar-close ' + (className || '')} onClick={onClick}/>
   );
 }
 
-function classNames (map = {}) {
+function classNames(map = {}) {
   return Object.keys(map).reduce((acc, key) => {
     if (typeof key !== 'string' || key === 'undefined') { return acc; }
     if (map[key]) {

@@ -8,7 +8,7 @@ const SIDEBAR_IS_VISIBLE_CLASS = 'doc-sidebar--is-visible';
 const NAVIGATION_IS_COLLAPSED_CLASS = 'doc-navigation--is-collapsed';
 
 class Navigation extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.url_for = this.props.url_for;
@@ -20,7 +20,7 @@ class Navigation extends React.Component {
     };
   }
 
-  componentDidMount () {
+  componentDidMount() {
     const SmoothScroll = require('smooth-scroll');
     const $headers = $('h2');
     const tocItems = this.getTocItems($headers);
@@ -28,11 +28,6 @@ class Navigation extends React.Component {
     this.$body = $('body');
     this.$content = $('.doc-content');
     this.items = this.getItems();
-
-    // this selector is wrapped in a function
-    // since the selected element can be removed and recreated depending on the state
-    // we have to access the DOM everytime, we can't keep a reference
-    this.$searchFormInput = () => $('.dc-search-form__input');
 
     this.addAnchorToHeaders($headers);
     this.listenContentClick();
@@ -59,12 +54,12 @@ class Navigation extends React.Component {
     }
   }
 
-  getItems () {
+  getItems() {
     const {page} = this.props;
     const navigation = this.getNavigationConfig();
     const items = navigation.main || [];
 
-    (function recurse (items, parent) {
+    (function recurse(items, parent) {
       items.forEach((item) => {
         // add parent methods
         item.parent = () => { return parent; };
@@ -99,7 +94,7 @@ class Navigation extends React.Component {
     return items;
   }
 
-  getTocItems ($headers) {
+  getTocItems($headers) {
     return $headers.map(function (i, h) {
       return {
         id: h.id,
@@ -109,7 +104,7 @@ class Navigation extends React.Component {
     });
   }
 
-  addAnchorToHeaders ($headers) {
+  addAnchorToHeaders($headers) {
     $headers.each(function makeHeaderLinkable (i, h) {
       const span = document.createElement('span');
       h.insertBefore(span, h.firstChild);
@@ -128,7 +123,7 @@ class Navigation extends React.Component {
 
   // Listen to "DOMContentLoaded|scroll|resize" events and determines
   // which header is currently "visible"
-  listenVisibleHeaderChanges ($headers) {
+  listenVisibleHeaderChanges($headers) {
     const offsetThreshold =  120;
     let prev, next;
 
@@ -172,17 +167,17 @@ class Navigation extends React.Component {
     return listener;
   }
 
-  listenContentClick () {
+  listenContentClick() {
     this.$content.on('click', this.onContentClick.bind(this));
   }
 
-  onContentClick () {
+  onContentClick() {
     if (this.$body.hasClass(SIDEBAR_IS_VISIBLE_CLASS)) {
       this.toggleSidebar();
     }
   }
 
-  collapseSidebar () {
+  collapseSidebar() {
     this.$body.addClass(NAVIGATION_IS_COLLAPSED_CLASS);
 
     if (window.localStorage) {
@@ -190,28 +185,23 @@ class Navigation extends React.Component {
     }
   }
 
-  uncollapseSidebar () {
+  uncollapseSidebar() {
     this.$body.removeClass(NAVIGATION_IS_COLLAPSED_CLASS);
-    this.$searchFormInput()[0].focus();
 
     if (window.localStorage) {
       window.localStorage.setItem('navigation_collapsed', 'false');
     }
   }
 
-  toggleSidebar () {
+  toggleSidebar() {
     this.$body.toggleClass(SIDEBAR_IS_VISIBLE_CLASS);
-
-    if (this.$body.hasClass(SIDEBAR_IS_VISIBLE_CLASS)) {
-      this.$searchFormInput()[0].focus();
-    }
   }
 
-  hideSidebar () {
+  hideSidebar() {
     this.$body.removeClass(SIDEBAR_IS_VISIBLE_CLASS);
   }
 
-  render () {
+  render() {
     return (
       <div className="doc-navigation">
         <Navbar>

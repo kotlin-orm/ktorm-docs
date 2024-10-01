@@ -161,10 +161,33 @@
       z-index: 3;
     }
 
-    .doc-search-form {
+    .DocSearch-Button {
       margin: 15px 22px;
       width: 236px;
       height: 36px;
+      border: 1px solid #d1d1d1;
+      background-color: white;
+
+      &:hover {
+        color: #969faf;
+        border-color: #26aafe;
+        box-shadow: none;
+      }
+    }
+
+    .DocSearch-Search-Icon {
+      margin: 0 4px;
+      width: 16px;
+      height: 16px;
+      color: #9b9b9b;
+    }
+
+    .DocSearch-Button-Placeholder {
+      display: initial !important;
+    }
+    
+    .DocSearch-Button-Keys {
+      display: none;
     }
   }
 }

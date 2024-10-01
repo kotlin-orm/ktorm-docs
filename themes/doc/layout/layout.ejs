@@ -22,7 +22,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,600,700" rel="stylesheet">
     <link href="<%- url_for('vendors/font-awesome@4.7.0/css/font-awesome.min.css') %>" rel="stylesheet">
-    <link href="<%- url_for('vendors/docsearch@2.6.3/docsearch.min.css') %>" rel="stylesheet"/>
+    <link href="<%- url_for('vendors/docsearch-css@3.6.2/style.css') %>" rel="stylesheet"/>
     <link href="<%- url_for('style/doc.css') %>" rel="stylesheet">
 
     <!-- favicon -->
@@ -76,22 +76,8 @@
     <script src="<%- url_for('vendors/jquery@3.2.1/jquery.min.js') %>"></script>
     <script src="<%- url_for('script/doc.js') %>"></script>
 
-    <!-- algolia docsearch -->
-    <script type="text/javascript" src="<%- url_for('vendors/docsearch@2.6.3/docsearch.min.js') %>"></script>
-    <script type="text/javascript">
-      docsearch({
-        appId: "0DGANM0MZ3",
-        apiKey: "071ea85fb6b0933d3f3d3925aa434e23",
-        indexName: "ktorm",
-        inputSelector: "#doc-search-input",
-        algoliaOptions: { facetFilters: ["lang:<%- lang %>", "tags:doc"] },
-        autocompleteOptions: { hint: false, appendTo: "body" },
-        debug: false
-      });
-    </script>
-
+    <!-- fix code highlight -->
     <script>
-      // fix code highlight
       (function() {
         $(".kotlin .code .keyword").each(function() {
           var node = $(this);
