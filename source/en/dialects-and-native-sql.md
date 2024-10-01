@@ -83,40 +83,40 @@ Now, let's talk about Ktorm's built-in dialects' features.
 **ktorm-support-mysql**: 
 
 - Support standard pagination functions of Ktorm, translating to MySQL's `limit ?, ?` clause. 
-- Support extended syntax for insert statements, like [insertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/insert-or-update.html), [bulkInsert](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/bulk-insert.html), [bulkInsertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/bulk-insert-or-update.html), etc.
-- Support locking clause via [locking](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/locking.html) function, eg. `select ... for update`.
-- Support fulltext search via [match](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/match.html) and [against](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/against.html) functions. 
-- Support some common-used JSON operating functions, like [jsonContains](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/json-contains.html), [jsonExtract](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/json-extract.html).
-- Support some common-used functions like [IF](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/-i-f.html), [ifNull](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/if-null.html), [greatest](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/greatest.html), [least](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/least.html), [replace](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/replace.html), etc.
-- For more functionality, please refer to the API docs https://www.ktorm.org/api-docs/org.ktorm.support.mysql/index.html
+- Support extended syntax for insert statements, like [insertOrUpdate](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/insert-or-update.html), [bulkInsert](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/bulk-insert.html), [bulkInsertOrUpdate](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/bulk-insert-or-update.html), etc.
+- Support locking clause via [locking](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/locking.html) function, eg. `select ... for update`.
+- Support fulltext search via [match](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/match.html) and [against](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/against.html) functions. 
+- Support some common-used JSON operating functions, like [jsonContains](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/json-contains.html), [jsonExtract](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/json-extract.html).
+- Support some common-used functions like [IF](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/-i-f.html), [ifNull](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/if-null.html), [greatest](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/greatest.html), [least](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/least.html), [replace](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/replace.html), etc.
+- For more functionality, please refer to the API docs https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/index.html
 
 **ktorm-support-postgresql**: 
 
 - Support standard pagination functions of Ktorm, translating to PostgreSQL's `limit ? offset ?` clause.
-- Support extended syntax for insert statements, like [insertReturning](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/insert-returning.html), [insertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/insert-or-update.html), [bulkInsert](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/bulk-insert.html), [bulkInsertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/bulk-insert-or-update.html), etc. 
-- Support locking clause via [locking](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/locking.html) function, eg. `select ... for update`. 
-- Support [hstore](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/hstore.html) data type and a series of operators for it. 
-- Support [cube](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/cube.html) & [earth](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/earth.html) data type and their utility functions.
-- For more functionality, please refer to the API docs  https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/index.html
+- Support extended syntax for insert statements, like [insertReturning](https://www.ktorm.org/api-docs/ktorm-support-postgresql/org.ktorm.support.postgresql/insert-returning.html), [insertOrUpdate](https://www.ktorm.org/api-docs/ktorm-support-postgresql/org.ktorm.support.postgresql/insert-or-update.html), [bulkInsert](https://www.ktorm.org/api-docs/ktorm-support-postgresql/org.ktorm.support.postgresql/bulk-insert.html), [bulkInsertOrUpdate](https://www.ktorm.org/api-docs/ktorm-support-postgresql/org.ktorm.support.postgresql/bulk-insert-or-update.html), etc. 
+- Support locking clause via [locking](https://www.ktorm.org/api-docs/ktorm-support-postgresql/org.ktorm.support.postgresql/locking.html) function, eg. `select ... for update`. 
+- Support [hstore](https://www.ktorm.org/api-docs/ktorm-support-postgresql/org.ktorm.support.postgresql/hstore.html) data type and a series of operators for it. 
+- Support [cube](https://www.ktorm.org/api-docs/ktorm-support-postgresql/org.ktorm.support.postgresql/cube.html) & [earth](https://www.ktorm.org/api-docs/ktorm-support-postgresql/org.ktorm.support.postgresql/earth.html) data type and their utility functions.
+- For more functionality, please refer to the API docs  https://www.ktorm.org/api-docs/ktorm-support-postgresql/org.ktorm.support.postgresql/index.html
 
 **ktorm-support-sqlite**: 
 
 - Support standard pagination functions of Ktorm, translating to SQLite's `limit ?, ?` statement. 
-- Support extended syntax for insert statements, like [insertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/insert-or-update.html), [bulkInsert](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/bulk-insert.html), [bulkInsertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/bulk-insert-or-update.html), etc.
-- Support some common-used JSON operating functions, like [jsonExtract](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/json-extract.html), [jsonPatch](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/json-patch.html).
-- Support some common-used functions like [iif](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/iif.html), [ifNull](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/if-null.html), [instr](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/instr.html), [replace](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/replace.html), etc.
-- For more functionality, please refer to the API docs  https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/index.html
+- Support extended syntax for insert statements, like [insertOrUpdate](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/insert-or-update.html), [bulkInsert](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/bulk-insert.html), [bulkInsertOrUpdate](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/bulk-insert-or-update.html), etc.
+- Support some common-used JSON operating functions, like [jsonExtract](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/json-extract.html), [jsonPatch](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/json-patch.html).
+- Support some common-used functions like [iif](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/iif.html), [ifNull](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/if-null.html), [instr](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/instr.html), [replace](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/replace.html), etc.
+- For more functionality, please refer to the API docs  https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/index.html
 
 **ktorm-support-sqlserver**: 
 
 - Support standard pagination functions of Ktorm, translating to SqlServer's paging SQL using `top` and `row_number over(...)`
-- Support [datetimeoffset](https://www.ktorm.org/api-docs/org.ktorm.support.sqlserver/datetimeoffset.html) data type. 
-- For more functionality, please refer to the API docs https://www.ktorm.org/api-docs/org.ktorm.support.sqlserver/index.html
+- Support [datetimeoffset](https://www.ktorm.org/api-docs/ktorm-support-sqlserver/ktorm-support-sqlite/org.ktorm.support.sqlite/datetimeoffset.html) data type. 
+- For more functionality, please refer to the API docs https://www.ktorm.org/api-docs/ktorm-support-sqlserver/ktorm-support-sqlite/org.ktorm.support.sqlite/index.html
 
 **ktorm-support-oracle**: 
 
 - Support standard pagination functions of Ktorm, translating to Oracle's paging SQL using `rownum`.
-- For more functionality, please refer to the API docs  https://www.ktorm.org/api-docs/org.ktorm.support.oracle/index.html
+- For more functionality, please refer to the API docs  https://www.ktorm.org/api-docs/ktorm-support-oracle/org.ktorm.support.oracle/index.html
 
 To be honest, Ktorm's support for special syntax of many database dialects is really not enough. This is because my time and energy are really limited, so I have to lower the precedence of some infrequently used dialect features. 
 

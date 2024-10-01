@@ -84,40 +84,40 @@ on duplicate key update salary = salary + ?
 **ktorm-support-mysql**：
 
 - 支持 Ktorm 的标准分页函数，自动翻译为 MySQL 的 `limit ?, ?` 语句
-- 支持 insert 语句的扩展语法，如 [insertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/insert-or-update.html)、[bulkInsert](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/bulk-insert.html)、[bulkInsertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/bulk-insert-or-update.html) 等函数
-- 通过 [locking](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/locking.html) 函数支持 `select ... for update` 等加锁语法
-- 支持基于 [match](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/match.html) 和 [against](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/against.html) 的全文搜索
-- 支持常用的 json 操作函数，如 [jsonContains](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/json-contains.html)、[jsonExtract](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/json-extract.html)
-- 支持 [IF](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/-i-f.html)、[ifNull](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/if-null.html)、[greatest](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/greatest.html)、[least](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/least.html)、[replace](https://www.ktorm.org/api-docs/org.ktorm.support.mysql/replace.html) 等常用函数
-- 更多功能请参考详细的 API 文档 https://www.ktorm.org/api-docs/org.ktorm.support.mysql/index.html
+- 支持 insert 语句的扩展语法，如 [insertOrUpdate](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/insert-or-update.html)、[bulkInsert](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/bulk-insert.html)、[bulkInsertOrUpdate](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/bulk-insert-or-update.html) 等函数
+- 通过 [locking](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/locking.html) 函数支持 `select ... for update` 等加锁语法
+- 支持基于 [match](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/match.html) 和 [against](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/against.html) 的全文搜索
+- 支持常用的 json 操作函数，如 [jsonContains](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/json-contains.html)、[jsonExtract](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/json-extract.html)
+- 支持 [IF](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/-i-f.html)、[ifNull](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/if-null.html)、[greatest](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/greatest.html)、[least](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/least.html)、[replace](https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/replace.html) 等常用函数
+- 更多功能请参考详细的 API 文档 https://www.ktorm.org/api-docs/ktorm-support-mysql/org.ktorm.support.mysql/index.html
 
 **ktorm-support-postgresql**：
 
 - 支持 Ktorm 的标准分页函数，自动翻译为 PostgreSQL 中的 `limit ? offset ?` 语句
-- 支持 insert 语句的扩展语法，如 [insertReturning](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/insert-returning.html)、[insertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/insert-or-update.html)、[bulkInsert](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/bulk-insert.html)、[bulkInsertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/bulk-insert-or-update.html) 等函数
-- 通过 [locking](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/locking.html) 函数支持 `select ... for update` 等加锁语法
-- 支持 [hstore](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/hstore.html) 数据类型及其操作符
-- 支持 [cube](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/cube.html) 和 [earth](https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/earth.html) 数据类型及其相关的函数
-- 更多功能请参考详细的 API 文档 https://www.ktorm.org/api-docs/org.ktorm.support.postgresql/index.html
+- 支持 insert 语句的扩展语法，如 [insertReturning](https://www.ktorm.org/api-docs/ktorm-support-postgresql/org.ktorm.support.postgresql/insert-returning.html)、[insertOrUpdate](https://www.ktorm.org/api-docs/ktorm-support-postgresql/org.ktorm.support.postgresql/insert-or-update.html)、[bulkInsert](https://www.ktorm.org/api-docs/ktorm-support-postgresql/org.ktorm.support.postgresql/bulk-insert.html)、[bulkInsertOrUpdate](https://www.ktorm.org/api-docs/ktorm-support-postgresql/org.ktorm.support.postgresql/bulk-insert-or-update.html) 等函数
+- 通过 [locking](https://www.ktorm.org/api-docs/ktorm-support-postgresql/org.ktorm.support.postgresql/locking.html) 函数支持 `select ... for update` 等加锁语法
+- 支持 [hstore](https://www.ktorm.org/api-docs/ktorm-support-postgresql/org.ktorm.support.postgresql/hstore.html) 数据类型及其操作符
+- 支持 [cube](https://www.ktorm.org/api-docs/ktorm-support-postgresql/org.ktorm.support.postgresql/cube.html) 和 [earth](https://www.ktorm.org/api-docs/ktorm-support-postgresql/org.ktorm.support.postgresql/earth.html) 数据类型及其相关的函数
+- 更多功能请参考详细的 API 文档 https://www.ktorm.org/api-docs/ktorm-support-postgresql/org.ktorm.support.postgresql/index.html
 
 **ktorm-support-sqlite**：
 
 - 支持 Ktorm 的标准分页函数，自动翻译为 SQLite 的 `limit ?, ?` 语句
-- 支持 insert 语句的扩展语法，如 [insertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/insert-or-update.html)、[bulkInsert](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/bulk-insert.html)、[bulkInsertOrUpdate](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/bulk-insert-or-update.html) 等函数
-- 支持常用的 json 操作函数，如 [jsonExtract](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/json-extract.html)、[jsonPatch](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/json-patch.html)
-- 支持 [iif](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/iif.html)、[ifNull](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/if-null.html)、[instr](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/instr.html)、[replace](https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/replace.html) 等常用函数
-- 更多功能请参考详细的 API 文档 https://www.ktorm.org/api-docs/org.ktorm.support.sqlite/index.html
+- 支持 insert 语句的扩展语法，如 [insertOrUpdate](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/insert-or-update.html)、[bulkInsert](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/bulk-insert.html)、[bulkInsertOrUpdate](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/bulk-insert-or-update.html) 等函数
+- 支持常用的 json 操作函数，如 [jsonExtract](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/json-extract.html)、[jsonPatch](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/json-patch.html)
+- 支持 [iif](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/iif.html)、[ifNull](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/if-null.html)、[instr](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/instr.html)、[replace](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/replace.html) 等常用函数
+- 更多功能请参考详细的 API 文档 https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/index.html
 
 **ktorm-support-sqlserver**：
 
 - 支持 Ktorm 的标准分页函数，自动翻译为 SqlServer 中使用 `top` 和 `row_number() over(...)` 筛选分页的写法
-- 支持 SqlServer 特有的 [datetimeoffset](https://www.ktorm.org/api-docs/org.ktorm.support.sqlserver/datetimeoffset.html) 数据类型
-- 更多功能请参考详细的 API 文档 https://www.ktorm.org/api-docs/org.ktorm.support.sqlserver/index.html
+- 支持 SqlServer 特有的 [datetimeoffset](https://www.ktorm.org/api-docs/ktorm-support-sqlserver/org.ktorm.support.sqlserver/datetimeoffset.html) 数据类型
+- 更多功能请参考详细的 API 文档 https://www.ktorm.org/api-docs/ktorm-support-sqlserver/org.ktorm.support.sqlserver/index.html
 
 **ktorm-support-oracle**：
 
 - 支持 Ktorm 的标准分页函数，自动翻译为 Oracle 中使用 `rownum` 筛选分页的写法
-- 更多功能请参考详细的 API 文档：https://www.ktorm.org/api-docs/org.ktorm.support.oracle/index.html
+- 更多功能请参考详细的 API 文档：https://www.ktorm.org/api-docs/ktorm-support-oracle/org.ktorm.support.oracle/index.html
 
 老实说，Ktorm 对许多数据库方言的特殊语法的支持确实存在不足，这是因为作者本人的精力有限，只能做到支持工作中常用的功能，对于其他纷繁复杂的特殊语法只能暂时把优先级降低。
 
