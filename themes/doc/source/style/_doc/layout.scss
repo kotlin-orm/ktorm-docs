@@ -37,14 +37,11 @@ body {
     }
   }
 
-  &.doc-sidebar--is-visible:not(.DocSearch--active) {
+  &.doc-sidebar--is-visible {
     @media screen and (max-width: $doc-breakpoint) {
       .doc-sidebar {
         transform: translateX(0);
-      }
-
-      .doc-content {
-        transform: translateX($doc-sidebar-width);
+        z-index: 9;
       }
     }
   }
