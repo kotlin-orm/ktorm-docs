@@ -37,7 +37,7 @@ body {
     }
   }
 
-  &.doc-sidebar--is-visible {
+  &.doc-sidebar--is-visible:not(.DocSearch--active) {
     @media screen and (max-width: $doc-breakpoint) {
       .doc-sidebar {
         transform: translateX(0);
