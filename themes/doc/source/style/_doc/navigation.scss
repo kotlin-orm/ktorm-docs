@@ -119,6 +119,7 @@
 
   @media screen and (max-width: $doc-breakpoint) {
     transform: translateX(-$doc-sidebar-width);
+    border-right: 1px solid #e1e1e1;
   }
 
   &::-webkit-scrollbar {
