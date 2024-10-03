@@ -28,21 +28,19 @@ class Sidebar extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.props.visibleHeaderId) {
-      if ($(window).width() > 800) {
-        setTimeout(function () {
-          const $sidebar = $('.doc-sidebar');
-          const $firstItem = $($('.doc-sidebar-list').children('.doc-sidebar-list__item--link').get(0));
-          const $currentItem = $('.doc-sidebar-list__item--current');
+    if ($(window).width() > 800) {
+      setTimeout(function () {
+        const $sidebar = $('.doc-sidebar');
+        const $firstItem = $($('.doc-sidebar-list').children('.doc-sidebar-list__item--link').get(0));
+        const $currentItem = $('.doc-sidebar-list__item--current');
 
-          if ($currentItem.length > 0) {
-            const offset = $currentItem.position().top - $firstItem.position().top;
-            if (offset > 100) {
-              $sidebar.animate({ scrollTop: offset }, 800);
-            }
+        if ($currentItem.length > 0) {
+          const offset = $currentItem.position().top - $firstItem.position().top;
+          if (offset > 100) {
+            $sidebar.animate({ scrollTop: offset }, 800);
           }
-        }, 100);
-      }
+        }
+      }, 100);
     }
   }
 
