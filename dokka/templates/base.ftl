@@ -43,7 +43,7 @@
       .footer {
         display: block;
         padding-top: 20px;
-        font-size: 16px;
+        font-size: 15px;
         line-height: 1.6em;
         color: #666;
         overflow: hidden;
