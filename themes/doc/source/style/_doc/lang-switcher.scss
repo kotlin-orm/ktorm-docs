@@ -4,7 +4,7 @@
   display: flex;
 
   .lang-switcher {
-    @media screen and (max-width: $doc-breakpoint) {
+    @media screen and (max-width: calc($doc-breakpoint - 1px)) {
       display: none
     }
   }

@@ -38,7 +38,7 @@ body {
   }
 
   &.doc-sidebar--is-visible {
-    @media screen and (max-width: $doc-breakpoint) {
+    @media screen and (max-width: calc($doc-breakpoint - 1px)) {
       .doc-sidebar {
         transform: translateX(0);
         z-index: 9;

@@ -28,7 +28,7 @@ class Sidebar extends React.Component {
   }
 
   componentDidUpdate() {
-    if ($(window).width() > 800) {
+    if ($(window).width() >= 800) {
       setTimeout(function () {
         const $sidebar = $('.doc-sidebar');
         const $firstItem = $($('.doc-sidebar-list').children('.doc-sidebar-list__item--link').get(0));

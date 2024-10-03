@@ -96,8 +96,8 @@ val counts = database.staffs
 
 如果 data class 真的那么完美的话，Ktorm 在最初设计的时候就不会决定使用 `Entity` interface 了。事实上，即使在 2.5 版本发布以后，使用 interface 定义实体类仍然是我们的第一选择。与使用 interface 定义实体类相比，使用 data class 目前还存在如下两个限制：
 
-- **无法使用列绑定功能：**由于直接以 `BaseTable` 作为父类，我们无法在定义表对象时使用 `bindTo`、`references` 等函数指定数据库列与实体类属性的绑定关系，因此每个表对象都必须实现 `doCreateEntity` 函数，在此函数中手动创建实体对象，并一一对各个属性赋值。
-- **无法使用实体对象的增删改 API：**由于使用 data class 作为实体类，Ktorm 无法对其进行代理，因此无法检测到实体对象的状态变化，这导致 `sequence.add(..)`、`entity.flushChanges()` 等针对实体对象的增删改 API 将无法使用。但是 SQL DSL 并没有影响，我们仍然可以使用 `database.insert(..) {..}`、`database.update(..) {..}` 等 DSL 函数进行增删改操作。
+- **无法使用列绑定功能**：由于直接以 `BaseTable` 作为父类，我们无法在定义表对象时使用 `bindTo`、`references` 等函数指定数据库列与实体类属性的绑定关系，因此每个表对象都必须实现 `doCreateEntity` 函数，在此函数中手动创建实体对象，并一一对各个属性赋值。
+- **无法使用实体对象的增删改 API**：由于使用 data class 作为实体类，Ktorm 无法对其进行代理，因此无法检测到实体对象的状态变化，这导致 `sequence.add(..)`、`entity.flushChanges()` 等针对实体对象的增删改 API 将无法使用。但是 SQL DSL 并没有影响，我们仍然可以使用 `database.insert(..) {..}`、`database.update(..) {..}` 等 DSL 函数进行增删改操作。
 
 由于以上限制的存在，在你决定使用 data class 作为实体类之前，应该慎重考虑，你获得了使用 data class 的好处，同时也会失去其他的东西。请记住这句话：**使用 interface 定义实体类仍然是我们的第一选择。**
 
