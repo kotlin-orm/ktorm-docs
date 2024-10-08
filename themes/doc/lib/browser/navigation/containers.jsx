@@ -12,6 +12,7 @@ class Navigation extends React.Component {
     super(props);
 
     this.url_for = this.props.url_for;
+    this.items = this.getItems();
 
     this.state = {
       collapsed: false,
@@ -27,7 +28,6 @@ class Navigation extends React.Component {
 
     this.$body = $('body');
     this.$content = $('.doc-content');
-    this.items = this.getItems();
 
     this.addAnchorToHeaders($headers);
     this.listenContentClick();
