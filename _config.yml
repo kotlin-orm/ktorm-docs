@@ -105,3 +105,9 @@ neat_js:
 node_sass:
   includePaths:
    - node_modules
+
+markdown_it_plus:
+  plugins:
+    - plugin:
+        name: ../../../themes/doc/lib/nodejs/markdown-it-table-wrapper
+        enable: true

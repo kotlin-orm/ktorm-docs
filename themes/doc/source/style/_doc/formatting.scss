@@ -1,5 +1,4 @@
 .doc-formatting {
-
   h1:first-of-type {
     margin-top: 0;
     line-height: 3.4rem;
@@ -122,12 +121,13 @@
   p code {
     @include doc-inline-code;
   }
-  // just table direct children to don't collide
-  // with code highlight markup
-  > table {
+
+  .table-wrapper {
     margin: 10px 0;
     background-color: white;
-
+  }
+  
+  .table-wrapper table {
     thead {
       color: #000;
       text-align: left;
@@ -167,178 +167,3 @@
     }
   }
 }
-
-//
-// "highlight.js" (built-in hexo code highlight plugin)
-// ---------------------------------------------------
-
-/*.doc-formatting {
-  figure {
-    clear: both;
-    margin: 1.5em 0;
-  }
-
-  figure figcaption {
-    font-size: 12px;
-    line-height: 16px;
-    color: $doc-color-mediumdark;
-  }
-
-  pre {
-    padding: 1em 1.25em;
-    white-space: pre-wrap;
-    color: $doc-color-darkest;
-    background: $doc-color-lighter;
-  }
-
-  *:not(figure.highlight) pre {
-    margin-top: 0.75em;
-    margin-bottom: 0.75em;
-  }
-
-  *:not(figure.highlight) pre code {
-    border: none;
-    box-shadow: none;
-    color: $doc-color-darkest;
-    margin: 0;
-    max-width: 100%;
-    padding: 0;
-  }
-
-  .highlight {
-    clear: both;
-    margin: 1.5em 0;
-    font-size: 14px;
-    line-height: 20px;
-    overflow-x: auto;
-
-    table {
-      width: 100%;
-    }
-
-    figcaption {
-      font-size: 12px;
-      line-height: 16px;
-      color: $doc-color-mediumdark;
-    }
-
-    .gutter {
-      width: 40px;
-    }
-
-    .gutter pre {
-      margin: 0;
-      padding: 1.5em 10px;
-      text-align: right;
-    }
-
-    .code pre {
-      overflow-y: auto;
-      overflow-x: auto;
-      padding: 1.5em 15px 1.5em 20px;
-      margin: 0;
-      white-space: pre;
-    }
-
-    .code pre .line:empty::after {
-      content: '\200b';
-    }
-    // syntax
-    // Grabbed from legacy docs theme
-    .gutter pre {
-      color: $dc-gray60;
-    }
-
-    pre {
-      color: $dc-gray10;
-
-      .constant,
-      .function .keyword {
-        color: $dc-blue30;
-      }
-
-      .attribute,
-      .built_in,
-      .keyword {
-        color: $dc-blue30;
-      }
-
-      .title {
-        color: $dc-green20;
-      }
-
-      .change,
-      .clojure .built_in,
-      .flow,
-      .lisp .title,
-      .nginx .title,
-      .tag,
-      .tag .title,
-      .tex .special,
-      .winutils {
-        color: $dc-blue30;
-      }
-
-      .regexp,
-      .symbol,
-      .symbol .string,
-      .value {
-        color: $dc-orange40;
-      }
-
-      .literal,
-      .number {
-        color: $dc-orange40;
-      }
-
-      .addition,
-      .apache .cbracket,
-      .apache .tag,
-      .attr_selector,
-      .django .filter .argument,
-      .django .template_tag,
-      .django .variable,
-      .envvar,
-      .haskell .type,
-      .javadoc,
-      .preprocessor,
-      .prompt,
-      .pseudo,
-      .ruby .class .parent,
-      .smalltalk .array,
-      .smalltalk .class,
-      .smalltalk .localvars,
-      .sql .aggregate,
-      .stream,
-      .string,
-      .subst,
-      .tag .value,
-      .tex .command {
-        color: $dc-orange40;
-      }
-
-      .apache .sqbracket,
-      .comment,
-      .deletion,
-      .doctype,
-      .java .annotation,
-      .pi,
-      .python .decorator,
-      .shebang,
-      .template_comment,
-      .tex .formula {
-        color: $dc-gray40;
-      }
-
-      .coffeescript .javascript,
-      .javascript .xml,
-      .tex .formula,
-      .xml .cdata,
-      .xml .css,
-      .xml .javascript,
-      .xml .vbscript {
-        opacity: 0.5;
-      }
-    }
-  }
-}*/
