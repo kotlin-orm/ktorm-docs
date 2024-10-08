@@ -117,7 +117,7 @@ on duplicate key update salary = salary + ?
 **ktorm-support-oracle**：
 
 - 支持 Ktorm 的标准分页函数，自动翻译为 Oracle 中使用 `rownum` 筛选分页的写法
-- 更多功能请参考详细的 API 文档：https://www.ktorm.org/api-docs/ktorm-support-oracle/org.ktorm.support.oracle/index.html
+- 更多功能请参考详细的 API 文档 https://www.ktorm.org/api-docs/ktorm-support-oracle/org.ktorm.support.oracle/index.html
 
 老实说，Ktorm 对许多数据库方言的特殊语法的支持确实存在不足，这是因为作者本人的精力有限，只能做到支持工作中常用的功能，对于其他纷繁复杂的特殊语法只能暂时把优先级降低。
 

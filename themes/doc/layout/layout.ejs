@@ -75,17 +75,5 @@
     <!-- js scripts -->
     <script src="<%- url_for('vendors/jquery@3.2.1/jquery.min.js') %>"></script>
     <script src="<%- url_for('script/doc.js') %>"></script>
-
-    <!-- fix code highlight -->
-    <script>
-      (function() {
-        $(".kotlin .code .keyword").each(function() {
-          var node = $(this);
-          if (node.text() === "where" || node.text() === "set") {
-            node.removeClass("keyword");
-          }
-        });
-      })();
-    </script>
   </body>
 </html>

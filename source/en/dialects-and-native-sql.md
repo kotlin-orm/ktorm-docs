@@ -97,7 +97,7 @@ Now, let's talk about Ktorm's built-in dialects' features.
 - Support locking clause via [locking](https://www.ktorm.org/api-docs/ktorm-support-postgresql/org.ktorm.support.postgresql/locking.html) function, eg. `select ... for update`. 
 - Support [hstore](https://www.ktorm.org/api-docs/ktorm-support-postgresql/org.ktorm.support.postgresql/hstore.html) data type and a series of operators for it. 
 - Support [cube](https://www.ktorm.org/api-docs/ktorm-support-postgresql/org.ktorm.support.postgresql/cube.html) & [earth](https://www.ktorm.org/api-docs/ktorm-support-postgresql/org.ktorm.support.postgresql/earth.html) data type and their utility functions.
-- For more functionality, please refer to the API docs  https://www.ktorm.org/api-docs/ktorm-support-postgresql/org.ktorm.support.postgresql/index.html
+- For more functionality, please refer to the API docs https://www.ktorm.org/api-docs/ktorm-support-postgresql/org.ktorm.support.postgresql/index.html
 
 **ktorm-support-sqlite**: 
 
@@ -105,7 +105,7 @@ Now, let's talk about Ktorm's built-in dialects' features.
 - Support extended syntax for insert statements, like [insertOrUpdate](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/insert-or-update.html), [bulkInsert](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/bulk-insert.html), [bulkInsertOrUpdate](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/bulk-insert-or-update.html), etc.
 - Support some common-used JSON operating functions, like [jsonExtract](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/json-extract.html), [jsonPatch](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/json-patch.html).
 - Support some common-used functions like [iif](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/iif.html), [ifNull](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/if-null.html), [instr](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/instr.html), [replace](https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/replace.html), etc.
-- For more functionality, please refer to the API docs  https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/index.html
+- For more functionality, please refer to the API docs https://www.ktorm.org/api-docs/ktorm-support-sqlite/org.ktorm.support.sqlite/index.html
 
 **ktorm-support-sqlserver**: 
 
@@ -116,7 +116,7 @@ Now, let's talk about Ktorm's built-in dialects' features.
 **ktorm-support-oracle**: 
 
 - Support standard pagination functions of Ktorm, translating to Oracle's paging SQL using `rownum`.
-- For more functionality, please refer to the API docs  https://www.ktorm.org/api-docs/ktorm-support-oracle/org.ktorm.support.oracle/index.html
+- For more functionality, please refer to the API docs https://www.ktorm.org/api-docs/ktorm-support-oracle/org.ktorm.support.oracle/index.html
 
 To be honest, Ktorm's support for special syntax of many database dialects is really not enough. This is because my time and energy are really limited, so I have to lower the precedence of some infrequently used dialect features. 
 
