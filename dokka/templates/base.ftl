@@ -31,8 +31,8 @@
     <#-- Custom styles -->
     <style>
       :root {
-        --dokka-logo-image-url: url('/images/logo.png');
-        --dokka-logo-height: 24px;
+        --dokka-logo-image-url: url('/images/logo-middle-dark.png');
+        --dokka-logo-height: 100px;
         --dokka-logo-width: 24px;
       }
       @media (max-width: 759px) {
