@@ -44,7 +44,7 @@ Ktorm 的每个运算符实际上都是一个返回 `SqlExpression` 的 Kotlin �
 
 这些运算符按照实现方式大概可以分为两类：
 
-**使用 operator 关键字重载的 Kotlin 内置运算符：**这类运算符一般用于实现加减乘除等基本的运算，由于重载了 Kotlin 的内置运算符，它们使用起来就像是真的执行了运算一样，比如 `Employees.salary + 1000`。但实际上并没有，它们只是创建了一个 SQL 表达式，这个表达式会被 `SqlFormatter` 翻译为 SQL 中的对应符号。下面是加号运算符的代码实现，可以看到，它只是创建了一个 `BinaryExpression<T>` 而已：
+**使用 operator 关键字重载的 Kotlin 内置运算符**：这类运算符一般用于实现加减乘除等基本的运算，由于重载了 Kotlin 的内置运算符，它们使用起来就像是真的执行了运算一样，比如 `Employees.salary + 1000`。但实际上并没有，它们只是创建了一个 SQL 表达式，这个表达式会被 `SqlFormatter` 翻译为 SQL 中的对应符号。下面是加号运算符的代码实现，可以看到，它只是创建了一个 `BinaryExpression<T>` 而已：
 
 ```kotlin
 infix operator fun <T : Number> ColumnDeclaring<T>.plus(expr: ColumnDeclaring<T>): BinaryExpression<T> {
@@ -52,7 +52,7 @@ infix operator fun <T : Number> ColumnDeclaring<T>.plus(expr: ColumnDeclaring<T>
 }
 ```
 
-**普通的运算符函数：**然而，Kotlin 重载运算符还有许多限制，比如 `equals` 方法要求必须返回 `Boolean`，然而 Ktorm 的运算符需要返回 SQL 表达式，因此，Ktorm 提供了另外一个 `eq` 函数用于相等比较。除此之外，还有许多 SQL 中的运算符在 Kotlin 中并不存在，比如 like，Ktorm 就提供了一个 `like` 函数用于字符串匹配。下面是 `like` 函数的实现，这类函数一般都具有 infix 关键字修饰：
+**普通的运算符函数**：然而，Kotlin 重载运算符还有许多限制，比如 `equals` 方法要求必须返回 `Boolean`，然而 Ktorm 的运算符需要返回 SQL 表达式，因此，Ktorm 提供了另外一个 `eq` 函数用于相等比较。除此之外，还有许多 SQL 中的运算符在 Kotlin 中并不存在，比如 like，Ktorm 就提供了一个 `like` 函数用于字符串匹配。下面是 `like` 函数的实现，这类函数一般都具有 infix 关键字修饰：
 
 ```kotlin
 infix fun ColumnDeclaring<*>.like(argument: String): BinaryExpression<Boolean> {
@@ -73,7 +73,7 @@ infix fun ColumnDeclaring<*>.like(argument: String): BinaryExpression<Boolean> {
 
 对于重载的 Kotlin 内置运算符，其优先级遵循 Kotlin 语言自己的规范。例如表达式 `Employees.salary + 1000 * 2`，由于乘号的优先级较高，最终翻译出来的 SQL 是 `t_employee.salary + 2000`。
 
-**但是对于普通的运算符函数，却并没有优先级一说。**在 Kotlin 语言的层面，它们实际上都只是普通的函数调用，因此只需要遵循从前往后结合的原则，尽管这有时可能会违反我们的直觉。比如 `a or b and c`，这里的 `or` 和 `and` 都是运算符函数，直觉上，`and` 的优先级应该比 `or` 高，因此应该优先结合，但实际上，它们只是普通的 Kotlin 函数而已。如果对这一点没有清楚的认识，可能导致一些意料之外的 bug，为了解决这个问题，我们可以在需要的地方使用括号，比如 `a or (b and c)`。
+**但是对于普通的运算符函数，却并没有优先级一说**。在 Kotlin 语言的层面，它们实际上都只是普通的函数调用，因此只需要遵循从前往后结合的原则，尽管这有时可能会违反我们的直觉。比如 `a or b and c`，这里的 `or` 和 `and` 都是运算符函数，直觉上，`and` 的优先级应该比 `or` 高，因此应该优先结合，但实际上，它们只是普通的 Kotlin 函数而已。如果对这一点没有清楚的认识，可能导致一些意料之外的 bug，为了解决这个问题，我们可以在需要的地方使用括号，比如 `a or (b and c)`。
 
 关于表达式优先级的具体顺序，请参考 [Kotlin 语言规范](https://kotlinlang.org/docs/reference/grammar.html#expressions)中的相关规定。
 

@@ -83,8 +83,8 @@ class SpringManagedTransactionManager(val dataSource: DataSource) : TransactionM
 
 除了事务管理，Spring JDBC 还提供了异常转换的功能，它能将 JDBC 中抛出的 `SQLException` 统一转换为 [DataAccessException](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/dao/DataAccessException.html) 重新抛出，这个功能有两条好处：
 
-- **使用 unchecked 异常：**JDBC 抛出的 `SQLException` 是 checked 异常，对于 Java 用户，这意味着我们需要在许多地方被迫地捕获一些没用的异常。Spring JDBC 统一将他们转换为 `RuntimeException`，有利于代码的整洁。不过 Kotlin 中不存在此问题，因此从这个角度看，此功能意义不大。
-- **统一数据访问层的异常体系：**在 JDBC 中，使用不同的驱动，其底层抛出的异常类型都不同（虽然它们都是 `SQLException` 的子类），而且 JDBC 中定义的异常体系语义模糊。Spring JDBC 定义了一套成体系的清晰简洁的异常类型，能帮助我们更好地选择感兴趣的异常进行处理，并且屏蔽了不同数据库之间的异常差异。
+- **使用 unchecked 异常**：JDBC 抛出的 `SQLException` 是 checked 异常，对于 Java 用户，这意味着我们需要在许多地方被迫地捕获一些没用的异常。Spring JDBC 统一将他们转换为 `RuntimeException`，有利于代码的整洁。不过 Kotlin 中不存在此问题，因此从这个角度看，此功能意义不大。
+- **统一数据访问层的异常体系**：在 JDBC 中，使用不同的驱动，其底层抛出的异常类型都不同（虽然它们都是 `SQLException` 的子类），而且 JDBC 中定义的异常体系语义模糊。Spring JDBC 定义了一套成体系的清晰简洁的异常类型，能帮助我们更好地选择感兴趣的异常进行处理，并且屏蔽了不同数据库之间的异常差异。
 
 使用 `Database.connectWithSpringSupport` 方法创建的 `Database` 对象默认启用了 Spring JDBC 的异常转换功能，因此我们可以写出这样的代码：
 

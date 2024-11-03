@@ -55,9 +55,9 @@ query
 
 `Query` 类中还有一些有用的属性：
 
-- **sql：**返回该查询生成的 SQL 字符串，可以在调试程序的时候确认生成的 SQL 是否符合预期。
-- **rowSet：**返回该查询的结果集对象，此字段懒初始化，在第一次获取时，执行 SQL 语句，从数据库中获取结果。
-- **totalRecords：**如果该查询没有使用 offset, limit 进行分页，此字段返回结果集的总行数；如果使用了分页，返回去除 offset, limit 限制后的符合条件的总记录数。Ktorm 使用此字段来支持页码计算，你可以使用 totalRecords 除以你的每页大小来计算总页数。  
+- **sql**：返回该查询生成的 SQL 字符串，可以在调试程序的时候确认生成的 SQL 是否符合预期。
+- **rowSet**：返回该查询的结果集对象，此字段懒初始化，在第一次获取时，执行 SQL 语句，从数据库中获取结果。
+- **totalRecords**：如果该查询没有使用 offset, limit 进行分页，此字段返回结果集的总行数；如果使用了分页，返回去除 offset, limit 限制后的符合条件的总记录数。Ktorm 使用此字段来支持页码计算，你可以使用 totalRecords 除以你的每页大小来计算总页数。  
 
 ## 获取查询结果
 
@@ -67,8 +67,8 @@ query
 
 你可能已经发现，`Query.rowSet` 返回的结果集并不是普通的 `ResultSet`，而是 `QueryRowSet`。这是 Ktorm 提供的特殊的 `ResultSet` 的实现，与普通的 `ResultSet` 不同，它增加了如下特性：
 
-- **离线可用：**它不依赖于数据库连接，当连接关闭后，仍然可以正常使用，使用完毕也不需要调用 `close` 方法。`QueryRowSet` 在创建时，已经完整取出了结果集中的所有数据保存在内存中，因此只需要等待 GC 自动回收即可。
-- **索引访问运算符：**`QueryRowSet` 重载了[索引访问运算符](https://kotlinlang.org/docs/reference/operator-overloading.html#indexed)，因此你可以使用方括号语法 `[]` ，通过传入指定的 `Column` 对象来获取这个列的数据，这种方法得益于编译器的静态检查，不易出错。不过，你仍然可以使用 `ResultSet` 中的 `getXxx` 方法，通过传入列的序号或名称字符串来获取。
+- **离线可用**：它不依赖于数据库连接，当连接关闭后，仍然可以正常使用，使用完毕也不需要调用 `close` 方法。`QueryRowSet` 在创建时，已经完整取出了结果集中的所有数据保存在内存中，因此只需要等待 GC 自动回收即可。
+- **索引访问运算符**：`QueryRowSet` 重载了[索引访问运算符](https://kotlinlang.org/docs/reference/operator-overloading.html#indexed)，因此你可以使用方括号语法 `[]` ，通过传入指定的 `Column` 对象来获取这个列的数据，这种方法得益于编译器的静态检查，不易出错。不过，你仍然可以使用 `ResultSet` 中的 `getXxx` 方法，通过传入列的序号或名称字符串来获取。
 
 使用索引访问运算符获取列的方法如下：
 
