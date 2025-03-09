@@ -20,6 +20,7 @@ Ktorm 是直接基于纯 JDBC 编写的高效简洁的轻量级 Kotlin ORM 框�
 
 ## 文章
 
-- [为 Ktorm 框架拓展 PostgreSQL 方言进行 Json 访问](https://www.liuwj.me/posts/ktorm-dialect-extension/) <sup class="new-icon">NEW</sup>
+- [「直播回放」Ktorm：一个让你的数据库操作更具 Kotlin 风味的 ORM 框架｜Kotlin 中文开发者大会](https://www.liuwj.me/posts/ktorm-in-kotlin-conf-cn-2024/) <sup class="new-icon">NEW</sup>
+- [为 Ktorm 框架拓展 PostgreSQL 方言进行 Json 访问](https://www.liuwj.me/posts/ktorm-dialect-extension/)
 - [Ktorm - 让你的数据库操作更具 Kotlin 风味](https://www.liuwj.me/posts/ktorm-write-database-operations-in-kotlin-style/)
 - [你还在用 MyBatis 吗，Ktorm 了解一下？ - 专注于 Kotlin 的 ORM 框架](https://www.liuwj.me/posts/ktorm-introduction/)

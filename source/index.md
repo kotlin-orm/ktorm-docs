@@ -20,6 +20,7 @@ Ktorm is a lightweight and efficient ORM Framework for Kotlin directly based on 
 
 ## Articles
 
-- [Extend JSON Support for Ktorm's PostgreSQL Dialect](https://www.liuwj.me/posts/ktorm-dialect-extension/) <sup class="new-icon">NEW</sup>
+- [[Live Replay] Ktorm - Write Your Database Operations in Kotlin Style｜Kotlin Conf CN](https://www.liuwj.me/posts/ktorm-in-kotlin-conf-cn-2024/) <sup class="new-icon">NEW</sup>
+- [Extend JSON Support for Ktorm's PostgreSQL Dialect](https://www.liuwj.me/posts/ktorm-dialect-extension/)
 - [Ktorm - Write Your Database Operations in Kotlin Style](https://www.liuwj.me/posts/ktorm-write-database-operations-in-kotlin-style/)
 - [Still Using MyBatis? Try Ktorm, an ORM Framework for Kotlin!](https://www.liuwj.me/posts/ktorm-introduction/)
