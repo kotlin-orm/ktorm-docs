@@ -17,3 +17,7 @@ Please sponsor the project if it really helped you. Thank you for your contribut
 ## Wechat
 
 <img src="/images/wechat-sponsor.jpg" alt="Wechat" style="width: min(100%, 400px)"/>
+
+## Alipay
+
+<img src="/images/alipay-sponsor.jpg" alt="Alipay" style="width: min(100%, 400px)"/>

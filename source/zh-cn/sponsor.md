@@ -12,6 +12,10 @@ related_path: en/sponsor.html
 
 <img src="/images/wechat-sponsor.jpg" alt="微信" style="width: min(100%, 400px)"/>
 
+## 支付宝
+
+<img src="/images/alipay-sponsor.jpg" alt="支付宝" style="width: min(100%, 400px)"/>
+
 ## PayPal
 
 > https://www.paypal.me/vincentlauvlwj
