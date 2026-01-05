@@ -20,7 +20,6 @@ Ktorm is a lightweight and efficient ORM Framework for Kotlin directly based on 
 
 ## Articles
 
-- [[Recruitment] Guangzhou Lazada recruits Java/C++ engineers (P5/P6)](https://www.liuwj.me/posts/lazada-hiring/) <sup class="new-icon">NEW</sup>
 - [[Live Replay] Ktorm - Write Your Database Operations in Kotlin Style｜Kotlin Conf CN](https://www.liuwj.me/posts/ktorm-in-kotlin-conf-cn-2024/) <sup class="new-icon">NEW</sup>
 - [Extend JSON Support for Ktorm's PostgreSQL Dialect](https://www.liuwj.me/posts/ktorm-dialect-extension/)
 - [Ktorm - Write Your Database Operations in Kotlin Style](https://www.liuwj.me/posts/ktorm-write-database-operations-in-kotlin-style/)
