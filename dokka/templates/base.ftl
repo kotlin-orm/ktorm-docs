@@ -11,7 +11,7 @@
     </script>
     </@template_cmd>
     <script>
-      document.documentElement.classList.replace("no-js","js");
+      document.documentElement.classList.replace("no-js", "js");
 
       const storage = localStorage.getItem("dokka-dark-mode")
       if (storage == null) {
@@ -76,7 +76,22 @@
       <@header.display/>
       <div id="container">
         <div class="sidebar" id="leftColumn">
-          <div class="sidebar--inner" id="sideMenu"></div>
+          <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+            <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list" data-role="dropdown-listbox">
+              <div class="dropdown--header">
+                <span>
+                  <@template_cmd name="projectName">
+                    ${projectName}
+                  </@template_cmd>
+                </span>
+                <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                  <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                </button>
+              </div>
+              <div class="sidebar--inner" id="sideMenu"></div>
+            </ul>
+            <div class="dropdown--overlay"></div>
+          </div>
         </div>
         <div id="main">
           <@content/>
