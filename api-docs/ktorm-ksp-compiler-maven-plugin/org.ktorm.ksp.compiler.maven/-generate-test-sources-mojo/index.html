@@ -1,0 +1,265 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="Kotlin, ORM, SQL, DSL, sequence">
+
+  <!-- 站内所有 HTTP 资源，一律替换为 HTTPS -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+  <!-- 协议降级，跳转到非 HTTPS 的站点时，仍然携带 referrer 请求头 -->
+  <meta name="referrer" content="always">
+
+  <!-- Disable Baidu transformation -->
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <!-- Page title -->
+  <title>Ktorm | GenerateTestSourcesMojo</title>
+
+  <!-- favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+<script>
+      var pathToRoot = "../../../";
+    </script>    <script>
+      document.documentElement.classList.replace("no-js","js");
+
+      const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>    <style>
+      :root {
+        --dokka-logo-image-url: url('/images/logo-middle-dark.png');
+        --dokka-logo-height: 100px;
+        --dokka-logo-width: 24px;
+      }
+      @media (max-width: 759px) {
+        .library-name--link::before {
+          display: inline-block;
+        }
+      }
+      .footer {
+        display: block;
+        padding-top: 20px;
+        font-size: 15px;
+        line-height: 1.6em;
+        color: #666;
+        overflow: hidden;
+        white-space: nowrap;
+        text-align: center;
+      }
+      .footer img {
+        display: inline-block;
+        padding: 0 5px;
+        max-width: 100%;
+        position: relative;
+        vertical-align: text-bottom;
+      }
+      .theme-dark .footer {
+        color: hsla(0, 0%, 100%, 0.6);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-180275463-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src="https://www.google-analytics.com/analytics.js"></script>
+    <!-- End Google Analytics -->
+
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+  <div class="navigation--inner">
+    <div class="navigation-title">
+      <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+      <div class="library-name">
+<a class="library-name--link" href="../../../index.html">
+          </a>      </div>
+      <div class="library-version">4.2.0
+      </div>
+    </div>
+    <div class="filter-section" id="filter-section">
+        <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main">jvm</button>
+    </div>
+  </div>
+  <div class="navigation-controls">
+    <a class="navigation-controls--btn navigation-controls--homepage" id="homepage-link" href="/" target="_blank"></a>
+    <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+    <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+  </div>
+</nav>
+      <div id="container">
+        <div class="sidebar" id="leftColumn">
+          <div class="sidebar--inner" id="sideMenu"></div>
+        </div>
+        <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageids="ktorm-ksp-compiler-maven-plugin::org.ktorm.ksp.compiler.maven/GenerateTestSourcesMojo///PointingToDeclaration//-238028888">
+  <div class="breadcrumbs"><a href="../../index.html">ktorm-ksp-compiler-maven-plugin</a><span class="delimiter">/</span><a href="../index.html">org.ktorm.ksp.compiler.maven</a><span class="delimiter">/</span><span class="current">GenerateTestSourcesMojo</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Generate</span><wbr><span>Test</span><wbr><span>Sources</span><wbr><span><span>Mojo</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="org.apache.maven.plugins.annotations/Mojo///PointingToDeclaration/"><span class="token annotation builtin">Mojo</span></span><span class="token punctuation">(</span><span>name<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"generate-test-sources"</span></span><span class="token punctuation">, </span></span><wbr><span>defaultPhase<span class="token operator"> = </span><span data-unresolved-link="org.apache.maven.plugins.annotations/LifecyclePhase///PointingToDeclaration/">LifecyclePhase.GENERATE_TEST_SOURCES</span><span class="token punctuation">, </span></span><wbr><span>requiresDependencyResolution<span class="token operator"> = </span><span data-unresolved-link="org.apache.maven.plugins.annotations/ResolutionScope///PointingToDeclaration/">ResolutionScope.TEST</span></span><wbr><span class="token punctuation">)</span></div></div><span class="token keyword">open </span><span class="token keyword">class </span><a href="index.html">GenerateTestSourcesMojo</a> : <a href="../-abstract-generate-sources-mojo/index.html">AbstractGenerateSourcesMojo</a></div><p class="paragraph">Maven plugin MOJO that handles Ktorm KSP test code generation.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="1301477682%2FConstructors%2F-238028888" anchor-label="GenerateTestSourcesMojo" id="1301477682%2FConstructors%2F-238028888" data-filterable-set=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main" data-filterable-set=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-generate-test-sources-mojo.html"><span>Generate</span><wbr><span>Test</span><wbr><span>Sources</span><wbr><span><span>Mojo</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1301477682%2FConstructors%2F-238028888"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="1869306044%2FProperties%2F-238028888" anchor-label="log" id="1869306044%2FProperties%2F-238028888" data-filterable-set=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main" data-filterable-set=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-abstract-generate-sources-mojo/index.html#1869306044%2FProperties%2F-238028888"><span><span>log</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1869306044%2FProperties%2F-238028888"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="../-abstract-generate-sources-mojo/index.html#1869306044%2FProperties%2F-238028888">log</a><span class="token operator">: </span><span data-unresolved-link="org.apache.maven.plugin.logging/Log///PointingToDeclaration/">Log</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1949952956%2FProperties%2F-238028888" anchor-label="pluginContext" id="-1949952956%2FProperties%2F-238028888" data-filterable-set=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main" data-filterable-set=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-abstract-generate-sources-mojo/index.html#-1949952956%2FProperties%2F-238028888"><span>plugin</span><wbr><span><span>Context</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1949952956%2FProperties%2F-238028888"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">var </span><a href="../-abstract-generate-sources-mojo/index.html#-1949952956%2FProperties%2F-238028888">pluginContext</a><span class="token operator">: </span><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html">Map</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1438339524%2FProperties%2F-238028888" anchor-label="processorOptions" id="1438339524%2FProperties%2F-238028888" data-filterable-set=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main" data-filterable-set=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="processor-options.html"><span>processor</span><wbr><span><span>Options</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1438339524%2FProperties%2F-238028888"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="org.apache.maven.plugins.annotations/Parameter///PointingToDeclaration/"><span class="token annotation builtin">Parameter</span></span></div><div class="block"><span class="token annotation builtin">@get:</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span></div></div><span class="token keyword">open </span><span class="token keyword">val </span><a href="processor-options.html">processorOptions</a><span class="token operator">: </span><a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html">Map</a><span class="token operator">&lt;</span><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html">String</a><span class="token punctuation">, </span><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html">String</a><span class="token operator">&gt;</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1972888369%2FProperties%2F-238028888" anchor-label="project" id="1972888369%2FProperties%2F-238028888" data-filterable-set=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main" data-filterable-set=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="project.html"><span><span>project</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1972888369%2FProperties%2F-238028888"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="org.apache.maven.plugins.annotations/Parameter///PointingToDeclaration/"><span class="token annotation builtin">Parameter</span></span><span class="token punctuation">(</span><span>defaultValue<span class="token operator"> = </span><span class="breakable-word"><span class="token string">"${project}"</span></span><span class="token punctuation">, </span></span><wbr><span>readonly<span class="token operator"> = </span><span class="breakable-word"><span class="token boolean">true</span></span><span class="token punctuation">, </span></span><wbr><span>required<span class="token operator"> = </span><span class="breakable-word"><span class="token boolean">true</span></span></span><wbr><span class="token punctuation">)</span></div><div class="block"><span class="token annotation builtin">@get:</span><span data-unresolved-link="org.jetbrains.annotations/NotNull///PointingToDeclaration/"><span class="token annotation builtin">NotNull</span></span></div></div><span class="token keyword">open </span><span class="token keyword">val </span><a href="project.html">project</a><span class="token operator">: </span><span data-unresolved-link="org.apache.maven.project/MavenProject///PointingToDeclaration/">MavenProject</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-960208926%2FProperties%2F-238028888" anchor-label="ROLE" id="-960208926%2FProperties%2F-238028888" data-filterable-set=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main" data-filterable-set=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../-generate-sources-mojo/index.html#-960208926%2FProperties%2F-238028888"><span><span>ROLE</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-960208926%2FProperties%2F-238028888"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="../-generate-sources-mojo/index.html#-960208926%2FProperties%2F-238028888">ROLE</a><span class="token operator">: </span><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html">String</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-1329424811%2FFunctions%2F-238028888" anchor-label="execute" id="-1329424811%2FFunctions%2F-238028888" data-filterable-set=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main"></a>
+          <div class="table-row" data-filterable-current=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main" data-filterable-set=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="execute.html"><span><span>execute</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1329424811%2FFunctions%2F-238028888"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktorm-ksp-compiler-maven-plugin:dokkaHtmlPartial/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">fun </span><a href="execute.html"><span class="token function">execute</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="footer">
+    © 2026 KTORM.ORG. Licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a> <br>
+    Hosted by
+    <a href="https://github.com/kotlin-orm/ktorm">GitHub</a>
+    <a href="https://github.com/kotlin-orm/ktorm/stargazers">
+      <img src="https://img.shields.io/github/stars/kotlin-orm/ktorm.svg?style=social" alt="Stars">
+    </a>
+  </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
