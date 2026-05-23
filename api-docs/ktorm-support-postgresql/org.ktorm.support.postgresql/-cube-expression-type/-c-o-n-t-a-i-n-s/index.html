@@ -54,8 +54,11 @@
 <script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer></script>    <style>
       :root {
         --dokka-logo-image-url: url('/images/logo-middle-dark.png');
-        --dokka-logo-height: 100px;
-        --dokka-logo-width: 24px;
+        --dokka-logo-height: 24px;
+        --dokka-logo-width: 100px;
+      }
+      .library-name--link::before {
+        background-size: contain;
       }
       @media (max-width: 759px) {
         .library-name--link::before {
